@@ -61,11 +61,12 @@ group :development do
   gem "yajl-ruby"
   gem "rack-livereload"
   gem "guard-bundler"
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 gem "sqlite3", :group => [:development, :test]
 group :assets do
-  gem "twitter-bootstrap-rails"
+  #gem "twitter-bootstrap-rails"
 end
 
 gem "simple_form"
