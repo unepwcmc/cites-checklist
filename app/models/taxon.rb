@@ -13,5 +13,8 @@
 #
 
 class Taxon < ActiveRecord::Base
-  attr_accessible :lft, :parent_id, :rgt, :scientific_name
+  attr_accessible :lft, :parent_id, :rgt, :scientific_name, :rank_id, :parent_id
+  belongs_to :rank
+  has_and_belongs_to_many :institutions, :join_table => 'taxons_institutions'
+  acts_as_nested_set
 end
