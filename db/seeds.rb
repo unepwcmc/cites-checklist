@@ -49,10 +49,44 @@ family.institutions = Institution.all
 genus = Taxon.create(:rank_id => Rank.find_by_name('Genus'), :scientific_name => 'Loxodonta', :parent_id => family.id)
 genus.institutions = Institution.all
 #loxodonta africana CITES
-species = Taxon.create(:rank_id => Rank.find_by_name('Species'), :scientific_name => 'Loxodonta africana', :parent_id => genus.id)
-species.institutions = [cites]
+loxodonta_cites = Taxon.create(
+  :rank_id => Rank.find_by_name('Species'),
+  :scientific_name => 'Loxodonta africana', :parent_id => genus.id
+)
+loxodonta_cites.institutions = [cites]
 #loxodonta africana CMS
-species = Taxon.create(:rank_id => Rank.find_by_name('Species'), :scientific_name => 'Loxodonta africana', :parent_id => genus.id)
-species.institutions = [cms]
-species = Taxon.create(:rank_id => Rank.find_by_name('Species'), :scientific_name => 'Loxodonta cyclotis', :parent_id => genus.id)
-species.institutions = [cms]
+loxodonta_cms1 = Taxon.create(
+  :rank_id => Rank.find_by_name('Species'),
+  :scientific_name => 'Loxodonta africana', :parent_id => genus.id
+)
+loxodonta_cms1.institutions = [cms]
+loxodonta_cms2 = Taxon.create(
+  :rank_id => Rank.find_by_name('Species'),
+  :scientific_name => 'Loxodonta cyclotis', :parent_id => genus.id
+)
+loxodonta_cms2.institutions = [cms]
+
+#Create taxon relationship type seeds
+puts "#{TaxonRelationshipType.delete_all} taxon relationship types deleted"
+['has_component', 'is_component_of'].each do |relationship|
+  TaxonRelationshipType.create(:name => relationship)
+end
+
+#Create loxodonta relationship seeds
+puts "#{TaxonRelationship.delete_all} taxon relationships deleted"
+TaxonRelationship.create(
+  :taxon_id => loxodonta_cites, :other_taxon_id => loxodonta_cms1,
+  :taxon_relationship_type_id => TaxonRelationshipType.find_by_name('has_component')
+)
+TaxonRelationship.create(
+  :taxon_id => loxodonta_cites, :other_taxon_id => loxodonta_cms2,
+  :taxon_relationship_type_id => TaxonRelationshipType.find_by_name('has_component')
+)
+TaxonRelationship.create(
+  :taxon_id => loxodonta_cms1, :other_taxon_id => loxodonta_cites,
+  :taxon_relationship_type_id => TaxonRelationshipType.find_by_name('is_component_of')
+)
+TaxonRelationship.create(
+  :taxon_id => loxodonta_cms2, :other_taxon_id => loxodonta_cites,
+  :taxon_relationship_type_id => TaxonRelationshipType.find_by_name('is_component_of')
+)

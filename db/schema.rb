@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502083833) do
+ActiveRecord::Schema.define(:version => 20120502102421) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20120502083833) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "taxa", :force => true do |t|
+    t.string   "scientific_name", :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "rank_id",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "spcrecid"
+  end
+
   create_table "taxon_distributions", :force => true do |t|
     t.integer  "taxon_id",        :null => false
     t.integer  "distribution_id", :null => false
@@ -81,17 +92,6 @@ ActiveRecord::Schema.define(:version => 20120502083833) do
     t.integer  "taxon_relationship_type_id", :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "taxons", :force => true do |t|
-    t.string   "scientific_name", :null => false
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "rank_id",         :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "spcrecid"
   end
 
   create_table "taxons_institutions", :id => false, :force => true do |t|
