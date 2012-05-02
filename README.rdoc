@@ -1,1 +1,5 @@
 == CITES Checklist
+
+Try to apply these coding guidelines:
+
+  http://pub.cozmixng.org/~the-rwiki/rw-cgi.rb?cmd=view;name=RubyCodingConvention
