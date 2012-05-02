@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: taxons
+# Table name: taxa
 #
 #  id              :integer         not null, primary key
 #  scientific_name :string(255)     not null
@@ -10,6 +10,7 @@
 #  rank_id         :integer         not null
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
+#  spcrecid        :integer
 #
 
 class Taxon < ActiveRecord::Base
