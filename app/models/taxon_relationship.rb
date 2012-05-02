@@ -13,4 +13,5 @@
 class TaxonRelationship < ActiveRecord::Base
   attr_accessible :taxon_id, :other_taxon_id, :taxon_relationship_type_id
   belongs_to :taxon_relationship_type
+  belongs_to :related_taxon, :foreign_key => :other_taxon_id
 end
