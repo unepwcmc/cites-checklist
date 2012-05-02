@@ -16,5 +16,6 @@ class Taxon < ActiveRecord::Base
   attr_accessible :lft, :parent_id, :rgt, :scientific_name, :rank_id, :parent_id
   belongs_to :rank
   has_and_belongs_to_many :institutions, :join_table => 'taxons_institutions'
-  acts_as_nested_set
+  has_many :relationships, :class_name => "TaxonRelationship", :foreign_key => "taxon_id"
+  has_many :inverse_relationships, :class_name => "TaxonRelationship", :foreign_key => "other_taxon_id"
 end

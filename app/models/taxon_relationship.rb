@@ -11,5 +11,6 @@
 #
 
 class TaxonRelationship < ActiveRecord::Base
-  attr_accessible :other_taxon_id
+  attr_accessible :taxon_id, :other_taxon_id, :taxon_relationship_type_id
+  belongs_to :taxon_relationship_type
 end
