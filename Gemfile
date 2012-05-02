@@ -8,7 +8,7 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 gem 'awesome_nested_set'
 
 # Gems used only for assets and not required
@@ -62,6 +62,7 @@ group :development do
   gem "rack-livereload"
   gem "guard-bundler"
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'ruby-debug19'
 end
 
 gem "sqlite3", :group => [:development, :test]
