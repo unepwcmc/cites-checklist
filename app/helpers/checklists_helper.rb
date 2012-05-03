@@ -4,11 +4,29 @@ module ChecklistsHelper
       taxons.map { |taxon| taxon_tree(taxon) }.join.html_safe
     end
   end
+
   def taxon_tree(taxon)
+    rank = taxon.rank && taxon.rank.name.html_safe
     content_tag(:li) do
-      taxon.scientific_name.html_safe + 
-      ' ['+taxon.institutions.map(&:name).join(',').html_safe + ']' +
+      content_tag(:span, rank, :class => 'rank') +
+      content_tag(:span, taxon.scientific_name.html_safe, :class => "taxon #{rank}") + 
+      content_tag(:span,'['+taxon.institutions.map(&:name).join(',').html_safe + ']', :class => 'institution') +
+      content_tag(:p, taxon_relationships(taxon)) +
       taxon_forest(taxon.children)
     end
+  end
+
+  def taxon_relationships(taxon)
+    r = ''.html_safe
+    if !taxon.wholes.empty?
+      r += content_tag(:strong, "is part of") + taxon.wholes.map(&:scientific_name).join(',').html_safe
+    end
+    if !taxon.parts.empty?
+      r += content_tag(:strong, "consists of") + taxon.parts.map(&:scientific_name).join(',').html_safe
+    end
+    if !taxon.synonyms.empty?
+      r += content_tag(:strong, "synonym") + taxon.synonyms.map(&:scientific_name).join(',').html_safe
+    end
+    r
   end
 end

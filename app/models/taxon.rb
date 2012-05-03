@@ -28,4 +28,7 @@ class Taxon < ActiveRecord::Base
   def parts
     related_taxons.includes(:relationships => :taxon_relationship_type).where(:taxon_relationship_types => {:name => 'is_part_of'})
   end
+  def synonyms
+    related_taxons.includes(:relationships => :taxon_relationship_type).where(:taxon_relationship_types => {:name => 'is_synonym'})
+  end
 end
