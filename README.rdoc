@@ -3,3 +3,25 @@
 Try to apply these coding guidelines:
 
   http://pub.cozmixng.org/~the-rwiki/rw-cgi.rb?cmd=view;name=RubyCodingConvention
+
+== Taxonomic glossaries
+  http://ibot.sav.sk/icbn/no%20frames/0120AppendixVII.htm
+  http://bionomenclature-glossary.gbif.org/
+
+== Project glossary
+
+  - taxon, taxon concept - represents a unique combination of a name and a reference
+  - usage - represents an association of a taxon concept with a name (not necessarily the defining name). can be used to apply multiple name systems to a taxon concept
+
+===Taxon concept relationships:
+
+inter-institutional:
+  - equal =
+  - includes <
+  - included in >
+  - overlaps ><
+  - disjunct |
+
+intra-institutional:
+  - synonym
+  - homonym
