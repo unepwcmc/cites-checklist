@@ -20,6 +20,8 @@ class Taxon < ActiveRecord::Base
   has_many :relationships, :class_name => 'TaxonRelationship'
   has_many :related_taxons, :class_name => 'Taxon', :through => :relationships
 
+  acts_as_nested_set
+
   def wholes
     related_taxons.includes(:relationships => :taxon_relationship_type).where(:taxon_relationship_types => {:name => 'has_part'})
   end
