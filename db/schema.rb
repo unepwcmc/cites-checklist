@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504130011) do
+ActiveRecord::Schema.define(:version => 20120504133552) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -108,5 +108,14 @@ ActiveRecord::Schema.define(:version => 20120504130011) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
+
+  add_foreign_key "ranks", "ranks", :name => "ranks_parent_id_fk", :column => "parent_id"
+
+  add_foreign_key "taxon_concepts", "designations", :name => "taxon_concepts_designation_id_fk"
+  add_foreign_key "taxon_concepts", "ranks", :name => "taxon_concepts_rank_id_fk"
+  add_foreign_key "taxon_concepts", "taxon_concepts", :name => "taxon_concepts_parent_id_fk", :column => "parent_id"
+
+  add_foreign_key "taxon_relationships", "taxon_concepts", :name => "taxon_relationships_taxon_concept_id_fk"
+  add_foreign_key "taxon_relationships", "taxon_relationship_types", :name => "taxon_relationships_taxon_relationship_type_id_fk"
 
 end
