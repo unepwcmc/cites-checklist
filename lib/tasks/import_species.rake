@@ -1,7 +1,7 @@
 namespace :import do
   desc "Import species records from csv file [usage: FILE=[path/to/file] rake import:species"
   task :species => :environment do
-    if !ENV["FILE"] || !File.file?(ENV["FILE"]) #if the file is not defined, explain and leave.
+    if !ENV["FILE"] || !File.file?(Rails.root+ENV["FILE"]) #if the file is not defined, explain and leave.
       puts "Please specify a valid csv file from which to import species data"
       puts "Usage: FILE=[path/to/file] rake import:species"
       next
