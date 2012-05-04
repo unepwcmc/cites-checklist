@@ -10,7 +10,7 @@ module ChecklistsHelper
     content_tag(:li) do
       content_tag(:span, rank, :class => 'rank') +
       content_tag(:span, taxon.scientific_name.html_safe, :class => "taxon #{rank}") + 
-      content_tag(:span,'['+taxon.institutions.map(&:name).join(',').html_safe + ']', :class => 'institution') +
+      content_tag(:span,taxon.designation.name.html_safe, :class => 'designation') +
       content_tag(:p, taxon_relationships(taxon)) +
       taxon_forest(taxon.children)
     end

@@ -15,66 +15,65 @@ puts "#{Rank.delete_all} ranks deleted"
   puts "Added rank #{rank.name}, with id #{rank.id}"
 end
 
-#Create institution seeds
-puts "#{Institution.delete_all} institutions deleted"
-['CITES', 'CMS'].each do |institution|
-  Institution.create(:name => institution)
+#Create designation seeds
+puts "#{Designation.delete_all} designations deleted"
+['CITES', 'CMS'].each do |designation|
+  Designation.create(:name => designation)
 end
-cites = Institution.find_by_name('CITES')
-cms = Institution.find_by_name('CMS')
+cites = Designation.find_by_name('CITES')
+cms = Designation.find_by_name('CMS')
 #Create taxon seeds
-puts "#{Taxon.delete_all} taxons deleted"
+puts "#{Taxon.delete_all} taxa deleted"
 
 kingdom = Taxon.create(:rank_id => Rank.find_by_name('Kingdom').id,
-  :scientific_name => 'Animalia')
-kingdom.institutions = Institution.all
+  :scientific_name => 'Animalia', :designation_id => cites.id)
 phylum = Taxon.create(:rank_id => Rank.find_by_name('Phylum').id,
-  :scientific_name => 'Chordata', :parent_id => kingdom.id)
-phylum.institutions = Institution.all
+  :scientific_name => 'Chordata', :parent_id => kingdom.id,
+  :designation_id => cites.id)
+phylum.designation = cites
 klass = Taxon.create(:rank_id => Rank.find_by_name('Class').id,
-  :scientific_name => 'Mammalia', :parent_id => phylum.id)
-klass.institutions = Institution.all
+  :scientific_name => 'Mammalia', :parent_id => phylum.id,
+  :designation_id => cites.id)
 
 #honey badger
 order = Taxon.create(:rank_id => Rank.find_by_name('Order').id,
-  :scientific_name => 'Carnivora', :parent_id => klass.id)
-order.institutions = Institution.all
+  :scientific_name => 'Carnivora', :parent_id => klass.id,
+  :designation_id => cites.id)
 family = Taxon.create(:rank_id => Rank.find_by_name('Family').id,
-  :scientific_name => 'Mustelidae', :parent_id => order.id)
-family.institutions = [cites]
+  :scientific_name => 'Mustelidae', :parent_id => order.id,
+  :designation_id => cites.id)
 genus = Taxon.create(:rank_id => Rank.find_by_name('Genus').id,
-  :scientific_name => 'Mellivora', :parent_id => family.id)
-genus.institutions = [cites]
+  :scientific_name => 'Mellivora', :parent_id => family.id,
+  :designation_id => cites.id)
 species = Taxon.create(:rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => 'Mellivora capensis', :parent_id => genus.id)
-species.institutions = [cites]
+  :scientific_name => 'Mellivora capensis', :parent_id => genus.id,
+  :designation_id => cites.id)
+
 #loxodonta
 order = Taxon.create(:rank_id => Rank.find_by_name('Order').id,
-  :scientific_name => 'Proboscidea', :parent_id => klass.id)
-order.institutions = Institution.all
+  :scientific_name => 'Proboscidea', :parent_id => klass.id,
+  :designation_id => cites.id)
 family = Taxon.create(:rank_id => Rank.find_by_name('Family').id,
-  :scientific_name => 'Elephantidae', :parent_id => order.id)
-family.institutions = Institution.all
+  :scientific_name => 'Elephantidae', :parent_id => order.id,
+  :designation_id => cites.id)
 genus = Taxon.create(:rank_id => Rank.find_by_name('Genus').id,
-  :scientific_name => 'Loxodonta', :parent_id => family.id)
-genus.institutions = Institution.all
+  :scientific_name => 'Loxodonta', :parent_id => family.id,
+  :designation_id => cites.id)
 #loxodonta africana CITES
 loxodonta_cites = Taxon.create(
   :rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => 'Loxodonta africana', :parent_id => genus.id
-)
-loxodonta_cites.institutions = [cites]
+  :scientific_name => 'Loxodonta africana', :parent_id => genus.id,
+  :designation_id => cites.id)
 #loxodonta africana CMS
 loxodonta_cms1 = Taxon.create(
   :rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => 'Loxodonta africana', :parent_id => genus.id
+  :scientific_name => 'Loxodonta africana', :parent_id => genus.id,
+  :designation_id => cms.id
 )
-loxodonta_cms1.institutions = [cms]
 loxodonta_cms2 = Taxon.create(
   :rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => 'Loxodonta cyclotis', :parent_id => genus.id
-)
-loxodonta_cms2.institutions = [cms]
+  :scientific_name => 'Loxodonta cyclotis', :parent_id => genus.id,
+  :designation_id => cms.id)
 
 #Create taxon relationship type seeds
 puts "#{TaxonRelationshipType.delete_all} taxon relationship types deleted"
@@ -102,26 +101,25 @@ TaxonRelationship.create(
 )
 
 kingdom = Taxon.create(:rank_id => Rank.find_by_name('Kingdom').id,
-  :scientific_name => 'Plantae')
-kingdom.institutions = [cites]
+  :scientific_name => 'Plantae', :designation_id => cites.id)
 order = Taxon.create(:rank_id => Rank.find_by_name('Order').id,
-  :scientific_name => 'Violales', :parent_id => kingdom.id)
-order.institutions = [cites]
+  :scientific_name => 'Violales', :parent_id => kingdom.id,
+  :designation_id => cites.id)
 family = Taxon.create(:rank_id => Rank.find_by_name('Family').id,
-  :scientific_name => 'Violaceae', :parent_id => order.id)
-family.institutions = [cites]
+  :scientific_name => 'Violaceae', :parent_id => order.id,
+  :designation_id => cites.id)
 genus = Taxon.create(:rank_id => Rank.find_by_name('Genus').id,
-  :scientific_name => 'Viola', :parent_id => family.id)
-genus.institutions = [cites]
+  :scientific_name => 'Viola', :parent_id => family.id,
+  :designation_id => cites.id)
 viola_montana = Taxon.create(:rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => 'Viola montana L.', :parent_id => genus.id)
-viola_montana.institutions = [cites]
+  :scientific_name => 'Viola montana L.', :parent_id => genus.id,
+  :designation_id => cites.id)
 viola_canina = Taxon.create(:rank_id => Rank.find_by_name('Species').id,
-  :scientific_name => ' Viola canina L.', :parent_id => genus.id)
-viola_canina.institutions = [cites]
+  :scientific_name => ' Viola canina L.', :parent_id => genus.id,
+  :designation_id => cites.id)
 viola_canina_ssp = Taxon.create(:rank_id => Rank.find_by_name('Subspecies').id,
-  :scientific_name => 'Viola canina L. ssp. montana (L.) Hartman ', :parent_id => viola_canina.id)
-viola_canina_ssp.institutions = [cites]
+  :scientific_name => 'Viola canina L. ssp. montana (L.) Hartman ', :parent_id => viola_canina.id,
+  :designation_id => cites.id)
 
 TaxonRelationship.create(
   :taxon_id => viola_montana.id, :other_taxon_id => viola_canina_ssp.id,

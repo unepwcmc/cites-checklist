@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: institutions
+# Table name: designations
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)     not null
@@ -8,6 +8,6 @@
 #  updated_at :datetime        not null
 #
 
-class Institution < ActiveRecord::Base
+class Designation < ActiveRecord::Base
   attr_accessible :name
 end

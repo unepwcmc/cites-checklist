@@ -11,13 +11,15 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  spcrecid        :integer
+#  depth           :integer
+#  designation_id  :integer         not null
 #
 
 class Taxon < ActiveRecord::Base
-  attr_accessible :lft, :parent_id, :rgt, :scientific_name, :rank_id, :parent_id
+  attr_accessible :lft, :parent_id, :rgt, :scientific_name, :rank_id, :parent_id, :designation_id
   belongs_to :rank
-  has_and_belongs_to_many :institutions, :join_table => 'taxons_institutions'
-  has_many :relationships, :class_name => 'TaxonRelationship'
+  belongs_to :designation
+  has_many :relationships, :class_name => 'TaxonRelationship', :dependent => :destroy
   has_many :related_taxons, :class_name => 'Taxon', :through => :relationships
 
   acts_as_nested_set

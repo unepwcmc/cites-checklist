@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503071911) do
+ActiveRecord::Schema.define(:version => 20120504102433) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(:version => 20120503071911) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "distributions", :force => true do |t|
+  create_table "designations", :force => true do |t|
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "institutions", :force => true do |t|
-    t.string   "name",       :null => false
+  create_table "distributions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(:version => 20120503071911) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "species_import", :id => false, :force => true do |t|
+    t.string  "kingdom",    :limit => nil
+    t.string  "phylum",     :limit => nil
+    t.string  "class",      :limit => nil
+    t.string  "taxonorder", :limit => nil
+    t.string  "family",     :limit => nil
+    t.string  "genus",      :limit => nil
+    t.string  "species",    :limit => nil
+    t.string  "spcinfra",   :limit => nil
+    t.integer "spcrecid"
+    t.string  "spcstatus",  :limit => nil
+  end
+
   create_table "taxa", :force => true do |t|
     t.string   "scientific_name", :null => false
     t.integer  "parent_id"
@@ -64,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120503071911) do
     t.datetime "updated_at",      :null => false
     t.integer  "spcrecid"
     t.integer  "depth"
+    t.integer  "designation_id",  :null => false
   end
 
   create_table "taxon_distributions", :force => true do |t|
@@ -93,11 +107,6 @@ ActiveRecord::Schema.define(:version => 20120503071911) do
     t.integer  "taxon_relationship_type_id", :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "taxons_institutions", :id => false, :force => true do |t|
-    t.integer "taxon_id",       :null => false
-    t.integer "institution_id", :null => false
   end
 
 end

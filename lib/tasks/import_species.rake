@@ -48,18 +48,20 @@ def import_data_for which, parent_column=nil, column_name=nil
   rank_id = Rank.select(:id).where(:name => which).first.id
   existing = Taxon.where(:rank_id => rank_id).count
   puts "There were #{existing} #{which} before we started"
+  cites = Designation.find_by_name('CITES')
   if parent_column
     sql = <<-SQL
-      INSERT INTO taxa(scientific_name, rank_id, parent_id, created_at, updated_at)
+      INSERT INTO taxa(scientific_name, rank_id, designation_id, parent_id, created_at, updated_at)
          SELECT
            tmp.#{column_name}
            ,#{rank_id}
+           ,tmp.designation_id
            ,taxa.id
            ,current_date
            ,current_date
          FROM
           (
-            SELECT DISTINCT species_import.#{column_name}, species_import.#{parent_column}
+            SELECT DISTINCT species_import.#{column_name}, species_import.#{parent_column}, #{cites.id} AS designation_id
             FROM species_import
             WHERE NOT EXISTS (
               SELECT scientific_name, rank_id
@@ -71,8 +73,8 @@ def import_data_for which, parent_column=nil, column_name=nil
     SQL
   else
     sql = <<-SQL
-      INSERT INTO taxa(scientific_name, rank_id, created_at, updated_at)
-        SELECT DISTINCT #{column_name}, #{rank_id}, current_date, current_date
+      INSERT INTO taxa(scientific_name, rank_id, designation_id, created_at, updated_at)
+        SELECT DISTINCT #{column_name}, #{rank_id}, #{cites.id} AS designation_id, current_date, current_date
         FROM #{TMP_TABLE}
         WHERE NOT EXISTS (
           SELECT scientific_name, rank_id
@@ -83,11 +85,5 @@ def import_data_for which, parent_column=nil, column_name=nil
     SQL
   end
   result = ActiveRecord::Base.connection.execute(sql)
-  cites = Institution.find_by_name('CITES')
-  result.map{|h| h.values}.flatten.each { |id|
-    if id
-      Taxon.find(id).institutions << cites
-    end
-  }
   puts "#{Taxon.where(:rank_id => rank_id).count - existing} #{which} added"
 end
