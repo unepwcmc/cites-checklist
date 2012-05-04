@@ -1,6 +1,6 @@
 class ChecklistsController < ApplicationController
   def index
-    @animalia = Taxon.find_by_scientific_name('Animalia')
-    @plantae = Taxon.find_by_scientific_name('Plantae')
+    @animalia = TaxonConcept.find_by_scientific_name('Animalia')
+    @plantae = TaxonConcept.find_by_scientific_name('Plantae')
   end
 end

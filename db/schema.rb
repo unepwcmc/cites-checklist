@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504102433) do
+ActiveRecord::Schema.define(:version => 20120504130011) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20120504102433) do
     t.string  "spcstatus",  :limit => nil
   end
 
-  create_table "taxa", :force => true do |t|
+  create_table "taxon_concepts", :force => true do |t|
     t.string   "scientific_name", :null => false
     t.integer  "parent_id"
     t.integer  "lft"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20120504102433) do
   end
 
   create_table "taxon_relationships", :force => true do |t|
-    t.integer  "taxon_id",                   :null => false
-    t.integer  "other_taxon_id",             :null => false
+    t.integer  "taxon_concept_id",           :null => false
+    t.integer  "other_taxon_concept_id",     :null => false
     t.integer  "taxon_relationship_type_id", :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false

@@ -13,7 +13,7 @@ Try to apply these coding guidelines:
 
 == Project glossary
 
-  - taxon, taxon concept - represents a unique combination of a name and a reference
+  - taxon concept - represents a unique combination of a name and a reference
   - usage - represents an association of a taxon concept with a name (not necessarily the defining name). can be used to apply multiple name systems to a taxon concept
 
 An older standard for plants naming conventions (is there an up to date version of that?): http://www.nhm.ac.uk/hosted_sites/tdwg/plants.html

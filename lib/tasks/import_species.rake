@@ -46,17 +46,17 @@ def import_data_for which, parent_column=nil, column_name=nil
   column_name ||= which
   puts "Importing #{which}"
   rank_id = Rank.select(:id).where(:name => which).first.id
-  existing = Taxon.where(:rank_id => rank_id).count
+  existing = TaxonConcept.where(:rank_id => rank_id).count
   puts "There were #{existing} #{which} before we started"
   cites = Designation.find_by_name('CITES')
   if parent_column
     sql = <<-SQL
-      INSERT INTO taxa(scientific_name, rank_id, designation_id, parent_id, created_at, updated_at)
+      INSERT INTO taxon_concepts(scientific_name, rank_id, designation_id, parent_id, created_at, updated_at)
          SELECT
            tmp.#{column_name}
            ,#{rank_id}
            ,tmp.designation_id
-           ,taxa.id
+           ,taxon_concepts.id
            ,current_date
            ,current_date
          FROM
@@ -65,25 +65,25 @@ def import_data_for which, parent_column=nil, column_name=nil
             FROM species_import
             WHERE NOT EXISTS (
               SELECT scientific_name, rank_id
-              FROM taxa
-              WHERE taxa.scientific_name like species_import.#{column_name} and taxa.rank_id = #{rank_id} )
+              FROM taxon_concepts
+              WHERE taxon_concepts.scientific_name like species_import.#{column_name} and taxon_concepts.rank_id = #{rank_id} )
           ) as tmp
-          JOIN taxa ON taxa.scientific_name LIKE tmp.#{parent_column}
+          JOIN taxon_concepts ON taxon_concepts.scientific_name LIKE tmp.#{parent_column}
       RETURNING id;
     SQL
   else
     sql = <<-SQL
-      INSERT INTO taxa(scientific_name, rank_id, designation_id, created_at, updated_at)
+      INSERT INTO taxon_concepts(scientific_name, rank_id, designation_id, created_at, updated_at)
         SELECT DISTINCT #{column_name}, #{rank_id}, #{cites.id} AS designation_id, current_date, current_date
         FROM #{TMP_TABLE}
         WHERE NOT EXISTS (
           SELECT scientific_name, rank_id
-          FROM taxa
+          FROM taxon_concepts
           WHERE scientific_name like #{which} AND rank_id = #{rank_id}
         )
       RETURNING id;
     SQL
   end
   result = ActiveRecord::Base.connection.execute(sql)
-  puts "#{Taxon.where(:rank_id => rank_id).count - existing} #{which} added"
+  puts "#{TaxonConcept.where(:rank_id => rank_id).count - existing} #{which} added"
 end
