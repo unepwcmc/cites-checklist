@@ -10,10 +10,10 @@ namespace :import do
     TMP_TABLE = 'species_import'
     puts "Remove tmp table before starting the import"
     begin
-      ActiveRecord::Base.connection.execute "DROP TABLE species_import;"
+      ActiveRecord::Base.connection.execute "DROP TABLE #{TMP_TABLE};"
       puts "Table removed"
     rescue Exception => e
-      puts "Could not drop table species_import. It might not exist if this is the first time you are running this rake task.. carry on"
+      puts "Could not drop table #{TMP_TABLE}. It might not exist if this is the first time you are running this rake task.. carry on"
     end
     puts "Creating tmp table"
     ActiveRecord::Base.connection.execute "CREATE TABLE #{TMP_TABLE} ( Kingdom varchar, Phylum varchar, Class varchar, TaxonOrder varchar, Family varchar, Genus varchar, Species varchar, SpcInfra varchar, SpcRecId integer, SpcStatus varchar)"
@@ -44,16 +44,29 @@ end
 # @param [String] column_name if the which object is different from the column name in the tmp table, specify the column name
 def import_data_for which, parent_column=nil, column_name=nil
   column_name ||= which
-  puts "Importing #{which}"
+  puts "Importing #{which} from #{column_name}"
   rank_id = Rank.select(:id).where(:name => which).first.id
   existing = TaxonConcept.where(:rank_id => rank_id).count
   puts "There were #{existing} #{which} before we started"
+
+  sql = <<-SQL
+    INSERT INTO taxon_names(scientific_name, created_at, updated_at)
+      SELECT DISTINCT INITCAP(BTRIM(#{column_name})), current_date, current_date
+      FROM #{TMP_TABLE}
+      WHERE NOT EXISTS (
+        SELECT scientific_name
+        FROM taxon_names
+        WHERE INITCAP(scientific_name) LIKE INITCAP(BTRIM(#{TMP_TABLE}.#{column_name}))
+      )
+  SQL
+  ActiveRecord::Base.connection.execute(sql)
+
   cites = Designation.find_by_name('CITES')
   if parent_column
     sql = <<-SQL
-      INSERT INTO taxon_concepts(scientific_name, rank_id, designation_id, parent_id, created_at, updated_at)
+      INSERT INTO taxon_concepts(taxon_name_id, rank_id, designation_id, parent_id, created_at, updated_at)
          SELECT
-           tmp.#{column_name}
+           tmp.taxon_name_id
            ,#{rank_id}
            ,tmp.designation_id
            ,taxon_concepts.id
@@ -61,29 +74,31 @@ def import_data_for which, parent_column=nil, column_name=nil
            ,current_date
          FROM
           (
-            SELECT DISTINCT species_import.#{column_name}, species_import.#{parent_column}, #{cites.id} AS designation_id
-            FROM species_import
+            SELECT DISTINCT taxon_names.id AS taxon_name_id, #{TMP_TABLE}.#{parent_column}, #{cites.id} AS designation_id
+            FROM #{TMP_TABLE}
+            LEFT JOIN taxon_names ON (INITCAP(BTRIM(#{TMP_TABLE}.#{column_name})) LIKE INITCAP(BTRIM(taxon_names.scientific_name)))
             WHERE NOT EXISTS (
-              SELECT scientific_name, rank_id
+              SELECT taxon_name_id, rank_id
               FROM taxon_concepts
-              WHERE taxon_concepts.scientific_name like species_import.#{column_name} and taxon_concepts.rank_id = #{rank_id} )
+              WHERE taxon_concepts.taxon_name_id = taxon_names.id and taxon_concepts.rank_id = #{rank_id} )
           ) as tmp
-          JOIN taxon_concepts ON taxon_concepts.scientific_name LIKE tmp.#{parent_column}
+          LEFT JOIN taxon_names ON (INITCAP(BTRIM(taxon_names.scientific_name)) LIKE INITCAP(BTRIM(tmp.#{parent_column})))
+          LEFT JOIN taxon_concepts ON (taxon_concepts.taxon_name_id = taxon_names.id)
       RETURNING id;
     SQL
   else
     sql = <<-SQL
-      INSERT INTO taxon_concepts(scientific_name, rank_id, designation_id, created_at, updated_at)
-        SELECT DISTINCT #{column_name}, #{rank_id}, #{cites.id} AS designation_id, current_date, current_date
-        FROM #{TMP_TABLE}
+      INSERT INTO taxon_concepts(taxon_name_id, rank_id, designation_id, created_at, updated_at)
+        SELECT DISTINCT taxon_names.id, #{rank_id}, #{cites.id} AS designation_id, current_date, current_date
+        FROM #{TMP_TABLE} LEFT JOIN taxon_names ON (INITCAP(BTRIM(#{TMP_TABLE}.#{column_name})) LIKE INITCAP(BTRIM(taxon_names.scientific_name)))
         WHERE NOT EXISTS (
-          SELECT scientific_name, rank_id
+          SELECT taxon_name_id, rank_id
           FROM taxon_concepts
-          WHERE scientific_name like #{which} AND rank_id = #{rank_id}
+          WHERE taxon_name_id = taxon_names.id AND rank_id = #{rank_id}
         )
       RETURNING id;
     SQL
   end
-  result = ActiveRecord::Base.connection.execute(sql)
+  ActiveRecord::Base.connection.execute(sql)
   puts "#{TaxonConcept.where(:rank_id => rank_id).count - existing} #{which} added"
 end
