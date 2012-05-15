@@ -1,18 +1,3 @@
-{{view Checklist.CreateTodoView id="new-todo" placeholder="What needs to be done?"}}
-
-<div id="stats">
-  {{#view Ember.Button target="Checklist.checklistController" action="clearCompletedChecklist"}}
-    Clear Completed Checklist
-  {{/view}}
-
-  {{Checklist.checklistController.remaining}} remaining
-</div>
-
-{{view Ember.Checkbox class="mark-all-done"
-  title="Mark All as Done"
-  disabledBinding="Checklist.checklistController.isEmpty"
-  valueBinding="Checklist.checklistController.allAreDone"}}
-
 <ul>
 {{#each Checklist.checklistController}}
   <li {{bindAttr class="isDone"}}>

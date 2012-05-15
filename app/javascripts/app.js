@@ -4,7 +4,9 @@ require('checklist/vendor/ember-0.9.6');
 require('checklist/templates/main_view');
 
 //Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
-Checklist = Ember.Application.create();
+Checklist = Ember.Application.create({
+    ready: function() {Checklist.checklistController.load([{title:'foo'},{title:'bar'}]);}
+});
 /*
 Checklist.store = DS.Store.create({
   revision: 4,
