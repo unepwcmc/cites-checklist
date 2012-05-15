@@ -1,15 +1,13 @@
-require('checklist/vendor/jquery-1.7.1');
-require('checklist/vendor/ember-0.9.5');
-require('checklist/vendor/ember-rest');
+require('checklist/vendor/jquery-1.7.2');
+require('checklist/vendor/ember-0.9.6');
+//require('checklist/vendor/ember-data-latest');
+require('checklist/templates/main_view');
 
-//require('checklist/views/taxon_trees/index');
-/*
-require('checklist/models/taxon_tree');
-require('checklist/controllers/taxon_trees');
-require('checklist/views/taxon_trees/index');
-require('checklist/views/taxon_trees/show');
-require('checklist/templates/taxon_trees/index');
-require('checklist/templates/taxon_trees/show');
-*/
-
+//Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
 Checklist = Ember.Application.create();
+/*
+Checklist.store = DS.Store.create({
+  revision: 4,
+  adapter: DS.RESTAdapter.create({ bulkCommit: false })
+});
+*/
