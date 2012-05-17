@@ -1,40 +1,22 @@
 == CITES Checklist
 
 == Development
+We're using ember.js with ember-data to handle REST backend requests.
 
-=== Resources
-http://tomdale.net/2012/02/ember-js-resources/
-https://github.com/emberjs/todos
+Assets compiled with rake pipeline.
 
+To compile: bundle exec rakep build
 
-=== Coding standards
-Try to apply these coding guidelines:
+For development use the built in server: bundle exec rakep server
 
-  http://pub.cozmixng.org/~the-rwiki/rw-cgi.rb?cmd=view;name=RubyCodingConvention
-
-=== Importing data for development
-  FILE=lib/assets/files/20_animal_species.csv rake import:species
-
-== Taxonomic glossaries
-  http://ibot.sav.sk/icbn/no%20frames/0120AppendixVII.htm
-  http://bionomenclature-glossary.gbif.org/
-
-== Project glossary
-
-  - taxon concept - represents a unique combination of a name and a reference
-  - usage - represents an association of a taxon concept with a name (not necessarily the defining name). can be used to apply multiple name systems to a taxon concept
-
-An older standard for plants naming conventions (is there an up to date version of that?): http://www.nhm.ac.uk/hosted_sites/tdwg/plants.html
-
-===Taxon concept relationships:
-
-inter-designational:
-  - equal =
-  - includes <
-  - included in >
-  - overlaps ><
-  - disjunct |
-
-intra-designational:
-  - synonym
-  - homonym
+=== Ember resources
+The rake pipeline setup taken from here:
+  https://github.com/emberjs/todos
+A skeleton app for rake pipeline:
+  https://github.com/interline/ember-skeleton
+Most up to date but not very informative ember data tutorial Apr 2012
+  http://timpark.io/2012/04/11/getting-started-with-ember-data-and-rails
+Tutorial Jan 2012
+  http://www.cerebris.com/blog-search/by-tag/?tag=emberjs 3 part tutorial
+Links to resources Feb 2012
+  http://tomdale.net/2012/02/ember-js-resources/

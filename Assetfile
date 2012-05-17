@@ -61,7 +61,7 @@ input "app" do
 
     # We're only matching a single file here, but we want it to
     # end up in our stylesheets/ directory.
-    copy "stylesheets/checklist.css"
+    copy "stylesheets/style.css"
   end
 
   # Finally, we keep our static assets that don't need any processing
