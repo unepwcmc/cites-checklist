@@ -5,6 +5,12 @@
 /* CSS Reset */
 @include global-reset;
 
+@for $i from 1 through 20 {
+  .level#{$i}{
+    margin-left: $i * 10px;
+  }
+}
+
 body {
   line-height: 1;
   font-family: "Lucida Grande", sans-serif;

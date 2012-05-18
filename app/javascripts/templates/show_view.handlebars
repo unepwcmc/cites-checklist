@@ -1,1 +1,5 @@
-<b>{{taxonConcept.taxon_name.scientific_name}}</b>
+{{#each taxonTree.taxon_concepts}}
+  <p class="indent{{unbound depth}}">
+    {{full_name}}
+  </p>
+{{/each}}
