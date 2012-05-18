@@ -1,7 +1,7 @@
 <ul>
-{{#each Checklist.checklistController}}
-  <li {{bindAttr class="isDone"}}>
-    {{view Ember.Checkbox titleBinding="title" valueBinding="isDone"}}
+{{#each taxonConcepts}}
+  <li>
+    {{view Checklist.TaxonConceptShowView taxonConceptBinding="this"}}
   </li>
 {{/each}}
 </ul>
