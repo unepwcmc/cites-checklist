@@ -1,3 +1,4 @@
+require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
 require('checklist/vendor/ember-latest');
 require('checklist/vendor/ember-data');
@@ -27,8 +28,7 @@ Checklist.store = DS.Store.create({
   revision: 4,
   adapter: Checklist.SAPIAdapter.create({
     bulkCommit: false,
-    url: 'http://localhost:3000/'
-    //url: 'http://sapi.unepwcmc-005.vm.brightbox.net/'
+    url: window.BACKEND_URL
   })
 });
 
