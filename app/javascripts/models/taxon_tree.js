@@ -3,5 +3,5 @@ Checklist.TaxonTree = DS.Model.extend({
 });
 
 Checklist.TaxonTree.reopenClass({
-  url: 'taxon_trees'
+  collectionUrl: 'taxon_trees'
 });

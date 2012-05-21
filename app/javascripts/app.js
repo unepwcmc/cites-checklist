@@ -33,3 +33,4 @@ require('checklist/controllers/selected_country_controller');
 
 require('checklist/views/main_view');
 require('checklist/views/taxon_tree_show_view');
+require('checklist/views/country_select');

@@ -5,5 +5,5 @@ Checklist.Country = DS.Model.extend({
 });
 
 Checklist.Country.reopenClass({
-  url: 'countries'
+  collectionUrl: 'countries'
 });
