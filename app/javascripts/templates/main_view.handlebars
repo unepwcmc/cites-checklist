@@ -1,3 +1,12 @@
+Filter by country:
+{{view Ember.Select viewName="select"
+       contentBinding="Checklist.CountryController"
+       selectionBinding="Checklist.SelectedCountryController.country"
+       optionLabelPath="content.iso_name"
+       optionValuePath="content.id"
+       prompt="Please select"}}
+<p>Selected: {{Checklist.SelectedCountryController.country.iso_name}}</p>
+
 <ul>
 {{#each taxonTrees}}
   <li>

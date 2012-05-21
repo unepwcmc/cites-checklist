@@ -2,6 +2,7 @@ require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
 require('checklist/vendor/ember-latest');
 require('checklist/vendor/ember-data');
+
 require('checklist/templates/main_view');
 require('checklist/templates/show_view');
 
@@ -14,6 +15,7 @@ Checklist = Ember.Application.create({
 require('checklist/models/taxon_tree');
 require('checklist/models/taxon_concept');
 require('checklist/models/taxon_name');
+require('checklist/models/country');
 
 require('checklist/sapi_adapter');
 
@@ -26,6 +28,8 @@ Checklist.store = DS.Store.create({
 });
 
 require('checklist/controllers/taxon_tree_controller');
+require('checklist/controllers/country_controller');
+require('checklist/controllers/selected_country_controller');
 
 require('checklist/views/main_view');
 require('checklist/views/taxon_tree_show_view');
