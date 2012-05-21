@@ -11,18 +11,11 @@ Checklist = Ember.Application.create({
     ready: function() {}
 });
 
-Checklist.SAPIAdapter = DS.Adapter.extend({
-  findAll: function(store, type) {
-    var url = this.url + type.url;
-    jQuery.getJSON(url, {format: 'json', jsoncallback: '?'}, function(data) {
-      // data is an Array of Hashes in the same order as the original
-      // Array of IDs. If your server returns a root, simply do something
-      // like:
-      // store.loadMany(type, ids, data.people)
-      store.loadMany(type, data);
-    });
-  }
-});
+require('checklist/models/taxon_tree');
+require('checklist/models/taxon_concept');
+require('checklist/models/taxon_name');
+
+require('checklist/sapi_adapter');
 
 Checklist.store = DS.Store.create({
   revision: 4,
@@ -32,47 +25,7 @@ Checklist.store = DS.Store.create({
   })
 });
 
-Checklist.TaxonConcept = DS.Model.extend({
-  taxon_name: DS.belongsTo('Checklist.TaxonName', { embedded: true }),
-  depth: DS.attr('number'),
-  created_at: DS.attr('date'),
-  full_name: Ember.computed(function() {
-    return this.getPath('taxon_name.scientific_name');
-  }).property('taxon_name.scientific_name', 'taxon_name_id')
+require('checklist/controllers/taxon_tree_controller');
 
-});
-
-Checklist.TaxonConcept.reopenClass({
-  url: 'taxon_concepts'
-});
-
-Checklist.TaxonName = DS.Model.extend({
-  scientific_name: DS.attr('string')
-});
-
-Checklist.TaxonTree = DS.Model.extend({
-  taxon_concepts: DS.hasMany('Checklist.TaxonConcept', { embedded: true})
-});
-
-Checklist.TaxonTree.reopenClass({
-  url: 'taxon_trees'
-});
-
-Checklist.TaxonTreeController = Ember.ArrayController.create({
-  content: Checklist.store.findAll(Checklist.TaxonTree),
-});
-
-/*
-Checklist.TaxonConceptController = Ember.ArrayController.create({
-  content: Checklist.store.findAll(Checklist.TaxonConcept),
-});
-*/
-Checklist.MainView = Ember.View.extend({
-  templateName: 'main_view',
-  //taxonConceptsBinding: 'Checklist.TaxonConceptController'
-  taxonTreesBinding: 'Checklist.TaxonTreeController'
-});
-
-Checklist.TaxonTreeShowView = Ember.View.extend({
-  templateName: 'show_view'
-})
+require('checklist/views/main_view');
+require('checklist/views/taxon_tree_show_view');
