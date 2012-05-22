@@ -3,9 +3,11 @@ Filter by country:
 <p>Selected: {{Checklist.SelectedCountryController.country.iso_name}}</p>
 
 <ul>
-{{#each taxonTrees}}
+{{#each taxonConcepts}}
   <li>
-    {{view Checklist.TaxonTreeShowView taxonTreeBinding="this"}}
+    <p class="level{{unbound depth}}">
+      {{full_name}}
+    </p>
   </li>
 {{/each}}
 </ul>

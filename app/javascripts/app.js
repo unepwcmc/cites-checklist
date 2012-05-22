@@ -4,7 +4,6 @@ require('checklist/vendor/ember-latest');
 require('checklist/vendor/ember-data');
 
 require('checklist/templates/main_view');
-require('checklist/templates/show_view');
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
@@ -12,7 +11,6 @@ Checklist = Ember.Application.create({
     ready: function() {}
 });
 
-require('checklist/models/taxon_tree');
 require('checklist/models/taxon_concept');
 require('checklist/models/taxon_name');
 require('checklist/models/country');
@@ -27,10 +25,9 @@ Checklist.store = DS.Store.create({
   })
 });
 
-require('checklist/controllers/taxon_tree_controller');
+require('checklist/controllers/taxon_concept_controller');
 require('checklist/controllers/country_controller');
 require('checklist/controllers/selected_country_controller');
 
 require('checklist/views/main_view');
-require('checklist/views/taxon_tree_show_view');
 require('checklist/views/country_select');

@@ -6,3 +6,7 @@ Checklist.TaxonConcept = DS.Model.extend({
     return this.getPath('taxon_name.scientific_name');
   }).property('taxon_name.scientific_name', 'taxon_name_id')
 });
+
+Checklist.TaxonConcept.reopenClass({
+  collectionUrl: 'taxon_concepts'
+});

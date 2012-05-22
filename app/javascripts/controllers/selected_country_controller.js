@@ -1,9 +1,9 @@
 Checklist.SelectedCountryController = Ember.Object.create({
   country: null,
   countryDidChange: function() {
-    Checklist.CountryController.set(
+    Checklist.TaxonConceptController.set(
       'content',
-      Checklist.store.find(Checklist.TaxonTree, { country_id: this.get('country').get('id')})
+      Checklist.store.find(Checklist.TaxonConcept, { country_id: this.get('country').get('id')})
     )
   }.observes('country')
 }); 
