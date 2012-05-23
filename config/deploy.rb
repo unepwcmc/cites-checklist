@@ -36,7 +36,14 @@ default_run_options[:pty] = true
 set :user, "rails"
 set :rails_env, :production
 
-after "deploy:update_code", "assets:precompile"
+after "deploy:update_code", "deploy:symlink"
+namespace :deploy do
+  task :symlink, :except => { :no_release => true } do
+    run "ln -nfs #{shared_path}/config.js #{release_path}/app/javascripts/config.js"
+  end
+end
+
+after "deploy:symlink", "assets:precompile"
 namespace :assets do
   desc "precompile assets"
   task :precompile do
@@ -44,9 +51,3 @@ namespace :assets do
   end
 end
 
-after "deploy:update_code", "deploy:symlink"
-namespace :deploy do
-  task :symlink, :except => { :no_release => true } do
-    run "ln -nfs #{shared_path}/config.js #{release_path}/app/javascripts/config.js"
-  end
-end
