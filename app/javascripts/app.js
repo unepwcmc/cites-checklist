@@ -1,6 +1,6 @@
 require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
-require('checklist/vendor/ember-latest');
+require('checklist/vendor/ember-0.9.8.1.min');
 require('checklist/vendor/ember-data');
 
 require('checklist/templates/main_view');
