@@ -24,7 +24,7 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
         type : "GET",
         url : url,
         dataType : "json",
-        data : {format : 'json', jsoncallback : '?'},
+        data : {},
         success : function(data) {
           store.loadMany(type, data);
         },
@@ -40,6 +40,7 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       // Use Microsoft XDR
       var xdr = new XDomainRequest();
       xdr.contentType = "text/plain";
+      url = url + '?' + $.param(query);
       xdr.open("get", url);
       xdr.onprogress = function(){};
       xdr.onerror = function(){};
@@ -50,13 +51,14 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
         }
         modelArray.load(JSON);
       };
-      xdr.send(query);
+      
+      xdr.send();
     } else {
       $.ajax({
         type : "GET",
         url : url,
         dataType : "json",
-        data : $.extend(query, {format: 'json', jsoncallback: '?'}),
+        data : query,
         success : function(data) {
           modelArray.load(data);
         },
