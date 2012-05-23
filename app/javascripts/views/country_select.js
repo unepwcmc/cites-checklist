@@ -4,5 +4,5 @@ Checklist.CountrySelect = Em.Select.extend({
   selectionBinding: "Checklist.SelectedCountryController.country",
   optionLabelPath: "content.iso_name",
   optionValuePath: "content.id",
-  prompt: "Please select",
+  prompt: "Please select"
 });
