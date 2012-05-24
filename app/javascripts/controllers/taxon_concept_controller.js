@@ -1,3 +1,3 @@
 Checklist.TaxonConceptController = Ember.ArrayController.create({
-  content: []
+  content: Checklist.store.findAll(Checklist.TaxonConcept)
 });
