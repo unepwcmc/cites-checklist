@@ -14,7 +14,6 @@ Checklist.TaxonConcept = DS.Model.extend({
            " ssp. " + this.get('scientific_name');
   }.property('parent.scientific_name', 'scientific_name'),
   full_name: function() {
-    console.log(this.get('rank_name'));
     if (this.get('rank_name') == 'Species') {
       return this.get('binomen');
     } else if (this.get('rank_name') === 'Subspecies') {
