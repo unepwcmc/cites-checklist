@@ -1,3 +1,3 @@
-Checklist.SelectedCountriesController = Ember.Object.create({
+Checklist.selectedCountriesController = Ember.Object.create({
   countries: []
 }); 

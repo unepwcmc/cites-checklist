@@ -1,11 +1,11 @@
-{{#view Checklist.ChecklistForm controllerBinding="Checklist.TaxonConceptController"}}
+{{#view Checklist.ChecklistForm controllerBinding="Checklist.taxonConceptController"}}
   <p>Filter by country:</p>
   {{view Checklist.CountrySelect}}
   <button type="submit">Go</button>
 {{/view}}
 
 <p>Selected:
-{{#each Checklist.SelectedCountriesController.countries}}
+{{#each Checklist.selectedCountriesController.countries}}
   {{name}}
 {{/each}}
 </p>

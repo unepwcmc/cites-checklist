@@ -9,7 +9,14 @@ To compile: bundle exec rakep build
 
 For development use the built in server: bundle exec rakep server
 
+Here are some naming conventions to follow:
+  http://www.emberist.com/2012/04/09/naming-conventions.html
+
 === Ember resources
+Good blog:
+  http://www.emberist.com/
+
+
 The rake pipeline setup taken from here:
   https://github.com/emberjs/todos
 A skeleton app for rake pipeline:
