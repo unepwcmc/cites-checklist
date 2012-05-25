@@ -1,4 +1,3 @@
 Checklist.MainView = Ember.View.extend({
-  templateName: 'main_view',
-  taxonConceptsBinding: 'Checklist.taxonConceptController'
+  templateName: 'main_view'
 });

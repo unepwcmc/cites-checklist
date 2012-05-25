@@ -5,8 +5,6 @@ Checklist.ChecklistForm = Em.View.extend({
 
     submit: function(event) {
       event.preventDefault();
-      //this.get('controller').addPerson(this.getPath('textField.value'));
-      //this.setPath('textField.value', null);
       this.get('controller').set(
         'content',
         Checklist.store.find(Checklist.TaxonConcept, {

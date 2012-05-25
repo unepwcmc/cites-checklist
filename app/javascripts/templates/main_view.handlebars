@@ -1,6 +1,13 @@
 {{#view Checklist.ChecklistForm controllerBinding="Checklist.taxonConceptController"}}
   <p>Filter by country:</p>
-  {{view Checklist.CountrySelect}}
+  {{view Em.Select
+    multiple = "true"
+    viewName = "countryFilter"
+    contentBinding = "Checklist.countryController"
+    selectionBinding = "Checklist.selectedCountriesController.countries"
+    optionLabelPath = "content.name"
+    optionValuePath = "content.id"
+  }}
   <button type="submit">Go</button>
 {{/view}}
 
@@ -11,7 +18,7 @@
 </p>
 
 <ul>
-{{#each taxonConcepts}}
+{{#each Checklist.taxonConceptController.content}}
   <li>
     <p class="level{{unbound depth}}">
       {{full_name}}

@@ -31,4 +31,3 @@ require('checklist/controllers/selected_countries_controller');
 
 require('checklist/views/main_view');
 require('checklist/views/checklist_form');
-require('checklist/views/country_select');

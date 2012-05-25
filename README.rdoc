@@ -12,6 +12,9 @@ For development use the built in server: bundle exec rakep server
 Here are some naming conventions to follow:
   http://www.emberist.com/2012/04/09/naming-conventions.html
 
+Avoid using absolute object paths (e.g. MyApp.currentUserController.user) in classes. Explanation:
+  http://www.emberist.com/2012/04/30/absolute-paths-in-classes.html
+
 === Ember resources
 Good blog:
   http://www.emberist.com/
