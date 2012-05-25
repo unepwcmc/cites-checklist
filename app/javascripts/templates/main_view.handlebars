@@ -1,6 +1,14 @@
-Filter by country:
-{{view Checklist.CountrySelect}}
-<p>Selected: {{Checklist.SelectedCountryController.country.name}}</p>
+{{#view Checklist.ChecklistForm controllerBinding="Checklist.TaxonConceptController"}}
+  <p>Filter by country:</p>
+  {{view Checklist.CountrySelect}}
+  <button type="submit">Go</button>
+{{/view}}
+
+<p>Selected:
+{{#each Checklist.SelectedCountriesController.countries}}
+  {{name}}
+{{/each}}
+</p>
 
 <ul>
 {{#each taxonConcepts}}

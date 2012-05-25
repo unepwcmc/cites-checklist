@@ -1,8 +1,9 @@
 Checklist.CountrySelect = Em.Select.extend({
-  viewName: "select",
+  multiple: true,
+  viewName: "countryFilter",
   contentBinding: "Checklist.CountryController",
-  selectionBinding: "Checklist.SelectedCountryController.country",
+  selectionBinding: "Checklist.SelectedCountriesController.countries",
   optionLabelPath: "content.name",
-  optionValuePath: "content.id",
-  prompt: "Please select"
+  optionValuePath: "content.id"/*,
+  prompt: "Please select"*/
 });

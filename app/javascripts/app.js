@@ -27,7 +27,8 @@ Checklist.store = DS.Store.create({
 
 require('checklist/controllers/taxon_concept_controller');
 require('checklist/controllers/country_controller');
-require('checklist/controllers/selected_country_controller');
+require('checklist/controllers/selected_countries_controller');
 
 require('checklist/views/main_view');
+require('checklist/views/checklist_form');
 require('checklist/views/country_select');
