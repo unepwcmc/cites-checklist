@@ -4,5 +4,5 @@ Checklist.Country = DS.Model.extend({
 });
 
 Checklist.Country.reopenClass({
-  collectionUrl: 'countries'
+  collectionUrl: 'geo_entities/COUNTRY'
 });

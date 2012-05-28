@@ -3,8 +3,17 @@
   {{view Em.Select
     multiple = "true"
     viewName = "countryFilter"
-    contentBinding = "Checklist.countryController"
+    contentBinding = "Checklist.countriesController"
     selectionBinding = "Checklist.selectedCountriesController.countries"
+    optionLabelPath = "content.name"
+    optionValuePath = "content.id"
+  }}
+  <p>Filter by region:</p>
+  {{view Em.Select
+    multiple = "true"
+    viewName = "regionFilter"
+    contentBinding = "Checklist.regionsController"
+    selectionBinding = "Checklist.selectedRegionsController.regions"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
