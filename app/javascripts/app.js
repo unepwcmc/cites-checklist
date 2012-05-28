@@ -28,9 +28,8 @@ Checklist.store = DS.Store.create({
 
 require('checklist/controllers/taxon_concept_controller');
 require('checklist/controllers/countries_controller');
-require('checklist/controllers/selected_countries_controller');
 require('checklist/controllers/regions_controller');
-require('checklist/controllers/selected_regions_controller');
+require('checklist/controllers/selected_geo_entities_controller');
 
 require('checklist/views/main_view');
 require('checklist/views/checklist_form');
