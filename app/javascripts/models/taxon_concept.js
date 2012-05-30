@@ -4,20 +4,18 @@ Checklist.TaxonConcept = DS.Model.extend({
   depth: DS.attr('number'),
   scientific_name: DS.attr('string'),
   rank_name: DS.attr('string'),
-  binomen: function() {
-    return this.getPath('parent.scientific_name') +
-           " " + this.get('scientific_name');
-  }.property('parent.scientific_name', 'scientific_name'),
-  trinomen: function() {
-    return this.getPath('parent.parent.scientific_name') +
-           " " + this.getPath('parent.scientific_name') +
-           " ssp. " + this.get('scientific_name');
-  }.property('parent.scientific_name', 'scientific_name'),
+  class_name: DS.attr('string'),
+  family_name: DS.attr('string'),
+  genus_name: DS.attr('string'),
+  species_name: DS.attr('string'),
+
   full_name: function() {
     if (this.get('rank_name') == 'SPECIES') {
-      return this.get('binomen');
+      return this.get('genus_name') + ' ' + 
+      this.get('scientific_name')
     } else if (this.get('rank_name') === 'SUBSPECIES') {
-      return this.get('trinomen');
+      return this.get('genus_name') + ' ' + this.get('species_name') + ' ' +
+      this.get('scientific_name')
     } else {
       return this.get('rank_name') + ': ' + this.get('scientific_name');
     }
