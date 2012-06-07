@@ -32,14 +32,17 @@
   {{name}}
 {{/each}}
 </p>
-
 <ul>
 {{#each Checklist.taxonConceptController.content}}
   <li>
+  {{#if Checklist.taxonConceptController.taxonomicLayout }}
     <p class="level{{unbound depth}}">
+  {{else}}
+    <p>
+  {{/if}}
       {{full_name}}
       <span class="family">{{family_name}}</span>
-      <span class="class">{{class_name}}</span>
+      <span class="class">{{class_name_abbr}}</span>
     </p>
   </li>
 {{/each}}

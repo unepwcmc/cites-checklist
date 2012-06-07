@@ -3,10 +3,11 @@ Checklist.ChecklistForm = Em.View.extend({
     controller: null,
     countryFilter: null,
     regionFilter: null,
-    taxonomicLayout: null,
+    taxonomicLayout: false,
 
     submit: function(event) {
       event.preventDefault();
+      this.get('controller').set('taxonomicLayout', this.get('taxonomicLayout'));
       this.get('controller').set(
         'content',
         Checklist.store.find(Checklist.TaxonConcept, {
