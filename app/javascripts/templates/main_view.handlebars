@@ -22,16 +22,16 @@
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
+  <p>Selected regions:
+  {{#each Checklist.selectedGeoEntitiesController.regions}}
+    {{name}}
+  {{/each}}
+  </p>
   <p>
   {{view Ember.Checkbox checkedBinding="taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
 {{/view}}
-<p>Selected regions:
-{{#each Checklist.selectedGeoEntitiesController.regions}}
-  {{name}}
-{{/each}}
-</p>
 <ul>
 {{#each Checklist.taxonConceptController.content}}
   <li>
