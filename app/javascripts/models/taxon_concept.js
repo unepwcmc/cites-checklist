@@ -4,7 +4,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   depth: DS.attr('number'),
   rank_name: DS.attr('string'),
   current_listing: DS.attr('string'),
-  class_name_abbr: DS.attr('string'),
+  class_name: DS.attr('string'),
   family_name: DS.attr('string'),
   full_name: DS.attr('string')
 });
