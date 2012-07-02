@@ -4,12 +4,12 @@
     multiple = "true"
     viewName = "countryFilter"
     contentBinding = "Checklist.countriesController"
-    selectionBinding = "Checklist.selectedGeoEntitiesController.countries"
+    selectionBinding = "Checklist.selectedFiltersController.countries"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
 <p>Selected countries:
-{{#each Checklist.selectedGeoEntitiesController.countries}}
+{{#each Checklist.selectedFiltersController.countries}}
   {{name}}
 {{/each}}
 </p>
@@ -18,13 +18,27 @@
     multiple = "true"
     viewName = "regionFilter"
     contentBinding = "Checklist.regionsController"
-    selectionBinding = "Checklist.selectedGeoEntitiesController.regions"
+    selectionBinding = "Checklist.selectedFiltersController.regions"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
   <p>Selected regions:
-  {{#each Checklist.selectedGeoEntitiesController.regions}}
+  {{#each Checklist.selectedFiltersController.regions}}
     {{name}}
+  {{/each}}
+  </p>
+  <p>Filter by appendix:</p>
+  {{view Em.Select
+    multiple = "true"
+    viewName = "appendixFilter"
+    contentBinding = "Checklist.appendicesController"
+    selectionBinding = "Checklist.selectedFiltersController.appendices"
+    optionLabelPath = "content.abbreviation"
+    optionValuePath = "content.id"
+  }}
+  <p>Selected appendices:
+  {{#each Checklist.selectedFiltersController.appendices}}
+    {{abbreviation}}
   {{/each}}
   </p>
   <p>
