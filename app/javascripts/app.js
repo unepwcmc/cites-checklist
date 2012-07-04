@@ -4,6 +4,7 @@ require('checklist/vendor/ember-0.9.8.1.min');
 require('checklist/vendor/ember-data');
 
 require('checklist/templates/main_view');
+require('checklist/templates/taxon_concept_view');
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
@@ -35,3 +36,4 @@ require('checklist/controllers/selected_filters_controller');
 
 require('checklist/views/main_view');
 require('checklist/views/checklist_form');
+require('checklist/views/taxon_concept_list_view');
