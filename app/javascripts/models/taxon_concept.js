@@ -6,7 +6,15 @@ Checklist.TaxonConcept = DS.Model.extend({
   current_listing: DS.attr('string'),
   class_name: DS.attr('string'),
   family_name: DS.attr('string'),
-  full_name: DS.attr('string')
+  full_name: DS.attr('string'),
+  english: DS.attr('string'),
+  spanish: DS.attr('string'),
+  french: DS.attr('string'),
+  hasLanguage: function(lng){
+    if (this.get(lng.lowercase).length !== null){
+      return true;
+    } else { return false; }
+  }
 });
 
 Checklist.TaxonConcept.reopenClass({
