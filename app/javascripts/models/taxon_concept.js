@@ -9,7 +9,14 @@ Checklist.TaxonConcept = DS.Model.extend({
   full_name: DS.attr('string'),
   english: DS.attr('string'),
   spanish: DS.attr('string'),
-  french: DS.attr('string')
+  french: DS.attr('string'),
+  spp: function(){
+    if (this.get('rank_name') != 'SPECIES' && this.get('rank_name') != 'SUBSPECIES'){
+      return 'spp.'
+    } else {
+      return null;
+    }
+  }.property('rank_name')
 });
 
 Checklist.TaxonConcept.reopenClass({

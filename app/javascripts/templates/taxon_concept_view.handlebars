@@ -1,19 +1,14 @@
-{{#if Checklist.taxonConceptController.taxonomicLayout }}
-  <p class="level{{unbound content.depth}}">
-{{else}}
-  <p>
+<span class="full-name">{{unbound content.full_name}}</span>
+{{content.spp}}:
+{{#if showEnglish }}
+  (E) {{unbound content.english}}
 {{/if}}
-  <span class="full_name">{{unbound content.full_name}}:</span>
-  {{#if showEnglish }}
-    (E) {{unbound content.english}}
-  {{/if}}
-  {{#if showSpanish }}
-    (S) {{ unbound content.spanish}}
-  {{/if}}
-  {{#if showFrench }}
-    (F) {{unbound content.french}}
-  {{/if}}
-  <span class="listing">{{unbound content.current_listing}}</span>
-  <span class="family">{{unbound content.family_name}}</span>
-  <span class="class">{{unbound content.class_name}}</span>
-</p>
+{{#if showSpanish }}
+  (S) {{ unbound content.spanish}}
+{{/if}}
+{{#if showFrench }}
+  (F) {{unbound content.french}}
+{{/if}}
+<span class="listing">{{unbound content.current_listing}}</span>
+<span class="family">{{unbound content.family_name}}</span>
+<span class="class">{{unbound content.class_name}}</span>

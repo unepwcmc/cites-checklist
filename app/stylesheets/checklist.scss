@@ -6,12 +6,44 @@
 @include global-reset;
 
 @for $i from 1 through 20 {
-  .level#{$i}{
+  .taxon-level#{$i}{
     margin-left: $i * 10px;
   }
 }
 
-.full_name {
+.kingdom-taxon {
+  .full-name {
+    font-size: 150%;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.phylum-taxon {
+  .full-name {
+    font-size: 120%;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.class-taxon, .order-taxon, .family-taxon {
+  .full-name {
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.genus-taxon {
+  .full-name {
+    font-weight: bold;
+  }
+}
+
+.full-name {
   font-style: italic;
 }
 
