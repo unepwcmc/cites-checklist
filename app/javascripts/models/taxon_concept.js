@@ -9,12 +9,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   full_name: DS.attr('string'),
   english: DS.attr('string'),
   spanish: DS.attr('string'),
-  french: DS.attr('string'),
-  hasLanguage: function(lng){
-    if (this.get(lng.lowercase).length !== null){
-      return true;
-    } else { return false; }
-  }
+  french: DS.attr('string')
 });
 
 Checklist.TaxonConcept.reopenClass({

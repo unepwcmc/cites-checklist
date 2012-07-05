@@ -3,8 +3,8 @@ Checklist.TaxonConceptList = Ember.CollectionView.extend({
   content: null,
   itemViewClass: Ember.View.extend({
     templateName: 'taxon_concept_view',
-    showEnglish: function(){return content.hasLanguage('English') && true;},//TODO check for output customisation here
-    showSpanish: function(){return content.hasLanguage('Spanish') && true;},//TODO check for output customisation here
-    showFrench: function(){return content.hasLanguage('French') && true;}//TODO check for output customisation here
+    showEnglish: function(){return this.content.get('english').length > 0}.property(),
+    showSpanish: function(){return this.content.get('spanish').length > 0}.property(),
+    showFrench: function(){return this.content.get('french').length > 0}.property(),
   })
 });
