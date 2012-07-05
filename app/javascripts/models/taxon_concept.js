@@ -11,7 +11,8 @@ Checklist.TaxonConcept = DS.Model.extend({
   spanish: DS.attr('string'),
   french: DS.attr('string'),
   spp: function(){
-    if (this.get('rank_name') != 'SPECIES' && this.get('rank_name') != 'SUBSPECIES'){
+    if (this.get('rank_name') == 'GENUS' || this.get('rank_name') == 'FAMILY'
+      || this.get('rank_name') == 'ORDER'){
       return 'spp.'
     } else {
       return null;

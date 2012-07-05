@@ -22,14 +22,23 @@
 
 .phylum-taxon {
   .full-name {
-    font-size: 120%;
+    font-size: 130%;
     font-style: normal;
     text-transform: uppercase;
     font-weight: bold;
   }
 }
 
-.class-taxon, .order-taxon, .family-taxon {
+.class-taxon, .order-taxon {
+  .full-name {
+    font-size: 110%;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.family-taxon {
   .full-name {
     font-style: normal;
     text-transform: uppercase;
