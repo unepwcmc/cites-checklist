@@ -5,7 +5,7 @@ Checklist.TaxonConceptList = Ember.CollectionView.extend({
     templateName: 'taxon_concept_view',
     classNameBindings: ['level', 'rank'],
     level: function(){
-      if(Checklist.taxonConceptController.taxonomicLayout){ 
+      if(Checklist.selectedFiltersController.taxonomicLayout){ 
         return 'taxon-level' + this.content.get('depth');
       }
     }.property(),

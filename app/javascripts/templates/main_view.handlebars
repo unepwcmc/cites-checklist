@@ -1,4 +1,7 @@
-{{#view Checklist.ChecklistForm controllerBinding="Checklist.taxonConceptController"}}
+{{#view Checklist.ChecklistForm
+  controllerBinding="Checklist.taxonConceptController"
+  filtersControllerBinding="Checklist.selectedFiltersController"
+}}
   <p>Filter by country:</p>
   {{view Em.Select
     multiple = "true"
@@ -42,7 +45,7 @@
   {{/each}}
   </p>
   <p>
-  {{view Ember.Checkbox checkedBinding="taxonomicLayout"}} taxonomic layout
+  {{view Ember.Checkbox checkedBinding="Checklist.selectedFiltersController.taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
 {{/view}}
