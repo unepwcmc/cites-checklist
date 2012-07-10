@@ -14,6 +14,15 @@ Checklist.ChecklistForm = Em.View.extend({
           Checklist.TaxonConcept, this.get('filtersController').toParams()
         )
       )
-      
-    }
+    },
+
+    pdfLink: function(){
+      return Checklist.store.adapter.url +
+      Checklist.TaxonConcept.urlFromParams(
+        $.extend(
+          this.get('filtersController').toParams(),
+          {'format' : 'pdf'}
+        )
+      );
+    }.property().volatile()
 });
