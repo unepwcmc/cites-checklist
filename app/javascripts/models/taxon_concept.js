@@ -13,14 +13,3 @@ Checklist.TaxonConcept = DS.Model.extend({
   french: DS.attr('string')
 });
 
-Checklist.TaxonConcept.reopenClass({
-  collectionUrl: 'taxon_concepts',
-  urlFromParams: function(params){
-    //if format not given assume json
-    url = this.collectionUrl;
-    if (params['format'] !== null && params['format'] !== undefined){
-      url = url + '.' + params['format'];
-    }
-    return url + '?' + $.param(params);
-  }
-});

@@ -13,6 +13,8 @@ Checklist = Ember.Application.create({
 });
 
 require('checklist/models/taxon_concept');
+require('checklist/models/index');
+require('checklist/models/history');
 require('checklist/models/taxon_name');
 require('checklist/models/country');
 require('checklist/models/region');

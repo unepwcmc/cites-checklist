@@ -48,7 +48,10 @@
   {{view Ember.Checkbox checkedBinding="Checklist.selectedFiltersController.taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
-  <a href="{{unbound pdfLink}}">Download full PDF</a>
+  <p><a href="{{unbound indexPdfLink}}">Download full CITES species index (PDF)</a></p>
+  <p><a href="{{unbound historyPdfLink}}">Download full history of CITES listings (PDF)</a></p>
 {{/view}}
-
-{{collection Checklist.TaxonConceptList contentBinding="Checklist.taxonConceptController.content"}}
+{{#each Checklist.taxonConceptController.content}}
+  {{collection Checklist.TaxonConceptList contentBinding="this.get('animalia')"}}
+  {{collection Checklist.TaxonConceptList contentBinding="this.get('plantae')"}}
+{{/each}}

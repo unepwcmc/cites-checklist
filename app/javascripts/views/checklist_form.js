@@ -11,14 +11,24 @@ Checklist.ChecklistForm = Em.View.extend({
       this.get('controller').set(
         'content',
         Checklist.store.find(
-          Checklist.TaxonConcept, this.get('filtersController').toParams()
+          Checklist.Index, this.get('filtersController').toParams()
         )
       )
     },
 
-    pdfLink: function(){
+    indexPdfLink: function(){
       return Checklist.store.adapter.url +
-      Checklist.TaxonConcept.urlFromParams(
+      Checklist.Index.urlFromParams(
+        $.extend(
+          this.get('filtersController').toParams(),
+          {'format' : 'pdf'}
+        )
+      );
+    }.property().volatile(),
+
+    historyPdfLink: function(){
+      return Checklist.store.adapter.url +
+      Checklist.History.urlFromParams(
         $.extend(
           this.get('filtersController').toParams(),
           {'format' : 'pdf'}
