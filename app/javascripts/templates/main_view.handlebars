@@ -52,6 +52,8 @@
   <p><a href="{{unbound historyPdfLink}}">Download full history of CITES listings (PDF)</a></p>
 {{/view}}
 {{#each Checklist.taxonConceptController.content}}
-  {{collection Checklist.TaxonConceptList contentBinding="this.get('animalia')"}}
-  {{collection Checklist.TaxonConceptList contentBinding="this.get('plantae')"}}
+  <h2>FAUNA</h2>
+  {{collection Checklist.TaxonConceptList contentBinding="animalia"}}
+  <h2>FLORA</h2>
+  {{collection Checklist.TaxonConceptList contentBinding="plantae"}}
 {{/each}}
