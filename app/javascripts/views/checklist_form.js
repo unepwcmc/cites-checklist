@@ -41,7 +41,6 @@ Checklist.ChecklistForm = Em.View.extend({
     }.property().volatile(),
 
     searchPdfLink: function(){
-      console.log($.param(this.get('filtersController').toParams()));
       return Checklist.store.adapter.url +
       Checklist.Index.urlFromParams(
         $.extend(
