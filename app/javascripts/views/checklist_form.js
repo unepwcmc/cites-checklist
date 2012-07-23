@@ -8,12 +8,16 @@ Checklist.ChecklistForm = Em.View.extend({
 
     submit: function(event) {
       event.preventDefault();
+
       this.get('controller').set(
         'content',
         Checklist.store.find(
           Checklist.Index, this.get('filtersController').toParams()
         )
       )
+
+      // Update the search PDF download link to include user attributes
+      $('#search-pdf-link').attr('href', this.get('searchPdfLink'));
     },
 
     indexPdfLink: function(){
@@ -29,6 +33,17 @@ Checklist.ChecklistForm = Em.View.extend({
     historyPdfLink: function(){
       return Checklist.store.adapter.url +
       Checklist.History.urlFromParams(
+        $.extend(
+          this.get('filtersController').toParams(),
+          {'format' : 'pdf'}
+        )
+      );
+    }.property().volatile(),
+
+    searchPdfLink: function(){
+      console.log($.param(this.get('filtersController').toParams()));
+      return Checklist.store.adapter.url +
+      Checklist.Index.urlFromParams(
         $.extend(
           this.get('filtersController').toParams(),
           {'format' : 'pdf'}
