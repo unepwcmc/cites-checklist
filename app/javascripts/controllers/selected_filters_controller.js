@@ -1,4 +1,5 @@
 Checklist.selectedFiltersController = Ember.Object.create({
+  searches : [],
   countries : [],
   regions : [],
   appendices : [],

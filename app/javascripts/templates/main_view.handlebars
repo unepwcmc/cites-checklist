@@ -1,3 +1,14 @@
+<p>Saved Searches:</p>
+{{view Em.Select
+  viewName = "savedSearchSelection"
+  contentBinding = "Checklist.savedSearchController"
+  selectionBinding = "Checklist.selectedFiltersController.searches"
+  optionLabelPath = "content.name"
+  optionValuePath = "content.id"
+}}
+
+<hr>
+
 {{#view Checklist.ChecklistForm
   controllerBinding="Checklist.taxonConceptController"
   filtersControllerBinding="Checklist.selectedFiltersController"
@@ -48,6 +59,10 @@
   {{view Ember.Checkbox checkedBinding="Checklist.selectedFiltersController.taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
+  <p>
+    <input type="text" id="save_search_name" />
+    <button {{action "save_search"}} type="button">Save Search</button>
+  </p>
   <p><a href="{{unbound indexPdfLink}}">Download full CITES species index (PDF)</a></p>
   <p><a href="{{unbound historyPdfLink}}">Download full history of CITES listings (PDF)</a></p>
   <p><a href="{{unbound searchPdfLink}}" id="search-pdf-link">Download the index for your search (PDF)</a></p>
