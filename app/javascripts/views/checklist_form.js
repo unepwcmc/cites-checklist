@@ -10,7 +10,7 @@ Checklist.ChecklistForm = Em.View.extend({
       var saved_search = Checklist.local_store.createRecord(
         Checklist.SavedSearch,
         {
-          id: this.generateId,
+          id: this.generateId(),
           name: $('#save_search_name').val(),
           filters: JSON.stringify(this.get('filtersController').toParams()),
         }
