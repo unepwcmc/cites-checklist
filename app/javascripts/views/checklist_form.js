@@ -1,52 +1,48 @@
 Checklist.ChecklistForm = Em.View.extend({
-    tagName: 'form',
-    controller: null,
-    filtersController: null,
-    countryFilter: null,
-    regionFilter: null,
-    taxonomicLayoutSwitch: null,
+  tagName: 'form',
+  controller: null,
+  filtersController: null,
+  countryFilter: null,
+  regionFilter: null,
+  taxonomicLayoutSwitch: null,
 
-    submit: function(event) {
-      event.preventDefault();
+  submit: function(event) {
+    event.preventDefault();
 
-      this.get('controller').set(
-        'content',
-        Checklist.store.find(
-          Checklist.Index, this.get('filtersController').toParams()
-        )
+    this.get('controller').set(
+      'content',
+      Checklist.store.find(
+        Checklist.Index, this.get('filtersController').toParams()
       )
+    )
+  },
 
-      // Update the search PDF download link to include user attributes
-      $('#search-pdf-link').attr('href', this.get('searchPdfLink'));
-    },
+  indexPdfLink: function(){
+    return Checklist.store.adapter.url +
+    Checklist.Index.urlFromParams(
+      $.extend(
+        this.get('filtersController').toParams(),
+        {'format' : 'pdf'}
+      )
+    );
+  }.property().volatile(),
 
-    indexPdfLink: function(){
-      return Checklist.store.adapter.url +
-      Checklist.Index.urlFromParams(
-        $.extend(
-          this.get('filtersController').toParams(),
-          {'format' : 'pdf'}
-        )
-      );
-    }.property().volatile(),
+  historyPdfLink: function(){
+    return Checklist.store.adapter.url +
+    Checklist.History.urlFromParams(
+      $.extend(
+        this.get('filtersController').toParams(),
+        {'format' : 'pdf'}
+      )
+    );
+  }.property().volatile(),
 
-    historyPdfLink: function(){
-      return Checklist.store.adapter.url +
-      Checklist.History.urlFromParams(
-        $.extend(
-          this.get('filtersController').toParams(),
-          {'format' : 'pdf'}
-        )
-      );
-    }.property().volatile(),
+  downloadCustomIndexPdf: function(event) {
+    $(event.target).attr('href', this.get('indexPdfLink'));
+  },
 
-    searchPdfLink: function(){
-      return Checklist.store.adapter.url +
-      Checklist.Index.urlFromParams(
-        $.extend(
-          this.get('filtersController').toParams(),
-          {'format' : 'pdf'}
-        )
-      );
-    }.property().volatile()
+  downloadCustomHistoryPdf: function(event) {
+    $(event.target).attr('href', this.get('historyPdfLink'));
+  }
+
 });

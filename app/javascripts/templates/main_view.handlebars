@@ -48,9 +48,18 @@
   {{view Ember.Checkbox checkedBinding="Checklist.selectedFiltersController.taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
-  <p><a href="{{unbound indexPdfLink}}">Download full CITES species index (PDF)</a></p>
-  <p><a href="{{unbound historyPdfLink}}">Download full history of CITES listings (PDF)</a></p>
-  <p><a href="{{unbound searchPdfLink}}" id="search-pdf-link">Download the index for your search (PDF)</a></p>
+  <h2>Download pdf version:</h2>
+  <ul>
+    <li>CITES species index:
+      <a href="{{unbound indexPdfLink}}">full</a>
+      <a href="#" {{action "downloadCustomIndexPdf" on="click"}}>customised</a>
+    </li>
+    <li>history of CITES listings:
+      <a href="{{unbound historyPdfLink}}">full</a>
+      <a href="#" {{action "downloadCustomHistoryPdf" on="click"}}>customised</a>
+    </li>
+  </ul>
+
 {{/view}}
 {{#each Checklist.taxonConceptController.content}}
   <h2>FAUNA</h2>
