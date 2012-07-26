@@ -78,8 +78,5 @@
 
 {{/view}}
 {{#each Checklist.taxonConceptController.content}}
-  <h2>FAUNA</h2>
-  {{collection Checklist.TaxonConceptList contentBinding="animalia"}}
-  <h2>FLORA</h2>
-  {{collection Checklist.TaxonConceptList contentBinding="plantae"}}
+  {{view Checklist.KingdomListView contentBinding="this"}}
 {{/each}}

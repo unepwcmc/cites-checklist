@@ -1,6 +1,20 @@
 Checklist.Index = DS.Model.extend({
-  animalia: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
-  plantae: DS.hasMany('Checklist.TaxonConcept', { embedded: true })
+  taxon_concepts: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
+  animalia_idx: DS.attr('number'),
+  plantae_idx: DS.attr('number'),
+  total_cnt: DS.attr('number'),
+  animalia: function(){
+    return this.get('taxon_concepts').slice(this.get('animalia_idx'), this.get('plantae_idx'));
+  }.property('animalia_idx, plantae_idx'),
+  animaliaPresent: function(){
+    return this.get('animalia_idx') != this.get('plantae_idx');
+  }.property('animalia_idx, plantae_idx'),
+  plantae: function(){
+    return this.get('taxon_concepts').slice(this.get('plantae_idx'));
+  }.property('plantae_idx'),
+  plantaePresent: function(){
+    return this.get('plantae_idx') != this.get('total_cnt');
+  }.property('plantae_idx, total_cnt')
 });
 
 Checklist.Index.reopenClass({

@@ -1,4 +1,4 @@
-Checklist.TaxonConceptList = Ember.CollectionView.extend({
+Checklist.TaxonConceptListView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: null,
   itemViewClass: Ember.View.extend({
