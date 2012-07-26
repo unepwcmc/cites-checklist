@@ -56,11 +56,11 @@ Checklist.ChecklistForm = Em.View.extend({
   }.property().volatile(),
 
   downloadCustomIndexPdf: function(event) {
-    $(event.target).attr('href', this.get('indexPdfLink'));
+    window.location = this.get('indexPdfLink')
   },
 
   downloadCustomHistoryPdf: function(event) {
-    $(event.target).attr('href', this.get('historyPdfLink'));
+    window.location = this.get('historyPdfLink');
   }
 
 });
