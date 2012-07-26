@@ -61,7 +61,7 @@ Checklist.searchAdapter = DS.Adapter.extend({
         var value = jQuery.cookie(type);
       }
 
-      return JSON.parse(value) || [];
+      return JSON.parse(value || 'null') || [];
     },
 
     setById: function(method, type, id, value) {
