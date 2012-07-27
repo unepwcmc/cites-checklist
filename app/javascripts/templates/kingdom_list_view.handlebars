@@ -1,4 +1,8 @@
+{{#if view.showAnimalia }}
 <h2>FAUNA</h2>
 {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+{{/if}}
+{{#if view.showPlantae}}
 <h2>FLORA</h2>
 {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+{{/if}}
