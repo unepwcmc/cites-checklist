@@ -2,7 +2,8 @@ Checklist.Index = DS.Model.extend({
   taxon_concepts: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
   animalia_idx: DS.attr('number'),
   plantae_idx: DS.attr('number'),
-  total_cnt: DS.attr('number'),
+  result_cnt: DS.attr('number'),//cnt of returned records
+  total_cnt: DS.attr('number'),//cnt of all matching records
   animalia: function(){
     var taxon_concepts = this.get('taxon_concepts');
     var ids = taxon_concepts.get('content').slice(this.get('animalia_idx'), this.get('plantae_idx'));
@@ -21,8 +22,8 @@ Checklist.Index = DS.Model.extend({
     });
   }.property('plantae_idx'),
   plantaePresent: function(){
-    return this.get('plantae_idx') != this.get('total_cnt');
-  }.property('plantae_idx, total_cnt')
+    return this.get('plantae_idx') != this.get('result_cnt');
+  }.property('plantae_idx, result_cnt')
 });
 
 Checklist.Index.reopenClass({

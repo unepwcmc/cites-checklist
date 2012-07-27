@@ -78,5 +78,8 @@
 
 {{/view}}
 {{#each Checklist.taxonConceptController.content}}
-  {{view Checklist.KingdomListView contentBinding="this"}}
+  {{view Checklist.KingdomListView contentBinding="this"
+    taxonConceptsControllerBinding="Checklist.taxonConceptController"
+    filtersControllerBinding="Checklist.selectedFiltersController"
+  }}
 {{/each}}

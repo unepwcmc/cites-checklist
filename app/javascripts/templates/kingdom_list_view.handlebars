@@ -1,8 +1,14 @@
 {{#if view.showAnimalia }}
-<h2>FAUNA</h2>
-{{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+  <h2>FAUNA</h2>
+  {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
 {{/if}}
-{{#if view.showPlantae}}
-<h2>FLORA</h2>
-{{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+{{#if view.showPlantae }}
+  <h2>FLORA</h2>
+  {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+{{/if}}
+{{# if view.showPrev }}
+  <a href="#" {{action "prevPage" on="click"}}>Prev</a>
+{{/if}}
+{{# if view.showNext }}
+  <a href="#" {{action "nextPage" on="click"}}>Next</a>
 {{/if}}
