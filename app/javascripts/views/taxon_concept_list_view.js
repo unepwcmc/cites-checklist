@@ -2,6 +2,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: null,
   itemViewClass: Ember.View.extend({
+    contextBinding: 'content',
     templateName: 'taxon_concept_view',
     classNameBindings: ['level', 'rank'],
     level: function(){
