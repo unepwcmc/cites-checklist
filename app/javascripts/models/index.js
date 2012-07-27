@@ -4,13 +4,21 @@ Checklist.Index = DS.Model.extend({
   plantae_idx: DS.attr('number'),
   total_cnt: DS.attr('number'),
   animalia: function(){
-    return this.get('taxon_concepts').slice(this.get('animalia_idx'), this.get('plantae_idx'));
+    var taxon_concepts = this.get('taxon_concepts');
+    var ids = taxon_concepts.get('content').slice(this.get('animalia_idx'), this.get('plantae_idx'));
+    return ids.map(function(item, index, enumerable){
+      return taxon_concepts.objectAtContent(index);
+    });
   }.property('animalia_idx, plantae_idx'),
   animaliaPresent: function(){
     return this.get('animalia_idx') != this.get('plantae_idx');
   }.property('animalia_idx, plantae_idx'),
   plantae: function(){
-    return this.get('taxon_concepts').slice(this.get('plantae_idx'));
+    var taxon_concepts = this.get('taxon_concepts');
+    var ids = taxon_concepts.get('content').slice(this.get('plantae_idx'));
+    return ids.map(function(item, index, enumerable){
+      return taxon_concepts.objectAtContent(index);
+    });
   }.property('plantae_idx'),
   plantaePresent: function(){
     return this.get('plantae_idx') != this.get('total_cnt');
