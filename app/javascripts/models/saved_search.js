@@ -3,4 +3,3 @@ Checklist.SavedSearch = DS.Model.extend({
   filters: DS.attr('string'),
   name: DS.attr('string')
 });
-

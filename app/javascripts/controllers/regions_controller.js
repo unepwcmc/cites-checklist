@@ -1,3 +1,3 @@
-Checklist.regionsController = Ember.ArrayController.create({
+Checklist.RegionsController = Ember.ArrayController.extend({
   content: Checklist.store.findAll(Checklist.Region)
 });

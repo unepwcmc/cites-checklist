@@ -1,29 +1,19 @@
-<p>Saved Searches:</p>
-{{view Em.Select
-  viewName = "savedSearchSelection"
-  contentBinding = "Checklist.savedSearchController"
-  selectionBinding = "Checklist.selectedFiltersController.searches"
-  optionLabelPath = "content.name"
-  optionValuePath = "content.id"
-}}
-
-<hr>
-
+<a {{action "doSearch"}}>Home</a>
 {{#view Checklist.ChecklistForm
-  controllerBinding="Checklist.taxonConceptController"
-  filtersControllerBinding="Checklist.selectedFiltersController"
+  controllerBinding="controllers.taxonConceptController"
+  filtersControllerBinding="controllers.filtersController"
 }}
   <p>Filter by country:</p>
   {{view Em.Select
     multiple = "true"
     viewName = "countryFilter"
-    contentBinding = "Checklist.countriesController"
-    selectionBinding = "Checklist.selectedFiltersController.countries"
+    contentBinding = "controllers.countriesController"
+    selectionBinding = "controllers.filtersController.countries"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
 <p>Selected countries:
-{{#each Checklist.selectedFiltersController.countries}}
+{{#each controllers.filtersController.countries}}
   {{name}}
 {{/each}}
 </p>
@@ -31,13 +21,13 @@
   {{view Em.Select
     multiple = "true"
     viewName = "regionFilter"
-    contentBinding = "Checklist.regionsController"
-    selectionBinding = "Checklist.selectedFiltersController.regions"
+    contentBinding = "controllers.regionsController"
+    selectionBinding = "controllers.filtersController.regions"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
   <p>Selected regions:
-  {{#each Checklist.selectedFiltersController.regions}}
+  {{#each controllers.filtersController.regions}}
     {{name}}
   {{/each}}
   </p>
@@ -45,25 +35,41 @@
   {{view Em.Select
     multiple = "true"
     viewName = "appendixFilter"
-    contentBinding = "Checklist.appendicesController"
-    selectionBinding = "Checklist.selectedFiltersController.appendices"
+    contentBinding = "controllers.appendicesController"
+    selectionBinding = "controllers.filtersController.appendices"
     optionLabelPath = "content.abbreviation"
     optionValuePath = "content.id"
   }}
   <p>Selected appendices:
-  {{#each Checklist.selectedFiltersController.appendices}}
+  {{#each controllers.filtersController.appendices}}
     {{abbreviation}}
   {{/each}}
   </p>
   <p>
-  {{view Ember.Checkbox checkedBinding="Checklist.selectedFiltersController.taxonomicLayout"}} taxonomic layout
+  {{view Ember.Checkbox checkedBinding="controllers.filtersController.taxonomicLayout"}} taxonomic layout
   </p>
   <button type="submit">Go</button>
 
+  <hr />
+
   <p>
-    <input type="text" id="save_search_name" />
+    <input type="text" style="font-size:14px;width:inherit !important;" id="save_search_name" />
     <button {{action "save_search"}} type="button">Save Search</button>
   </p>
+
+  <p>
+    Saved Searches:
+    {{view Em.Select
+      viewName = "savedSearchSelection"
+      contentBinding = "controllers.savedSearchController"
+      selectionBinding = "controllers.savedSearchController.selection"
+      optionLabelPath = "content.name"
+      optionValuePath = "content.id"
+    }}
+  </p>
+
+  <hr>
+
   <h2>Download pdf version:</h2>
   <ul>
     <li>CITES species index:
@@ -76,10 +82,9 @@
     </li>
   </ul>
 
+  {{#each controllers.taxonConceptController.content}}
+    {{view Checklist.KingdomListView contentBinding="this"
+    }}
+  {{/each}}
+
 {{/view}}
-{{#each Checklist.taxonConceptController.content}}
-  {{view Checklist.KingdomListView contentBinding="this"
-    taxonConceptsControllerBinding="Checklist.taxonConceptController"
-    filtersControllerBinding="Checklist.selectedFiltersController"
-  }}
-{{/each}}

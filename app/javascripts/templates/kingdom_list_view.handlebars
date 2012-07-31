@@ -7,8 +7,8 @@
   {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
 {{/if}}
 {{# if view.showPrev }}
-  <a href="#" {{action "prevPage" on="click"}}>Prev</a>
+  <a href="#" {{action "prevPage" target="view" on="click"}}>Prev</a>
 {{/if}}
 {{# if view.showNext }}
-  <a href="#" {{action "nextPage" on="click"}}>Next</a>
+  <a href="#" {{action "nextPage" target="view" on="click"}}>Next</a>
 {{/if}}

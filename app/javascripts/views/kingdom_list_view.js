@@ -11,32 +11,32 @@ Checklist.KingdomListView = Ember.View.extend({
     return this.content.get('plantaePresent');
   }.property(),
   showNext: function(){
-    return this.filtersController.get('page') <
-      (this.content.get('total_cnt') / this.filtersController.get('per_page'));
+    return Checklist.get('router').get('filtersController').get('page') <
+      (this.content.get('total_cnt') / Checklist.get('router').get('filtersController').get('per_page'));
   }.property(),
   showPrev: function(){
-    return this.filtersController.get('page') > 0
+    return Checklist.get('router').get('filtersController').get('page') > 0
   }.property(),
   nextPage: function(){
-    var currentPage = this.filtersController.get('page');
+    var currentPage = Checklist.get('router').get('filtersController').get('page');
     if (this.get('showNext')){
-      this.filtersController.set('page', currentPage + 1);
-      this.get('taxonConceptsController').set(
+      Checklist.get('router').get('filtersController').set('page', currentPage + 1);
+      Checklist.get('router').get('taxonConceptController').set(
         'content',
         Checklist.store.find(
-          Checklist.Index, this.get('filtersController').toParams()
+          Checklist.Index, Checklist.get('router').get('filtersController').toParams()
         )
       )
     }
   },
   prevPage: function(){
-    var currentPage = this.filtersController.get('page');
+    var currentPage = Checklist.get('router').get('filtersController').get('page');
     if (this.get('showPrev')){
-      this.filtersController.set('page', currentPage - 1);
-      this.get('taxonConceptsController').set(
+      Checklist.get('router').get('filtersController').set('page', currentPage - 1);
+      Checklist.get('router').get('taxonConceptController').set(
         'content',
         Checklist.store.find(
-          Checklist.Index, this.get('filtersController').toParams()
+          Checklist.Index, Checklist.get('router').get('filtersController').toParams()
         )
       )
     }

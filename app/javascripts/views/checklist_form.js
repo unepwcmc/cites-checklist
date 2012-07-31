@@ -6,26 +6,26 @@ Checklist.ChecklistForm = Em.View.extend({
   regionFilter: null,
   taxonomicLayoutSwitch: null,
 
-    save_search: function(view) {
-      var saved_search = Checklist.local_store.createRecord(
-        Checklist.SavedSearch,
-        {
-          id: this.generateId(),
-          name: $('#save_search_name').val(),
-          filters: JSON.stringify(this.get('filtersController').toParams()),
-        }
-      );
+  save_search: function(view) {
+    var saved_search = Checklist.local_store.createRecord(
+      Checklist.SavedSearch,
+      {
+        id: this.generateId(),
+        name: $('#save_search_name').val(),
+        filters: JSON.stringify(this.get('filtersController').toParams()),
+      }
+    );
 
-      Checklist.local_store.commit();
-    },
+    Checklist.local_store.commit();
+  },
 
-    // Generates a 4 character, unique identifier.
-    generateId: function() {
-      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    },
+  // Generates a 4 character, unique identifier.
+  generateId: function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  },
 
-    submit: function(event) {
-      event.preventDefault();
+  submit: function(event) {
+    event.preventDefault();
 
     this.get('controller').set(
       'content',
