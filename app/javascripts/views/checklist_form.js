@@ -27,6 +27,7 @@ Checklist.ChecklistForm = Em.View.extend({
   submit: function(event) {
     event.preventDefault();
 
+    this.get('filtersController').set('page', 0);
     this.get('controller').set(
       'content',
       Checklist.store.find(
