@@ -17,7 +17,7 @@ Checklist = Ember.Application.create({
   }),
 });
 
-require('checklist/helpers');
+require('checklist/helpers/main');
 
 require('checklist/sapi_adapter');
 require('checklist/search_adapter');
