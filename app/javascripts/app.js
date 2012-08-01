@@ -16,6 +16,8 @@ Checklist = Ember.Application.create({
   }),
 });
 
+require('checklist/helpers');
+
 require('checklist/sapi_adapter');
 require('checklist/search_adapter');
 
@@ -59,45 +61,6 @@ require('checklist/controllers/appendices_controller');
 require('checklist/controllers/filters_controller');
 require('checklist/controllers/saved_search_controller');
 
-Checklist.Router = Ember.Router.extend({
-  location: 'hash',
-
-  root: Ember.Route.extend({
-    home: Ember.Route.extend({
-      route: '/',
-      connectOutlets: function(router, event) {
-      }
-    }),
-    doSearch: function(router, event) {
-      router.transitionTo('search',{params: 'countries=dsgdfg'});
-    },
-    search: Ember.Route.extend({
-      route: '/search/:params',
-      connectOutlets: function(router, event) {
-        var pairs = event.params.split('&');
-
-        var params = new Object();
-        pairs.forEach(function(item, i) {
-          var pair_split = item.split('=')
-
-          if (pair_split.length <= 1) return;
-
-          var key = pair_split[0];
-          var val = pair_split[1];
-
-          if (val.substring(0,1) == '[') {
-            val = val.replace("[","");
-            val = val.replace("]","");
-            val = val.split(',');
-          }
-
-          params[key] = val;
-        });
-
-        router.get('filtersController').fromParams(params);
-      },
-    }),
-  })
-});
+require('checklist/routers/router');
 
 Checklist.initialize();
