@@ -3,6 +3,18 @@
  */
 Checklist.Helpers = {
   /*
+   * Generates a four character, unique identifier.
+   *
+   * Created for use in localStorage to remove the need to calculate the
+   * last used ID.
+   *
+   * @return String four character random string
+   */
+  generateId: function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  },
+
+  /*
    * A reverse jQuery.param
    *   Based on https://gist.github.com/1025817
    *   Comments are from said gist

@@ -11,11 +11,15 @@
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
-<p>Selected countries:
-{{#each controllers.filtersController.countries}}
-  {{name}}
-{{/each}}
-</p>
+
+  <p>
+    Selected countries:
+    {{#each controllers.filtersController.countries}}
+      {{name}}
+    {{/each}}
+  </p>
+
+
   <p>Filter by region:</p>
   {{view Em.Select
     multiple = "true"
@@ -25,11 +29,15 @@
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
   }}
-  <p>Selected regions:
-  {{#each controllers.filtersController.regions}}
-    {{name}}
-  {{/each}}
+
+  <p>
+    Selected regions:
+    {{#each controllers.filtersController.regions}}
+      {{name}}
+    {{/each}}
   </p>
+
+
   <p>Filter by appendix:</p>
   {{view Em.Select
     multiple = "true"
@@ -39,32 +47,27 @@
     optionLabelPath = "content.abbreviation"
     optionValuePath = "content.id"
   }}
-  <p>Selected appendices:
-  {{#each controllers.filtersController.appendices}}
-    {{abbreviation}}
-  {{/each}}
+
+  <p>
+    Selected appendices:
+    {{#each controllers.filtersController.appendices}}
+      {{abbreviation}}
+    {{/each}}
   </p>
+
+
   <p>
   {{view Ember.Checkbox checkedBinding="controllers.filtersController.taxonomicLayout"}} taxonomic layout
   </p>
+
+
   <button type="submit">Go</button>
 
   <hr />
 
   <p>
-    <input type="text" style="font-size:14px;width:inherit !important;" id="save_search_name" />
-    <button {{action "save_search" target="view"}} type="button">Save Search</button>
-  </p>
-
-  <p>
-    Saved Searches:
-    {{view Em.Select
-      prompt = " "
-      viewName = "savedSearchSelection"
-      contentBinding = "controllers.savedSearchController"
-      selectionBinding = "controllers.savedSearchController.selection"
-      optionLabelPath = "content.name"
-      optionValuePath = "content.id"
+    {{view Checklist.SavedSearchView
+      filtersControllerBinding="controllers.filtersController"
     }}
   </p>
 
