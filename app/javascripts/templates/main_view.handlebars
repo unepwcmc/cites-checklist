@@ -54,12 +54,13 @@
 
   <p>
     <input type="text" style="font-size:14px;width:inherit !important;" id="save_search_name" />
-    <button {{action "save_search"}} type="button">Save Search</button>
+    <button {{action "save_search" target="view"}} type="button">Save Search</button>
   </p>
 
   <p>
     Saved Searches:
     {{view Em.Select
+      prompt = " "
       viewName = "savedSearchSelection"
       contentBinding = "controllers.savedSearchController"
       selectionBinding = "controllers.savedSearchController.selection"
@@ -83,8 +84,7 @@
   </ul>
 
   {{#each controllers.taxonConceptController.content}}
-    {{view Checklist.KingdomListView contentBinding="this"
-    }}
+    {{view Checklist.KingdomListView contentBinding="this"}}
   {{/each}}
 
 {{/view}}

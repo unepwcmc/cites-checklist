@@ -4,10 +4,24 @@ Checklist.SavedSearchController = Ember.ArrayController.extend({
   selectionDidChange: function() {
     var selection = this.get('selection').get('id');
     var record    = Checklist.local_store.find(Checklist.SavedSearch, selection);
-    var filters   = record.get('filters');
+    var filters   = JSON.parse(record.get('filters'));
 
-    /*
-     * doSearch transition
-     */
+    // I'm really not fond of this and will be changing it shortly
+    var params = "";
+    for (var key in filters) {
+      params += key + "=";
+
+      var values = filters[key];
+
+      if (values instanceof Array) {
+        values = values.join(",");
+        values = "[" + values + "]";
+      }
+
+      params += values;
+      params += "&";
+    }
+
+    Checklist.get('router').transitionTo('search',{params: params});
   }.observes('selection')
 });

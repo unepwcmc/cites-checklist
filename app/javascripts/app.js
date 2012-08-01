@@ -60,41 +60,44 @@ require('checklist/controllers/filters_controller');
 require('checklist/controllers/saved_search_controller');
 
 Checklist.Router = Ember.Router.extend({
-    enableLogging: true,
-    location: 'hash',
+  location: 'hash',
 
-    root: Ember.Route.extend({
-      home: Ember.Route.extend({
-        route: '/',
-        connectOutlets: function(router, event) {
-        }
-      }),
-      doSearch: function(router, event) {
-        params = router.get('filtersController').toParams();
+  root: Ember.Route.extend({
+    home: Ember.Route.extend({
+      route: '/',
+      connectOutlets: function(router, event) {
+      }
+    }),
+    doSearch: function(router, event) {
+      router.transitionTo('search',{params: 'countries=dsgdfg'});
+    },
+    search: Ember.Route.extend({
+      route: '/search/:params',
+      connectOutlets: function(router, event) {
+        var pairs = event.params.split('&');
 
-        // Convert object to params
+        var params = new Object();
+        pairs.forEach(function(item, i) {
+          var pair_split = item.split('=')
 
-        router.transitionTo('search',{params: 'countries=dsgdfg'});
+          if (pair_split.length <= 1) return;
+
+          var key = pair_split[0];
+          var val = pair_split[1];
+
+          if (val.substring(0,1) == '[') {
+            val = val.replace("[","");
+            val = val.replace("]","");
+            val = val.split(',');
+          }
+
+          params[key] = val;
+        });
+
+        router.get('filtersController').fromParams(params);
       },
-      search: Ember.Route.extend({
-        route: '/search/:params',
-        connectOutlets: function(router, event) {
-          var pairs = event.params.split('&');
-
-          var params = new Object();
-          pairs.forEach(function(item, i) {
-            var key = item.split('=')[0];
-            var val = item.split('=')[1];
-
-            var values = val.split(',');
-
-            params[key] = values;
-          });
-
-          router.get('filtersController').fromParams(params);
-        },
-      }),
-    })
-  });
+    }),
+  })
+});
 
 Checklist.initialize();
