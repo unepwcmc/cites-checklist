@@ -77,9 +77,11 @@
   <ul>
     <li>CITES species index:
       <a href="{{unbound view.indexPdfLink}}">full</a>
+      <a href="#" {{action "downloadCustomIndexPdf" target="view" on="click"}}>customised</a>
     </li>
     <li>history of CITES listings:
       <a href="{{unbound view.historyPdfLink}}">full</a>
+      <a href="#" {{action "downloadCustomHistoryPdf" target="view" on="click"}}>customised</a>
     </li>
   </ul>
 
