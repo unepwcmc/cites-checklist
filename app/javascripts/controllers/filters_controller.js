@@ -1,11 +1,20 @@
 Checklist.FiltersController = Ember.Object.extend({
-  searches : [],
+  countriesContent: Checklist.store.findAll(Checklist.Country),
   countries : [],
+  countriesIds: [],
+  searches : [],
   regions : [],
   appendices : [],
   taxonomicLayout : false,
   page: 0,
   per_page: 50,
+  countriesSelection: function(){
+    if (this.get('countriesIds').length > 0){
+      this.set('countries', Checklist.store.findMany(Checklist.Country,this.get('countriesIds')));
+      this.set('countriesIds',[]);
+    }
+    return this.get('countries');
+  }.property('countriesIds', 'countriesContent').volatile(),
   toParams : function() {
     return {
       country_ids : this.get('countries').mapProperty('id'),
@@ -25,5 +34,8 @@ Checklist.FiltersController = Ember.Object.extend({
         Checklist.Index, params
       )
     );
+
+    this.set('countriesIds', (params['country_ids'] == undefined ? [] : params['country_ids']));
+    this.set('countries', this.get('countriesSelection'));
   }
 });
