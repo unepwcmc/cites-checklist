@@ -1,6 +1,8 @@
 <span class="full-name">{{unbound full_name}}</span>
 {{unbound spp}}:
-<span class="listing">{{unbound current_listing}}</span>
+{{#if view.showListing}}
+  <span class="listing">{{unbound current_listing}}</span>
+{{/if}}
 <span class="family">{{unbound family_name}}</span>
 <span class="class">{{unbound class_name}}</span>
 {{#if view.showEnglish }}

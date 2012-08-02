@@ -16,5 +16,8 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     showEnglish: function(){return this.content.get('english').length > 0}.property(),
     showSpanish: function(){return this.content.get('spanish').length > 0}.property(),
     showFrench: function(){return this.content.get('french').length > 0}.property(),
+    showListing: function(){return this.content.get('rank_name') != 'KINGDOM' &&
+      this.content.get('rank_name') != 'PHYLUM' &&
+      this.content.get('rank_name') != 'CLASS'}.property()
   })
 });
