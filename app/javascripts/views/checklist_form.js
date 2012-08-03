@@ -16,6 +16,8 @@ Checklist.ChecklistForm = Em.View.extend({
         Checklist.Index, this.get('filtersController').toParams()
       )
     )
+
+    Checklist.get('router').get('savedSearchController').set('selection', null);
   },
 
   indexPdfLink: function(){
