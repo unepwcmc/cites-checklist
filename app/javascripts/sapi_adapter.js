@@ -65,19 +65,6 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
         error : function(xhr, status, error) {}
       });
     }
-  },
-
-  findMany: function(store, type, ids) {
-    var url = this.url + type.collectionUrl;
-    url = url.fmt(ids.join(','));
-//TODO do the IE thing
-    jQuery.getJSON(url, function(data) {
-      // data is an Array of Hashes in the same order as the original
-      // Array of IDs. If your server returns a root, simply do something
-      // like:
-      // store.loadMany(type, ids, data.people)
-      store.loadMany(type, ids, data);
-    });
   }
 
 });

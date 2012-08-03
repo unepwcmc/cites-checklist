@@ -24,7 +24,7 @@
   {{view Em.Select
     multiple = "true"
     viewName = "regionFilter"
-    contentBinding = "controllers.regionsController"
+    contentBinding = "controllers.filtersController.regionsContent"
     selectionBinding = "controllers.filtersController.regions"
     optionLabelPath = "content.name"
     optionValuePath = "content.id"
@@ -42,7 +42,7 @@
   {{view Em.Select
     multiple = "true"
     viewName = "appendixFilter"
-    contentBinding = "controllers.appendicesController"
+    contentBinding = "controllers.filtersController.appendicesContent"
     selectionBinding = "controllers.filtersController.appendices"
     optionLabelPath = "content.abbreviation"
     optionValuePath = "content.id"
