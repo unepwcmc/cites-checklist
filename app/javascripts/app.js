@@ -56,9 +56,6 @@ require('checklist/models/appendix');
 require('checklist/models/saved_search');
 
 require('checklist/controllers/taxon_concept_controller');
-require('checklist/controllers/countries_controller');
-require('checklist/controllers/regions_controller');
-require('checklist/controllers/appendices_controller');
 require('checklist/controllers/filters_controller');
 require('checklist/controllers/saved_search_controller');
 

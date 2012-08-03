@@ -66,4 +66,5 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       });
     }
   }
+
 });
