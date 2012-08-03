@@ -98,5 +98,7 @@ Checklist.FiltersController = Ember.Object.extend({
       )
     );
     this.set('taxonomicLayout', params['output_layout'] == 'taxonomic' ? true : false);
+    this.set('page', parseInt(params['page']));
+    this.set('perPage', parseInt(params['perPage']));
   }
 });
