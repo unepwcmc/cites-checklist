@@ -29,7 +29,7 @@ Checklist.searchAdapter = DS.Adapter.extend({
 
     this.storage.setAll(this.storage_method, type, records);
 
-    this.didDeleteRecord(model, record);
+    store.didDeleteRecord(model, item);
   },
 
   find: function(store, type, id) {

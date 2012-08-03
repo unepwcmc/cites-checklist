@@ -6,6 +6,7 @@ require('checklist/vendor/ember-data');
 require('checklist/templates/main_view');
 require('checklist/templates/taxon_concept_view');
 require('checklist/templates/kingdom_list_view');
+require('checklist/templates/saved_search_collection');
 require('checklist/templates/saved_search');
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
@@ -40,6 +41,7 @@ Checklist.local_store = DS.Store.create({
   })
 });
 
+require('checklist/views/saved_search_collection_view');
 require('checklist/views/saved_search_view');
 require('checklist/views/main_view');
 require('checklist/views/checklist_form');
