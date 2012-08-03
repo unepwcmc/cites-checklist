@@ -10,6 +10,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   full_name: DS.attr('string'),
   english: DS.attr('string'),
   spanish: DS.attr('string'),
-  french: DS.attr('string')
+  french: DS.attr('string'),
+  synonyms: DS.attr('string')
 });
 
