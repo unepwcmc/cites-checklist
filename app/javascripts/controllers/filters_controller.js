@@ -1,4 +1,9 @@
 Checklist.FiltersController = Ember.Object.extend({
+  /*
+   * In the current version of Ember (0.9.8.1) findAll does not fire
+   * loading events properly, so we use findQuery with an empty query
+   * string.
+   */
   countriesContent : Checklist.store.findQuery(Checklist.Country, {'q': ''}),
   countries : [],
   countriesIds : [],
@@ -13,6 +18,12 @@ Checklist.FiltersController = Ember.Object.extend({
   page: 0,
   per_page: 50,
 
+  /*
+   * These event handlers and the above arrays replace the functionality
+   * of the controllers for countries, regions and appendices.
+   * This is done primarily so that we can handle isLoaded events on the
+   * content arrays for each type of filter.
+   */
   countriesContentDidChange: function(){
     if (this.get('countriesContent.isLoaded')){
       var that = this;
