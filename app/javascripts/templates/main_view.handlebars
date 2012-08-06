@@ -63,30 +63,22 @@
 
   <button type="submit">Go</button>
 
-  <hr />
+<hr />
 
-  <p>
-    {{view Checklist.SavedSearchView
-      filtersControllerBinding="controllers.filtersController"
-    }}
-  </p>
-
-  <hr>
-
-  <h2>Download pdf version:</h2>
-  <ul>
-    <li>CITES species index:
-      <a href="{{unbound view.indexPdfLink}}">full</a>
-      <a href="#" {{action "downloadCustomIndexPdf" target="view" on="click"}}>customised</a>
-    </li>
-    <li>history of CITES listings:
-      <a href="{{unbound view.historyPdfLink}}">full</a>
-      <a href="#" {{action "downloadCustomHistoryPdf" target="view" on="click"}}>customised</a>
-    </li>
-  </ul>
-
-  {{#each controllers.taxonConceptController.content}}
-    {{view Checklist.KingdomListView contentBinding="this"}}
-  {{/each}}
+<p>
+  {{view Checklist.SavedSearchView
+    filtersControllerBinding="controllers.filtersController"
+  }}
+</p>
 
 {{/view}}
+
+<hr>
+
+{{view Checklist.PdfDownloadView
+  filtersControllerBinding="controllers.filtersController"
+}}
+
+{{#each controllers.taxonConceptController.content}}
+  {{view Checklist.KingdomListView contentBinding="this"}}
+{{/each}}

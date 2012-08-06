@@ -4,6 +4,7 @@ require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 
 require('checklist/templates/main_view');
+require('checklist/templates/pdf_download_view');
 require('checklist/templates/taxon_concept_view');
 require('checklist/templates/kingdom_list_view');
 require('checklist/templates/saved_search_collection');
@@ -44,6 +45,7 @@ Checklist.local_store = DS.Store.create({
 require('checklist/views/saved_search_collection_view');
 require('checklist/views/saved_search_view');
 require('checklist/views/main_view');
+require('checklist/views/pdf_download_view');
 require('checklist/views/checklist_form');
 require('checklist/views/kingdom_list_view');
 require('checklist/views/taxon_concept_list_view');
