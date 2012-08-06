@@ -14,6 +14,10 @@ Checklist.FiltersController = Ember.Object.extend({
   appendices : [],
   appendicesIds : [],
   taxonomicLayout : false,
+  showSynonyms : true,
+  showEnglish : true,
+  showSpanish : true,
+  showFrench : true,
   searches : [],
   page: 0,
   per_page: 50,
@@ -69,6 +73,10 @@ Checklist.FiltersController = Ember.Object.extend({
       cites_region_ids : this.get('regions').mapProperty('id'),
       cites_appendices : this.get('appendices').mapProperty('abbreviation'),
       output_layout : (this.get('taxonomicLayout') == true ? 'taxonomic' : 'alphabetical'),
+      show_synonyms : this.get('showSynonyms'),
+      show_english : this.get('showEnglish'),
+      show_spanish : this.get('showSpanish'),
+      show_french : this.get('showFrench'),
       page : this.get('page'),
       per_page : this.get('per_page')
     }
@@ -109,6 +117,10 @@ Checklist.FiltersController = Ember.Object.extend({
       )
     );
     this.set('taxonomicLayout', params['output_layout'] == 'taxonomic' ? true : false);
+    this.set('showSynonyms', params['show_synonyms']);
+    this.set('showEnglish', params['show_english']);
+    this.set('showSpanish', params['show_spanish']);
+    this.set('showFrench', params['show_french']);
     this.set('page', parseInt(params['page']));
     this.set('perPage', parseInt(params['perPage']));
   }

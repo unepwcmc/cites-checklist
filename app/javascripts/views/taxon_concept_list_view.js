@@ -5,6 +5,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     contextBinding: 'content',
     templateName: 'taxon_concept_view',
     classNameBindings: ['level', 'rank'],
+    //TODO could the filters controller be passed here and used instead of router call
     level: function(){
       if(Checklist.get('router').get('filtersController').taxonomicLayout){ 
         return 'taxon-level' + this.content.get('depth');
@@ -13,6 +14,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     rank: function(){
       return this.content.get('rank_name').toLowerCase() + '-taxon';
     }.property(),
+    //TODO need to check the 'show' flags against filtersController 'show' flags
     showEnglish: function(){return this.content.get('english').length > 0}.property(),
     showSpanish: function(){return this.content.get('spanish').length > 0}.property(),
     showFrench: function(){return this.content.get('french').length > 0}.property(),
