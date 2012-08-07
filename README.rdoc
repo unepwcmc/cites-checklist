@@ -30,3 +30,4 @@ Tutorial Jan 2012
   http://www.cerebris.com/blog-search/by-tag/?tag=emberjs 3 part tutorial
 Links to resources Feb 2012
   http://tomdale.net/2012/02/ember-js-resources/
+
