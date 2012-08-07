@@ -21,24 +21,29 @@ Checklist.KingdomListView = Ember.View.extend({
     var currentPage = Checklist.get('router').get('filtersController').get('page');
     if (this.get('showNext')){
       Checklist.get('router').get('filtersController').set('page', currentPage + 1);
-      Checklist.get('router').get('taxonConceptController').set(
-        'content',
-        Checklist.store.find(
-          Checklist.Index, Checklist.get('router').get('filtersController').toParams()
-        )
-      )
+      Checklist.get('router').transitionTo(
+        'search',
+        {
+          params: $.param(
+            Checklist.get('router').get('filtersController').toParams()
+          )
+        }
+      );
     }
   },
   prevPage: function(){
     var currentPage = Checklist.get('router').get('filtersController').get('page');
     if (this.get('showPrev')){
       Checklist.get('router').get('filtersController').set('page', currentPage - 1);
-      Checklist.get('router').get('taxonConceptController').set(
-        'content',
-        Checklist.store.find(
-          Checklist.Index, Checklist.get('router').get('filtersController').toParams()
-        )
-      )
+      Checklist.get('router').transitionTo(
+        'search',
+        {
+          params: $.param(
+            Checklist.get('router').get('filtersController').toParams()
+          )
+        }
+      );
     }
   }
+
 });
