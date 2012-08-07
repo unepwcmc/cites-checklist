@@ -56,18 +56,25 @@
   </p>
 
   <p>
+    <h2>scientific name</h2>
+    {{view Ember.TextField valueBinding="controllers.filtersController.scientificName"}}
+  </p>
+
+  <p>
     <h2>common names</h2>
     {{view Ember.Checkbox checkedBinding="controllers.filtersController.showEnglish"}} English
     {{view Ember.Checkbox checkedBinding="controllers.filtersController.showSpanish"}} Spanish
     {{view Ember.Checkbox checkedBinding="controllers.filtersController.showFrench"}} French
   </p>
+
   <p>
-  <h2>sorting</h2>
-  {{view Ember.Checkbox checkedBinding="controllers.filtersController.taxonomicLayout"}} taxonomic layout
+    <h2>sorting</h2>
+    {{view Ember.Checkbox checkedBinding="controllers.filtersController.taxonomicLayout"}} taxonomic layout
   </p>
+
   <p>
-  <h2>other options</h2>
-  {{view Ember.Checkbox checkedBinding="controllers.filtersController.showSynonyms"}} show synonyms
+    <h2>other options</h2>
+    {{view Ember.Checkbox checkedBinding="controllers.filtersController.showSynonyms"}} show synonyms
   </p>
 
   <button type="submit">Go</button>

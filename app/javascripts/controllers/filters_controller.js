@@ -18,6 +18,7 @@ Checklist.FiltersController = Ember.Object.extend({
   showEnglish : true,
   showSpanish : true,
   showFrench : true,
+  scientificName : "",
   searches : [],
   page: 0,
   per_page: 50,
@@ -77,6 +78,7 @@ Checklist.FiltersController = Ember.Object.extend({
       show_english : this.get('showEnglish') == true ? 1 : 0,
       show_spanish : this.get('showSpanish') == true ? 1 : 0,
       show_french : this.get('showFrench') == true ? 1 : 0,
+      scientific_name : this.get('scientificName'),
       page : this.get('page'),
       per_page : this.get('per_page')
     }
@@ -121,6 +123,7 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('showEnglish', parseInt(params['show_english']) == 1 ? true : false);
     this.set('showSpanish', parseInt(params['show_spanish']) == 1 ? true : false);
     this.set('showFrench', parseInt(params['show_french']) == 1 ? true : false);
+    this.set('scientificName', params['scientific_name']);
     this.set('page', parseInt(params['page']));
     this.set('perPage', parseInt(params['perPage']));
   }
