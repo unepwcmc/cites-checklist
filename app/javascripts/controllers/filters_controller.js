@@ -4,13 +4,13 @@ Checklist.FiltersController = Ember.Object.extend({
    * loading events properly, so we use findQuery with an empty query
    * string.
    */
-  countriesContent : Checklist.store.findQuery(Checklist.Country, {'q': ''}),
+  countriesContent : Checklist.store.findQuery(Checklist.Country, {}),
   countries : [],
   countriesIds : [],
-  regionsContent : Checklist.store.findQuery(Checklist.Region, {'q': ''}),
+  regionsContent : Checklist.store.findQuery(Checklist.Region, {}),
   regions : [],
   regionsIds: [],
-  appendicesContent : Checklist.store.findQuery(Checklist.Appendix, {'q': ''}),
+  appendicesContent : Checklist.store.findQuery(Checklist.Appendix, {}),
   appendices : [],
   appendicesIds : [],
   taxonomicLayout : false,
@@ -73,10 +73,10 @@ Checklist.FiltersController = Ember.Object.extend({
       cites_region_ids : this.get('regions').mapProperty('id'),
       cites_appendices : this.get('appendices').mapProperty('abbreviation'),
       output_layout : (this.get('taxonomicLayout') == true ? 'taxonomic' : 'alphabetical'),
-      show_synonyms : this.get('showSynonyms'),
-      show_english : this.get('showEnglish'),
-      show_spanish : this.get('showSpanish'),
-      show_french : this.get('showFrench'),
+      show_synonyms : this.get('showSynonyms') == true ? 1 : 0,
+      show_english : this.get('showEnglish') == true ? 1 : 0,
+      show_spanish : this.get('showSpanish') == true ? 1 : 0,
+      show_french : this.get('showFrench') == true ? 1 : 0,
       page : this.get('page'),
       per_page : this.get('per_page')
     }
@@ -117,10 +117,10 @@ Checklist.FiltersController = Ember.Object.extend({
       )
     );
     this.set('taxonomicLayout', params['output_layout'] == 'taxonomic' ? true : false);
-    this.set('showSynonyms', params['show_synonyms']);
-    this.set('showEnglish', params['show_english']);
-    this.set('showSpanish', params['show_spanish']);
-    this.set('showFrench', params['show_french']);
+    this.set('showSynonyms', parseInt(params['show_synonyms']) == 1 ? true : false);
+    this.set('showEnglish', parseInt(params['show_english']) == 1 ? true : false);
+    this.set('showSpanish', parseInt(params['show_spanish']) == 1 ? true : false);
+    this.set('showFrench', parseInt(params['show_french']) == 1 ? true : false);
     this.set('page', parseInt(params['page']));
     this.set('perPage', parseInt(params['perPage']));
   }
