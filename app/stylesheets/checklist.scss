@@ -37,16 +37,15 @@
     text-transform: uppercase;
     font-weight: bold;
   }
-}
 
-.genus-taxon {
-  .full-name {
-    font-weight: bold;
-  }
 }
 
 .full-name {
   font-style: italic;
+}
+
+.accepted-true {
+  font-weight: bold;
 }
 
 .listing {
