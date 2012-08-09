@@ -205,9 +205,10 @@
         default:
           var that = this;
 
-          var params = Checklist.get('router').get('filtersController').toParams()
-          params.scientific_name = this.$element.val();
-          params.per_page        = 4;
+          var params = {
+            scientific_name: this.$element.val(),
+            per_page: 4
+          };
 
           var url = window.BACKEND_URL + 'taxon_concepts';
 
