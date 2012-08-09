@@ -6,6 +6,8 @@
  */
 Checklist.searchAdapter = DS.Adapter.extend({
 
+  jQuery: {},
+
   createRecord: function(store, type, model) {
     var item = model.toJSON({associations: true});
 
@@ -58,7 +60,7 @@ Checklist.searchAdapter = DS.Adapter.extend({
       if (method == 'localStorage') {
         var value = localStorage.getItem(type);
       } else {
-        var value = jQuery.cookie(type);
+        var value = jQuery.cookie(type.toString());
       }
 
       return JSON.parse(value || 'null') || [];
@@ -91,7 +93,7 @@ Checklist.searchAdapter = DS.Adapter.extend({
       if (method == 'localStorage') {
         localStorage.setItem(type, JSON.stringify(value));
       } else {
-        jQuery.cookie(type, JSON.stringify(value));
+        jQuery.cookie(type.toString(), JSON.stringify(value));
       }
     }
   }

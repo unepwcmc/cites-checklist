@@ -1,5 +1,6 @@
 require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
+require('checklist/vendor/jquery.cookie');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 require('checklist/vendor/bootstrap');
@@ -35,11 +36,17 @@ Checklist.store = DS.Store.create({
 
 // Choose between cookies or localStorage for saved searches, depending
 // on availability
+var method = '';
+if (Checklist.Helpers.storage) {
+  method = 'localStorage';
+}
+
 Checklist.local_store = DS.Store.create({
   revision: 4,
   adapter: Checklist.searchAdapter.create({
     bulkCommit: false,
-    storage_method: 'localStorage'
+    storage_method: method,
+    jQuery: $
   })
 });
 
@@ -67,4 +74,3 @@ require('checklist/controllers/saved_search_controller');
 require('checklist/routers/router');
 
 Checklist.initialize();
-

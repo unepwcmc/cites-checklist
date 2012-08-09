@@ -3,6 +3,23 @@
  */
 Checklist.Helpers = {
   /*
+   * Checks to see if the user's browser has localStorage capabilities
+   *
+   * http://mathiasbynens.be/notes/localstorage-pattern
+   */
+  storage: function() {
+    var uid = new Date,
+        storage,
+        result;
+
+    try {
+      (storage = window.localStorage).setItem(uid, uid);
+      result = storage.getItem(uid) == uid;
+      storage.removeItem(uid);
+      return result && storage;
+    } catch(e) {}
+  },
+  /*
    * Generates a four character, unique identifier.
    *
    * Created for use in localStorage to remove the need to calculate the
