@@ -12,7 +12,7 @@ Checklist.KingdomListView = Ember.View.extend({
   }.property(),
   showNext: function(){
     return Checklist.get('router').get('filtersController').get('page') <
-      (this.content.get('total_cnt') / Checklist.get('router').get('filtersController').get('per_page'));
+      Math.round(this.content.get('total_cnt') / Checklist.get('router').get('filtersController').get('per_page'));
   }.property(),
   showPrev: function(){
     return Checklist.get('router').get('filtersController').get('page') > 0
