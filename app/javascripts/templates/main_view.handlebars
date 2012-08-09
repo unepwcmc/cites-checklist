@@ -57,7 +57,10 @@
 
   <p>
     <h2>scientific name</h2>
-    {{view Ember.TextField valueBinding="controllers.filtersController.scientificName"}}
+    {{view Checklist.SearchTextField
+      valueBinding="controllers.filtersController.scientificName"
+      id="scientific_name"
+    }}
   </p>
 
   <p>

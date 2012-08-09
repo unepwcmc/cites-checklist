@@ -2,6 +2,7 @@ require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
+require('checklist/vendor/bootstrap');
 
 require('checklist/templates/main_view');
 require('checklist/templates/pdf_download_view');
@@ -66,3 +67,4 @@ require('checklist/controllers/saved_search_controller');
 require('checklist/routers/router');
 
 Checklist.initialize();
+

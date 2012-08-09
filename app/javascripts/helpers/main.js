@@ -95,5 +95,5 @@ Checklist.Helpers = {
     });
 
     return result;
-  }
+  },
 }

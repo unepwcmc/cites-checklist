@@ -31,3 +31,9 @@ Tutorial Jan 2012
 Links to resources Feb 2012
   http://tomdale.net/2012/02/ember-js-resources/
 
+=== Important Vendor Note
+
+We are using a customised version of Twitter Bootstrap Typeahead. There
+should be little need to upgrade in the future due to the simplicity of
+the library, however it is important to maintain the `keyup` method and the
+`Checklist` object if upgrading.
