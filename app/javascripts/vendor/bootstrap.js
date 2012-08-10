@@ -33,6 +33,10 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+
+    // The parser is run on the dataset before lookup is called
+    this.parser = this.options.parser || this.parser
+
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -53,6 +57,10 @@
 
   , updater: function (item) {
       return item
+    }
+
+  , parser: function(data) {
+      return data
     }
 
   , show: function () {
@@ -87,7 +95,53 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.grep(this.source, function (item) {
+      // If the source is defined as a URL, perform an AJAX request for
+      // the resource
+      var src = [];
+      if (typeof this.source == 'object') {
+        var url = this.source.url;
+
+        // Clean up the params and assign the value to the proper param
+        // name as defined by the user
+        var params = this.source.params;
+        params[params.param_name] = params.value;
+
+        if($.browser.msie && window.XDomainRequest) {
+          // Use Microsoft XDR
+          var xdr = new XDomainRequest();
+          xdr.contentType = "text/plain";
+          xdr.open("get", url);
+          xdr.onprogress = function(){};
+          xdr.onerror = function(){};
+          xdr.onload = function () {
+            var JSON = $.parseJSON(xdr.responseText);
+            if (JSON == null || typeof (JSON) == 'undefined'){
+              JSON = $.parseJSON(data.firstChild.textContent);
+            }
+
+            src = data;
+          };
+          xdr.send();
+        } else {
+          $.ajax({
+            type : "GET",
+            url : url,
+            dataType : "json",
+            data : params,
+            async: false,
+            success : function(data) {
+              src = data;
+            },
+            error : function(xhr, status, error) {}
+          });
+        }
+      } else {
+        src = this.source;
+      }
+
+      src = this.parser(src);
+
+      items = $.grep(src, function (item) {
         return that.matcher(item)
       })
 
@@ -203,48 +257,11 @@
          * abstract the Checklist related code.
          */
         default:
-          var that = this;
-
-          var params = {
-            scientific_name: this.$element.val(),
-            per_page: 4
-          };
-
-          var url = window.BACKEND_URL + 'taxon_concepts';
-
-          // TODO ideally we would use store#find() for this
-          if($.browser.msie && window.XDomainRequest) {
-            // Use Microsoft XDR
-            var xdr = new XDomainRequest();
-            xdr.contentType = "text/plain";
-            xdr.open("get", url);
-            xdr.onprogress = function(){};
-            xdr.onerror = function(){};
-            xdr.onload = function () {
-              var JSON = $.parseJSON(xdr.responseText);
-              if (JSON == null || typeof (JSON) == 'undefined'){
-                JSON = $.parseJSON(data.firstChild.textContent);
-              }
-
-              var content = that.Checklist.parse_species(data);
-              that.source = content;
-              that.lookup();
-            };
-            xdr.send();
-          } else {
-            $.ajax({
-              type : "GET",
-              url : url,
-              dataType : "json",
-              data : params,
-              success : function(data) {
-                var content = that.Checklist.parse_species(data);
-                that.source = content;
-                that.lookup();
-              },
-              error : function(xhr, status, error) {}
-            });
+          if (typeof this.source == 'object') {
+            this.source.params.value = this.$element.val();
           }
+
+          this.lookup();
       }
 
       e.stopPropagation()
@@ -291,19 +308,6 @@
   , mouseenter: function (e) {
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
-    }
-
-  , Checklist: {
-      parse_species: function(data) {
-        var content = data[0].taxon_concepts;
-
-        // Extract the names of each result row for use by typeahead.js
-        content.forEach(function(item,i) {
-          content[i] = content[i].full_name;
-        });
-
-        return content;
-      }
     }
 
   }
