@@ -35,5 +35,5 @@ Links to resources Feb 2012
 
 We are using a customised version of Twitter Bootstrap Typeahead. There
 should be little need to upgrade in the future due to the simplicity of
-the library, however it is important to maintain the `keyup` method and the
-`Checklist` object if upgrading.
+the library, however should it be necessary then a good read through
+`bootstrap.js` beforehand is required to see what needs to be kept.
