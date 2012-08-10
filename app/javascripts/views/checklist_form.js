@@ -29,7 +29,7 @@ Checklist.ChecklistForm = Em.View.extend({
 Checklist.SearchTextField = Em.TextField.extend({
   value: '',
 
-  valueChanged: function(event) {
+  click: function(event) {
     var params = {
       param_name: 'scientific_name',
       value: event.value,
@@ -39,9 +39,19 @@ Checklist.SearchTextField = Em.TextField.extend({
     var url = window.BACKEND_URL + 'taxon_concepts';
 
     if ($('.typeahead').length <= 0) {
-      $('#scientific_name').typeahead({source: {url: url, params: params}, parser: this.species_parser});
+      $('#scientific_name').typeahead(
+        {
+          source: {url: url, params: params},
+          parser: this.species_parser,
+          matcher: this.matcher
+        }
+      );
     }
-  }.observes('value'),
+  },
+
+  matcher: function(item) {
+    return new RegExp("^"+this.query.toLowerCase(),'i').exec(item);
+  },
 
   species_parser: function(data) {
     var content = data[0].taxon_concepts;
