@@ -98,7 +98,7 @@
       // If the source is defined as a URL, perform an AJAX request for
       // the resource
       var src = [];
-      if (typeof this.source == 'object') {
+      if (this.source.length === undefined) {
         var url = this.source.url;
 
         // Clean up the params and assign the value to the proper param
@@ -106,52 +106,44 @@
         var params = this.source.params;
         params[params.param_name] = params.value;
 
-        if($.browser.msie && window.XDomainRequest) {
-          // Use Microsoft XDR
-          var xdr = new XDomainRequest();
-          xdr.contentType = "text/plain";
-          xdr.open("get", url);
-          xdr.onprogress = function(){};
-          xdr.onerror = function(){};
-          xdr.onload = function () {
-            var JSON = $.parseJSON(xdr.responseText);
-            if (JSON == null || typeof (JSON) == 'undefined'){
-              JSON = $.parseJSON(data.firstChild.textContent);
+        $.ajax({
+          type : "GET",
+          url : url,
+          dataType : "json",
+          data : params,
+          success : function(data) {
+            src = that.parser(data);
+
+            items = $.grep(src, function (item) {
+              return that.matcher(item)
+            })
+
+            items = that.sorter(items)
+
+            if (!items.length) {
+              return that.shown ? that.hide() : that
             }
 
-            src = data;
-          };
-          xdr.send();
-        } else {
-          $.ajax({
-            type : "GET",
-            url : url,
-            dataType : "json",
-            data : params,
-            async: false,
-            success : function(data) {
-              src = data;
-            },
-            error : function(xhr, status, error) {}
-          });
-        }
+            return that.render(items.slice(0, that.options.items)).show()
+          },
+          error : function(xhr, status, error) {}
+        });
       } else {
-        src = this.source;
+        src = this.parser(this.source);
+
+        items = $.grep(src, function (item) {
+          return that.matcher(item)
+        })
+
+        items = this.sorter(items)
+
+        if (!items.length) {
+          return this.shown ? this.hide() : this
+        }
+
+        return this.render(items.slice(0, this.options.items)).show()
       }
 
-      src = this.parser(src);
-
-      items = $.grep(src, function (item) {
-        return that.matcher(item)
-      })
-
-      items = this.sorter(items)
-
-      if (!items.length) {
-        return this.shown ? this.hide() : this
-      }
-
-      return this.render(items.slice(0, this.options.items)).show()
     }
 
   , matcher: function (item) {
@@ -248,16 +240,9 @@
           this.hide()
           break
 
-        /*
-         * Handles all non-movement/control characters.
-         *
-         * Modified to retrieve and parse results from SAPI rather than
-         * rely on a predefined source. In the future we will likely
-         * update the library to receive a resource and a parser, and
-         * abstract the Checklist related code.
-         */
         default:
-          if (typeof this.source == 'object') {
+          // Check if the source is an object or array
+          if (this.source.length === undefined) {
             this.source.params.value = this.$element.val();
           }
 
