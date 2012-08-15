@@ -1,11 +1,11 @@
 <h2>Download pdf version:</h2>
 <ul>
   <li>CITES species index:
-    <a href="{{unbound view.indexPdfLink}}">full</a>
+    <a href="#" {{action "downloadIndexPdf" target="view" on="click"}}>full</a>
     <a href="#" {{action "downloadCustomIndexPdf" target="view" on="click"}}>customised</a>
   </li>
   <li>history of CITES listings:
-    <a href="{{unbound view.historyPdfLink}}">full</a>
+    <a href="#" {{action "downloadHistoryPdf" target="view" on="click"}}>full</a>
     <a href="#" {{action "downloadCustomHistoryPdf" target="view" on="click"}}>customised</a>
   </li>
 </ul>
