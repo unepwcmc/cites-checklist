@@ -42,25 +42,33 @@ Checklist.SearchTextField = Em.TextField.extend({
       $('#scientific_name').typeahead(
         {
           source: {url: url, params: params},
-          parser: this.species_parser,
-          matcher: this.matcher
+          parser: this.parser,
+          highlighter: this.highlighter
         }
       );
     }
   },
 
-  matcher: function(item) {
-    return new RegExp("^"+this.query.toLowerCase(),'i').exec(item);
+  highlighter: function (item) {
+    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+    return item.replace(new RegExp('(' + query + ')', 'i'), function ($1, match) {
+      return '<strong>' + match + '</strong>'
+    })
   },
 
-  species_parser: function(data) {
+  parser: function(data) {
     var content = data[0].taxon_concepts;
+    var results = {}
 
     // Extract the names of each result row for use by typeahead.js
     content.forEach(function(item,i) {
-      content[i] = content[i].full_name;
+      if (!(content[i].rank_name in results)) {
+        results[content[i].rank_name] = [];
+      }
+
+      results[content[i].rank_name].push(content[i].full_name);
     });
 
-    return content;
+    return results;
   }
 });

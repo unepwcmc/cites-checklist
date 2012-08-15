@@ -26,6 +26,43 @@
  /* TYPEAHEAD PUBLIC CLASS DEFINITION
   * ================================= */
 
+ /* NOTICE
+  *
+  * This version of Bootstrap Typeahead has been modified in a few ways.
+  *
+  * Firstly, a new method has been introduced: the parser. The parser is
+  * a function that is executed on the source data before the matcher,
+  * sorter, etc. is run. It can be used to restructure data received
+  * from a remote source such that it can be standardised to the format
+  * typeahead expects.
+  *
+  * Most significantly: it can now handle headers. If the parser is
+  * written such that it returns an object instead of an array:
+  *
+  *   items = { HEADER: [ value, value ],
+  *             HEADER: [ value, value ] }
+  *
+  * The keys will be used as a header, and the value array as the values
+  * to be autocompleted upon. See
+  * /app/javascripts/view/checklist_form.js for an example of this
+  * parser. Other methods have been modified to account for this, such
+  * as lookup and render.
+  *
+  * Second most important: If the source is given as an object, rather
+  * than an array, in the following format then the user's query will be
+  * sent to the defined URL with a param name as listed and the results
+  * returned used as the data source, and any other params being sent as
+  * key/value pairs. This is better shown with an example:
+  *
+  *   source = { url: "http://ajax.js",
+  *              params: { param_name: 'json_value_returned',
+  *                        value: this.$input.val(),
+  *                        random_param: 'insignificance' } }
+  *
+  * This will call:
+  *   'http://ajax.js?json_value_returned=inputvalue&random_param=insignificance
+  */
+
   var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
@@ -36,6 +73,11 @@
 
     // The parser is run on the dataset before lookup is called
     this.parser = this.options.parser || this.parser
+
+    // Allow us to override functions that Mr. Fat doesn't want us to
+    // override
+    this.select = this.options.select || this.select
+    this.render = this.options.render || this.render
 
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
@@ -48,6 +90,9 @@
     constructor: Typeahead
 
   , select: function () {
+      // Do nothing when a header is clicked on
+      if (this.$menu.find('.active').hasClass('header')) { return; }
+
       var val = this.$menu.find('.active').attr('data-value')
       this.$element
         .val(this.updater(val))
@@ -114,34 +159,50 @@
           success : function(data) {
             src = that.parser(data);
 
-            items = $.grep(src, function (item) {
-              return that.matcher(item)
-            })
+            if (src.length === undefined) {
+              if ($.isEmptyObject(src)) {
+                return that.shown ? that.hide() : that
+              }
 
-            items = that.sorter(items)
+              return that.render(src).show()
+            } else {
+              items = $.grep(src, function (item) {
+                return that.matcher(item)
+              })
 
-            if (!items.length) {
-              return that.shown ? that.hide() : that
+              items = that.sorter(items)
+
+              if (!items.length) {
+                return that.shown ? that.hide() : that
+              }
+
+              return that.render(items.splice(0, this.options.items)).show();
             }
-
-            return that.render(items.slice(0, that.options.items)).show()
           },
           error : function(xhr, status, error) {}
         });
       } else {
         src = this.parser(this.source);
 
-        items = $.grep(src, function (item) {
-          return that.matcher(item)
-        })
+        if (src.length === undefined) {
+          if ($.isEmptyObject(src)) {
+            return this.shown ? this.hide() : this
+          }
 
-        items = this.sorter(items)
+          return this.render(src).show()
+        } else {
+          items = $.grep(src, function (item) {
+            return this.matcher(item)
+          })
 
-        if (!items.length) {
-          return this.shown ? this.hide() : this
+          items = this.sorter(items)
+
+          if (!items.length) {
+            return this.shown ? this.hide() : this
+          }
+
+          return this.render(items.splice(0, this.options.items)).show();
         }
-
-        return this.render(items.slice(0, this.options.items)).show()
       }
 
     }
@@ -175,14 +236,33 @@
   , render: function (items) {
       var that = this
 
-      items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
-        return i[0]
-      })
+      // If items is an object, then we must be using headers
+      if (items.length === undefined) {
+        var result = [];
+        for (var cat in items) {
+          var i = $(that.options.item).text(cat.toString()).addClass('header');
+          result.push(i[0]);
 
-      items.first().addClass('active')
-      this.$menu.html(items)
+          items[cat].forEach(function(item, i) {
+            var i = $(that.options.item).attr('data-value', item);
+            i.find('a').html(that.highlighter(item))
+            result.push(i[0]);
+          });
+        }
+
+        $(result[1]).addClass('active')
+        this.$menu.html(result)
+      } else {
+        items = $(items).map(function (i, item) {
+          i = $(that.options.item).attr('data-value', item)
+          i.find('a').html(that.highlighter(item))
+          return i[0]
+        })
+
+        items.first().addClass('active')
+        this.$menu.html(items)
+      }
+
       return this
     }
 
@@ -194,6 +274,11 @@
         next = $(this.$menu.find('li')[0])
       }
 
+      // Don't allow headers to be selected
+      if (next.hasClass('header')) {
+        next = next.next();
+      }
+
       next.addClass('active')
     }
 
@@ -203,6 +288,10 @@
 
       if (!prev.length) {
         prev = this.$menu.find('li').last()
+      }
+
+      if (prev.hasClass('header')) {
+        prev = prev.prev();
       }
 
       prev.addClass('active')
