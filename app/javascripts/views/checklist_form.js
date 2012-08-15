@@ -33,7 +33,8 @@ Checklist.SearchTextField = Em.TextField.extend({
     var params = {
       param_name: 'scientific_name',
       value: event.value,
-      per_page: 4
+      per_page: 4,
+      show_synonyms: 1
     };
 
     var url = window.BACKEND_URL + 'taxon_concepts';
@@ -43,13 +44,19 @@ Checklist.SearchTextField = Em.TextField.extend({
         {
           source: {url: url, params: params},
           parser: this.parser,
-          highlighter: this.highlighter
+          highlighter: this.highlighter,
+          updater: this.updater
         }
       );
     }
   },
 
-  highlighter: function (item) {
+  updater: function(item) {
+    // Remove synonyms when an item is selected
+    return item.replace(/(.*)( \(\=.*\))/, "$1");
+  },
+
+  highlighter: function(item) {
     var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
     return item.replace(new RegExp('(' + query + ')', 'i'), function ($1, match) {
       return '<strong>' + match + '</strong>'
@@ -66,7 +73,12 @@ Checklist.SearchTextField = Em.TextField.extend({
         results[content[i].rank_name] = [];
       }
 
-      results[content[i].rank_name].push(content[i].full_name);
+      var synonyms = ""
+      if (content[i].synonyms !== undefined && content[i].synonyms != "") {
+        synonyms = " (=" + content[i].synonyms + ")";
+      }
+
+      results[content[i].rank_name].push(content[i].full_name + synonyms);
     });
 
     return results;
