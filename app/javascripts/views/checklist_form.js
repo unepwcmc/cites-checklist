@@ -34,7 +34,8 @@ Checklist.SearchTextField = Em.TextField.extend({
       param_name: 'scientific_name',
       value: event.value,
       per_page: 4,
-      show_synonyms: 1
+      show_synonyms: 1,
+      name_only: 1
     };
 
     var url = window.BACKEND_URL + 'taxon_concepts';
