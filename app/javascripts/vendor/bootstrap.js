@@ -151,12 +151,19 @@
         var params = this.source.params;
         params[params.param_name] = params.value;
 
-        $.ajax({
-          type : "GET",
-          url : url,
-          dataType : "json",
-          data : params,
-          success : function(data) {
+        if($.browser.msie && window.XDomainRequest) {
+          // Use Microsoft XDR
+          var xdr = new XDomainRequest();
+          xdr.contentType = "text/plain";
+          xdr.open("get", url);
+          xdr.onprogress = function(){};
+          xdr.onerror = function(){};
+          xdr.onload = function () {
+            var JSON = $.parseJSON(xdr.responseText);
+            if (JSON == null || typeof (JSON) == 'undefined'){
+              JSON = $.parseJSON(data.firstChild.textContent);
+            }
+
             src = that.parser(data);
 
             if (src.length === undefined) {
@@ -178,9 +185,40 @@
 
               return that.render(items.splice(0, this.options.items)).show();
             }
-          },
-          error : function(xhr, status, error) {}
-        });
+          };
+          xdr.send();
+        } else {
+          $.ajax({
+            type : "GET",
+            url : url,
+            dataType : "json",
+            data : params,
+            success : function(data) {
+              src = that.parser(data);
+
+              if (src.length === undefined) {
+                if ($.isEmptyObject(src)) {
+                  return that.shown ? that.hide() : that
+                }
+
+                return that.render(src).show()
+              } else {
+                items = $.grep(src, function (item) {
+                  return that.matcher(item)
+                })
+
+                items = that.sorter(items)
+
+                if (!items.length) {
+                  return that.shown ? that.hide() : that
+                }
+
+                return that.render(items.splice(0, this.options.items)).show();
+              }
+            },
+            error : function(xhr, status, error) {}
+          });
+        }
       } else {
         src = this.parser(this.source);
 
