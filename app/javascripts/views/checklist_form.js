@@ -33,12 +33,10 @@ Checklist.SearchTextField = Em.TextField.extend({
     var params = {
       param_name: 'scientific_name',
       value: event.value,
-      per_page: 4,
-      show_synonyms: 1,
-      name_only: 1
+      per_page: 10
     };
 
-    var url = window.BACKEND_URL + 'taxon_concepts';
+    var url = window.BACKEND_URL + 'taxon_concepts/autocomplete';
 
     if ($('.typeahead').length <= 0) {
       $('#scientific_name').typeahead(
@@ -65,21 +63,24 @@ Checklist.SearchTextField = Em.TextField.extend({
   },
 
   parser: function(data) {
-    var content = data[0].taxon_concepts;
+    var content = data;
     var results = {}
 
     // Extract the names of each result row for use by typeahead.js
-    content.forEach(function(item,i) {
+    content.forEach(function(item,i) {console.log(item);
+      console.log(content[i]);
       if (!(content[i].rank_name in results)) {
         results[content[i].rank_name] = [];
       }
 
-      var synonyms = ""
-      if (content[i].synonyms !== undefined && content[i].synonyms != "") {
-        synonyms = " (=" + content[i].synonyms + ")";
+      var entry = '';
+      if (content[i].primary_name !== null) {
+        entry = content[i].primary_name + " (=" + content[i].full_name + ")";
+      } else {
+        entry = content[i].full_name
       }
 
-      results[content[i].rank_name].push(content[i].full_name + synonyms);
+      results[content[i].rank_name].push(entry);
     });
 
     return results;
