@@ -57,7 +57,7 @@ Checklist.SearchTextField = Em.TextField.extend({
 
   highlighter: function(item) {
     var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-    return item.replace(new RegExp('(' + query + ')', 'i'), function ($1, match) {
+    return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
       return '<strong>' + match + '</strong>'
     })
   },
@@ -67,20 +67,16 @@ Checklist.SearchTextField = Em.TextField.extend({
     var results = {}
 
     // Extract the names of each result row for use by typeahead.js
-    content.forEach(function(item,i) {console.log(item);
-      console.log(content[i]);
-      if (!(content[i].rank_name in results)) {
-        results[content[i].rank_name] = [];
+    content.forEach(function(item,i) {
+      if (!(item.rank_name in results)) {
+        results[item.rank_name] = [];
       }
 
-      var entry = '';
-      if (content[i].primary_name !== null) {
-        entry = content[i].primary_name + " (=" + content[i].full_name + ")";
-      } else {
-        entry = content[i].full_name
+      var entry = item.full_name;
+      if (item.synonyms !== '') {
+        entry += " (=" + item.synonyms + ")";
       }
-
-      results[content[i].rank_name].push(entry);
+      results[item.rank_name].push(entry);
     });
 
     return results;
