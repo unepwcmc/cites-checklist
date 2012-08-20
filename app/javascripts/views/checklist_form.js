@@ -57,9 +57,12 @@ Checklist.SearchTextField = Em.TextField.extend({
 
   highlighter: function(item) {
     var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-    return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+    var transform = function ($1, match) {
       return '<strong>' + match + '</strong>'
-    })
+    }
+    return item.
+    replace(new RegExp('^(' + query + ')', 'i'), transform).
+    replace(new RegExp('[ =](' + query + ')', 'ig'), transform)
   },
 
   parser: function(data) {
