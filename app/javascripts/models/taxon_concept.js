@@ -9,9 +9,9 @@ Checklist.TaxonConcept = DS.Model.extend({
   family_name: DS.attr('string'),
   full_name: DS.attr('string'),
   cites_accepted: DS.attr('boolean'),
-  english: DS.attr('string'),
-  spanish: DS.attr('string'),
-  french: DS.attr('string'),
-  synonyms: DS.attr('string')
+  english: DS.attr('string', { key: 'english_names_list' }),
+  spanish: DS.attr('string', { key: 'spanish_names_list' }),
+  french: DS.attr('string', { key: 'french_names_list' }),
+  synonyms: DS.attr('string', { key: 'synonyms_list' })
 });
 
