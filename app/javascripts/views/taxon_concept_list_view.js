@@ -33,8 +33,12 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       this.content.get('rank_name') != 'PHYLUM' &&
       this.content.get('rank_name') != 'CLASS'
     }.property(),
-    showHigherTaxaBar: function(){
+    isHigherTaxa: function(){
       return this.content.get('rank_name') == 'higher-taxa';
+    }.property(),
+    showHigherTaxaBar: function(){
+      return this.get('filtersController').taxonomicLayout &&
+        this.get('isHigherTaxa');
     }.property(),
     tagName: function(){
       if (this.get('showHigherTaxaBar')){

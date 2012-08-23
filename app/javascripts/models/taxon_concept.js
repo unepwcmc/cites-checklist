@@ -16,7 +16,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   french: DS.attr('string', { key: 'french_names_list' }),
   synonyms: DS.attr('string', { key: 'synonyms_list' }),
   higherTaxa: function(){
-    var ranks = ['PHYLUM', 'CLASS', 'ORDER', 'FAMILY', 'GENUS'];
+    var ranks = ['PHYLUM', 'CLASS', 'ORDER', 'FAMILY'];
     var rankIndex = ranks.indexOf(this.get('rank_name'));
     if (rankIndex == -1){
       rankIndex = ranks.length;
