@@ -1,7 +1,9 @@
-@for $i from 1 through 20 {
-  .taxon-level#{$i}{
-    margin-left: $i * 10px;
-  }
+
+.higher-taxa-taxon {
+  background-color: #e8ebef;
+  color: #33536a;
+  padding: 5px;
+  text-transform: uppercase;
 }
 
 .kingdom-taxon {

@@ -5,15 +5,10 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'taxon_concept_view',
-    classNameBindings: ['level', 'rank'],
+    classNameBindings: ['rank'],
     //TODO could the filters controller be passed here and used instead of router call
     filtersController: function(){
       return Checklist.get('router').get('filtersController')
-    }.property(),
-    level: function(){
-      if(this.get('filtersController').taxonomicLayout){ 
-        return 'taxon-level' + this.content.get('depth');
-      }
     }.property(),
     rank: function(){
       return this.content.get('rank_name').toLowerCase() + '-taxon';
@@ -37,6 +32,16 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     showListing: function(){return this.content.get('rank_name') != 'KINGDOM' &&
       this.content.get('rank_name') != 'PHYLUM' &&
       this.content.get('rank_name') != 'CLASS'
+    }.property(),
+    showHigherTaxaBar: function(){
+      return this.content.get('rank_name') == 'higher-taxa';
+    }.property(),
+    tagName: function(){
+      if (this.get('showHigherTaxaBar')){
+        return 'div';
+      } else {
+        return 'li';
+      }
     }.property()
   })
 });

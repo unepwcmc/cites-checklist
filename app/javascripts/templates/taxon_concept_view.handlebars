@@ -1,19 +1,23 @@
-<span class="full-name accepted-{{unbound cites_accepted}}">{{unbound full_name}}</span>
-{{unbound spp}}:
-{{#if view.showListing}}
-  <span class="listing">{{unbound current_listing}}</span>
-{{/if}}
-<span class="family">{{unbound family_name}}</span>
-<span class="class">{{unbound class_name}}</span>
-{{#if view.showEnglish }}
-  (E) {{unbound english}}
-{{/if}}
-{{#if view.showSpanish }}
-  (S) {{ unbound spanish}}
-{{/if}}
-{{#if view.showFrench }}
-  (F) {{unbound french}}
-{{/if}}
-{{#if view.showSynonyms }}
-  (syn) {{unbound synonyms}}
+{{#if view.showHigherTaxaBar}}
+  {{unbound higherTaxaBar}}
+{{else}}
+  <span class="full-name accepted-{{unbound cites_accepted}}">{{unbound full_name}}</span>
+  {{unbound spp}}:
+  {{#if view.showListing}}
+    <span class="listing">{{unbound current_listing}}</span>
+  {{/if}}
+  <span class="family">{{unbound family_name}}</span>
+  <span class="class">{{unbound class_name}}</span>
+  {{#if view.showEnglish }}
+    (E) {{unbound english}}
+  {{/if}}
+  {{#if view.showSpanish }}
+    (S) {{ unbound spanish}}
+  {{/if}}
+  {{#if view.showFrench }}
+    (F) {{unbound french}}
+  {{/if}}
+  {{#if view.showSynonyms }}
+    (syn) {{unbound synonyms}}
+  {{/if}}
 {{/if}}
