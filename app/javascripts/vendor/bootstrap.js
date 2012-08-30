@@ -79,7 +79,9 @@
     this.select = this.options.select || this.select
     this.render = this.options.render || this.render
 
-    this.$menu = $(this.options.menu).appendTo('body')
+    this.$location = $(this.options.location) || $(this.location)
+
+    this.$menu = $(this.options.menu).appendTo(this.$location)
     this.source = this.options.source
     this.shown = false
     this.listen()
@@ -118,13 +120,13 @@
       , left: pos.left
       })
 
-      this.$menu.show()
+      this.$location.show()
       this.shown = true
       return this
     }
 
   , hide: function () {
-      this.$menu.hide()
+      this.$location.hide()
       this.shown = false
       return this
     }
@@ -443,6 +445,7 @@
   , items: 4
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , location: 'body'
   }
 
   $.fn.typeahead.Constructor = Typeahead
