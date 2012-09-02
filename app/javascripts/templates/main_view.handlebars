@@ -1,3 +1,560 @@
+<header id="header">
+  <div class="wrap">
+    <div class="content">
+      <div class="c1">
+        <div class="logo-holder">
+          <h1 class="logo"><a href="#">checklist</a></h1>
+          <a href="#" class="alignright">About</a>
+        </div>
+        <div class="header-frame">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column">
+                <div class="search">
+                  <fieldset>
+                    <div class="search-holder">
+                      <div class="search-frame">
+                        {{view Checklist.SearchTextField
+                          valueBinding="controllers.filtersController.scientificName"
+                          id="scientific_name"
+                          title="search"
+                          placeholder="Species, taxon, synonym or common name..."
+                        }}
+                      </div>
+                    </div>
+                    <input type="submit" value="SEARCH" />
+                  </fieldset>
+                  <div class="drop" style="display: none;" id="autocomplete-dropdown">
+                    <img src="images/img-decor1.png" alt="image description" class="decor" width="24" height="13" >
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <a href="#" class="btn"><span>ALL</span></a>
+              </div>
+              <div class="column style01">
+                <div class="btn-holder">
+                  <a href="#" class="btn"><span>ALL LOCATIONS</span></a>
+                  <div class="drop">
+                    <div class="drop-search">
+                      <form action="#">
+                        <fieldset>
+                          <input title="search" type="text" placeholder="Type to find countries or regions" value="" />
+                          <input type="submit" value="search" />
+                        </fieldset>
+                      </form>
+                    </div>
+                    <div class="drop-holder">
+                      <div class="scrollable-area vscrollable autodetect-width">
+                        <strong class="heading">REGIONS</strong>
+                        <ul>
+                          <li><a href="#">Europe</a></li>
+                          <li><a href="#">Asia</a></li>
+                          <li><a href="#">Africa</a></li>
+                        </ul>
+                        <strong class="heading">COUNTRIES</strong>
+                        <ul>
+                          <li><a href="#">Spain</a></li>
+                          <li><a href="#">Dominican Republic</a></li>
+                          <li><a href="#">Brazil</a></li>
+                          <li><a href="#">Spain</a></li>
+                          <li><a href="#">Dominican Republic</a></li>
+                          <li><a href="#">Brazil</a></li>
+                        </ul>
+                        <strong class="heading">COUNTRIES</strong>
+                        <ul>
+                          <li><a href="#">Spain</a></li>
+                          <li><a href="#">Dominican Republic</a></li>
+                          <li><a href="#">Brazil</a></li>
+                          <li><a href="#">Spain</a></li>
+                          <li><a href="#">Dominican Republic</a></li>
+                          <li><a href="#">Brazil</a></li>
+                        </ul>
+                      </div>
+                      <div class="shadow"></div>
+                    </div>
+                    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="aside">
+      <div class="custom-holder">
+        <a href="#" class="btn-custom">CUSTOM SEARCH</a>
+        <div class="drop">
+          <form action="#">
+            <fieldset>
+              <div class="row-holder">
+                <strong class="heading">COMMON NAMES</strong>
+                <div class="row">
+                  <input id="item1" type="checkbox" checked="checked">
+                  <label for="item1">ENG</label>
+                </div>
+                <div class="row">
+                  <input id="item2" type="checkbox">
+                  <label for="item2">FRE</label>
+                </div>
+                <div class="row">
+                  <input id="item3" type="checkbox" checked="checked">
+                  <label for="item3">SPA</label>
+                </div>
+              </div>
+              <div class="row-holder">
+                <strong class="heading">SORTING</strong>
+                <div class="row">
+                  <input name="sorting" id="item4" type="radio" checked="checked">
+                  <label for="item4">Alphabetical</label>
+                </div>
+                <div class="row">
+                  <input name="sorting" id="item5" type="radio">
+                  <label for="item5">Taxonomical</label>
+                </div>
+              </div>
+              <div class="row-holder style01">
+                <strong class="heading">OTHER OPTIONS</strong>
+                <div class="row">
+                  <input id="item6" type="checkbox" checked="checked">
+                  <label for="item6">Show synonyms</label>
+                </div>
+                <div class="row">
+                  <input id="item7" type="checkbox">
+                  <label for="item7">Unfold history</label>
+                </div>
+                <div class="row">
+                  <input id="item8" type="checkbox" checked="checked">
+                  <label for="item8">Show items with implicit classification</label>
+                </div>
+              </div>
+              <input class="hidden" type="submit" value="submit" />
+            </fieldset>
+          </form>
+          <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section id="main">
+  <div class="wrap">
+    <div class="content">
+      <div class="c1">
+        <div class="block">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Acinonyx jubatus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Hunting leopard - ENG</li>
+                    <li>Chita, Guepardo - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico3.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Democratic Republic of Congo</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="block color1">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Bacinonyx jubatus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                    <li>Chita, Guepardo Ibérico - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico2.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Switzerland, Germany, Poland and <a href="#">2 others</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="block expanded">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Bacinonyx jubatus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                    <li>Chita, Guepardo Ibérico - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico2.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Peru</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="column-container">
+                  <div class="column">
+                    <div class="area-holder">
+                      <div class="area">
+                        <div class="area-b">
+                          <div class="row color1">
+                            <img class="category" src="images/ico1.png" alt="image description" width="26" height="26" >
+                          </div>
+                          <div class="row color2">
+                            <img class="category" src="images/ico2.png" alt="image description" width="26" height="26" >
+                          </div>
+                          <div class="row">
+                            <img class="category" src="images/ico3.png" alt="image description" width="26" height="26" >
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos1"><span class="ico-plus">+</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <p><a href="#">See 5 per country classifications</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opener-holder"><a href="#" class="opener">opener</a></div>
+        </div>
+        <div class="block expanded">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Bacinonyx jubatus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                    <li>Chita, Guepardo Ibérico - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico2.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Peru</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="column-container">
+                  <div class="column">
+                    <div class="area-holder">
+                      <div class="area">
+                        <div class="area-b">
+                          <div class="row color1">
+                            <img class="category" src="images/ico1.png" alt="image description" width="26" height="26" >
+                          </div>
+                          <div class="row color2">
+                            <img class="category" src="images/ico2.png" alt="image description" width="26" height="26" >
+                          </div>
+                          <div class="row">
+                            <img class="category" src="images/ico3.png" alt="image description" width="26" height="26" >
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos1"><span class="ico-plus">+</span></a>
+                          </div>
+                          <div class="text-holder">
+                            <span>Appendix III per country classifications:</span>
+                          </div>
+                          <div class="row">
+                            <div class="category">pe</div>
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos1"><span class="ico-plus">+</span></a>
+                            <div class="mark pos1"></div>
+                          </div>
+                          <div class="row">
+                            <div class="category">co</div>
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos1"><span class="ico-plus">+</span></a>
+                            <div class="mark pos1"></div>
+                          </div>
+                          <div class="row">
+                            <div class="category">GT</div>
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos2"><span class="ico-plus">+</span></a>
+                            <div class="mark pos1"></div>
+                          </div>
+                          <div class="row">
+                            <div class="category">bo</div>
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos3"><span class="ico-plus">+</span></a>
+                            <div class="mark pos1"></div>
+                          </div>
+                          <div class="row">
+                            <div class="category">br</div>
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a  href="#popup1" title="GT · FEB 08" class="ico tooltip pos4"><span class="ico-plus">+</span></a>
+                            <div class="mark pos1"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opener-holder"><a href="#" class="opener">opener</a></div>
+        </div>
+        <div class="block expanded">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Bacinonyx jubatus <a href="#" class="btn-more">more <span class="hidden">descrioption</span></a></h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li class="style01">Ursus Negrus, Ursus oscurios</li>
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                    <li>Chita, Guepardo Ibérico - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico1.png" alt="image description" width="26" height="26" ></li>
+                          <li><img src="images/ico2.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Switzerland, Germany, Poland and <a href="#">5 others</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="column-container">
+                  <div class="column">
+                    <div class="area-holder">
+                      <div class="area">
+                        <div class="area-b">
+                          <div class="row color1">
+                            <img class="category" src="images/ico1.png" alt="image description" width="26" height="26" >
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip small pos5"><span class="ico-plus">+</span></a>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos6"><span class="ico-minus">-</span></a>
+                            <div class="line pos2 size1"></div>
+                          </div>
+                          <div class="row color2">
+                            <img class="category" src="images/ico2.png" alt="image description" width="26" height="26" >
+                          </div>
+                          <div class="row">
+                            <img class="category" src="images/ico3.png" alt="image description" width="26" height="26" >
+                            <div class="line pos1"></div>
+                            <div class="arrow pos1"></div>
+                            <a href="#popup1" title="GT · FEB 08" class="ico tooltip pos1"><span class="ico-plus">+</span></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opener-holder"><a href="#" class="opener">opener</a></div>
+        </div>
+        <div class="block">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Bacinonyx jubatus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                    <li>Chita, Guepardo Ibérico - ESP</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico3.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Peru</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block style01">
+          <div class="column-holder">
+            <div class="column-frame">
+              <div class="column-container">
+                <div class="column">
+                  <h2>Ursus Americanus</h2>
+                  <ul class="details">
+                    <li><a href="#">Mammalia</a></li>
+                    <li><a href="#">Felidae</a></li>
+                  </ul>
+                  <ul class="default-list">
+                    <li>Cheetah, Latin American Leopard - ENG</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <ul class="icons">
+                          <li><img src="images/ico2.png" alt="image description" width="26" height="26" ></li>
+                          <li><img src="images/ico3.png" alt="image description" width="26" height="26" ></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column style01">
+                  <div class="column-area">
+                    <div class="holder">
+                      <div class="frame">
+                        <p>Spain</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="paging">
+        <li><a class="btn-prev" href="#">prev</a></li>
+        <li>1/77</li>
+        <li><a class="btn-next" href="#">next</a></li>
+      </ul>
+    </div>
+    <div class="aside">
+      <div class="text-frame">
+        <strong class="heading">4,201 <span>taxa</span></strong>
+      </div>
+      <div class="btn-holder">
+        <a href="#" class="btn red">DOWNLOAD</a>
+      </div>
+      {{view Checklist.SavedSearchView}}
+    </div>
+  </div>
+</section>
+
 {{#view Checklist.ChecklistForm
   controllerBinding="controllers.taxonConceptController"
   filtersControllerBinding="controllers.filtersController"

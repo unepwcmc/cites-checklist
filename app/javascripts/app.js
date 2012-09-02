@@ -1,10 +1,13 @@
 require('checklist/config');
 require('checklist/vendor/jquery-1.7.2');
+require('checklist/vendor/jcf');
 require('checklist/vendor/jquery.cookie');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 require('checklist/vendor/bootstrap');
+require('checklist/vendor/jquery.main');
 
+require('checklist/templates/application_view');
 require('checklist/templates/main_view');
 require('checklist/templates/pdf_download_view');
 require('checklist/templates/taxon_concept_view');
@@ -17,7 +20,7 @@ Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
 Checklist = Ember.Application.create({
   ApplicationController: Ember.Controller.extend({}),
   ApplicationView: Ember.View.extend({
-    templateName: 'main_view'
+    templateName: 'application_view'
   }),
 });
 
@@ -36,6 +39,7 @@ Checklist.store = DS.Store.create({
 
 // Choose between cookies or localStorage for saved searches, depending
 // on availability
+// TODO refactor local_store to just use a boolean
 var method = '';
 if (Checklist.Helpers.storage) {
   method = 'localStorage';

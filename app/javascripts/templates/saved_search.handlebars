@@ -1,4 +1,8 @@
-<input type="text" style="font-size:14px;width:inherit !important;" id="save_search_name" />
-<button {{action "save" target="view"}} type="button">Save Search</button>
-<h2>Saved searches:</h2>
-{{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
+<a href="#" {{action "save" target="view"}} class="btn"><span class="ico-star"></span>SAVE THIS</a>
+<fieldset class="saved-search">
+  {{view Checklist.SavedSearchTextField filtersControllerBinding="controllers.filtersController"}}
+</fieldset>
+
+<div class="text-holder">
+  <p><strong><a href="#">3 saved searches</a></strong></p>
+</div>

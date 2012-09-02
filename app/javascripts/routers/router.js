@@ -5,11 +5,14 @@ Checklist.Router = Ember.Router.extend({
     home: Ember.Route.extend({
       route: '/',
       connectOutlets: function(router, event) {
-        router.get('taxonConceptController').
-          set('content', Checklist.store.find(
-            Checklist.Index, router.get('filtersController').toParams()
-          )
-        )
+        router.get('applicationController')
+              .connectOutlet({
+                viewClass: Checklist.MainView,
+                controller: router.get('taxonConceptController'),
+                context: Checklist.store.find(
+                           Checklist.Index, router.get('filtersController').toParams()
+                         )
+              });
       }
     }),
     search: Ember.Route.extend({

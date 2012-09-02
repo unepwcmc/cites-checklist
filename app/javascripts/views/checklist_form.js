@@ -44,7 +44,9 @@ Checklist.SearchTextField = Em.TextField.extend({
           source: {url: url, params: params},
           parser: this.parser,
           highlighter: this.highlighter,
-          updater: this.updater
+          updater: this.updater,
+          menu: '<div class="drop-holder"><div class="scrollable-area vscrollable autodetect-width"> <ul> </ul> </div> </div>',
+          location: '#autocomplete-dropdown'
         }
       );
     }

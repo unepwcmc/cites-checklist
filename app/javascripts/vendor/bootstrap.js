@@ -115,11 +115,6 @@
         height: this.$element[0].offsetHeight
       })
 
-      this.$menu.css({
-        top: pos.top + pos.height
-      , left: pos.left
-      })
-
       this.$location.show()
       this.shown = true
       return this
@@ -291,7 +286,7 @@
         }
 
         $(result[1]).addClass('active')
-        this.$menu.html(result)
+        this.inject_menu(result)
       } else {
         items = $(items).map(function (i, item) {
           i = $(that.options.item).attr('data-value', item)
@@ -300,10 +295,18 @@
         })
 
         items.first().addClass('active')
-        this.$menu.html(items)
+        this.inject_menu(items)
       }
 
       return this
+    }
+
+    /*
+     * Injects the given HTML in to the deepest child element in the
+     * provided menu HTML
+     */
+  , inject_menu: function(html) {
+      return this.$menu.find('ul').html(html);
     }
 
   , next: function (event) {
