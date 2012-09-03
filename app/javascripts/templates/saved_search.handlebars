@@ -3,6 +3,10 @@
   {{view Checklist.SavedSearchTextField filtersControllerBinding="controllers.filtersController"}}
 </fieldset>
 
-<div class="text-holder">
-  <p><strong><a href="#">3 saved searches</a></strong></p>
+<div class="saved-holder">
+  <p><strong><a href="#" class="btn-saved">saved searches</a></strong></p>
+  <div class="drop">
+      {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
+    <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
+  </div>
 </div>

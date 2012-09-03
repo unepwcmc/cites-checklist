@@ -121,6 +121,14 @@ function initOpenClose() {
 		effect:'none',
 		animSpeed:500
 	});
+
+        jQuery('div.saved-holder').openClose({
+                activeClass:'expanded',
+                opener:'a.btn-saved',
+                slider:'div.drop',
+                effect:'none',
+                animSpeed:500
+        });
 }
 
 /*
