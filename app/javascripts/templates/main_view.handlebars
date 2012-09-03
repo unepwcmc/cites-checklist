@@ -30,7 +30,15 @@
                 </div>
               </div>
               <div class="column">
-                <a href="#" class="btn"><span>ALL</span></a>
+                <div class="appendix-holder">
+                  <a href="#" class="btn"><span>ALL</span></a>
+                  <div class="drop">
+                    <div class="drop-holder">
+                      {{collection Checklist.AppendixFormView contentBinding="controllers.filtersController.appendicesContent"}}
+                    </div>
+                    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
+                  </div>
+                </div>
               </div>
               <div class="column style01">
                 <div class="btn-holder">

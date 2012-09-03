@@ -12,6 +12,7 @@ require('checklist/templates/main_view');
 require('checklist/templates/pdf_download_view');
 require('checklist/templates/taxon_concept_view');
 require('checklist/templates/kingdom_list_view');
+require('checklist/templates/appendix_form');
 require('checklist/templates/saved_search_collection');
 require('checklist/templates/saved_search');
 
@@ -56,6 +57,7 @@ Checklist.local_store = DS.Store.create({
 
 require('checklist/views/saved_search_collection_view');
 require('checklist/views/saved_search_view');
+require('checklist/views/appendix_form_view');
 require('checklist/views/main_view');
 require('checklist/views/pdf_download_view');
 require('checklist/views/checklist_form');

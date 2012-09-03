@@ -125,7 +125,7 @@ fieldset {
     background:url(../images/ico5.png) no-repeat;
   }
 
-  .btn-holder{
+  .appendix-holder, .btn-holder{
     position:relative;
     z-index:999;
     padding:0 0 20px;
@@ -264,6 +264,7 @@ fieldset.saved-search {
 }
 
 * +html #header .btn-holder{display:inline;}
+* +html #header .appendix-holder{display:inline;}
 
 .drop {
   position:absolute;
@@ -380,7 +381,7 @@ fieldset.saved-search {
   }
 }
 
-.btn-holder {
+.appendix-holder, .btn-holder {
   .drop {
     width:215%;
     margin:0;
@@ -396,6 +397,78 @@ fieldset.saved-search {
   &:hover .drop {
     right:-17px;
     left:auto;
+  }
+}
+
+.appendix-holder {
+  .drop {
+    background: #F5F6F7;
+    width: 115%;
+
+    .decor {
+      left: 32%;
+      right: 0;
+    }
+
+    .drop-holder {
+      padding: 0;
+
+      ul {
+        text-align: center;
+        padding: 0;
+
+        li {
+          border-bottom: 1px solid #CCC;
+          padding: 20px;
+          line-height: 28px;
+
+          &:hover {
+            background: #DDD;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover .drop {
+    right:-5px;
+    left:auto;
+  }
+
+  .circle {
+    margin: 0 auto 0 auto;
+
+    &.inactive {
+      @extend .circle.grey;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  height: 26px;
+  width: 26px;
+
+  color: #fff;
+
+  &.green {
+    background: #99c575;
+  }
+
+  &.orange {
+    background: #ffa366;
+  }
+
+  &.blue {
+    background: #93c2d9;
+  }
+
+  &.grey {
+    background: #adadad;
   }
 }
 
