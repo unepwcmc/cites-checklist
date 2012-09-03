@@ -4,7 +4,7 @@
       <div class="c1">
         <div class="logo-holder">
           <h1 class="logo"><a href="#">checklist</a></h1>
-          <a href="#" class="alignright">About</a>
+          <a href="#" class="top-links">About</a>
         </div>
         <div class="header-frame">
           <div class="column-holder">
@@ -129,7 +129,6 @@
                   <label for="item8">Show items with implicit classification</label>
                 </div>
               </div>
-              <input class="hidden" type="submit" value="submit" />
             </fieldset>
           </form>
           <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
@@ -554,109 +553,3 @@
     </div>
   </div>
 </section>
-
-{{#view Checklist.ChecklistForm
-  controllerBinding="controllers.taxonConceptController"
-  filtersControllerBinding="controllers.filtersController"
-}}
-  <p>Filter by country:</p>
-  {{view Em.Select
-    multiple = "true"
-    viewName = "countryFilter"
-    contentBinding = "controllers.filtersController.countriesContent"
-    selectionBinding = "controllers.filtersController.countries"
-    optionLabelPath = "content.name"
-    optionValuePath = "content.id"
-  }}
-
-  <p>
-    Selected countries:
-    {{#each controllers.filtersController.countries}}
-      {{name}}
-    {{/each}}
-  </p>
-
-
-  <p>Filter by region:</p>
-  {{view Em.Select
-    multiple = "true"
-    viewName = "regionFilter"
-    contentBinding = "controllers.filtersController.regionsContent"
-    selectionBinding = "controllers.filtersController.regions"
-    optionLabelPath = "content.name"
-    optionValuePath = "content.id"
-  }}
-
-  <p>
-    Selected regions:
-    {{#each controllers.filtersController.regions}}
-      {{name}}
-    {{/each}}
-  </p>
-
-
-  <p>Filter by appendix:</p>
-  {{view Em.Select
-    multiple = "true"
-    viewName = "appendixFilter"
-    contentBinding = "controllers.filtersController.appendicesContent"
-    selectionBinding = "controllers.filtersController.appendices"
-    optionLabelPath = "content.abbreviation"
-    optionValuePath = "content.id"
-  }}
-
-  <p>
-    Selected appendices:
-    {{#each controllers.filtersController.appendices}}
-      {{abbreviation}}
-    {{/each}}
-  </p>
-
-  <p>
-    <h2>scientific name</h2>
-    {{view Checklist.SearchTextField
-      valueBinding="controllers.filtersController.scientificName"
-      id="scientific_name"
-    }}
-  </p>
-
-  <p>
-    <h2>common names</h2>
-    {{view Ember.Checkbox checkedBinding="controllers.filtersController.showEnglish"}} English
-    {{view Ember.Checkbox checkedBinding="controllers.filtersController.showSpanish"}} Spanish
-    {{view Ember.Checkbox checkedBinding="controllers.filtersController.showFrench"}} French
-  </p>
-
-  <p>
-    <h2>sorting</h2>
-    {{view Ember.Checkbox checkedBinding="controllers.filtersController.taxonomicLayout"}} taxonomic layout
-  </p>
-
-  <p>
-    <h2>other options</h2>
-    {{view Ember.Checkbox checkedBinding="controllers.filtersController.showSynonyms"}} show synonyms
-  </p>
-
-  <button type="submit">Go</button>
-
-<hr />
-
-<p>
-  {{view Checklist.SavedSearchView
-    filtersControllerBinding="controllers.filtersController"
-  }}
-</p>
-
-{{/view}}
-
-<hr>
-
-{{view Checklist.PdfDownloadView
-  filtersControllerBinding="controllers.filtersController"
-}}
-
-{{#each controllers.taxonConceptController.content}}
-  {{view Checklist.KingdomListView contentBinding="this"
-    filtersControllerBinding="controllers.filtersController"
-  }}
-{{/each}}
