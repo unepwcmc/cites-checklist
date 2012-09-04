@@ -32,14 +32,22 @@ Checklist.AppendixFormView = Ember.CollectionView.extend({
     }.property().volatile(),
 
     click: function(event) {
+      // The click event fires for list items as well as circles,
+      // this is a bit of a hacky method of ignoring list item clicks
+      if ($(event.target).not('div').length > 0) return;
+
       var filtersController = Checklist.get('router').get('filtersController');
 
       // Add the selected appendice to the appendice filter array
       // Equivalent to a selectionBinding in a dropdown list
       appendices = filtersController.get('appendices');
-      if (!appendices.contains(this.get('context'))) {
+      if (appendices.contains(this.get('context'))) {
+        appendices.splice(appendices.indexOf(this.get('context')), 1);
+      } else {
         appendices.push(this.get('context'))
       }
+
+      filtersController.set('appendices', appendices);
 
       $(event.target).parent().toggleClass('inactive');
     }
