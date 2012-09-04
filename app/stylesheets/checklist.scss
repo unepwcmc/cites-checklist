@@ -1,3 +1,15 @@
+/*
+ * SASS Mixins
+ */
+
+@mixin vendor-prefix($name, $argument) {
+  #{$name}: $argument;
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -401,6 +413,8 @@ fieldset.saved-search {
 }
 
 .appendix-holder {
+  @include vendor-prefix(user-select, none);
+
   .drop {
     background: #F5F6F7;
     width: 115%;
@@ -421,10 +435,6 @@ fieldset.saved-search {
           border-bottom: 1px solid #CCC;
           padding: 20px;
           line-height: 28px;
-
-          &:hover {
-            background: #DDD;
-          }
         }
       }
     }
@@ -437,10 +447,6 @@ fieldset.saved-search {
 
   .circle {
     margin: 0 auto 0 auto;
-
-    &.inactive {
-      @extend .circle.grey;
-    }
 
     &:hover {
       cursor: pointer;
@@ -455,19 +461,19 @@ fieldset.saved-search {
 
   color: #fff;
 
-  &.green {
+  .green &, .green {
     background: #99c575;
   }
 
-  &.orange {
+  .orange &, .orange {
     background: #ffa366;
   }
 
-  &.blue {
+  .blue &, .blue {
     background: #93c2d9;
   }
 
-  &.grey {
+  .grey &, .inactive &, .grey {
     background: #adadad;
   }
 }
@@ -503,9 +509,7 @@ fieldset.saved-search {
     overflow:hidden;
     line-height:16px;
     background:#f5f6f7;
-    border-radius: 5px 5px 5px 5px;
     padding:17px 19px;
-    -moz-border-radius: 0 0 5px 5px;
   }
 
   li {
