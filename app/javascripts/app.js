@@ -1,18 +1,30 @@
 require('checklist/config');
+
 require('checklist/vendor/jquery-1.7.2');
-require('checklist/vendor/jcf');
 require('checklist/vendor/jquery.cookie');
+require('checklist/vendor/jquery.mousewheel');
+require('checklist/vendor/jquery.mwheelIntent');
+require('checklist/vendor/jquery.jscrollpane.min');
+require('checklist/vendor/jquery.easing');
+require('checklist/vendor/jquery.fancybox');
+require('checklist/vendor/jquery.openclose');
+require('checklist/vendor/jquery.sameheight');
+require('checklist/vendor/jquery.tooltip');
+require('checklist/vendor/bootstrap-typeahead');
+
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
-require('checklist/vendor/bootstrap');
-require('checklist/vendor/jquery.main');
 
 require('checklist/templates/application_view');
 require('checklist/templates/main_view');
 require('checklist/templates/pdf_download_view');
+require('checklist/templates/higher_taxa');
 require('checklist/templates/taxon_concept_view');
 require('checklist/templates/kingdom_list_view');
+require('checklist/templates/location_view');
 require('checklist/templates/appendix_form');
+require('checklist/templates/selected_locations_collection');
+require('checklist/templates/locations_collection');
 require('checklist/templates/saved_search_collection');
 require('checklist/templates/saved_search');
 
@@ -26,6 +38,7 @@ Checklist = Ember.Application.create({
 });
 
 require('checklist/helpers/main');
+require('checklist/helpers/layout');
 
 require('checklist/sapi_adapter');
 require('checklist/search_adapter');
