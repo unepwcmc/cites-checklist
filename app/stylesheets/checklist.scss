@@ -1318,3 +1318,132 @@ fieldset.saved-search {
   .text-holder p{margin:0 0 14px;}
   .text-frame p{margin:0 0 16px;}
 }
+
+.affix {
+  position: fixed;
+}
+
+.affix {
+  right: 20px;
+  left: 20px;
+}
+.affix-bottom {
+  right: 20px;
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
+.floatingHeader {
+  position: fixed;
+  top: 232px;
+  visibility: hidden;
+}
+
+.jspContainer
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.jspPane
+{
+  position: absolute;
+}
+
+.jspVerticalBar
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background: red;
+}
+
+.jspHorizontalBar
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: red;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+  margin: 0;
+  padding: 0;
+}
+
+.jspCap
+{
+  display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+  float: left;
+}
+
+.jspTrack
+{
+  background: #fff;
+  position: relative;
+}
+
+.jspDrag
+{
+  background: #eaedf0;
+  position: relative;
+  top: 0;
+  left: 0;
+  @include vendor-prefix(border-radius, 3px);
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+  float: left;
+  height: 100%;
+}
+
+.jspArrow
+{
+  background: #50506d;
+  text-indent: -20000px;
+  display: block;
+  cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+  cursor: default;
+  background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+  height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+  width: 16px;
+  float: left;
+  height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+  outline: none;
+}
+
+.jspCorner
+{
+  background: #eeeef4;
+  float: left;
+  height: 100%;
+}

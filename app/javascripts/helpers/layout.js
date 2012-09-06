@@ -1,4 +1,11 @@
 $(window).load(function(){
+  $('.scroll-area').jScrollPane(
+    {
+      verticalDragMinHeight: 20,
+      verticalDragMaxHeight: 20
+    }
+  );
+
   var updateFloatingElements = function() {
      $(".persist-area").each(function(index, element) {
          var el             = $(this),
