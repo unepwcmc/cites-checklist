@@ -10,6 +10,7 @@ require('checklist/vendor/jquery.fancybox');
 require('checklist/vendor/jquery.openclose');
 require('checklist/vendor/jquery.sameheight');
 require('checklist/vendor/jquery.tooltip');
+require('checklist/vendor/custom-form-elements');
 require('checklist/vendor/bootstrap-typeahead');
 
 require('checklist/vendor/ember');
@@ -71,6 +72,7 @@ Checklist.local_store = DS.Store.create({
 require('checklist/views/saved_search_collection_view');
 require('checklist/views/saved_search_view');
 require('checklist/views/appendix_form_view');
+require('checklist/views/locations_view');
 require('checklist/views/main_view');
 require('checklist/views/pdf_download_view');
 require('checklist/views/checklist_form');

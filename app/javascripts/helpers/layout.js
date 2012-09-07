@@ -1,8 +1,19 @@
+jQuery(document).ready(function($) {
+  var cf = new CustomFormElements({
+      cssClass: 'styled',
+  });
+});
+
 $(window).load(function(){
-  $('.scroll-area').jScrollPane(
+  $('.btn-holder .scroll-area').jScrollPane(
     {
       verticalDragMinHeight: 20,
-      verticalDragMaxHeight: 20
+    }
+  );
+
+  $('.search .scroll-area').jScrollPane(
+    {
+      verticalDragMinHeight: 20,
     }
   );
 
@@ -76,24 +87,10 @@ $(window).load(function(){
   }
 
   var initLightbox = function() {
-    jQuery('.tooltip').each(function(){
-      var link = jQuery(this);
-      link.fancybox({
-        padding: 10,
-        cyclic: false,
-        overlayShow: true,
-        overlayOpacity: 0.65,
-        overlayColor: '#000',
-        titlePosition: 'inside',
-        onComplete: function(box) {
-          if(link.attr('href').indexOf('#') === 0) {
-            jQuery('#fancybox-content').find('a.close').unbind('click.fb').bind('click.fb', function(e){
-              jQuery.fancybox.close();
-              e.preventDefault();
-            });
-          }
-        }
-      });
+    $("#download").fancybox({
+      fitToView : true,
+      autoSize  : true,
+      closeClick  : false,
     });
   }
 
