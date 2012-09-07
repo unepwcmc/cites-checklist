@@ -32,9 +32,18 @@
                   </div>
                 </div>
               </div>
+
               <div class="column">
                 <div class="appendix-holder">
-                  <a href="#" class="btn"><span>ALL</span></a>
+                  <a href="#" class="btn">
+                    <span>
+                      {{#view Ember.View}}
+                        {{#each controllers.filtersController.appendices}}
+                          {{abbreviation}}
+                        {{/each}}
+                      {{/view}}
+                    </span>
+                  </a>
                   <div class="drop">
                     <div class="drop-holder">
                       {{collection Checklist.AppendixFormView contentBinding="controllers.filtersController.appendicesContent"}}

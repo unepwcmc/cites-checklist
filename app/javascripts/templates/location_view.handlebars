@@ -1,0 +1,26 @@
+<div class="drop-search">
+  <form action="#">
+    <fieldset>
+      <input title="search" type="text" placeholder="Type to find countries or regions" value="" />
+      <input type="submit" value="search" />
+    </fieldset>
+  </form>
+
+  <div class="selected-locations">
+    <h3>Selected Locations</h3>
+      {{collection Checklist.SelectedLocationsView
+      contentBinding="controllers.filtersController.regions"}}
+  </div>
+</div>
+<div class="drop-holder">
+  <div class="scroll-area">
+    <h3>Regions</h3>
+      {{collection Checklist.RegionsCollectionView
+      contentBinding="controllers.filtersController.regionsContent"}}
+
+    <h3>Countries</h3>
+      {{collection Checklist.CountriesCollectionView
+      contentBinding="controllers.filtersController.countriesContent"}}
+  </div>
+  <div class="shadow"></div>
+</div>
