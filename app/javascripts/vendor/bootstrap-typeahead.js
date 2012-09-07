@@ -373,12 +373,15 @@
           break
 
         default:
+          if (this.$element.val().length < 3) { return; }
+
           // Check if the source is an object or array
           if (this.source.length === undefined) {
             this.source.params.value = this.$element.val();
           }
 
           this.lookup();
+          $('.search .scroll-area').jScrollPane({verticalDragMinHeight:20});
       }
 
       e.stopPropagation()
