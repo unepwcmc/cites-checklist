@@ -9,12 +9,14 @@ Checklist.Index = DS.Model.extend({
     ids.forEach(function(item, index, enumerable){
       var prevTc = taxon_concepts.objectAtContent(index-1);
       var currTc = taxon_concepts.objectAtContent(index);
+      console.log(currTc.get('rank_name'));
       if (prevTc === undefined || prevTc.get('higherTaxa').join() != currTc.get('higherTaxa').join()){
         result.push(
           Checklist.TaxonConcept.createRecord(
             {
-              rank_name: 'higher-taxa',
-              higherTaxaBar: currTc.get('higherTaxa').join(' > ')
+              rank_display_name: currTc.get('rank_name'),
+              rank_name:         'higher-taxa',
+              higherTaxaBar:     currTc.get('higherTaxa')
             }
           )
         );

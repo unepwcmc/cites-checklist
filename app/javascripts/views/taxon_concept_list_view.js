@@ -1,17 +1,29 @@
 Checklist.TaxonConceptListView = Ember.CollectionView.extend({
-  tagName: 'ul',
   content: null,
   filtersController: null,
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'taxon_concept_view',
+    classNames: ['listing-item'],
     classNameBindings: ['rank'],
     //TODO could the filters controller be passed here and used instead of router call
     filtersController: function(){
       return Checklist.get('router').get('filtersController')
     }.property(),
     rank: function(){
-      return this.content.get('rank_name').toLowerCase() + '-taxon';
+      var classes = [];
+
+      if (this.get('isHigherTaxa')) {
+        classes.push("persist-area");
+        classes.push("persist-header");
+        classes.push("main-heading");
+      } else {
+        classes.push("block");
+      }
+
+      classes.push(this.content.get('rank_name').toLowerCase() + '-taxon');
+
+      return classes.join(" ");
     }.property(),
     showEnglish: function(){
       return this.get('filtersController').showEnglish &&
@@ -40,11 +52,16 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       return this.get('filtersController').taxonomicLayout &&
         this.get('isHigherTaxa');
     }.property(),
-    tagName: function(){
-      if (this.get('showHigherTaxaBar')){
-        return 'div';
-      } else {
-        return 'li';
+    tagName: 'div',
+    designationColour: function() {
+      var appendix = this.get('context').get('current_listing');
+      switch (appendix) {
+        case 'I':
+          return "blue";
+        case 'II':
+          return "green";
+        case 'III':
+          return "orange";
       }
     }.property()
   })

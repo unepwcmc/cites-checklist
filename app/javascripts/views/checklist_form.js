@@ -45,7 +45,7 @@ Checklist.SearchTextField = Em.TextField.extend({
           parser: this.parser,
           highlighter: this.highlighter,
           updater: this.updater,
-          menu: '<div class="drop-holder"><div class="scrollable-area vscrollable autodetect-width"> <ul> </ul> </div> </div>',
+          menu: '<div class="drop-holder"><div class="scroll-area"> <ul> </ul> </div> </div>',
           location: '#autocomplete-dropdown'
         }
       );
@@ -60,7 +60,7 @@ Checklist.SearchTextField = Em.TextField.extend({
   highlighter: function(item) {
     var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
     var transform = function ($1, match) {
-      return '<strong>' + match + '</strong>'
+      return '<span style="text-decoration:underline">' + match + '</span>'
     }
     return item.
     replace(new RegExp('^(' + query + ')', 'i'), transform).
@@ -78,8 +78,8 @@ Checklist.SearchTextField = Em.TextField.extend({
       }
 
       var entry = item.full_name;
-      if (item.synonyms !== '') {
-        entry += " (=" + item.synonyms + ")";
+      if (item.synonyms.length > 0) {
+        entry += " (=" + item.synonyms.join(", ") + ")";
       }
       results[item.rank_name].push(entry);
     });

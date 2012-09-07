@@ -1,14 +1,20 @@
-{{#if view.showAnimalia }}
-  <h2>FAUNA</h2>
-  {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
-{{/if}}
-{{#if view.showPlantae }}
-  <h2>FLORA</h2>
-  {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
-{{/if}}
-{{# if view.showPrev }}
-  <a href="#" {{action "prevPage" target="view" on="click"}}>Prev</a>
-{{/if}}
-{{# if view.showNext }}
-  <a href="#" {{action "nextPage" target="view" on="click"}}>Next</a>
-{{/if}}
+<div class="c1">
+  {{#if view.showAnimalia }}
+    {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+  {{/if}}
+  {{#if view.showPlantae }}
+    {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+  {{/if}}
+</div>
+
+<ul class="paging">
+  {{# if view.showPrev }}
+    <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>prev</a></li>
+  {{/if}}
+
+  <li>Page {{view.currentPage}}</li>
+
+  {{# if view.showNext }}
+    <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>next</a></li>
+  {{/if}}
+</ul>

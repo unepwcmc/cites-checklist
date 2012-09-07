@@ -1,25 +1,51 @@
-{{#if view.showHigherTaxaBar}}
-  {{unbound higherTaxaBar}}
+{{#if view.isHigherTaxa}}
+  {{view Ember.View templateName="higher_taxa"}}
 {{else}}
-  {{#unless view.isHigherTaxa}}
-    <span class="full-name accepted-{{unbound cites_accepted}}">{{unbound full_name}}</span>
-    {{unbound spp}}:
-    {{#if view.showListing}}
-      <span class="listing">{{unbound current_listing}}</span>
-    {{/if}}
-    <span class="family">{{unbound family_name}}</span>
-    <span class="class">{{unbound class_name}}</span>
-    {{#if view.showEnglish }}
-      (E) {{unbound english}}
-    {{/if}}
-    {{#if view.showSpanish }}
-      (S) {{ unbound spanish}}
-    {{/if}}
-    {{#if view.showFrench }}
-      (F) {{unbound french}}
-    {{/if}}
-    {{#if view.showSynonyms }}
-      (syn) {{unbound synonyms}}
-    {{/if}}
-  {{/unless}}
+  <div class="column-holder">
+    <div class="column-frame">
+      <div class="column-container">
+        <div class="column">
+          <h2>{{unbound full_name}}</h2>
+          <ul class="details">
+            <li><a href="#">Mammalia</a></li>
+            <li><a href="#">Felidae</a></li>
+          </ul>
+          <ul class="default-list">
+            {{#if view.showEnglish }}
+              <li>{{unbound english}} - ENG</li>
+            {{/if}}
+            {{#if view.showSpanish }}
+              <li>{{ unbound spanish}} - SPA</li>
+            {{/if}}
+            {{#if view.showFrench }}
+              <li>{{unbound french}} - FRE</li>
+            {{/if}}
+            {{#if view.showSynonyms }}
+              <li>{{unbound synonyms}}</li>
+            {{/if}}
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-area">
+            <div class="holder">
+              <div class="frame">
+                <ul class="icons">
+                  <li><div class="circle {{unbound view.designationColour}}">{{unbound current_listing}}</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column style01">
+          <div class="column-area">
+            <div class="holder">
+              <div class="frame">
+                <p>Democratic Republic of Congo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {{/if}}
