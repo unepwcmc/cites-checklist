@@ -672,7 +672,6 @@ fieldset.saved-search {
 
 * +html .custom-holder .drop label{padding:1px 0 0;}
 
-
 .c1 {
   margin:0 135px 0 0;
 }
@@ -688,6 +687,11 @@ fieldset.saved-search {
     border:1px solid #e5e5e5;
     border-width:0 1px 1px;
     background:#fff;
+
+    &#loading {
+      text-align: center;
+      padding: 20px;
+    }
   }
 
   h2 {

@@ -4,6 +4,8 @@ Checklist.KingdomListView = Ember.View.extend({
   taxonConceptsController: null,
   filtersController: null,
 
+  isInvisible: true,
+
   showAnimalia: function(){
     return this.content.get('animaliaPresent');
   }.property(),
@@ -50,6 +52,9 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   didInsertElement: function() {
+    $('#loading').fadeOut();
+    this.set('isInvisible', false);
+
     // Initialise history tooltips
     $('a.tooltip').hoverTooltip({
       positionTypeX: 'left',
@@ -93,12 +98,15 @@ Checklist.KingdomListView = Ember.View.extend({
      * the list items between each header, and using this information
      * to wrap them in a <div> to allow grouping necessary for sticky
      * headers.
+     *
+     * This will be fixed soon, but for now given items are limited to
+     * 50 per page, the performance hit is minimal.
      */
     var current_group = [];
     $(".listing-item").each(function(index, item) {
-      // For each iteration, if the current item is a header or the
-      // last item then we can assume the previous items in
-      // current_group are a headed group of species and can be
+      // For each iteration, if the current item is a header or the 
+      // last item then we can assume the previous items in 
+      // current_group are a headed group of species and can be 
       // wrapper in the grouping <div>
       if ($(item).hasClass('persist-area') || index == ($('.listing-item').length - 1)) {
         if (current_group.length > 0) {
@@ -114,6 +122,13 @@ Checklist.KingdomListView = Ember.View.extend({
     });
   },
   updateFloatingElements: function() {
+    /*
+     * Hide and show the cloned headers as appropriate.
+     *
+     * When we scroll past a higher taxa heading, we make the cloned
+     * floating header visible and stick it to the top of the listing
+     * secion.
+     */
     $(".persist-area").each(function(index, element) {
       var el         = $(this),
       offset         = el.offset(),

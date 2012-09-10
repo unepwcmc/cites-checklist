@@ -81,6 +81,9 @@
 <section id="main">
   <div class="wrap">
     <div class="content">
+      <div class="c1" id="loading">
+        <img src="images/loading.gif" />
+      </div>
       {{#each controllers.taxonConceptController.content}}
         {{view Checklist.KingdomListView contentBinding="this"
           filtersControllerBinding="controllers.filtersController"
