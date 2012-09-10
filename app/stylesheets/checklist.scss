@@ -138,7 +138,9 @@ fieldset {
     background:url(../images/ico5.png) no-repeat;
   }
 
-  .appendix-holder, .btn-holder{
+  .appendix-holder,
+  .btn-holder,
+  .saved-holder {
     position:relative;
     z-index:999;
     padding:0 0 20px;
@@ -402,22 +404,31 @@ fieldset.saved-search {
         font-size: 0.9em;
         font-weight: bold;
         color: #b6b6b6;
+        margin-bottom: 10px;
       }
 
       ul {
         padding: 0;
+        font-size: 1.3em;
 
         li {
           font-size: 0.75em;
           color: #727272;
           font-weight: lighter;
+
+          &:hover {
+            text-decoration: none;
+            cursor: auto;
+          }
         }
       }
     }
   }
 }
 
-.appendix-holder, .btn-holder {
+.appendix-holder,
+.saved-holder,
+.btn-holder {
   .drop {
     width:215%;
     margin:0;
@@ -538,7 +549,7 @@ fieldset.saved-search {
   }
 }
 
-.custom-holder, .saved-holder {
+.custom-holder {
   position:relative;
 
   .decor {
@@ -555,29 +566,46 @@ fieldset.saved-search {
 }
 
 .saved-holder {
- .drop{
-    top: 30px;
-    left: 80%;
-    overflow:hidden;
-    line-height:16px;
-    background:#f5f6f7;
-    padding:17px 19px;
-  }
+  @include vendor-prefix(user-select, none);
 
-  li {
-    font-size: 0.7em;
-    font-weight: normal;
-    color: #727272;
-    list-style-type: square;
+  .drop {
+    background: #F5F6F7;
+    width: 170px;
+    top: 175px;
 
-    a {
-      border-bottom:1px dotted #666;
+    .decor {
+      left: 40%;
+      right: 0;
+    }
 
-      &:hover {
-        border: 0;
-        text-decoration: none;
+    .drop-holder {
+      padding: 0;
+
+      ul {
+        margin: 10px 0 0 35px;
+
+        li {
+          font-size: 0.7em;
+          font-weight: normal;
+          color: #727272;
+          list-style-type: square;
+
+          a {
+            border-bottom:1px dotted #666;
+
+            &:hover {
+              border: 0;
+              text-decoration: none;
+            }
+          }
+        }
       }
     }
+  }
+
+  &:hover .drop {
+    right:-5px;
+    left:auto;
   }
 }
 
@@ -1055,6 +1083,8 @@ fieldset.saved-search {
   text-align:center;
   overflow:hidden;
   background:url(../images/bg-opener.gif) repeat-x 0 50%;
+  z-index: 9999;
+  display: none;
 
   .opener {
     display:block;
@@ -1084,6 +1114,17 @@ fieldset.saved-search {
   text-indent:-9999px;
   overflow:hidden;
   background:url(../images/btn-more.png) no-repeat;
+}
+
+.delete {
+  color: #FF0000 !important;
+  text-decoration: none;
+  border: none;
+
+  &:hover {
+    text-decoration: none;
+    border: none;
+  }
 }
 
 * +html .btn-more{display:inline;}
@@ -1580,7 +1621,7 @@ fieldset.saved-search {
 
 .floatingHeader {
   position: fixed;
-  top: 232px;
+  top: 233px;
   visibility: hidden;
 }
 

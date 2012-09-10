@@ -2,47 +2,49 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: null,
   filtersController: null,
+
+  locationType: null,
+
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'selected_locations_collection',
-  })
-});
 
-Checklist.LocationView = Ember.View.extend({
-  contextBinding: 'content',
-  templateName: 'locations_collection',
+    delete: function(location_type, event) {
+      var location_type = this.get('parentView').get('locationType');
+      var filtersController = Checklist.get('router').get('filtersController');
 
-  click_location: function(location_type, event) {
-    var filtersController = Checklist.get('router').get('filtersController');
-
-    var location = filtersController.get(location_type);
-    if (!location.contains(this.get('context'))) {
-      location.push(this.get('context'))
-    }
-
-    filtersController.set(location_type, location);
-  }
-});
-
-Checklist.CountriesCollectionView = Ember.CollectionView.extend({
-  tagName: 'ul',
-  content: null,
-  filtersController: null,
-  itemViewClass: Checklist.LocationView.extend({
-    click: function(event) {
-      this.click_location('countries', event);
+      filtersController.get(location_type).removeObject(this.get('context'));
     }
   })
 });
 
-Checklist.RegionsCollectionView = Ember.CollectionView.extend({
+Checklist.LocationsView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: null,
   filtersController: null,
-  itemViewClass: Checklist.LocationView.extend({
+
+  locationType: null,
+
+  itemViewClass: Ember.View.extend({
+    contextBinding: 'content',
+    templateName: 'locations_collection',
+
     click: function(event) {
-      this.click_location('regions', event);
-    }
+      var location_type = this.get('parentView').get('locationType');
+      var filtersController = Checklist.get('router').get('filtersController');
+
+      filtersController.get(location_type).addObject(this.get('context'));
+    },
+
+    didInsertElement: function(event) {
+      var scroll_area = this.$().parents('.scroll-area');
+
+      if (!scroll_area.hasClass('jspScrollable')) {
+        scroll_area.jScrollPane({
+          verticalDragMinHeight: 20,
+        });
+      }
+    },
   })
 });
 

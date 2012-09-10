@@ -13,7 +13,7 @@ require('checklist/vendor/jquery.tooltip');
 require('checklist/vendor/custom-form-elements');
 require('checklist/vendor/bootstrap-typeahead');
 
-require('checklist/vendor/ember');
+require('checklist/vendor/ember-1.0.pre');
 require('checklist/vendor/ember-data');
 
 require('checklist/templates/application_view');
@@ -28,6 +28,7 @@ require('checklist/templates/selected_locations_collection');
 require('checklist/templates/locations_collection');
 require('checklist/templates/saved_search_collection');
 require('checklist/templates/saved_search');
+require('checklist/templates/custom_search');
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
@@ -73,6 +74,7 @@ require('checklist/views/saved_search_collection_view');
 require('checklist/views/saved_search_view');
 require('checklist/views/appendix_form_view');
 require('checklist/views/locations_view');
+require('checklist/views/custom_search');
 require('checklist/views/main_view');
 require('checklist/views/pdf_download_view');
 require('checklist/views/checklist_form');
