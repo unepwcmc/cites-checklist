@@ -1,0 +1,76 @@
+<div class="custom-holder">
+  <a href="#" class="btn-custom">Custom Search</a>
+  <div class="drop">
+    <form action="#">
+      <fieldset>
+        <div class="row-holder">
+          <strong class="heading">COMMON NAMES</strong>
+          <div class="row">
+            {{view Ember.Checkbox
+              checkedBinding="controllers.filtersController.showEnglish"
+              id="eng-checkbox"
+              class="styled"
+            }}
+            <label for="eng-checkbox">ENG</label>
+          </div>
+          <div class="row">
+            {{view Ember.Checkbox
+              checkedBinding="controllers.filtersController.showSpanish"
+              id="spa-checkbox"
+              class="styled"
+            }}
+            <label for="spa-checkbox">SPA</label>
+          </div>
+          <div class="row">
+            {{view Ember.Checkbox
+              checkedBinding="controllers.filtersController.showFrench"
+              id="fre-checkbox"
+              class="styled"
+            }}
+            <label for="fre-checkbox">FRE</label>
+          </div>
+        </div>
+
+        <div class="row-holder">
+          <strong class="heading">SORTING</strong>
+          <div class="row">
+            {{view Checklist.SortingRadioButton
+              group="sorting"
+              customId="alphabetical-radio"
+              title="Alphabetical"
+              value="alphabetical"
+              className="styled"
+            }}
+          </div>
+          <div class="row">
+            {{view Checklist.SortingRadioButton
+              group="sorting"
+              customId="taxonomical-radio"
+              title="Taxonomical"
+              isChecked=true
+              value="taxonomical"
+              className="styled"
+            }}
+          </div>
+        </div>
+
+        <div class="row-holder style01">
+          <strong class="heading">OTHER OPTIONS</strong>
+          <div class="row">
+            <input id="item6" type="checkbox" checked="checked" class="styled">
+            <label for="item6">Show synonyms</label>
+          </div>
+          <div class="row">
+            <input id="item7" type="checkbox" class="styled">
+            <label for="item7">Unfold history</label>
+          </div>
+          <div class="row">
+            <input id="item8" type="checkbox" checked="checked" class="styled">
+            <label for="item8">Show items with implicit classification</label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
+  </div>
+</div>
