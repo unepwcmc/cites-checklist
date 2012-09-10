@@ -42,12 +42,10 @@ Checklist.AppendixFormView = Ember.CollectionView.extend({
       // Equivalent to a selectionBinding in a dropdown list
       appendices = filtersController.get('appendices');
       if (appendices.contains(this.get('context'))) {
-        appendices.splice(appendices.indexOf(this.get('context')), 1);
+        filtersController.get('appendices').removeObject(this.get('context'));
       } else {
-        appendices.push(this.get('context'))
+        filtersController.get('appendices').addObject(this.get('context'));
       }
-
-      filtersController.set('appendices', appendices);
 
       $(event.target).parent().toggleClass('inactive');
     }

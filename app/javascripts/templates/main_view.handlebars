@@ -92,16 +92,8 @@
       </div>
       <div class="btn-holder">
         <a href="#downloads" id="download" class="btn red">Download</a>
-        <div id="downloads" style="display: none;" class="lightbox downloads">
-          <div class="heading-holder">
-            <strong class="heading">Download 4,201 Taxa</strong>
-          </div>
-          <div class="text-holder">
-            <a href="#downloads" id="download" class="btn red"><strong>PDF</strong></a>
-            <a href="#downloads" id="download" class="btn red"><strong>CSV</strong></a>
-            <a href="#downloads" id="download" class="btn red"><strong>JSON</strong></a>
-          </div>
-        </div>
+        {{view Checklist.PdfDownloadView
+          filtersControllerBinding="controllers.filtersController"}}
       </div>
       {{view Checklist.SavedSearchView}}
     </div>

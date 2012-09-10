@@ -1,11 +1,18 @@
-<h2>Download pdf version:</h2>
-<ul>
-  <li>CITES species index:
-    <a href="#" {{action "downloadIndexPdf" target="view" on="click"}}>full</a>
-    <a href="#" {{action "downloadCustomIndexPdf" target="view" on="click"}}>customised</a>
-  </li>
-  <li>history of CITES listings:
-    <a href="#" {{action "downloadHistoryPdf" target="view" on="click"}}>full</a>
-    <a href="#" {{action "downloadCustomHistoryPdf" target="view" on="click"}}>customised</a>
-  </li>
-</ul>
+<div id="downloads" style="display: none;" class="lightbox downloads">
+  <div class="heading-holder">
+    <strong class="heading">Download Listing PDF</strong>
+  </div>
+  <div class="text-holder">
+    <p>
+      {{view Ember.Checkbox
+        checkedBinding="view.checked"
+        id="custom_pdf"
+        class="styled"
+      }}
+      <label for="custom_pdf">Only download results for current search</label>
+    </p>
+
+    <a {{action "downloadIndexPdf" target="view" on="click"}} id="download" class="btn red"><strong>CITES Species Index</strong></a>
+    <a {{action "downloadHistoryPdf" target="view" on="click"}} id="download" class="btn red"><strong>History of CITES Listings</strong></a>
+  </div>
+</div>

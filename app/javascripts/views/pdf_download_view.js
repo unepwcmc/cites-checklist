@@ -2,6 +2,9 @@ Checklist.PdfDownloadView = Em.View.extend({
   templateName: 'pdf_download_view',
   filtersController: null,
 
+  // Bound to the custom PDF checkbox
+  checked: true,
+
   /*
    * Returns the URL for the desired PDF.
    *
@@ -32,19 +35,28 @@ Checklist.PdfDownloadView = Em.View.extend({
   },
 
   downloadIndexPdf: function(event) {
-    window.location = this.pdfLink({type: 'Index', custom: false});
+    console.log(this.get('checked'));
+    window.location = this.pdfLink({type: 'Index', custom: this.get('checked')});
   },
 
   downloadHistoryPdf: function(event) {
-    window.location = this.pdfLink({type: 'History', custom: false});
+    window.location = this.pdfLink({type: 'History', custom: this.get('checked')});
   },
 
-  downloadCustomIndexPdf: function(event) {
-    window.location = this.pdfLink({type: 'Index', custom: true});
-  },
-
-  downloadCustomHistoryPdf: function(event) {
-    window.location = this.pdfLink({type: 'History', custom: true});
+  didInsertElement: function() {
+    $("#download").fancybox({
+      fitToView : true,
+      autoSize  : true,
+      closeClick  : false,
+    });
   }
+});
 
+Checklist.PdfCheckbox = Ember.Checkbox.extend({
+  checked: true,
+
+  checkedChanged: function() {
+    var isChecked = this.get('checked');
+    console.log(isChecked);
+  }.observes('checked'),
 });

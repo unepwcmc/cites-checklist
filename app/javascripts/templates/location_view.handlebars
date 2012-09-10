@@ -9,18 +9,24 @@
   <div class="selected-locations">
     <h3>Selected Locations</h3>
       {{collection Checklist.SelectedLocationsView
-      contentBinding="controllers.filtersController.regions"}}
+      contentBinding="controllers.filtersController.regions"
+      locationType="regions"}}
+      {{collection Checklist.SelectedLocationsView
+      contentBinding="controllers.filtersController.countries"
+      locationType="countries"}}
   </div>
 </div>
 <div class="drop-holder">
   <div class="scroll-area">
     <h3>Regions</h3>
-      {{collection Checklist.RegionsCollectionView
-      contentBinding="controllers.filtersController.regionsContent"}}
+      {{collection Checklist.LocationsView
+      contentBinding="controllers.filtersController.regionsContent"
+      locationType="regions"}}
 
     <h3>Countries</h3>
-      {{collection Checklist.CountriesCollectionView
-      contentBinding="controllers.filtersController.countriesContent"}}
+      {{collection Checklist.LocationsView
+      contentBinding="controllers.filtersController.countriesContent"
+      locationType="countries"}}
   </div>
   <div class="shadow"></div>
 </div>
