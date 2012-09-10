@@ -1,9 +1,23 @@
-Checklist.AppendixFormView = Ember.CollectionView.extend({
+Checklist.AppendixFormView = Ember.View.extend({
+  content: [],
+  templateName: 'appendix_form',
+
+  summary: function() {
+    var appendices = this.get('content').mapProperty('abbreviation');
+    if (appendices.length === 0) {
+      return "Appdx.";
+    } else {
+      return appendices.join(", ");
+    }
+  }.property()
+});
+
+Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: [],
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
-    templateName: 'appendix_form',
+    templateName: 'appendix_form_collection',
 
     classNameBindings: ['classes'],
     classes: function() {
@@ -54,5 +68,5 @@ Checklist.AppendixFormView = Ember.CollectionView.extend({
 
       Checklist.get('router').transitionTo('search',{params: params});
     }
-  }),
+  })
 });

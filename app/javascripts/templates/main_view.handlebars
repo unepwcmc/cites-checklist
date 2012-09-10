@@ -38,21 +38,8 @@
               {{/view}}
 
               <div class="column">
-                <div class="appendix-holder">
-                  <a href="#" class="btn">
-                    <span>
-                      {{#each controllers.filtersController.appendices}}
-                        {{abbreviation}}, 
-                      {{/each}}
-                    </span>
-                  </a>
-                  <div class="drop">
-                    <div class="drop-holder">
-                      {{collection Checklist.AppendixFormView contentBinding="controllers.filtersController.appendicesContent"}}
-                    </div>
-                    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
-                  </div>
-                </div>
+                {{view Checklist.AppendixFormView
+                  contentBinding="controllers.filtersController.appendices"}}
               </div>
 
               <div class="column style01">

@@ -1,1 +1,14 @@
-<div class="circle">{{unbound abbreviation}}</div>
+<div class="appendix-holder">
+  <a href="#" class="btn">
+    <span>
+      {{view.summary}}
+    </span>
+  </a>
+  <div class="drop">
+    <div class="drop-holder">
+      {{collection Checklist.AppendixFormCollectionView
+        contentBinding="controllers.filtersController.appendicesContent"}}
+    </div>
+    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
+  </div>
+</div>
