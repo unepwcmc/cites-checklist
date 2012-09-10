@@ -42,7 +42,7 @@
                   <a href="#" class="btn">
                     <span>
                       {{#each controllers.filtersController.appendices}}
-                        {{abbreviation}},
+                        {{abbreviation}}, 
                       {{/each}}
                     </span>
                   </a>
@@ -92,14 +92,11 @@
     </div>
 
     <div class="aside">
-      <div class="text-frame">
-        <strong class="heading">4,201 <span>taxa</span></strong>
-      </div>
-      <div class="btn-holder">
-        <a href="#downloads" id="download" class="btn red">Download</a>
-        {{view Checklist.PdfDownloadView
-          filtersControllerBinding="controllers.filtersController"}}
-      </div>
+      {{#each controllers.taxonConceptController.content}}
+        {{view Ember.View
+          templateName="download_view"
+          contentBinding="this"}}
+      {{/each}}
       {{view Checklist.SavedSearchView}}
     </div>
   </div>
