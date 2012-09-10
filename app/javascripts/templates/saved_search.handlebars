@@ -4,9 +4,17 @@
 </fieldset>
 
 <div class="saved-holder">
-  <p><strong><a href="#" class="btn-saved">saved searches</a></strong></p>
+  <p>
+    <strong>
+      <a href="#" class="btn-saved">
+        {{controllers.savedSearchController.count}}
+      </a>
+    </strong>
+  </p>
   <div class="drop">
+    <div class="drop-holder">
       {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
+    </div>
     <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
   </div>
 </div>
