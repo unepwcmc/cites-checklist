@@ -1,34 +1,13 @@
 require('checklist/config');
 
-require('checklist/vendor/jquery-1.7.2');
-require('checklist/vendor/jquery.cookie');
-require('checklist/vendor/jquery.mousewheel');
-require('checklist/vendor/jquery.mwheelIntent');
-require('checklist/vendor/jquery.jscrollpane.min');
-require('checklist/vendor/jquery.easing');
-require('checklist/vendor/jquery.fancybox');
-require('checklist/vendor/jquery.openclose');
-require('checklist/vendor/jquery.sameheight');
-require('checklist/vendor/jquery.tooltip');
+minispade.requireAll(/vendor\/jquery/);
 require('checklist/vendor/custom-form-elements');
 require('checklist/vendor/bootstrap-typeahead');
 
-require('checklist/vendor/ember-1.0.pre');
+require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 
-require('checklist/templates/application_view');
-require('checklist/templates/main_view');
-require('checklist/templates/pdf_download_view');
-require('checklist/templates/higher_taxa');
-require('checklist/templates/taxon_concept_view');
-require('checklist/templates/kingdom_list_view');
-require('checklist/templates/location_view');
-require('checklist/templates/appendix_form');
-require('checklist/templates/selected_locations_collection');
-require('checklist/templates/locations_collection');
-require('checklist/templates/saved_search_collection');
-require('checklist/templates/saved_search');
-require('checklist/templates/custom_search');
+minispade.requireAll(/templates/);
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
@@ -39,11 +18,8 @@ Checklist = Ember.Application.create({
   }),
 });
 
-require('checklist/helpers/main');
-require('checklist/helpers/layout');
-
-require('checklist/sapi_adapter');
-require('checklist/search_adapter');
+minispade.requireAll(/helpers/);
+minispade.requireAll(/adapters/);
 
 Checklist.store = DS.Store.create({
   revision: 4,
@@ -70,29 +46,9 @@ Checklist.local_store = DS.Store.create({
   })
 });
 
-require('checklist/views/saved_search_collection_view');
-require('checklist/views/saved_search_view');
-require('checklist/views/appendix_form_view');
-require('checklist/views/locations_view');
-require('checklist/views/custom_search');
-require('checklist/views/main_view');
-require('checklist/views/pdf_download_view');
-require('checklist/views/checklist_form');
-require('checklist/views/kingdom_list_view');
-require('checklist/views/taxon_concept_list_view');
-
-require('checklist/models/taxon_concept');
-require('checklist/models/index');
-require('checklist/models/history');
-require('checklist/models/taxon_name');
-require('checklist/models/country');
-require('checklist/models/region');
-require('checklist/models/appendix');
-require('checklist/models/saved_search');
-
-require('checklist/controllers/taxon_concept_controller');
-require('checklist/controllers/filters_controller');
-require('checklist/controllers/saved_search_controller');
+minispade.requireAll(/views/);
+minispade.requireAll(/models/);
+minispade.requireAll(/controllers/);
 
 require('checklist/routers/router');
 
