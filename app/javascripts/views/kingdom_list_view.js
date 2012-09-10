@@ -20,7 +20,7 @@ Checklist.KingdomListView = Ember.View.extend({
       Math.floor(this.content.get('total_cnt') / Checklist.get('router').get('filtersController').get('per_page'));
   }.property(),
   showPrev: function(){
-    return Checklist.get('router').get('filtersController').get('page') > 0
+    return Checklist.get('router').get('filtersController').get('page') > 0;
   }.property(),
   nextPage: function(){
     var currentPage = Checklist.get('router').get('filtersController').get('page');
@@ -133,7 +133,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var el         = $(this),
       offset         = el.offset(),
       scrollTop      = $(window).scrollTop(),
-      floatingHeader = $($(".floatingHeader")[index])
+      floatingHeader = $($(".floatingHeader")[index]);
 
       if ((scrollTop + 232 > offset.top) && (scrollTop < offset.top + el.height())) {
         floatingHeader.css({
@@ -143,7 +143,7 @@ Checklist.KingdomListView = Ember.View.extend({
         floatingHeader.css({
           "visibility": "hidden"
         });
-      };
+      }
     });
 
     /* Prevent the paging controls from floating over the footer */
@@ -151,12 +151,13 @@ Checklist.KingdomListView = Ember.View.extend({
     // Calculate how much of the document remains, and use it
     // to determine how much of the footer is visible
     var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
-    var offset    = ($("#footer").outerHeight() - remaining) + 20;
+    var offset    = ($("#footer").outerHeight() - remaining);
+    //
+    // Constant space beneath paging
+    var bottom_offset = 20;
 
-    if (offset > 0) {
-      $(".paging").css({
-        "bottom": offset + "px"
-      })
-    }
+    $(".paging").css({
+      "bottom": (offset > 0 ? offset + bottom_offset : bottom_offset) + "px"
+    });
   }
 });
