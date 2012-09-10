@@ -12,36 +12,38 @@
           <div class="column-holder">
             <div class="column-frame">
 
-              <div class="column">
-                <div class="search">
-                  <fieldset>
-                    <div class="search-holder">
-                      <div class="search-frame">
-                        {{view Checklist.SearchTextField
-                          valueBinding="controllers.filtersController.scientificName"
-                          id="scientific_name"
-                          title="search"
-                          placeholder="Species, taxon, synonym or common name..."
-                        }}
+              {{#view Checklist.ChecklistForm
+                controllerBinding="controllers.taxonConceptController"
+                filtersControllerBinding="controllers.filtersController"}}
+                <div class="column">
+                  <div class="search">
+                    <fieldset>
+                      <div class="search-holder">
+                        <div class="search-frame">
+                          {{view Checklist.SearchTextField
+                            valueBinding="controllers.filtersController.scientificName"
+                            id="scientific_name"
+                            title="search"
+                            placeholder="Species, taxon, synonym or common name..."
+                          }}
+                        </div>
                       </div>
+                      <input type="submit" value="SEARCH" {{action "submit" target="view"}} />
+                    </fieldset>
+                    <div class="drop" style="display: none;" id="autocomplete-dropdown">
+                      <img src="images/img-decor1.png" alt="image description" class="decor" width="24" height="13" >
                     </div>
-                    <input type="submit" value="SEARCH" />
-                  </fieldset>
-                  <div class="drop" style="display: none;" id="autocomplete-dropdown">
-                    <img src="images/img-decor1.png" alt="image description" class="decor" width="24" height="13" >
                   </div>
                 </div>
-              </div>
+              {{/view}}
 
               <div class="column">
                 <div class="appendix-holder">
                   <a href="#" class="btn">
                     <span>
-                      {{#view Ember.View}}
-                        {{#each controllers.filtersController.appendices}}
-                          {{abbreviation}},
-                        {{/each}}
-                      {{/view}}
+                      {{#each controllers.filtersController.appendices}}
+                        {{abbreviation}},
+                      {{/each}}
                     </span>
                   </a>
                   <div class="drop">

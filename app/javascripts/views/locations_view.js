@@ -14,6 +14,11 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
       var filtersController = Checklist.get('router').get('filtersController');
 
       filtersController.get(location_type).removeObject(this.get('context'));
+
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   })
 });
@@ -34,6 +39,11 @@ Checklist.LocationsView = Ember.CollectionView.extend({
       var filtersController = Checklist.get('router').get('filtersController');
 
       filtersController.get(location_type).addObject(this.get('context'));
+
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     },
 
     didInsertElement: function(event) {
@@ -46,18 +56,4 @@ Checklist.LocationsView = Ember.CollectionView.extend({
       }
     },
   })
-});
-
-Checklist.SortingRadioButton = Ember.View.extend({
-  isChecked: false,
-
-  group: "radio_button",
-  customId: "",
-  className: "",
-
-  value: '',
-  title: '',
-
-  classNames: ['ember-radio-button'],
-  defaultTemplate: Ember.Handlebars.compile('<input type="radio" name="{{unbound view.group}}" value="{{unbound view.value}}" id="{{unbound view.customId}}" class="{{unbound view.className}}" /> <label for="{{unbound view.customId}}">{{unbound view.title}}</label>')
 });

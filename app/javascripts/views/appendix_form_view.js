@@ -48,6 +48,11 @@ Checklist.AppendixFormView = Ember.CollectionView.extend({
       }
 
       $(event.target).parent().toggleClass('inactive');
+
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   }),
 });

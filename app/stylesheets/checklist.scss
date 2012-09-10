@@ -571,7 +571,7 @@ fieldset.saved-search {
   .drop {
     background: #F5F6F7;
     width: 170px;
-    top: 175px;
+    top: 155px;
 
     .decor {
       left: 40%;
@@ -592,6 +592,10 @@ fieldset.saved-search {
 
           a {
             border-bottom:1px dotted #666;
+
+            &.delete {
+              border-bottom: none;
+            }
 
             &:hover {
               border: 0;
