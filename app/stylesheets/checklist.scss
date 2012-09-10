@@ -1058,11 +1058,17 @@ fieldset.saved-search {
         font-size: 0.5em;
         padding-right: 10px;
       }
+
+      &:first-of-type {
+        &:before {
+          content: "";
+        }
+      }
     }
   }
 
   .alignleft{
-    margin:0 10px 0 0;
+    margin:0;
     float: left;
   }
 }
