@@ -63,6 +63,22 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
         case 'III':
           return "orange";
       }
-    }.property()
-  })
+    }.property(),
+
+    mouseEnter: function(event) {
+      if (!this.$().hasClass('expanded')) {
+        this.$().children('.opener-holder').fadeIn();
+      }
+    },
+    mouseLeave: function(event) {
+      // If element has expanded classname, don't hide bottom border
+      if (!this.$().hasClass('expanded')) {
+        this.$().children('.opener-holder').fadeOut();
+      }
+    },
+    click: function(event) {
+      this.$().toggleClass('expanded');
+      this.$().find('.slide').slideToggle();
+    }
+  }),
 });

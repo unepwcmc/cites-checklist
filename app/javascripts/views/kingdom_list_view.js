@@ -47,6 +47,101 @@ Checklist.KingdomListView = Ember.View.extend({
         }
       );
     }
-  }
+  },
 
+  didInsertElement: function() {
+    // Initialise history tooltips
+    $('a.tooltip').hoverTooltip({
+      positionTypeX: 'left',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: -2,
+      extraOffsetY: 2,
+      tooltipStructure: '<div class="custom-tooltip"><div class="ico-tooltip"></div><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
+    });
+
+    // Vertical height management for listing rows
+    $('.column-container').sameHeight({
+      elements: '.column-area',
+      flexible: true
+    });
+
+    this.createFloatingElements();
+    $(window)
+     .scroll(this.updateFloatingElements)
+     .trigger("scroll");
+  },
+
+  createFloatingElements: function() {
+    var clonedHeaderRow;
+
+    /*
+     * Clone each defined header and hide it. This will be used
+     * as the top-fixed floating header when scrolling.
+     */
+    $(".persist-area").each(function() {
+      clonedHeaderRow = $(this);
+      clonedHeaderRow
+        .before(clonedHeaderRow.clone())
+        .css("width", clonedHeaderRow.width())
+        .addClass("floatingHeader").removeClass('persist-area');
+
+    });
+
+    /*
+     * A glorious hack. Calculates groups of species by determining
+     * the list items between each header, and using this information
+     * to wrap them in a <div> to allow grouping necessary for sticky
+     * headers.
+     */
+    var current_group = [];
+    $(".listing-item").each(function(index, item) {
+      // For each iteration, if the current item is a header or the
+      // last item then we can assume the previous items in
+      // current_group are a headed group of species and can be
+      // wrapper in the grouping <div>
+      if ($(item).hasClass('persist-area') || index == ($('.listing-item').length - 1)) {
+        if (current_group.length > 0) {
+          var to_wrap = $(current_group).map (function () {return this.toArray();} );
+          to_wrap.wrapAll('<div class="persist-area">');
+        }
+
+        current_group = [];
+        $(item).removeClass('persist-area');
+      }
+
+      current_group.push($(item));
+    });
+  },
+  updateFloatingElements: function() {
+    $(".persist-area").each(function(index, element) {
+      var el         = $(this),
+      offset         = el.offset(),
+      scrollTop      = $(window).scrollTop(),
+      floatingHeader = $($(".floatingHeader")[index])
+
+      if ((scrollTop + 232 > offset.top) && (scrollTop < offset.top + el.height())) {
+        floatingHeader.css({
+          "visibility": "visible"
+        });
+      } else {
+        floatingHeader.css({
+          "visibility": "hidden"
+        });
+      };
+    });
+
+    /* Prevent the paging controls from floating over the footer */
+
+    // Calculate how much of the document remains, and use it
+    // to determine how much of the footer is visible
+    var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
+    var offset    = ($("#footer").outerHeight() - remaining) + 20;
+
+    if (offset > 0) {
+      $(".paging").css({
+        "bottom": offset + "px"
+      })
+    }
+  }
 });
