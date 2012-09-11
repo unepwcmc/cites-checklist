@@ -18,11 +18,11 @@ Checklist.PdfDownloadView = Em.View.extend({
                   custom: false };
     }
 
-    params = this.get('filtersController').toParams();
+    params = Checklist.get('router').get('filtersController').toParams();
 
     // For non-custom PDFs, maintain only the selected output layout
     if (!options.custom) {
-      params = {output_layout: params.output_layout}
+      params = {output_layout: params.output_layout};
     }
 
     return Checklist.store.adapter.url +
