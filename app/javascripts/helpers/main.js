@@ -8,7 +8,7 @@ Checklist.Helpers = {
    * http://mathiasbynens.be/notes/localstorage-pattern
    */
   storage: function() {
-    var uid = new Date,
+    var uid = new Date(),
         storage,
         result;
 
@@ -112,5 +112,5 @@ Checklist.Helpers = {
     });
 
     return result;
-  },
-}
+  }
+};

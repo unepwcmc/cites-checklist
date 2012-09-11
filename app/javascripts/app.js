@@ -15,7 +15,7 @@ Checklist = Ember.Application.create({
   ApplicationController: Ember.Controller.extend({}),
   ApplicationView: Ember.View.extend({
     templateName: 'application_view'
-  }),
+  })
 });
 
 minispade.requireAll(/helpers/);

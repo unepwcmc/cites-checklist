@@ -1,6 +1,5 @@
 //TODO refactor
 Checklist.SAPIAdapter = DS.Adapter.extend({
-
   findAll: function(store, type) {
     var url = this.url + type.collectionUrl;
 
@@ -13,7 +12,7 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       xdr.onerror = function(){};
       xdr.onload = function () {
         var JSON = $.parseJSON(xdr.responseText);
-        if (JSON == null || typeof (JSON) == 'undefined'){
+        if (JSON === null || typeof (JSON) == 'undefined'){
           JSON = $.parseJSON(data.firstChild.textContent);
         }
         store.loadMany(type, JSON);
@@ -46,12 +45,12 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       xdr.onerror = function(){};
       xdr.onload = function () {
         var JSON = $.parseJSON(xdr.responseText);
-        if (JSON == null || typeof (JSON) == 'undefined'){
+        if (JSON === null || typeof (JSON) == 'undefined'){
           JSON = $.parseJSON(data.firstChild.textContent);
         }
         modelArray.load(JSON);
       };
-      
+
       xdr.send();
     } else {
       $.ajax({
@@ -66,5 +65,4 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       });
     }
   }
-
 });

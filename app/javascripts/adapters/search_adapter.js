@@ -57,10 +57,11 @@ Checklist.searchAdapter = DS.Adapter.extend({
     },
 
     getAll: function(method, type) {
+      var value;
       if (method == 'localStorage') {
-        var value = localStorage.getItem(type);
+        value = localStorage.getItem(type);
       } else {
-        var value = jQuery.cookie(type.toString());
+        value = jQuery.cookie(type.toString());
       }
 
       return JSON.parse(value || 'null') || [];
