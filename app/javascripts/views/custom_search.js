@@ -28,16 +28,34 @@ Checklist.UnfoldHistoryCheckbox = Ember.Checkbox.extend({
   }
 });
 
-Checklist.SortingRadioButton = Ember.View.extend({
-  isChecked: true,
+Checklist.SortingRadioButtons = Ember.CollectionView.extend({
+  tagName: 'div',
 
-  group: "radio_button",
-  customId: "",
-  className: "",
+  grouping: Checklist.Helpers.generateId(),
 
-  value: '',
-  title: '',
+  content: [{
+    name: 'Alphabetical',
+    value: 'alphabetical',
+    isChecked: true
+  }, {
+    name: 'Taxonomic',
+    value: 'taxonomic',
+    isChecked: false
+  }],
 
-  classNames: ['ember-radio-button'],
-  defaultTemplate: Ember.Handlebars.compile('<input type="radio" name="{{unbound view.group}}" value="{{unbound view.value}}" id="{{unbound view.customId}}" class="{{unbound view.className}}" /> <label for="{{unbound view.customId}}">{{unbound view.title}}</label>')
+  itemViewClass: Ember.View.extend({
+    classNames: ['row'],
+
+    contextBinding: 'content',
+    templateName: 'sorting_radio_button',
+
+    grouping: function() {
+      return this.get('parentView').get('grouping');
+    }.property(),
+
+    mouseUp: function(event) {
+      var filtersController = Checklist.get('router').get('filtersController');
+      filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
+    }
+  })
 });
