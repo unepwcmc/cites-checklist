@@ -87,17 +87,3 @@ Checklist.SearchTextField = Em.TextField.extend({
     return results;
   }
 });
-
-Checklist.SortingRadioButton = Ember.View.extend({
-  isChecked: false,
-
-  group: "radio_button",
-  customId: "",
-  className: "",
-
-  value: '',
-  title: '',
-
-  classNames: ['ember-radio-button'],
-  defaultTemplate: Ember.Handlebars.compile('<input type="radio" name="{{unbound view.group}}" value="{{unbound view.value}}" id="{{unbound view.customId}}" class="{{unbound view.className}}" /> <label for="{{unbound view.customId}}">{{unbound view.title}}</label>')
-});

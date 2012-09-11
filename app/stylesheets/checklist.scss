@@ -147,7 +147,10 @@ fieldset {
     margin:0 0 -20px;
     vertical-align:top;
     display:inline-block;
-    text-transform: uppercase;
+
+    .btn {
+      text-transform: uppercase;
+    }
   }
 
   .expanded .btn-custom,
@@ -1334,6 +1337,23 @@ fieldset.saved-search {
     text-indent:-9999px;
     overflow:hidden;
     background:url(../images/img-decor4.png) no-repeat;
+  }
+}
+.country-tooltip{
+  position:relative;
+  z-index:999;
+  border-radius: 15px;  -moz-border-radius: 15px; -webkit-border-radius: 15px;
+  background:#33536a;
+  margin:0 -65px 5px 0 !important;
+  padding:7px;
+  width: 200px;
+
+  .tooltip-text{
+    float:left;
+    overflow:hidden;
+    color:#fff;
+    line-height:16px;
+    font-size:12px;
   }
 }
 

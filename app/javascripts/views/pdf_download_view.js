@@ -44,19 +44,14 @@ Checklist.PdfDownloadView = Em.View.extend({
   },
 
   didInsertElement: function() {
+    var cf = new CustomFormElements({
+      cssClass: 'styled'
+    });
+
     $("#download").fancybox({
       fitToView : true,
       autoSize  : true,
-      closeClick  : false,
+      closeClick  : false
     });
   }
-});
-
-Checklist.PdfCheckbox = Ember.Checkbox.extend({
-  checked: true,
-
-  checkedChanged: function() {
-    var isChecked = this.get('checked');
-    console.log(isChecked);
-  }.observes('checked'),
 });
