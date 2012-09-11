@@ -1,6 +1,7 @@
 Checklist.TaxonConcept = DS.Model.extend({
   taxon_name: DS.belongsTo('Checklist.TaxonName', { embedded: true }),
   parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id'}),
+  countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
   rank_name: DS.attr('string'),
   spp: DS.attr('string'),
   current_listing: DS.attr('string'),
@@ -15,7 +16,6 @@ Checklist.TaxonConcept = DS.Model.extend({
   spanish: DS.attr('string', { key: 'spanish_names_list' }),
   french: DS.attr('string', { key: 'french_names_list' }),
   synonyms: DS.attr('string', { key: 'synonyms_list' }),
-  countries: DS.attr('string', { key: 'countries_list' }),
   higherTaxa: function(){
     var ranks = ['PHYLUM', 'CLASS', 'ORDER', 'FAMILY'];
     var rankIndex = ranks.indexOf(this.get('rank_name'));

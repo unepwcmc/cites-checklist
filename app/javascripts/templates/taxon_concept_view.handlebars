@@ -40,7 +40,11 @@
           <div class="column-area">
             <div class="holder">
               <div class="frame">
-                <p>{{unbound countries}}</p>
+                <p>
+                {{#each countries}}
+                  {{unbound name}}, 
+                {{/each}}
+                </p>
               </div>
             </div>
           </div>
