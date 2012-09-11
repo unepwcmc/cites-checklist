@@ -41,9 +41,8 @@
             <div class="holder">
               <div class="frame">
                 <p>
-                {{#each countries}}
-                  {{unbound name}}, 
-                {{/each}}
+                  {{view Checklist.CountryListingView
+                  contentBinding="countries"}}
                 </p>
               </div>
             </div>

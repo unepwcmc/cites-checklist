@@ -69,7 +69,7 @@
           left = x - tooltipWidth - options.extraOffsetX;
           break;
         case 'center':
-          left = x - tooltipWidth / 2;
+          left = (x - tooltipWidth / 2 ) - options.extraOffsetX;
           break;
         case 'right':
           left = x + options.extraOffsetX;

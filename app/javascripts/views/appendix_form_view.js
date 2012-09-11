@@ -9,7 +9,7 @@ Checklist.AppendixFormView = Ember.View.extend({
     } else {
       return appendices.join(", ");
     }
-  }.property()
+  }.property("@each")
 });
 
 Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({

@@ -45,6 +45,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       return style;
     }.property(),
+
     full_name: function() {
       var full_name = this.content.get('full_name');
 
@@ -119,4 +120,40 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       this.$().find('.slide').slideToggle();
     }
   })
+});
+
+Checklist.CountryListingView = Ember.View.extend({
+  content: [],
+
+  defaultTemplate: Ember.Handlebars.compile('{{{unbound view.countriesDisplay}}}'),
+
+  countriesDisplay: function() {
+    var countries = this.get('content');
+
+    var visible_countries = [];
+    var hidden_countries  = [];
+
+    countries.forEach(function(item, index, enumerable) {
+      if (index >= 3) {
+        hidden_countries.push(item);
+      } else {
+        visible_countries.push(item);
+      }
+    });
+
+    hidden_countries = hidden_countries.mapProperty('name');
+    visible_countries = visible_countries.mapProperty('name');
+
+    var display_string = [visible_countries.join(", ")];
+
+    if (hidden_countries.length > 0) {
+      display_string.push(' and <a href="#" title="');
+      display_string.push(hidden_countries.join(", "));
+      display_string.push('" class="more-countries-tooltip">');
+      display_string.push(hidden_countries.length);
+      display_string.push(' more</a>');
+    }
+
+    return display_string.join('');
+  }.property()
 });
