@@ -1,32 +1,38 @@
-<div class="drop-search">
-  <form action="#">
-    <fieldset>
-      <input title="search" type="text" placeholder="Type to find countries or regions" value="" />
-      <input type="submit" value="search" />
-    </fieldset>
-  </form>
+<div class="btn-holder">
+  <a class="btn"><span>All Locations</span></a>
+  <div class="drop">
+    <div class="drop-search">
+      <form action="#">
+        <fieldset>
+          <input title="search" type="text" placeholder="Type to find countries or regions" value="" />
+          <input type="submit" value="search" />
+        </fieldset>
+      </form>
 
-  <div class="selected-locations">
-    <h3>Selected Locations</h3>
-      {{collection Checklist.SelectedLocationsView
-      contentBinding="controllers.filtersController.regions"
-      locationType="regions"}}
-      {{collection Checklist.SelectedLocationsView
-      contentBinding="controllers.filtersController.countries"
-      locationType="countries"}}
-  </div>
-</div>
-<div class="drop-holder">
-  <div class="scroll-area">
-    <h3>Regions</h3>
-      {{collection Checklist.LocationsView
-      contentBinding="controllers.filtersController.regionsContent"
-      locationType="regions"}}
+      <div class="selected-locations">
+        <h3>Selected Locations</h3>
+          {{collection Checklist.SelectedLocationsView
+          contentBinding="controllers.filtersController.regions"
+          locationType="regions"}}
+          {{collection Checklist.SelectedLocationsView
+          contentBinding="controllers.filtersController.countries"
+          locationType="countries"}}
+      </div>
+    </div>
+    <div class="drop-holder">
+      <div class="scroll-area">
+        <h3>Regions</h3>
+          {{collection Checklist.LocationsView
+          contentBinding="controllers.filtersController.regionsContent"
+          locationType="regions"}}
 
-    <h3>Countries</h3>
-      {{collection Checklist.LocationsView
-      contentBinding="controllers.filtersController.countriesContent"
-      locationType="countries"}}
+        <h3>Countries</h3>
+          {{collection Checklist.LocationsView
+          contentBinding="controllers.filtersController.countriesContent"
+          locationType="countries"}}
+      </div>
+      <div class="shadow"></div>
+    </div>
+    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
   </div>
-  <div class="shadow"></div>
 </div>

@@ -150,6 +150,10 @@ fieldset {
 
     .btn {
       text-transform: uppercase;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
