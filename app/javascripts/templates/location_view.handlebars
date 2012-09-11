@@ -4,7 +4,12 @@
     <div class="drop-search">
       <form action="#">
         <fieldset>
-          <input title="search" type="text" placeholder="Type to find countries or regions" value="" />
+          {{view Checklist.GeoEntityTextField
+            valueBinding="controllers.filtersController.geoEntityName"
+            id="geo_entity_name"
+            title="search"
+            placeholder="Type to find countries or regions"
+          }}
           <input type="submit" value="search" />
         </fieldset>
       </form>
