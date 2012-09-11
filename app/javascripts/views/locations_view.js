@@ -9,7 +9,7 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
     contextBinding: 'content',
     templateName: 'selected_locations_collection',
 
-    delete: function(location_type, event) {
+    delete_location: function(event) {
       var location_type = this.get('parentView').get('locationType');
       var filtersController = Checklist.get('router').get('filtersController');
 
@@ -47,13 +47,14 @@ Checklist.LocationsView = Ember.CollectionView.extend({
     },
 
     didInsertElement: function(event) {
-      var scroll_area = this.$().parents('.scroll-area');
+      // Wait until all elements are rendered to render scroll bar
+      if (this.get('context') == this.get('parentView').get('content').get('lastObject')) {
+        var scroll_area = this.$().parents('.scroll-area');
 
-      if (!scroll_area.hasClass('jspScrollable')) {
         scroll_area.jScrollPane({
-          verticalDragMinHeight: 20,
+          verticalDragMinHeight: 20
         });
       }
-    },
+    }
   })
 });
