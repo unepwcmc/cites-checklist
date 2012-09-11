@@ -87,3 +87,26 @@ Checklist.SearchTextField = Em.TextField.extend({
     return results;
   }
 });
+
+/*
+ * An extended TextField for use in location search.
+ *
+ * Handles text change events and creates an autocomplete box for the text.
+ */
+Checklist.GeoEntityTextField = Em.TextField.extend({
+  value: '',
+
+  click: function(event) {
+    var controller = Checklist.get('router').get('filtersController');
+    controller.set(
+      'autoCompleteCountriesContent',
+      controller.get('countriesContent').mapProperty('name').filter(
+        function(item, index, enumerable){
+          return (item.indexOf(event.value) == -1 ? false : true);
+        }
+      )
+  );
+
+  },
+
+});

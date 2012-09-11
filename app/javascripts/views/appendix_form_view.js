@@ -4,8 +4,8 @@ Checklist.AppendixFormView = Ember.View.extend({
 
   summary: function() {
     var appendices = this.get('content').mapProperty('abbreviation');
-    if (appendices.length === 0) {
-      return "Appdx.";
+    if (appendices.length === 0 || appendices.length == 3) {
+      return "All Appxs.";
     } else {
       return appendices.join(", ");
     }
@@ -38,8 +38,14 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
           break;
       }
 
-      if ($.inArray(abbreviation, filtersController.get('appendices').mapProperty('abbreviation')) < 0) {
-        classes.push("inactive");
+      var selected_appendices = filtersController.get('appendices').mapProperty('abbreviation');
+
+      // If the selected appendices array is blank, then all appendices
+      // are active
+      if (selected_appendices.length > 0) {
+        if ($.inArray(abbreviation, selected_appendices) < 0) {
+          classes.push("inactive");
+        }
       }
 
       return classes.join(" ");
@@ -55,10 +61,23 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
       // Add the selected appendice to the appendice filter array
       // Equivalent to a selectionBinding in a dropdown list
       appendices = filtersController.get('appendices');
-      if (appendices.contains(this.get('context'))) {
-        filtersController.get('appendices').removeObject(this.get('context'));
+      if (appendices.length > 0) {
+        if (appendices.contains(this.get('context'))) {
+          filtersController.get('appendices').removeObject(this.get('context'));
+        } else {
+          filtersController.get('appendices').addObject(this.get('context'));
+        }
       } else {
-        filtersController.get('appendices').addObject(this.get('context'));
+        // In the case that the appendices filter is empty, then we
+        // assume no filter is set and all appendices are selected.
+        // This means clicking on an appendices will in fact add all
+        // appendices except that one to the list:
+        var that = this;
+        filtersController.get('appendicesContent').forEach(function(item, index, enumerable) {
+          if (item != that.get('context')) {
+            filtersController.get('appendices').addObject(item);
+          }
+        });
       }
 
       $(event.target).parent().toggleClass('inactive');
