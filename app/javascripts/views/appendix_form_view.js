@@ -68,6 +68,10 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
           filtersController.get('appendices').addObject(this.get('context'));
         }
       } else {
+        // In the case that the appendices filter is empty, then we
+        // assume no filter is set and all appendices are selected.
+        // This means clicking on an appendices will in fact add all
+        // appendices except that one to the list:
         var that = this;
         filtersController.get('appendicesContent').forEach(function(item, index, enumerable) {
           if (item != that.get('context')) {
