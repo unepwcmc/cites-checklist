@@ -28,12 +28,12 @@
       <div class="scroll-area">
         <h3>Regions</h3>
           {{collection Checklist.LocationsView
-          contentBinding="controllers.filtersController.regionsContent"
+          contentBinding="controllers.filtersController.autoCompleteRegionsContent"
           locationType="regions"}}
 
         <h3>Countries</h3>
           {{collection Checklist.LocationsView
-          contentBinding="controllers.filtersController.countriesContent"
+          contentBinding="controllers.filtersController.autoCompleteCountriesContent"
           locationType="countries"}}
       </div>
       <div class="shadow"></div>

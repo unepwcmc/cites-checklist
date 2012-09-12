@@ -30,6 +30,10 @@ Checklist.LocationsView = Ember.CollectionView.extend({
 
   locationType: null,
 
+  emptyView: Ember.View.extend({
+    template: Ember.Handlebars.compile("No matches")
+  }),
+
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'locations_collection',
