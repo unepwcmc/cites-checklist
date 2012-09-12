@@ -1,6 +1,7 @@
-{{#if view.isHigherTaxa}}
+{{#if view.showHigherTaxaBar}}
   {{view Ember.View templateName="higher_taxa"}}
 {{else}}
+  {{#unless view.isHigherTaxa}}
   <div class="column-holder">
     <div class="column-frame">
       <div class="column-container">
@@ -116,4 +117,5 @@
   <div class="opener-holder">
     <a href="#" class="opener">opener</a>
   </div>
+  {{/unless}}
 {{/if}}
