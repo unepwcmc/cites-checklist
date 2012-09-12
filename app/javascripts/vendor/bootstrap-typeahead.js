@@ -129,17 +129,16 @@
   , lookup: function (event) {
       var that = this
         , items
-        , q
+        , q;
 
-      this.query = this.$element.val()
+      this.query = this.$element.val();
 
       if (!this.query) {
-        return this.shown ? this.hide() : this
+        return this.shown ? this.hide() : this;
       }
 
       // If the source is defined as a URL, perform an AJAX request for
       // the resource
-      var src = [];
       if (this.source.length === undefined) {
         var url = this.source.url;
 
@@ -157,31 +156,11 @@
           xdr.onerror = function(){};
           xdr.onload = function () {
             var JSON = $.parseJSON(xdr.responseText);
-            if (JSON == null || typeof (JSON) == 'undefined'){
+            if (JSON === null || typeof (JSON) == 'undefined'){
               JSON = $.parseJSON(data.firstChild.textContent);
             }
 
-            src = that.parser(data);
-
-            if (src.length === undefined) {
-              if ($.isEmptyObject(src)) {
-                return that.shown ? that.hide() : that
-              }
-
-              return that.render(src).show()
-            } else {
-              items = $.grep(src, function (item) {
-                return that.matcher(item)
-              })
-
-              items = that.sorter(items)
-
-              if (!items.length) {
-                return that.shown ? that.hide() : that
-              }
-
-              return that.render(items.splice(0, this.options.items)).show();
-            }
+            that.handleResponse(JSON, that);
           };
           xdr.send();
         } else {
@@ -191,59 +170,44 @@
             dataType : "json",
             data : params,
             success : function(data) {
-              src = that.parser(data);
-
-              if (src.length === undefined) {
-                if ($.isEmptyObject(src)) {
-                  return that.shown ? that.hide() : that
-                }
-
-                return that.render(src).show()
-              } else {
-                items = $.grep(src, function (item) {
-                  return that.matcher(item)
-                })
-
-                items = that.sorter(items)
-
-                if (!items.length) {
-                  return that.shown ? that.hide() : that
-                }
-
-                return that.render(items.splice(0, this.options.items)).show();
-              }
+              that.handleResponse(data, that);
             },
             error : function(xhr, status, error) {}
           });
         }
       } else {
-        src = this.parser(this.source);
+        this.handleResponse(this.source, this);
+      }
+    }
 
-        if (src.length === undefined) {
-          if ($.isEmptyObject(src)) {
-            return this.shown ? this.hide() : this
-          }
+  , handleResponse: function(data, context) {
+      var src = context.parser(data);
 
-          return this.render(src).show()
-        } else {
-          items = $.grep(src, function (item) {
-            return this.matcher(item)
-          })
-
-          items = this.sorter(items)
-
-          if (!items.length) {
-            return this.shown ? this.hide() : this
-          }
-
-          return this.render(items.splice(0, this.options.items)).show();
+      if (src.length === undefined) {
+        if ($.isEmptyObject(src)) {
+          return context.shown ? context.hide() : context;
         }
+
+        context.render(src).show();
+      } else {
+        items = $.grep(src, function (item) {
+          return context.matcher(item);
+        });
+
+        items = context.sorter(items);
+
+        if (!items.length) {
+          return context.shown ? context.hide() : context;
+        }
+
+        context.render(items.splice(0, context.options.items)).show();
       }
 
+      $('.search .scroll-area').jScrollPane({verticalDragMinHeight:20});
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~item.toLowerCase().indexOf(this.query.toLowerCase());
     }
 
   , sorter: function (items) {
@@ -373,7 +337,10 @@
           break
 
         default:
-          if (this.$element.val().length < 3) { return; }
+          if (this.$element.val().length < 3) {
+            this.hide();
+            return;
+          }
 
           // Check if the source is an object or array
           if (this.source.length === undefined) {
@@ -381,7 +348,6 @@
           }
 
           this.lookup();
-          $('.search .scroll-area').jScrollPane({verticalDragMinHeight:20});
       }
 
       e.stopPropagation()
