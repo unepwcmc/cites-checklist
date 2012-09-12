@@ -101,20 +101,6 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       }
     }.property(),
 
-    /*
-     * Handle hover and click states of each species in the listing
-     */
-    mouseEnter: function(event) {
-      if (!this.$().hasClass('expanded')) {
-        this.$().children('.opener-holder').fadeIn();
-      }
-    },
-    mouseLeave: function(event) {
-      // If element has expanded classname, don't hide bottom border
-      if (!this.$().hasClass('expanded')) {
-        this.$().children('.opener-holder').fadeOut();
-      }
-    },
     click: function(event) {
       this.$().toggleClass('expanded');
       this.$().find('.slide').slideToggle();

@@ -985,6 +985,7 @@ fieldset.saved-search {
     color:#333;
 
     .slide{display:none;}
+    .opener-holder{display:block;}
 
     p {
       a {
@@ -994,6 +995,12 @@ fieldset.saved-search {
     }
 
     .details a{color:#666;}
+  }
+
+  &:hover {
+    .opener-holder {
+      display: block;
+    }
   }
 
   .slide{
