@@ -20,8 +20,8 @@ Checklist.FiltersController = Ember.Object.extend({
   showFrench : true,
   scientificName : "",
   geoEntityName : "",
-  autocompleteCountriesContent : [],
-  autocompleteRegionsContent : [],
+  autoCompleteCountriesContent : [],
+  autoCompleteRegionsContent : [],
   searches : [],
   page: 0,
   per_page: 50,
@@ -42,6 +42,8 @@ Checklist.FiltersController = Ember.Object.extend({
           }
         )
       );
+      this.set('autoCompleteCountriesContent', this.get('countriesContent'));
+      this.set('autoCompleteRegionsContent', this.get('regionsContent'));
     }
   }.observes('countriesContent.isLoaded','countriesIds'),
 
