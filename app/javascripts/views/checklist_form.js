@@ -17,7 +17,7 @@ Checklist.ChecklistForm = Em.View.extend({
     var params = $.param(filters);
 
     Checklist.get('router').transitionTo('search',{params: params});
-  },
+  }
 
 });
 
@@ -58,18 +58,18 @@ Checklist.SearchTextField = Em.TextField.extend({
   },
 
   highlighter: function(item) {
-    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
     var transform = function ($1, match) {
-      return '<span style="text-decoration:underline">' + match + '</span>'
-    }
+      return '<span style="text-decoration:underline">' + match + '</span>';
+    };
     return item.
     replace(new RegExp('^(' + query + ')', 'i'), transform).
-    replace(new RegExp('[ =](' + query + ')', 'ig'), transform)
+    replace(new RegExp('[ =](' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
     var content = data;
-    var results = {}
+    var results = {};
 
     // Extract the names of each result row for use by typeahead.js
     content.forEach(function(item,i) {
@@ -117,6 +117,5 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
         }
       )
     );
-  },
-
+  }
 });

@@ -8,7 +8,7 @@ Checklist.Helpers = {
    * http://mathiasbynens.be/notes/localstorage-pattern
    */
   storage: function() {
-    var uid = new Date,
+    var uid = new Date(),
         storage,
         result;
 
@@ -16,8 +16,10 @@ Checklist.Helpers = {
       (storage = window.localStorage).setItem(uid, uid);
       result = storage.getItem(uid) == uid;
       storage.removeItem(uid);
-      return result && storage;
-    } catch(e) {}
+      return true;
+    } catch(e) {
+      return false;
+    }
   },
   /*
    * Generates a four character, unique identifier.
@@ -112,5 +114,5 @@ Checklist.Helpers = {
     });
 
     return result;
-  },
-}
+  }
+};

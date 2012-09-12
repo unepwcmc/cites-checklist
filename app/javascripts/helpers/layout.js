@@ -7,7 +7,7 @@ jQuery.onFontResize = (function($) {
   $(function() {
     var randomID = 'font-resize-frame-' + Math.floor(Math.random() * 1000);
     var resizeFrame = $('<iframe>').attr('id', randomID).addClass('font-resize-helper');
-    
+
     // required styles
     resizeFrame.css({
       width: '100em',
@@ -17,7 +17,7 @@ jQuery.onFontResize = (function($) {
       top: '-9999px',
       left: '-9999px'
     }).appendTo('body');
-    
+
     // use native IE resize event if possible
     if ($.browser.msie && $.browser.version < 9) {
       resizeFrame.bind('resize', function () {

@@ -1,6 +1,7 @@
 <a href="#" {{action "save" target="view"}} class="btn"><span class="ico-star"></span>SAVE THIS</a>
 <fieldset class="saved-search">
-  {{view Checklist.SavedSearchTextField filtersControllerBinding="controllers.filtersController"}}
+  {{view Checklist.SavedSearchTextField
+    filtersControllerBinding="controllers.filtersController"}}
 </fieldset>
 
 <div class="saved-holder">

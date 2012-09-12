@@ -22,7 +22,7 @@ Checklist.SavedSearchTextField = Em.TextField.extend({
       {
         id: Checklist.Helpers.generateId(),
         name: val,
-        filters: JSON.stringify(this.get('filtersController').toParams()),
+        filters: JSON.stringify(this.get('filtersController').toParams())
       }
     );
 
@@ -32,5 +32,5 @@ Checklist.SavedSearchTextField = Em.TextField.extend({
     $(view.target).parent().siblings('a').fadeToggle();
 
     $(view.target).val('');
-  },
+  }
 });

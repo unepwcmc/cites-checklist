@@ -33,25 +33,7 @@
 
         <div class="row-holder">
           <strong class="heading">SORTING</strong>
-          <div class="row">
-            {{view Checklist.SortingRadioButton
-              group="sorting"
-              customId="alphabetical-radio"
-              title="Alphabetical"
-              value="alphabetical"
-              className="styled"
-            }}
-          </div>
-          <div class="row">
-            {{view Checklist.SortingRadioButton
-              group="sorting"
-              customId="taxonomical-radio"
-              title="Taxonomical"
-              isChecked=true
-              value="taxonomical"
-              className="styled"
-            }}
-          </div>
+          {{collection Checklist.SortingRadioButtons}}
         </div>
 
         <div class="row-holder style01">

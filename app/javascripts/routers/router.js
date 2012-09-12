@@ -6,13 +6,13 @@ Checklist.Router = Ember.Router.extend({
       route: '/',
       connectOutlets: function(router, event) {
         router.get('applicationController')
-              .connectOutlet({
-                viewClass: Checklist.MainView,
-                controller: router.get('taxonConceptController'),
-                context: Checklist.store.find(
-                           Checklist.Index, router.get('filtersController').toParams()
-                         )
-              });
+        .connectOutlet({
+          viewClass: Checklist.MainView,
+          controller: router.get('taxonConceptController'),
+          context: Checklist.store.find(
+            Checklist.Index, router.get('filtersController').toParams()
+          )
+        });
       }
     }),
     search: Ember.Route.extend({
@@ -22,14 +22,14 @@ Checklist.Router = Ember.Router.extend({
         router.get('filtersController').fromParams(params);
 
         router.get('applicationController')
-              .connectOutlet({
-                viewClass: Checklist.MainView,
-                controller: router.get('taxonConceptController'),
-                context: Checklist.store.find(
-                           Checklist.Index, router.get('filtersController').toParams()
-                         )
-              });
-      },
-    }),
+        .connectOutlet({
+          viewClass: Checklist.MainView,
+          controller: router.get('taxonConceptController'),
+          context: Checklist.store.find(
+            Checklist.Index, router.get('filtersController').toParams()
+          )
+        });
+      }
+    })
   })
 });

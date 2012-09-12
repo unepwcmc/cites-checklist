@@ -78,15 +78,15 @@ Checklist.FiltersController = Ember.Object.extend({
       country_ids : this.get('countries').mapProperty('id'),
       cites_region_ids : this.get('regions').mapProperty('id'),
       cites_appendices : this.get('appendices').mapProperty('abbreviation'),
-      output_layout : (this.get('taxonomicLayout') == true ? 'taxonomic' : 'alphabetical'),
-      show_synonyms : this.get('showSynonyms') == true ? 1 : 0,
-      show_english : this.get('showEnglish') == true ? 1 : 0,
-      show_spanish : this.get('showSpanish') == true ? 1 : 0,
-      show_french : this.get('showFrench') == true ? 1 : 0,
+      output_layout : (this.get('taxonomicLayout') === true ? 'taxonomic' : 'alphabetical'),
+      show_synonyms : this.get('showSynonyms') === true ? 1 : 0,
+      show_english : this.get('showEnglish') === true ? 1 : 0,
+      show_spanish : this.get('showSpanish') === true ? 1 : 0,
+      show_french : this.get('showFrench') === true ? 1 : 0,
       scientific_name : this.get('scientificName'),
       page : this.get('page'),
       per_page : this.get('per_page')
-    }
+    };
   },
   fromParams: function(params) {
     var controller = Checklist.get('router').get('taxonConceptController');
@@ -99,37 +99,37 @@ Checklist.FiltersController = Ember.Object.extend({
     );
 
     this.set('countriesIds',
-      (params['country_ids'] == undefined ?
+      (params.country_ids === undefined ?
         []
       :
-        params['country_ids'].map(
-          function(item, index, enumerable){return parseInt(item);}
+        params.country_ids.map(
+          function(item, index, enumerable){return parseInt(item, 10);}
         )
       )
     );
     this.set('regionsIds',
-      (params['cites_region_ids'] == undefined ?
+      (params.cites_region_ids === undefined ?
         []
       :
-        params['cites_region_ids'].map(
-          function(item, index, enumerable){return parseInt(item);}
+        params.cites_region_ids.map(
+          function(item, index, enumerable){return parseInt(item, 10);}
         )
       )
     );
     this.set('appendicesIds',
-      (params['cites_appendices'] == undefined ?
+      (params.cites_appendices === undefined ?
         []
       :
-        params['cites_appendices']
+        params.cites_appendices
       )
     );
-    this.set('taxonomicLayout', params['output_layout'] == 'taxonomic' ? true : false);
-    this.set('showSynonyms', parseInt(params['show_synonyms']) == 1 ? true : false);
-    this.set('showEnglish', parseInt(params['show_english']) == 1 ? true : false);
-    this.set('showSpanish', parseInt(params['show_spanish']) == 1 ? true : false);
-    this.set('showFrench', parseInt(params['show_french']) == 1 ? true : false);
-    this.set('scientificName', params['scientific_name']);
-    this.set('page', parseInt(params['page']));
-    this.set('perPage', parseInt(params['perPage']));
+    this.set('taxonomicLayout', params.output_layout == 'taxonomic' ? true : false);
+    this.set('showSynonyms', parseInt(params.show_synonyms, 10) == 1 ? true : false);
+    this.set('showEnglish', parseInt(params.show_english, 10) == 1 ? true : false);
+    this.set('showSpanish', parseInt(params.show_spanish, 10) == 1 ? true : false);
+    this.set('showFrench', parseInt(params.show_french, 10) == 1 ? true : false);
+    this.set('scientificName', params.scientific_name);
+    this.set('page', parseInt(params.page, 10));
+    this.set('perPage', parseInt(params.perPage, 10));
   }
 });

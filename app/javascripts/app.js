@@ -15,7 +15,7 @@ Checklist = Ember.Application.create({
   ApplicationController: Ember.Controller.extend({}),
   ApplicationView: Ember.View.extend({
     templateName: 'application_view'
-  }),
+  })
 });
 
 minispade.requireAll(/helpers/);
@@ -29,19 +29,12 @@ Checklist.store = DS.Store.create({
   })
 });
 
-// Choose between cookies or localStorage for saved searches, depending
-// on availability
-// TODO refactor local_store to just use a boolean
-var method = '';
-if (Checklist.Helpers.storage) {
-  method = 'localStorage';
-}
-
+console.log(Checklist.Helpers.storage());
 Checklist.local_store = DS.Store.create({
   revision: 4,
   adapter: Checklist.searchAdapter.create({
     bulkCommit: false,
-    storage_method: method,
+    useLocalStorage: Checklist.Helpers.storage(),
     jQuery: $
   })
 });
