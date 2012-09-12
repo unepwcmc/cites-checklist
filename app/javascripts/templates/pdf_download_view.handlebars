@@ -12,7 +12,7 @@
       <label for="custom_pdf">Only download results for current search</label>
     </p>
 
-    <a {{action "downloadIndexPdf" target="view" on="click"}} id="download" class="btn red"><strong>CITES Species Index</strong></a>
-    <a {{action "downloadHistoryPdf" target="view" on="click"}} id="download" class="btn red"><strong>History of CITES Listings</strong></a>
+    <a href="{{unbound view.downloadIndexPdf}}" id="download" class="btn red"><strong>CITES Species Index</strong></a>
+    <a href="{{unbound view.downloadHistoryPdf}}" id="download" class="btn red"><strong>History of CITES Listings</strong></a>
   </div>
 </div>
