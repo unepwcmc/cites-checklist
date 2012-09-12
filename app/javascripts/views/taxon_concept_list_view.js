@@ -147,7 +147,7 @@ Checklist.CountryListingView = Ember.View.extend({
     var display_string = [visible_countries.join(", ")];
 
     if (hidden_countries.length > 0) {
-      display_string.push(' and <a href="#" title="');
+      display_string.push(' and <a title="');
       display_string.push(hidden_countries.join(", "));
       display_string.push('" class="more-countries-tooltip">');
       display_string.push(hidden_countries.length);
