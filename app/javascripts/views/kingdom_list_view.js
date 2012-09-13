@@ -83,9 +83,13 @@ Checklist.KingdomListView = Ember.View.extend({
     this.createFloatingElements();
     $(window)
      .scroll(this.updateFloatingElements)
-     .trigger("scroll");
+     .trigger("scroll")
+     .resize(this.onWindowResize);
   },
 
+  onWindowResize: function() {
+    $('.floatingHeader').width($('.persist-header').first().width());
+  },
   createFloatingElements: function() {
     var clonedHeaderRow;
 

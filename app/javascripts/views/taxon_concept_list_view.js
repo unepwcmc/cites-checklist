@@ -105,20 +105,6 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       });
     }.property(),
 
-    /*
-     * Handle hover and click states of each species in the listing
-     */
-    mouseEnter: function(event) {
-      if (!this.$().hasClass('expanded')) {
-        this.$().children('.opener-holder').fadeIn();
-      }
-    },
-    mouseLeave: function(event) {
-      // If element has expanded classname, don't hide bottom border
-      if (!this.$().hasClass('expanded')) {
-        this.$().children('.opener-holder').fadeOut();
-      }
-    },
     click: function(event) {
       this.$().toggleClass('expanded');
       this.$().find('.slide').slideToggle();
@@ -151,7 +137,7 @@ Checklist.CountryListingView = Ember.View.extend({
     var display_string = [visible_countries.join(", ")];
 
     if (hidden_countries.length > 0) {
-      display_string.push(' and <a href="#" title="');
+      display_string.push(' and <a title="');
       display_string.push(hidden_countries.join(", "));
       display_string.push('" class="more-countries-tooltip">');
       display_string.push(hidden_countries.length);

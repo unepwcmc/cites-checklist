@@ -29,7 +29,6 @@ Checklist.store = DS.Store.create({
   })
 });
 
-console.log(Checklist.Helpers.storage());
 Checklist.local_store = DS.Store.create({
   revision: 4,
   adapter: Checklist.searchAdapter.create({

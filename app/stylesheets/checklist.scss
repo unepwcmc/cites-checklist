@@ -126,6 +126,7 @@ fieldset {
   -moz-box-shadow: 0 0 12px #ebebeb;
   background:#f3f6f9;
   border-bottom: 1px solid #D6D7D7;
+  height: 198px;
 
   .btn-custom{
     float:left;
@@ -984,6 +985,7 @@ fieldset.saved-search {
     color:#333;
 
     .slide{display:none;}
+    .opener-holder{display:block;}
 
     p {
       a {
@@ -993,6 +995,12 @@ fieldset.saved-search {
     }
 
     .details a{color:#666;}
+  }
+
+  &:hover {
+    .opener-holder {
+      display: block;
+    }
   }
 
   .slide{
