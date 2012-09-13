@@ -14,9 +14,15 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     classNames: ['listing-item'],
     classNameBindings: ['rank'],
     rank: function(){
+      // Hide this item if we're using alphabetical view and this item
+      // is a taxa bar
+      if (this.get('isHigherTaxa') && !this.get('showHigherTaxaBar')) {
+        return "hidden";
+      }
+
       var classes = [];
 
-      if (this.get('isHigherTaxa')) {
+      if (this.get('isHigherTaxa') && this.get('showHigherTaxaBar')) {
         classes.push("persist-area");
         classes.push("persist-header");
         classes.push("main-heading");

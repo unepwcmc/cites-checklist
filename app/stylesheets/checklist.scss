@@ -10,6 +10,15 @@
   -o-#{$name}: $argument;
 }
 
+/*
+ * SASS Color Definitions
+ */
+
+$appendix_blue: #93c2d9;
+$appendix_green: #99c575;
+$appendix_orange: #ffa366;
+$appendix_grey: #adadad;
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -97,6 +106,10 @@ fieldset {
 }
 
 /* Beginning of actual styles! */
+
+.hidden {
+  display: none;
+}
 
 .content .column-holder:after,
 .content .column-frame:after,
@@ -523,19 +536,19 @@ fieldset.saved-search {
   color: #fff;
 
   .green &, &.green {
-    background: #99c575;
+    background: $appendix_green;
   }
 
   .orange &, &.orange {
-    background: #ffa366;
+    background: $appendix_orange;
   }
 
   .blue &, &.blue {
-    background: #93c2d9;
+    background: $appendix_blue;
   }
 
   .grey &, .inactive &, &.grey {
-    background: #adadad;
+    background: $appendix_grey;
   }
 }
 
@@ -743,8 +756,17 @@ fieldset.saved-search {
     width:23px;
     height:23px;
     overflow:hidden;
-    text-indent:-9999px;
-    background:url(../images/bg-sprite.png) no-repeat -46px 0;
+    display:block;
+    background: #33536A;
+    border-radius: 50%;
+    color: #fff;
+    font-size:  0.7em;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 
   .btn-next {
@@ -1119,22 +1141,38 @@ fieldset.saved-search {
   overflow:hidden;
   background:url(../images/bg-opener.gif) repeat-x 0 50%;
   z-index: 850;
+  line-height: 1.7em;
   display: none;
 
-  .opener {
+  .opener,
+  .closer {
     display:block;
     vertical-align:top;
     width:24px;
     height:24px;
     margin:0 auto;
-    text-indent:-9999px;
     overflow:hidden;
-    background:url(../images/bg-sprite.png) no-repeat -9px 0;
+    background: #33536A;
+    border-radius: 50%;
+    color: #fff;
+    line-height: 2.8em;
+    font-size:  0.5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .closer {
+    display: none;
   }
 
   .expanded & {
+    .closer {
+      display: block;
+    }
     .opener {
-      background-position:-9px -24px;
+      display: none;
     }
   }
 }
@@ -1235,7 +1273,7 @@ fieldset.saved-search {
     position:absolute;
     height:4px;
     top:19px;
-    background:#ffa366;
+    background:$appendix_orange;
   }
 
   .arrow {
@@ -1245,7 +1283,7 @@ fieldset.saved-search {
     height: 0;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 5px solid #adadad;
+    border-left: 5px solid $appendix_grey;
   }
 
   .mark{
@@ -1258,7 +1296,7 @@ fieldset.saved-search {
 
     border: 3px solid #000;
     background: #fff;
-    border-color: #adadad;
+    border-color: $appendix_grey;
     border-radius: 50%;
     margin: 0 5px;
   }
@@ -1266,37 +1304,37 @@ fieldset.saved-search {
   .line,
   .mark {
     &.green {
-      border-color: #99c575;
+      border-color: $appendix_green;
     }
 
     &.orange {
-      border-color: #ffa366;
+      border-color: $appendix_orange;
     }
 
     &.blue {
-      border-color: #93c2d9;
+      border-color: $appendix_blue;
     }
 
     &.grey {
-      border-color: #adadad;
+      border-color: $appendix_grey;
     }
   }
 
   .arrow {
     &.green {
-      border-left-color: #99c575;
+      border-left-color: $appendix_green;
     }
 
     &.orange {
-      border-left-color: #ffa366;
+      border-left-color: $appendix_orange;
     }
 
     &.blue {
-      border-left-color: #93c2d9;
+      border-left-color: $appendix_blue;
     }
 
     &.grey {
-      border-left-color: #adadad;
+      border-left-color: $appendix_grey;
     }
   }
 }
