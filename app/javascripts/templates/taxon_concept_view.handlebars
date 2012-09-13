@@ -11,6 +11,9 @@
             <li>{{unbound family_name}}</li>
           </ul>
           <ul class="default-list">
+            {{#if view.showSynonyms }}
+              <li class="synonym">{{unbound synonyms}}</li>
+            {{/if}}
             {{#if view.showEnglish }}
               <li>{{unbound english}} - ENG</li>
             {{/if}}
@@ -19,9 +22,6 @@
             {{/if}}
             {{#if view.showFrench }}
               <li>{{unbound french}} - FRE</li>
-            {{/if}}
-            {{#if view.showSynonyms }}
-              <li class="synonym">{{unbound synonyms}}</li>
             {{/if}}
           </ul>
         </div>
