@@ -31,7 +31,11 @@
             <div class="holder">
               <div class="frame">
                 <ul class="icons">
-                  <li><div class="circle {{unbound view.designationColour}}">{{unbound current_listing}}</div></li>
+                  {{#each view.currentListingParts}}
+                    <li>
+                    <div class="circle {{unbound this.colour}}">{{unbound this.symbol}}</div>
+                    </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>

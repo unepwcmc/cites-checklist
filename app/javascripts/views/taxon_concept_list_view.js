@@ -89,16 +89,20 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
     }.property(),
 
-    designationColour: function() {
-      var appendix = this.get('context').get('current_listing');
-      switch (appendix) {
-        case 'I':
-          return "blue";
-        case 'II':
-          return "green";
-        case 'III':
-          return "orange";
-      }
+    currentListingParts: function(){
+      var listing = this.get('context').get('current_listing');
+      return listing.split('/').map(function(appendix){
+        switch (appendix) {
+          case 'I':
+            return {colour: "blue", symbol: 'I'};
+          case 'II':
+            return {colour: "green", symbol: 'II'};
+          case 'III':
+            return {colour: "orange", symbol: 'III'};
+          case 'NC':
+            return {colour: "grey", symbol: 'NC'};
+        }
+      });
     }.property(),
 
     /*
