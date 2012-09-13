@@ -1,6 +1,7 @@
-{{#if view.isHigherTaxa}}
+{{#if view.showHigherTaxaBar}}
   {{view Ember.View templateName="higher_taxa"}}
 {{else}}
+  {{#unless view.isHigherTaxa}}
   <div class="column-holder">
     <div class="column-frame">
       <div class="column-container">
@@ -30,7 +31,11 @@
             <div class="holder">
               <div class="frame">
                 <ul class="icons">
-                  <li><div class="circle {{unbound view.designationColour}}">{{unbound current_listing}}</div></li>
+                  {{#each view.currentListingParts}}
+                    <li>
+                    <div class="circle {{unbound this.colour}}">{{unbound this.symbol}}</div>
+                    </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>
@@ -116,4 +121,5 @@
   <div class="opener-holder">
     <a href="#" class="opener">opener</a>
   </div>
+  {{/unless}}
 {{/if}}
