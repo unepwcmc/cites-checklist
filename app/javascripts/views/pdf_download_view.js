@@ -35,12 +35,12 @@ Checklist.PdfDownloadView = Em.View.extend({
   },
 
   downloadIndexPdf: function(event) {
-    return this.pdfLink({type: 'Index', custom: this.get('checked')});
-  }.property(),
+    window.location = this.pdfLink({type: 'Index', custom: this.get('checked')});
+  },
 
   downloadHistoryPdf: function(event) {
-    return this.pdfLink({type: 'History', custom: this.get('checked')});
-  }.property(),
+    window.location = this.pdfLink({type: 'History', custom: this.get('checked')});
+  },
 
   didInsertElement: function() {
     var cf = new CustomFormElements({
