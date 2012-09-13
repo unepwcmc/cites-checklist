@@ -1540,10 +1540,6 @@ fieldset.saved-search {
   max-height: 100%;
 }
 
-#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-  background-image: url('../images/fancybox_sprite.png');
-}
-
 #fancybox-loading {
   position: fixed;
   top: 50%;
@@ -1566,11 +1562,24 @@ fieldset.saved-search {
   position: absolute;
   top: 0;
   right: 0;
-  width: 25px;
-  height: 25px;
   cursor: pointer;
   z-index: 8040;
-  background: url(../images/bg-sprite.png) no-repeat -9px -24px;
+  display:block;
+  vertical-align:top;
+  width:24px;
+  height:24px;
+  margin:0 auto;
+  overflow:hidden;
+  background: #33536A;
+  border-radius: 50%;
+  color: #fff;
+  line-height: 2.2em;
+  font-size: 1em;
+  text-align: center;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .fancybox-nav {
