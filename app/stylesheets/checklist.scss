@@ -1732,6 +1732,10 @@ fieldset.saved-search {
  * Custom Scrollbars
  */
 
+.jspScrollable {
+  outline: none;
+}
+
 .jspContainer {
   overflow: hidden;
   position: relative;
