@@ -56,6 +56,11 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     mouseUp: function(event) {
       var filtersController = Checklist.get('router').get('filtersController');
       filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
+
+      var filters = Checklist.get('router').get('filtersController').toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   })
 });
