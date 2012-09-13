@@ -921,6 +921,19 @@ fieldset.saved-search {
       }
 
       &.style01{width:18%;}
+
+      ul {
+        li.synonym {
+          background: none;
+          color: #F88F8F;
+          padding: 0;
+
+          &:before {
+            font-size: 0.6em;
+            content: "\003D \0020";
+          }
+        }
+      }
     }
 
     .column-area {
