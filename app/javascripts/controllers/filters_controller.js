@@ -25,8 +25,6 @@ Checklist.FiltersController = Ember.Object.extend({
   searches : [],
   page: 0,
   per_page: 50,
-  
-  tmp: Checklist.store.findMany(Checklist.TimelinesForTaxonConcept, [473]),
 
   /*
    * These event handlers and the above arrays replace the functionality
