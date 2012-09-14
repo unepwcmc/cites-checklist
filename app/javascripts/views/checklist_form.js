@@ -29,6 +29,8 @@ Checklist.ChecklistForm = Em.View.extend({
 Checklist.SearchTextField = Em.TextField.extend({
   value: '',
 
+  attributeBindings: ['autocomplete'],
+
   click: function(event) {
     var params = {
       param_name: 'scientific_name',
@@ -96,6 +98,8 @@ Checklist.SearchTextField = Em.TextField.extend({
 Checklist.GeoEntityTextField = Em.TextField.extend({
   value: '',
 
+  attributeBindings: ['autocomplete'],
+
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');
     var pattern = new RegExp("^"+event.currentTarget.value,"i");
@@ -108,7 +112,7 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
       )
     );
 
-    var pattern = new RegExp("^[0-9]- "+event.currentTarget.value,"i");
+    pattern = new RegExp("^[0-9]- "+event.currentTarget.value,"i");
     controller.set(
       'autoCompleteRegionsContent',
       controller.get('regionsContent').filter(
