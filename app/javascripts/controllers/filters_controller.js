@@ -93,7 +93,7 @@ Checklist.FiltersController = Ember.Object.extend({
 
     controller.set(
       'content',
-      Checklist.store.find(
+      Checklist.store.findQuery(
         Checklist.Index, params
       )
     );
