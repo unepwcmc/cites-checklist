@@ -38,7 +38,6 @@
     position: absolute;
     top:11px;
     cursor:pointer;
-    font-size: 15px;
   }
 
   .circle {
@@ -63,7 +62,7 @@
     &.event {
       width: 20px;
       height: 20px;
-      line-height: 1.2em;
+      line-height: 1.5em;
     }
   }
 
@@ -103,18 +102,22 @@
   .mark {
     &.green {
       border-color: $appendix_green;
+      background: $appendix_green;
     }
 
     &.orange {
       border-color: $appendix_orange;
+      background: $appendix_orange;
     }
 
     &.blue {
       border-color: $appendix_blue;
+      background: $appendix_blue;
     }
 
     &.grey {
       border-color: $appendix_grey;
+      background: $appendix_grey;
     }
   }
 

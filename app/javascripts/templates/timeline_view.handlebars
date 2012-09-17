@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row {{unbound view.colour}}">
   {{#unless view.isPartyTimeline}}
     <div class="circle {{unbound view.colour}} category">{{unbound appendix}}</div>
   {{else}}
@@ -6,6 +6,7 @@
   {{/unless}}
   {{collection Checklist.TimelineIntervalListView contentBinding="timeline_intervals"}}
   {{collection Checklist.TimelineEventListView contentBinding="timeline_events"}}
+  <div class="arrow {{unbound view.colour}}" style="right:0"></div>
 </div>
 
 {{#each timelines}}

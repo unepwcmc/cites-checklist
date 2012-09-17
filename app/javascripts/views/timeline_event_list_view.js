@@ -3,8 +3,12 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
   itemViewClass: Ember.View.extend({
     tagName: 'a',
     classNames: ['ico', 'tooltip'],
+    classNameBindings: ['colour'],
+    colour: function(){
+      return this.get('parentView').get('parentView').get('colour');
+    }.property(),
     contextBinding: 'content',
-    template: Ember.Handlebars.compile("<div class=\"circle orange event\">{{unbound view.eventSymbol}}</div>"),
+    template: Ember.Handlebars.compile("<div class=\"circle {{unbound view.colour}} event\">{{unbound view.eventSymbol}}</div>"),
     positionInPixels: function(){
       //TODO
       var total = 700;
