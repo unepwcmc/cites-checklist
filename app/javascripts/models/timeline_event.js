@@ -1,4 +1,6 @@
 Checklist.TimelineEvent = DS.Model.extend({
-  listing_change: DS.belongsTo('Checklist.ListingChange', { key: 'listing_change_id'}),
+  id: DS.attr('number'),
+  change_type_name: DS.attr('string'),
+  effective_at: DS.attr('date'),
   pos: DS.attr('number')
 });

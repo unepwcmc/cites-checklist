@@ -111,10 +111,6 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       });
     }.property(),
 
-    timelines: function(){
-      return this.get('context').get('timelines_for_taxon_concept.timelines');
-    }.property(),
-
     click: function(event) {
       // Ignore clicks on the history graph
       if ($(event.target).parents('.slide').length > 0) return;

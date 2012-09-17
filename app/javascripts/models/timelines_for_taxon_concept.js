@@ -6,5 +6,5 @@ Checklist.TimelinesForTaxonConcept = DS.Model.extend({
 });
 
 Checklist.TimelinesForTaxonConcept.reopenClass({
-  url: '/timelines?taxon_concept_ids=%@'
+  url: 'timelines?taxon_concept_ids=%@'
 });
