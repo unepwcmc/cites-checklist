@@ -6,9 +6,15 @@
   {{/unless}}
   {{collection Checklist.TimelineIntervalListView contentBinding="timeline_intervals"}}
   {{collection Checklist.TimelineEventListView contentBinding="timeline_events"}}
-  <div class="arrow {{unbound view.colour}}" style="right:0"></div>
+  {{#if view.continuesInPresent}}
+    <div class="arrow {{unbound view.colour}}" style="right:3px"></div>
+  {{/if}}
 </div>
-
-{{#each timelines}}
-  {{view Checklist.TimelineView contentBinding="this"}}
-{{/each}}
+{{#if view.hasNestedTimelines}}
+  <div class="text-holder">
+    <span>Appendix {{unbound appendix}} per country classifications:</span>
+  </div>
+  {{#each timelines}}
+    {{view Checklist.TimelineView contentBinding="this"}}
+  {{/each}}
+{{/if}}

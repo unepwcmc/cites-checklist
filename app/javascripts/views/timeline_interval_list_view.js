@@ -10,15 +10,18 @@ Checklist.TimelineIntervalListView = Ember.CollectionView.extend({
     contextBinding: 'content',
     template: null,
     positionInPixels: function(){
-      //TODO
-      var total = 700;
-      var leftOffset = 50;
-      return (this.get('content.start_pos') * total);
+      var total = this.get('parentView').get('parentView').get('totalWidthInPixels');
+      var leftOffset = this.get('parentView').get('parentView').get('leftOffsetInPixels');
+      return (this.get('content.start_pos') * (total - leftOffset) + leftOffset);
     }.property(),
     widthInPercent: function(){
-      //TODO
-      var total = 700;
-      return (this.get('content.end_pos') - this.get('content.start_pos')) * 100;
+      var total = this.get('parentView').get('parentView').get('totalWidthInPixels');
+      var leftOffset = this.get('parentView').get('parentView').get('leftOffsetInPixels');
+      return (
+        (
+          (this.get('content.end_pos') - this.get('content.start_pos')) * (total - leftOffset)
+        ) / total
+      ) * 100;
     }.property(),
     attributeBindings: ['style'],
     style: function() {
