@@ -1,5 +1,5 @@
 <div class="btn-holder">
-  <a class="btn"><span>All Locations</span></a>
+  <a class="btn"><span>{{view.buttonString}}</span></a>
   <div class="drop">
     <div class="drop-search">
       <form action="#">
@@ -28,12 +28,12 @@
     <div class="drop-holder">
       <div class="scroll-area">
         <h3>Regions</h3>
-          {{collection Checklist.LocationsView
+          {{collection Checklist.LocationsCollectionView
           contentBinding="controllers.filtersController.autoCompleteRegionsContent"
           locationType="regions"}}
 
         <h3>Countries</h3>
-          {{collection Checklist.LocationsView
+          {{collection Checklist.LocationsCollectionView
           contentBinding="controllers.filtersController.autoCompleteCountriesContent"
           locationType="countries"}}
       </div>
