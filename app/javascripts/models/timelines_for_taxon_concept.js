@@ -2,7 +2,7 @@ Checklist.TimelinesForTaxonConcept = DS.Model.extend({
   id: DS.attr('number'),
   taxon_concept_id: DS.attr('number'),
   listing_changes: DS.hasMany('Checklist.ListingChange', { embedded: true }),
-  summary_timelines: DS.hasMany('Checklist.SummaryTimeline', { embedded: true })
+  timelines: DS.hasMany('Checklist.Timeline', { embedded: true })
 });
 
 Checklist.TimelinesForTaxonConcept.reopenClass({
