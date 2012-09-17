@@ -23,6 +23,10 @@ $appendix_grey: #adadad;
 
 /* Beginning of actual styles! */
 
+body {
+  background: #F3F6F9;
+}
+
 .hidden {
   display: none;
 }
@@ -49,7 +53,7 @@ $appendix_grey: #adadad;
   position:fixed;
   z-index:990;
   width:100%;
-  padding:34px 0 0;
+  padding:15px 0 0;
   box-shadow: 0 0 12px #ebebeb;
   -webkit-box-shadow: 0 0 12px #ebebeb;
   -moz-box-shadow: 0 0 12px #ebebeb;
@@ -107,11 +111,11 @@ $appendix_grey: #adadad;
 
 .logo-holder{
   overflow:hidden;
-  padding:0 0 34px;
+  padding:0 0 15px;
   margin:0 0 0 -5px;
 
   .top-links {
-    margin:9px 0 0;
+    margin:26px 0 0;
     font-size:15px;
     color:#33526a;
     float: right;
@@ -120,15 +124,21 @@ $appendix_grey: #adadad;
   .logo{
     float:left;
     margin:0;
-    width:157px;
-    height:28px;
-    text-indent:-9999px;
+    width:215px;
+    height:57px;
     overflow:hidden;
-    background:url(../images/logo.png) no-repeat;
+    background:url(../images/cites-logo.png) no-repeat;
 
     a {
       display:block;
       height:100%;
+      text-indent: 115px;
+      line-height: 63px;
+      font-size: 20px;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
@@ -617,11 +627,12 @@ fieldset.saved-search {
 #main{
   font-size:1.3em;
   line-height:1.23em;
+  background: #fff;
 
   .c1 {
     position:relative;
-    margin:233px 135px -22px 0;
-    padding:0 0 30px;
+    margin:214px 135px -22px 0;
+    padding:0 0 0;
     border:1px solid #e5e5e5;
     border-width:0 1px 1px;
     background:#fff;
@@ -640,7 +651,7 @@ fieldset.saved-search {
 
   .aside{
     position: fixed;
-    top: 232px;
+    top: 214px;
     right: 100px;
     color:#666;
     font-weight:bold;

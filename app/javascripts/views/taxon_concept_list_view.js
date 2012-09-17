@@ -112,6 +112,9 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property(),
 
     click: function(event) {
+      // Ignore clicks on the history graph
+      if ($(event.target).parents('.slide').length > 0) return;
+
       this.$().toggleClass('expanded');
       this.$().find('.slide').slideToggle();
     }

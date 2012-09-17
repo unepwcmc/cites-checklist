@@ -15,13 +15,12 @@
       extraOffsetY: 30,
       showOnTouchDevice: true
     },o);
-    
+
     // create tooltip
     var tooltip = $('<div>').html(options.tooltipStructure).children().css({position:'absolute'});
     var tooltipTextBox = tooltip.find(options.tooltipSelector);
     var tooltipWidth, tooltipHeight;
-    
-    
+
     // tooltip logic
     function initTooltip(item) {
       var tooltipText = item.attr(options.attribute);
@@ -35,6 +34,10 @@
         item.bind('mouseenter', function(e) {
           showTooltip(item, tooltipText, e);
         }).bind('mouseleave', hideTooltip);
+
+        item.bind('click', function(e) {
+          e.preventDefault();
+        });
       }
     }
     function showTooltip(item, text, e) {
@@ -49,7 +52,7 @@
     }
     function moveTooltip(e) {
       var location = $(e.target).offset();
-        
+
       var top, left, x = location.left, y = location.top;
 
       switch(options.positionTypeY) {
@@ -75,24 +78,24 @@
           left = x + options.extraOffsetX;
           break;
       }
-      
+
       tooltip.css({
         top: top,
         left: left 
       });
     }
-    
+
     // add handlers
     return this.each(function(){
       initTooltip($(this));
     });
-  }
-  
+  };
+
   // parse event
   function getEvent(e) {
     return e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
   }
-  
+
   // detect device type
   var isTouchDevice = (function() {
     try {

@@ -138,6 +138,12 @@
       border-left-color: $appendix_grey;
     }
   }
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .custom-tooltip{
