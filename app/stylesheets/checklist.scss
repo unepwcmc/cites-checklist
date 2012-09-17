@@ -643,9 +643,15 @@ fieldset.saved-search {
     border-width:0 1px 1px;
     background:#fff;
 
-    &#loading {
+    &#loading,
+    &.error {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
+      font-size: 1.5em;
+    }
+
+    &.error {
+      height: 60px;
     }
   }
 

@@ -1,20 +1,26 @@
-<div class="c1">
-  {{#if view.showAnimalia }}
-    {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
-  {{/if}}
-  {{#if view.showPlantae }}
-    {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
-  {{/if}}
-</div>
+{{#if total_cnt}}
+  <div class="c1">
+    {{#if view.showAnimalia }}
+      {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+    {{/if}}
+    {{#if view.showPlantae }}
+      {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+    {{/if}}
+  </div>
 
-<ul class="paging">
-  {{# if view.showPrev }}
-    <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
-  {{/if}}
+  <ul class="paging">
+    {{# if view.showPrev }}
+      <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
+    {{/if}}
 
-  <li>Page {{view.currentPage}}</li>
+    <li>Page {{view.currentPage}} ({{total_cnt}})</li>
 
-  {{# if view.showNext }}
-    <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
-  {{/if}}
-</ul>
+    {{# if view.showNext }}
+      <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
+    {{/if}}
+  </ul>
+{{else}}
+  <div class="c1 error">
+    Your search did not match any taxa.
+  </div>
+{{/if}}
