@@ -3,7 +3,7 @@ Checklist.AppendixFormView = Ember.View.extend({
   templateName: 'appendix_form',
 
   summary: function() {
-    var appendices = this.get('content').mapProperty('abbreviation');
+    var appendices = Checklist.get('router').get('filtersController').get('appendicesIds');
     if (appendices.length === 0 || appendices.length == 3) {
       return "All Appxs.";
     } else {
