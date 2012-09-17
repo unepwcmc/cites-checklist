@@ -2,8 +2,12 @@ Checklist.TimelineView = Ember.View.extend({
   templateName: 'timeline_view',
   content: null,
   contextBinding: 'content',
-  totalWidthInPixels: 700,//TODO
-  leftOffsetInPixels: 50,
+  totalWidthInPixels: function(){
+    return this.get('parentView.totalWidthInPixels');
+  }.property(),
+  leftOffsetInPixels: function(){
+    return this.get('parentView.leftOffsetInPixels');
+  }.property(),
   colour: function(){
     if (this.get('content').get('appendix') == 'I' ){
       return 'blue';
