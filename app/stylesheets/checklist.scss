@@ -107,11 +107,11 @@ $appendix_grey: #adadad;
 
 .logo-holder{
   overflow:hidden;
-  padding:0 0 34px;
+  padding:0 0 15px;
   margin:0 0 0 -5px;
 
   .top-links {
-    margin:9px 0 0;
+    margin:26px 0 0;
     font-size:15px;
     color:#33526a;
     float: right;
@@ -120,15 +120,21 @@ $appendix_grey: #adadad;
   .logo{
     float:left;
     margin:0;
-    width:157px;
-    height:28px;
-    text-indent:-9999px;
+    width:215px;
+    height:57px;
     overflow:hidden;
-    background:url(../images/logo.png) no-repeat;
+    background:url(../images/cites-logo.png) no-repeat;
 
     a {
       display:block;
       height:100%;
+      text-indent: 115px;
+      line-height: 63px;
+      font-size: 20px;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }

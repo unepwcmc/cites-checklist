@@ -1,0 +1,19 @@
+<div class="search">
+  <fieldset>
+    <div class="search-holder">
+      <div class="search-frame">
+        {{view Checklist.SearchTextField
+          valueBinding="controllers.filtersController.scientificName"
+          id="scientific_name"
+          title="search"
+          placeholder="Species, taxon or synonym..."
+          autocomplete="off"
+        }}
+      </div>
+    </div>
+    <input type="submit" value="SEARCH" {{action "submit" target="view"}} />
+  </fieldset>
+  <div class="drop" style="display: none;" id="autocomplete-dropdown">
+    <img src="images/img-decor1.png" alt="image description" class="decor" width="24" height="13" >
+  </div>
+</div>

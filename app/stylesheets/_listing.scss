@@ -41,8 +41,21 @@
 
     li {
       float:left;
-      margin:0 12px 0 0;
+      margin:0 5px 0 0;
       color:#b6b6b6;
+
+      &:before {
+        content: "\25b6";
+        font-size: 5px;
+        padding-right: 5px;
+      }
+
+      &:first-of-type {
+        &:before {
+          content: "";
+          padding-right: 0;
+        }
+      }
     }
   }
 
@@ -145,8 +158,8 @@
     background: #33536A;
     border-radius: 50%;
     color: #fff;
-    line-height: 2.8em;
-    font-size:  0.5em;
+    line-height: 25px;
+    font-size:  10px;
 
     &:hover {
       cursor: pointer;

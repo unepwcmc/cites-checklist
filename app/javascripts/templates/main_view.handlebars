@@ -12,31 +12,11 @@
           <div class="column-holder">
             <div class="column-frame">
 
-              {{#view Checklist.ChecklistForm
-                controllerBinding="controllers.taxonConceptController"
-                filtersControllerBinding="controllers.filtersController"}}
-                <div class="column">
-                  <div class="search">
-                    <fieldset>
-                      <div class="search-holder">
-                        <div class="search-frame">
-                          {{view Checklist.SearchTextField
-                            valueBinding="controllers.filtersController.scientificName"
-                            id="scientific_name"
-                            title="search"
-                            placeholder="Species, taxon or synonym..."
-                            autocomplete="off"
-                          }}
-                        </div>
-                      </div>
-                      <input type="submit" value="SEARCH" {{action "submit" target="view"}} />
-                    </fieldset>
-                    <div class="drop" style="display: none;" id="autocomplete-dropdown">
-                      <img src="images/img-decor1.png" alt="image description" class="decor" width="24" height="13" >
-                    </div>
-                  </div>
-                </div>
-              {{/view}}
+              <div class="column">
+                {{view Checklist.ChecklistForm
+                  controllerBinding="controllers.taxonConceptController"
+                  filtersControllerBinding="controllers.filtersController"}}
+              </div>
 
               <div class="column">
                 {{view Checklist.AppendixFormView
