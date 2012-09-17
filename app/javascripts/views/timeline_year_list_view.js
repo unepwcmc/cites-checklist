@@ -1,8 +1,9 @@
 Checklist.TimelineYearListView = Ember.CollectionView.extend({
   content: null,
   itemViewClass: Ember.View.extend({
-    tagName: 'span',
+    tagName: 'div',
     contextBinding: 'content',
+    classNames: ['year'],
     template: Ember.Handlebars.compile("{{unbound year}}"),
     positionInPixels: function(){
       var total = this.get('parentView.parentView.totalWidthInPixels');

@@ -5,7 +5,6 @@
 
   .area-b {
     padding:0 0 29px;
-    background:url(../images/bg-area-b.gif) no-repeat 0 100%;
 
     .text-holder{
       text-align:left;
@@ -71,6 +70,15 @@
     height:4px;
     top:19px;
     background:$appendix_orange;
+  }
+
+  .year {
+    position: absolute;
+    width: 4em;
+    height: 29px;
+    color: #373f4c;
+    font: bold italic;
+    background: url(../images/timescale-bar.gif) no-repeat 0 0;
   }
 
   .arrow {
