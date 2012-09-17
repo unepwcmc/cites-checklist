@@ -516,6 +516,12 @@ fieldset.saved-search {
 .saved-holder {
   @include vendor-prefix(user-select, none);
 
+  .btn-saved {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .drop {
     background: #F5F6F7;
     width: 170px;
@@ -870,19 +876,6 @@ fieldset.saved-search {
       }
 
       &.style01{width:18%;}
-
-      ul {
-        li.synonym {
-          background: none;
-          color: #F88F8F;
-          padding: 0;
-
-          &:before {
-            font-size: 0.6em;
-            content: "\003D \0020";
-          }
-        }
-      }
     }
 
     .column-area {

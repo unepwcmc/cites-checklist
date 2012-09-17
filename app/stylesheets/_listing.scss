@@ -74,6 +74,18 @@
         font-style:italic;
         background:url(../images/bullet4.png) no-repeat 0 6px;
       }
+
+      &.synonym {
+        background: none;
+        color: #F88F8F;
+        padding: 0;
+
+        &:before {
+          font-size: 0.6em;
+          content: "\003D \0020";
+          padding-right: 2px;
+        }
+      }
     }
   }
 }
