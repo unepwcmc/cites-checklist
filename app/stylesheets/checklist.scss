@@ -251,7 +251,7 @@ fieldset.saved-search {
     z-index:999;
     left:0;
     width:100%;
-    height:37px;
+    height:20px;
     background:url(../images/bg-shadow.png) repeat-x;
   }
 
@@ -516,6 +516,12 @@ fieldset.saved-search {
 .saved-holder {
   @include vendor-prefix(user-select, none);
 
+  .btn-saved {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .drop {
     background: #F5F6F7;
     width: 170px;
@@ -637,9 +643,15 @@ fieldset.saved-search {
     border-width:0 1px 1px;
     background:#fff;
 
-    &#loading {
+    &#loading,
+    &.error {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
+      font-size: 1.5em;
+    }
+
+    &.error {
+      height: 60px;
     }
   }
 
@@ -870,19 +882,6 @@ fieldset.saved-search {
       }
 
       &.style01{width:18%;}
-
-      ul {
-        li.synonym {
-          background: none;
-          color: #F88F8F;
-          padding: 0;
-
-          &:before {
-            font-size: 0.6em;
-            content: "\003D \0020";
-          }
-        }
-      }
     }
 
     .column-area {

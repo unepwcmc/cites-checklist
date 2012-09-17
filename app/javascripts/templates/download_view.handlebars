@@ -1,7 +1,9 @@
-<div class="text-frame">
-  <strong class="heading">{{total_cnt}} <span>taxa</span></strong>
-</div>
-<div class="btn-holder">
-  <a href="#downloads" id="download" class="btn red">Download</a>
-  {{view Checklist.PdfDownloadView}}
-</div>
+{{#if total_cnt}}
+  <div class="text-frame">
+    <strong class="heading">{{total_cnt}} <span>taxa</span></strong>
+  </div>
+  <div class="btn-holder">
+    <a href="#downloads" id="download" class="btn red">Download</a>
+    {{view Checklist.PdfDownloadView}}
+  </div>
+{{/if}}
