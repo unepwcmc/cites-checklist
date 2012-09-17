@@ -149,7 +149,7 @@ Checklist.KingdomListView = Ember.View.extend({
       scrollTop      = $(window).scrollTop(),
       floatingHeader = $($(".floatingHeader")[index]);
 
-      if ((scrollTop + 232 > offset.top) && (scrollTop < offset.top + el.height())) {
+      if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
         floatingHeader.css({
           "visibility": "visible"
         });

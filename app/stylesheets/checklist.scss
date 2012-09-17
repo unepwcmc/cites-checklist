@@ -23,6 +23,10 @@ $appendix_grey: #adadad;
 
 /* Beginning of actual styles! */
 
+body {
+  background: #F3F6F9;
+}
+
 .hidden {
   display: none;
 }
@@ -49,7 +53,7 @@ $appendix_grey: #adadad;
   position:fixed;
   z-index:990;
   width:100%;
-  padding:34px 0 0;
+  padding:15px 0 0;
   box-shadow: 0 0 12px #ebebeb;
   -webkit-box-shadow: 0 0 12px #ebebeb;
   -moz-box-shadow: 0 0 12px #ebebeb;
@@ -623,10 +627,11 @@ fieldset.saved-search {
 #main{
   font-size:1.3em;
   line-height:1.23em;
+  background: #fff;
 
   .c1 {
     position:relative;
-    margin:233px 135px -22px 0;
+    margin:214px 135px -22px 0;
     padding:0 0 0;
     border:1px solid #e5e5e5;
     border-width:0 1px 1px;
@@ -646,7 +651,7 @@ fieldset.saved-search {
 
   .aside{
     position: fixed;
-    top: 232px;
+    top: 214px;
     right: 100px;
     color:#666;
     font-weight:bold;
