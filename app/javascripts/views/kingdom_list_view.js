@@ -4,7 +4,7 @@ Checklist.KingdomListView = Ember.View.extend({
   taxonConceptsController: null,
   filtersController: null,
 
-  isInvisible: true,
+  isVisible: false,
 
   showAnimalia: function(){
     return this.content.get('animaliaPresent');
@@ -53,7 +53,7 @@ Checklist.KingdomListView = Ember.View.extend({
 
   didInsertElement: function() {
     $('#loading').fadeOut();
-    this.set('isInvisible', false);
+    this.set('isVisible', true);
 
     // Initialise history tooltips
     $('a.tooltip').hoverTooltip({
