@@ -174,10 +174,15 @@
     float:left;
     width:16px;
     height:16px;
+    line-height: 14px;
     margin:0 7px 0 0;
-    text-indent:-9999px;
+    text-align: center;
     overflow:hidden;
+    color:#666666;
+    font-size: 12px;
+    font-weight: bold;
     background:url(../images/ico-tooltip.png) no-repeat;
+    align: center;
   }
 
   .tooltip-text{

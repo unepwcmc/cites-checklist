@@ -114,5 +114,15 @@ Checklist.Helpers = {
     });
 
     return result;
+  },
+
+  symbolAsText: function(symbol){
+    if (symbol == '+'){
+      return 'plus';
+    } else if (symbol == '-'){
+      return 'minus';
+    } else {
+      return symbol;
+    }
   }
 };
