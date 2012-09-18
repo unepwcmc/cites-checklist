@@ -30,8 +30,9 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       return 'left:' + this.get('positionInPixels') + 'px';
     }.property(),
     title: function(){
-      //TODO
-      return 'GB · FEB 09';
+      var res = this.get('content.effective_at');
+      var party = this.get('parentView.parentView.content.party');
+      return (party !== null ? party + ' · ' + res : res);
     }.property(),
     href: function(){
       //TODO
