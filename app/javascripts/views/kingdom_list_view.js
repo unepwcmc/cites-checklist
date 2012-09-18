@@ -68,25 +68,6 @@ Checklist.KingdomListView = Ember.View.extend({
     $('#loading').fadeOut();
     this.set('isVisible', true);
 
-    // Initialise history tooltips
-    $('a.tooltip').hoverTooltip({
-      positionTypeX: 'left',
-      positionTypeY: 'top',
-      attribute:'title',
-      extraOffsetX: -2,
-      extraOffsetY: 2,
-      tooltipStructure: '<div class="custom-tooltip"><div class="ico-tooltip"></div><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
-    });
-
-    $('a.more-countries-tooltip').hoverTooltip({
-      positionTypeX: 'center',
-      positionTypeY: 'bottom',
-      attribute:'title',
-      extraOffsetX: 15,
-      extraOffsetY: 40,
-      tooltipStructure: '<div class="country-tooltip"><div class="tooltip-text"></div></div>'
-    });
-
     // Vertical height management for listing rows
     $('.column-container').sameHeight({
       elements: '.column-area',

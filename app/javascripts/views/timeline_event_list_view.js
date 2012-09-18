@@ -38,6 +38,28 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       //TODO
       return '#popup1';
     }.property()
-  })
+  }),
+  afterRender: function(){
+    Ember.run.next(this, function(){
+    // Initialise history tooltips
+    this.$('a.tooltip').hoverTooltip({
+      positionTypeX: 'left',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: -2,
+      extraOffsetY: 2,
+      tooltipStructure: '<div class="custom-tooltip"><div class="ico-tooltip"></div><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
+    });
+
+    this.$('a.more-countries-tooltip').hoverTooltip({
+      positionTypeX: 'center',
+      positionTypeY: 'bottom',
+      attribute:'title',
+      extraOffsetX: 15,
+      extraOffsetY: 40,
+      tooltipStructure: '<div class="country-tooltip"><div class="tooltip-text"></div></div>'
+    });
+    });
+  }
 });
 
