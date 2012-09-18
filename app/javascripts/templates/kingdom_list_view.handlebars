@@ -13,7 +13,7 @@
       <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
     {{/if}}
 
-    <li>Page {{view.currentPage}}</li>
+    <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
 
     {{# if view.showNext }}
       <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
