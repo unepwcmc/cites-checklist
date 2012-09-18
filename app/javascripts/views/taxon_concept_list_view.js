@@ -58,7 +58,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       switch (this.content.get('rank_name')) {
         case "FAMILY":
         case "GENUS":
-          full_name += " <span style='font-style: normal'>spp.</span>";
+          full_name += " <span style='text-transform: lowercase; font-style: normal'>spp.</span>";
           break;
       }
 
