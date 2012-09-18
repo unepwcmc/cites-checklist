@@ -7,6 +7,7 @@
           <strong class="heading">COMMON NAMES</strong>
           <div class="row">
             {{view Checklist.SortingCheckbox
+              context="showEnglish"
               checkedBinding="controllers.filtersController.showEnglish"
               id="eng-checkbox"
               class="styled"
@@ -15,6 +16,7 @@
           </div>
           <div class="row">
             {{view Checklist.SortingCheckbox
+              context="showSpanish"
               checkedBinding="controllers.filtersController.showSpanish"
               id="spa-checkbox"
               class="styled"
@@ -23,6 +25,7 @@
           </div>
           <div class="row">
             {{view Checklist.SortingCheckbox
+              context="showFrench"
               checkedBinding="controllers.filtersController.showFrench"
               id="fre-checkbox"
               class="styled"
@@ -40,6 +43,8 @@
           <strong class="heading">OTHER OPTIONS</strong>
           <div class="row">
             {{view Checklist.SortingCheckbox
+              checkedBinding="controllers.filtersController.showSynonyms"
+              context="showSynonyms"
               id="synonyms-checkbox"
               class="styled"
             }}
