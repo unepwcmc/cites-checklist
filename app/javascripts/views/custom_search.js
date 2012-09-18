@@ -13,7 +13,11 @@ Checklist.CustomSearch = Ember.View.extend({
 
 Checklist.SortingCheckbox = Ember.Checkbox.extend({
   change: function(event) {
-    var filters = Checklist.get('router').get('filtersController').toParams();
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    filtersController.set(this.get('context'), this.get('checked'));
+
+    var filters = filtersController.toParams();
     var params = $.param(filters);
 
     Checklist.get('router').transitionTo('search',{params: params});
@@ -22,9 +26,15 @@ Checklist.SortingCheckbox = Ember.Checkbox.extend({
 
 Checklist.UnfoldHistoryCheckbox = Ember.Checkbox.extend({
   change: function(){
-    $('.listing-item').toggleClass('expanded');
-    $('.opener-holder').fadeToggle();
-    $('.slide').slideToggle();
+    if (this.get('checked')) {
+      $('.listing-item').addClass('expanded');
+      $('.opener-holder').fadeIn();
+      $('.slide').slideDown();
+    } else {
+      $('.listing-item').removeClass('expanded');
+      $('.opener-holder').fadeOut();
+      $('.slide').slideUp();
+    }
   }
 });
 
