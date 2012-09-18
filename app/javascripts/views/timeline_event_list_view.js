@@ -8,7 +8,10 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       return this.get('parentView.parentView.colour');
     }.property(),
     contextBinding: 'content',
-    template: Ember.Handlebars.compile("<div class=\"circle {{unbound view.colour}} event\">{{unbound view.eventSymbol}}</div>"),
+    template: Ember.Handlebars.compile(
+      "<div class=\"circle {{unbound view.colour}} event\">{{unbound view.eventSymbol}}</div>" +
+      "<div id=\"popup{{unbound id}}\" style=\"display:none\">{{unbound notes}}</div>"
+    ),
     positionInPixels: function(){
       var total = this.get('parentView.parentView.totalWidthInPixels');
       var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
@@ -30,13 +33,27 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       return 'left:' + this.get('positionInPixels') + 'px';
     }.property(),
     title: function(){
-      //TODO
-      return 'GB · FEB 09';
+      var res = this.get('content.effective_at');
+      var party = this.get('parentView.parentView.content.party');
+      return (party !== null ? party + ' · ' + res : res);
     }.property(),
     href: function(){
       //TODO
-      return '#popup1';
+      return '#popup' + this.get('content.id');
     }.property()
-  })
+  }),
+  afterRender: function(){
+    Ember.run.next(this, function(){
+    // Initialise history tooltips
+    this.$('a.tooltip').hoverTooltip({
+      positionTypeX: 'left',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: -2,
+      extraOffsetY: 2,
+      tooltipStructure: '<div class="custom-tooltip"><div class="ico-tooltip"></div><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
+    });
+    });
+  }
 });
 
