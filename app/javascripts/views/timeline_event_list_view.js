@@ -15,7 +15,8 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     positionInPixels: function(){
       var total = this.get('parentView.parentView.totalWidthInPixels');
       var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
-      return (this.get('content.pos') * (total - leftOffset)) + leftOffset;
+      var iconOffset = 10;//so that icon is centered
+      return (this.get('content.pos') * (total - leftOffset)) + leftOffset - iconOffset;
     }.property(),
     eventSymbol: function(){
       if (this.get('content.change_type_name') == 'ADDITION'){
