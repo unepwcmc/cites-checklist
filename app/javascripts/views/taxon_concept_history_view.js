@@ -8,7 +8,6 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   didInsertElement: function() {
     Ember.run.next(this, function(){
      // code to be executed in the next RunLoop, which will be scheduled after the current one
-     console.log($('.column').width());
      this.set('totalWidthInPixels', $('.column').width());
     });
   },

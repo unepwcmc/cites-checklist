@@ -5,13 +5,13 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     classNames: ['ico', 'tooltip'],
     classNameBindings: ['colour'],
     colour: function(){
-      return this.get('parentView').get('parentView').get('colour');
+      return this.get('parentView.parentView.colour');
     }.property(),
     contextBinding: 'content',
     template: Ember.Handlebars.compile("<div class=\"circle {{unbound view.colour}} event\">{{unbound view.eventSymbol}}</div>"),
     positionInPixels: function(){
-      var total = this.get('parentView').get('parentView').get('totalWidthInPixels');
-      var leftOffset = this.get('parentView').get('parentView').get('leftOffsetInPixels');
+      var total = this.get('parentView.parentView.totalWidthInPixels');
+      var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
       return (this.get('content.pos') * (total - leftOffset)) + leftOffset;
     }.property(),
     eventSymbol: function(){

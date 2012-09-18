@@ -24,7 +24,6 @@
 
 .area {
   margin:0 0 2px;
-  background:url(../images/bg-area.gif) repeat-y;
 
   .row{
     height:29px;
@@ -79,6 +78,12 @@
     color: #373f4c;
     font: bold italic;
     background: url(../images/timescale-bar.gif) no-repeat 0 0;
+  }
+
+  .year-bar {
+    position: absolute;
+    height: 100%;
+    background: url(../images/timescale-bar.gif) repeat-y 0 0;
   }
 
   .arrow {
