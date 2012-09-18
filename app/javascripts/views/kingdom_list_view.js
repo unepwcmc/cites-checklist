@@ -16,39 +16,51 @@ Checklist.KingdomListView = Ember.View.extend({
   currentPage: function() {
     return Checklist.get('router').get('filtersController').get('page') + 1;
   }.property(),
+  totalPages: function() {
+    var filtersController = Checklist.get('router').get('filtersController');
+    var total_taxa = this.content.get('total_cnt');
+    var per_page   = filtersController.get('per_page');
+
+    return Math.ceil(total_taxa / per_page);
+  }.property(),
   showNext: function(){
-    return Checklist.get('router').get('filtersController').get('page') <
-      Math.floor(this.content.get('total_cnt') / Checklist.get('router').get('filtersController').get('per_page'));
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    var total_taxa   = this.content.get('total_cnt');
+    var current_page = filtersController.get('page');
+    var per_page     = filtersController.get('per_page');
+    var total_pages  = Math.ceil(total_taxa / per_page);
+
+    return (current_page + 1) < total_pages;
   }.property(),
   showPrev: function(){
     return Checklist.get('router').get('filtersController').get('page') > 0;
   }.property(),
+
   nextPage: function(){
-    var currentPage = Checklist.get('router').get('filtersController').get('page');
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    var currentPage = filtersController.get('page');
     if (this.get('showNext')){
-      Checklist.get('router').get('filtersController').set('page', currentPage + 1);
-      Checklist.get('router').transitionTo(
-        'search',
-        {
-          params: $.param(
-            Checklist.get('router').get('filtersController').toParams()
-          )
-        }
-      );
+      filtersController.set('page', currentPage + 1);
+
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   },
   prevPage: function(){
-    var currentPage = Checklist.get('router').get('filtersController').get('page');
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    var currentPage = filtersController.get('page');
     if (this.get('showPrev')){
-      Checklist.get('router').get('filtersController').set('page', currentPage - 1);
-      Checklist.get('router').transitionTo(
-        'search',
-        {
-          params: $.param(
-            Checklist.get('router').get('filtersController').toParams()
-          )
-        }
-      );
+      filtersController.set('page', currentPage - 1);
+
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   },
 
