@@ -23,8 +23,5 @@ Checklist.TimelineView = Ember.View.extend({
   }.property(),
   continuesInPresent: function(){
     return this.get('content.timeline_intervals.lastObject.end_pos') == 1;
-  }.property(),
-  hasNestedTimelines: function(){
-    return this.get('content.timelines.length') > 0;
   }.property()
 });

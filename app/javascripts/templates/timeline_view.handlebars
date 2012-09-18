@@ -1,22 +1,13 @@
 <div class="row">
   {{#unless view.isPartyTimeline}}
     <div class="circle {{unbound view.colour}} category">{{unbound appendix}}</div>
-    {{collection Checklist.TimelineYearBarListView contentBinding="view.parentView.content.timeline_years"}}
   {{else}}
     <div class="circle {{unbound view.colour}} category">{{unbound party}}</div>
-    {{collection Checklist.TimelineYearBarListView contentBinding="view.parentView.parentView.content.timeline_years"}}
   {{/unless}}
+  {{collection Checklist.TimelineYearBarListView contentBinding="view.parentView.content.timeline_years"}}
   {{collection Checklist.TimelineIntervalListView contentBinding="timeline_intervals"}}
   {{collection Checklist.TimelineEventListView contentBinding="timeline_events"}}
   {{#if view.continuesInPresent}}
     <div class="arrow {{unbound view.colour}}" style="right:3px"></div>
   {{/if}}
 </div>
-{{#if view.hasNestedTimelines}}
-  <div class="text-holder">
-    <span>Appendix {{unbound appendix}} per country classifications:</span>
-  </div>
-  {{#each timelines}}
-    {{view Checklist.TimelineView contentBinding="this"}}
-  {{/each}}
-{{/if}}

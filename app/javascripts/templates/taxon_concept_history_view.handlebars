@@ -2,5 +2,15 @@
   {{#each timelines}}
     {{view Checklist.TimelineView contentBinding="this"}}
   {{/each}}
+  {{#each timelines}}
+    {{#if hasNestedTimelines}}
+      <div class="text-holder">
+        <span>Appendix {{unbound appendix}} per country classifications:</span>
+      </div>
+      {{#each timelines}}
+        {{view Checklist.TimelineView contentBinding="this"}}
+      {{/each}}
+    {{/if}}
+  {{/each}}
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 </div>

@@ -25,10 +25,13 @@
 .area {
   margin:0 0 2px;
 
-  .row{
+  .row, .timescale-row{
     height:29px;
     padding:1px 0;
     position:relative;
+  }
+
+  .row {
     background:url(../images/bg-row.gif) repeat-x 0 20px;
   }
 

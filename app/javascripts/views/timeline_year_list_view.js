@@ -1,6 +1,6 @@
 Checklist.TimelineYearListView = Ember.CollectionView.extend({
   content: null,
-  classNames: ['row'],
+  classNames: ['timescale-row'],
   itemViewClass: Ember.View.extend({
     tagName: 'div',
     contextBinding: 'content',
