@@ -1,6 +1,7 @@
 Checklist.TimelineView = Ember.View.extend({
   templateName: 'timeline_view',
   content: null,
+  timelineYears: null,
   contextBinding: 'content',
   totalWidthInPixels: function(){
     return this.get('parentView.totalWidthInPixels');
