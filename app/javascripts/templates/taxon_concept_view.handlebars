@@ -6,23 +6,23 @@
     <div class="column-frame">
       <div class="column-container">
         <div class="column">
-          <h2 style="{{unbound view.headingStyle}}">{{unbound view.full_name}}</h2>
+          <h2 style="{{unbound view.headingStyle}}">{{{unbound view.full_name}}}</h2>
+          {{#if view.showSynonyms }}
+            <span class="synonym">({{unbound synonyms}})</span>
+          {{/if}}
           <ul class="details">
             <li>{{unbound class_name}}</li>
             <li>{{unbound family_name}}</li>
           </ul>
           <ul class="default-list">
-            {{#if view.showSynonyms }}
-              <li class="synonym">{{unbound synonyms}}</li>
-            {{/if}}
             {{#if view.showEnglish }}
-              <li>{{unbound english}} - ENG</li>
+              <li>ENG - {{unbound english}}</li>
             {{/if}}
             {{#if view.showSpanish }}
-              <li>{{ unbound spanish}} - SPA</li>
+              <li>SPA - {{ unbound spanish}}</li>
             {{/if}}
             {{#if view.showFrench }}
-              <li>{{unbound french}} - FRE</li>
+              <li>FRE - {{unbound french}}</li>
             {{/if}}
           </ul>
         </div>

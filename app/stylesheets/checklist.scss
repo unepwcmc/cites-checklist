@@ -124,7 +124,6 @@ body {
   .logo{
     float:left;
     margin:0;
-    width:215px;
     height:57px;
     overflow:hidden;
     background:url(../images/cites-logo.png) no-repeat;
@@ -522,6 +521,16 @@ fieldset.saved-search {
     }
   }
 
+  a {
+    color:#666;
+    border-bottom:1px dotted #666;
+
+    &:hover {
+      border:0;
+      text-decoration:none;
+    }
+  }
+
   .drop {
     background: #F5F6F7;
     width: 170px;
@@ -750,22 +759,6 @@ fieldset.saved-search {
 
     p {
       margin:0 0 5px;
-    }
-  }
-
-  strong{font-weight:bold;}
-
-  p {
-    margin:0 0 2px;
-
-    a {
-      color:#666;
-      border-bottom:1px dotted #666;
-
-      &:hover {
-        border:0;
-        text-decoration:none;
-      }
     }
   }
 
