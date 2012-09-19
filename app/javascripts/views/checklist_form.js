@@ -49,6 +49,12 @@ Checklist.SearchTextField = Em.TextField.extend({
         }
       );
     }
+
+    this.$().attr('placeholder', '');
+  },
+
+  focusOut: function(event) {
+    this.$().attr('placeholder', this.get('placeholder'));
   },
 
   updater: function(item) {
