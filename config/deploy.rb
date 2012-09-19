@@ -19,7 +19,7 @@ set :deploy_to, "/home/rails/#{application}"
 # another repository, like git or subversion.
 
 set :repository,  "git@github.com:unepwcmc/cites-checklist.git"
-set :branch, "new_design"
+set :branch, "master"
 set :scm, :git
 set :scm_username, "unepwcmc-read"
 set :deploy_via, :remote_cache
