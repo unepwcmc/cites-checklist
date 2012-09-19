@@ -30,6 +30,15 @@ Checklist.Router = Ember.Router.extend({
           )
         });
       }
+    }),
+    doAbout: function(router, event) {
+      router.transitionTo('about');
+    },
+    about: Ember.Route.extend({
+      route: '/about',
+      connectOutlets: function(router, event) {
+        router.get('applicationController').connectOutlet({viewClass: Checklist.AboutView});
+      }
     })
   })
 });
