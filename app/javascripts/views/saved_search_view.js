@@ -5,14 +5,23 @@ Checklist.SavedSearchView = Em.View.extend({
     // Ember's inheritance isn't ideal for this situation, so
     // unfortunately we don't get to use the fancy isInvisible and
     // beforeInvisible, etc. methods.
-    $(view.target).toggle();
-    $(view.target).siblings('fieldset').fadeToggle();
-  },
+    $(view.target).hide();
+    $(view.target).siblings('fieldset').fadeIn();
+  }
 });
 
 Checklist.SavedSearchTextField = Em.TextField.extend({
   value: '',
 
+  keyUp: function(e) {
+    this.interpretKeyEvents(e);
+    if (e.keyCode == 27) {
+      this.hide(e);
+    }
+  },
+  focusOut: function(event) {
+    this.hide(event);
+  },
   insertNewline: function(view) {
     var val = $(view.target).val();
     if (!val) return;
@@ -28,8 +37,12 @@ Checklist.SavedSearchTextField = Em.TextField.extend({
 
     Checklist.local_store.commit();
 
-    $(view.target).parent().toggle();
-    $(view.target).parent().siblings('a').fadeToggle();
+    this.hide(view);
+  },
+
+  hide: function(view) {
+    $(view.target).parent().hide();
+    $(view.target).parent().siblings('a').fadeIn();
 
     $(view.target).val('');
   }

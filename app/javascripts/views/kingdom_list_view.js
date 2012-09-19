@@ -23,6 +23,9 @@ Checklist.KingdomListView = Ember.View.extend({
 
     return Math.ceil(total_taxa / per_page);
   }.property(),
+  showPageControls: function() {
+    return this.get('totalPages') > 1;
+  }.property(),
   showNext: function(){
     var filtersController = Checklist.get('router').get('filtersController');
 
@@ -65,9 +68,6 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   didInsertElement: function() {
-    $('#loading').fadeOut();
-    this.set('isVisible', true);
-
     this.$('a.more-countries-tooltip').hoverTooltip({
       positionTypeX: 'center',
       positionTypeY: 'bottom',
@@ -88,6 +88,9 @@ Checklist.KingdomListView = Ember.View.extend({
      .scroll(this.updateFloatingElements)
      .trigger("scroll")
      .resize(this.onWindowResize);
+
+    $('#loading').fadeOut();
+    this.set('isVisible', true);
   },
 
   onWindowResize: function() {

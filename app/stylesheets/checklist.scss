@@ -134,6 +134,7 @@ body {
       text-indent: 115px;
       line-height: 63px;
       font-size: 20px;
+      font-weight: lighter;
 
       &:hover {
         text-decoration: none;
@@ -974,6 +975,8 @@ fieldset.saved-search {
 * +html #footer{
   margin:0;
 }
+
+@import "about";
 
 @import "fancybox";
 

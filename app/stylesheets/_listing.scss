@@ -39,11 +39,12 @@
     color: #888;
     font-style: italic;
     font-size: 0.9em;
+    margin-bottom: 5px;
   }
 
   .details {
     overflow:hidden;
-    padding:17px 0 17px;
+    padding:0 0 17px;
 
     li {
       float:left;
@@ -80,6 +81,50 @@
         font-style:italic;
         background:url(../images/bullet4.png) no-repeat 0 6px;
       }
+
+      ul {
+        display: inline;
+
+        li.common-name {
+          background: none;
+          display: inline;
+          padding: 0;
+
+          &:hover {
+            font-weight: bold;
+          }
+
+          &:after {
+            content: ", ";
+          }
+
+          &:last-child:after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}
+
+.filter-control{
+  position:relative;
+  overflow:hidden;
+  margin:-1px;
+  font-weight:bold;
+  padding: 10px 10px 15px;
+  text-transform:uppercase;
+  border:1px solid #d9d9d9;
+  background:#f7f7f7;
+  text-align: right;
+  height: 10px;
+  display: none;
+
+  a {
+    color: #E25E5E;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
