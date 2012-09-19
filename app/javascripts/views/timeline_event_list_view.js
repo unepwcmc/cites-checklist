@@ -67,7 +67,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     }.property(),
     title: function(){
       var res = this.get('content.effective_at');
-      var party = this.get('parentView.parentView.content.party');
+      var party = this.get('content.party');
       return (party !== null ? party + ' · ' + res : res);
     }.property(),
     href: function(){
