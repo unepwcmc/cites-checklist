@@ -81,6 +81,28 @@
         font-style:italic;
         background:url(../images/bullet4.png) no-repeat 0 6px;
       }
+
+      ul {
+        display: inline;
+
+        li.common-name {
+          background: none;
+          display: inline;
+          padding: 0;
+
+          &:hover {
+            font-weight: bold;
+          }
+
+          &:after {
+            content: ", ";
+          }
+
+          &:last-child:after {
+            content: "";
+          }
+        }
+      }
     }
   }
 }

@@ -1,3 +1,15 @@
+Checklist.TaxonConceptCommonNameView = Ember.CollectionView.extend({
+  content: null,
+  tagName: 'ul',
+
+  itemViewClass: Ember.View.extend({
+    classNames: ['common-name'],
+    contextBinding: 'content',
+
+    template: Ember.Handlebars.compile("{{this}}")
+  })
+});
+
 Checklist.TaxonConceptListView = Ember.CollectionView.extend({
   content: null,
   filtersController: null,
@@ -64,6 +76,15 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       return full_name;
     }.property('full_name'),
+    english: function() {
+      return this.content.get('english').split(',');
+    }.property('english'),
+    spanish: function() {
+      return this.content.get('spanish').split(',');
+    }.property('spanish'),
+    french: function() {
+      return this.content.get('french').split(',');
+    }.property('french'),
 
     showEnglish: function(){
       return this.get('filtersController').showEnglish &&
