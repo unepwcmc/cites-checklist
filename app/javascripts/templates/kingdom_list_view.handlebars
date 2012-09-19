@@ -8,17 +8,19 @@
     {{/if}}
   </div>
 
-  <ul class="paging">
-    {{# if view.showPrev }}
-      <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
-    {{/if}}
+  {{#if view.showPageControls}}
+    <ul class="paging">
+      {{# if view.showPrev }}
+        <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
+      {{/if}}
 
-    <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
+      <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
 
-    {{# if view.showNext }}
-      <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
-    {{/if}}
-  </ul>
+      {{# if view.showNext }}
+        <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
+      {{/if}}
+    </ul>
+  {{/if}}
 {{else}}
   <div class="c1 error">
     Your search did not match any taxa.
