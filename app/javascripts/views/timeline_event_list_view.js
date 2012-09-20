@@ -10,29 +10,19 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     appendix: function(){
       return this.get('parentView.parentView.content.appendix');
     }.property(),
+    hasParty: function(){
+      return (this.get('content.party') !== null);
+    }.property(),
+    hasNotes: function(){
+      return (this.get('content.notes') !== null);
+    }.property(),
     tooltip: function(){
       var res = 'tooltip-';
       var symbol = this.get('eventSymbol');
       return res + Checklist.Helpers.symbolAsText(symbol);
     }.property(),
     contextBinding: 'content',
-    template: Ember.Handlebars.compile(
-      "<div class=\"circle {{unbound view.colour}} event\">{{unbound view.eventSymbol}}</div>" +
-
-      "<div class=\"lightbox\" style=\"display:none\" id=\"popup{{unbound id}}\">" +
-        "<div class=\"heading-holder\">" +
-          "<strong class=\"heading\">{{unbound view.eventDescription}} · <em class=\"date\">06/28/1979</em></strong>" +
-        "</div>" +
-        "<div class=\"text-holder\">" +
-          "<strong class=\"heading\">COUNTRY</strong>" +
-          "<p>Denmark</p>" +
-          "<div class=\"text-frame\">" +
-            "<strong class=\"heading\">NOTES</strong>" +
-            "<p>{{unbound notes}}</p>" +
-          "</div>" +
-        "</div>" +
-      "</div>"
-    ),
+    templateName: 'timeline_event_view',
     positionInPixels: function(){
       var total = this.get('parentView.parentView.totalWidthInPixels');
       var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
@@ -67,7 +57,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     }.property(),
     title: function(){
       var res = this.get('content.effective_at');
-      var party = this.get('parentView.parentView.content.party');
+      var party = this.get('content.party');
       return (party !== null ? party + ' · ' + res : res);
     }.property(),
     href: function(){

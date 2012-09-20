@@ -2,6 +2,7 @@
   {{#each timelines}}
     {{view Checklist.TimelineView contentBinding="this"}}
   {{/each}}
+  {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
   {{#each timelines}}
     {{#if hasNestedTimelines}}
       <div class="text-holder">
@@ -10,7 +11,7 @@
       {{#each timelines}}
         {{view Checklist.TimelineView contentBinding="this"}}
       {{/each}}
+      {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
     {{/if}}
   {{/each}}
-  {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 </div>

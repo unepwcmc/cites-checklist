@@ -1,0 +1,21 @@
+<div class="circle {{unbound view.colour}} event">{{unbound view.eventSymbol}}</div>
+
+<div class="lightbox" style="display:none" id="popup{{unbound id}}">
+  <div class="heading-holder">
+    <strong class="heading">{{unbound view.eventDescription}} · <em class="date">{{unbound effective_at}}</em></strong>
+  </div>
+  <div class="text-holder">
+    {{#if view.hasParty}}
+    <strong class="heading">COUNTRY</strong>
+    <p>{{party}}</p>
+    {{/if}}
+    <div class="text-frame">
+      <strong class="heading">NOTES</strong>
+      {{#if view.hasNotes}}
+      <p>{{unbound notes}}</p>
+      {{else}}
+      <p>---</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
