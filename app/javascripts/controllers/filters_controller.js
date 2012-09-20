@@ -24,7 +24,7 @@ Checklist.FiltersController = Ember.Object.extend({
   autoCompleteRegionsContent : [],
   searches : [],
   page: 0,
-  per_page: 50,
+  per_page: 20,
 
   /*
    * These event handlers and the above arrays replace the functionality
