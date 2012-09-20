@@ -17,13 +17,9 @@ Checklist.TaxonConcept = DS.Model.extend({
   french: DS.attr('string', { key: 'french_names_list' }),
   synonyms: DS.attr('string', { key: 'synonyms_list' }),
   itemType: DS.attr('string', { key: 'item_type' }),
-  ancestorsPath: DS.attr('string'),
+  ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
-    if (this.get('ancestorsPath') !== null){
-      return this.get('ancestorsPath').split(',');
-    } else {
-      return [];
-    }
-  }.property('ancestorsPath')
+    return this.get('ancestorsPath').split(',');
+  }.property()
 });
 
