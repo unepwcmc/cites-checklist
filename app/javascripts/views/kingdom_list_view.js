@@ -82,8 +82,10 @@ Checklist.KingdomListView = Ember.View.extend({
       elements: '.column-area',
       flexible: true
     });
-
-    this.createFloatingElements();
+    Ember.run.next(this, function(){
+      // code to be executed in the next RunLoop, which will be scheduled after the current one
+      this.createFloatingElements();
+    });
     $(window)
      .scroll(this.updateFloatingElements)
      .trigger("scroll")
