@@ -13,12 +13,12 @@ Checklist.SavedSearchCollectionView = Ember.CollectionView.extend({
 
       Checklist.get('router').transitionTo('search',{params: params});
     },
-    delete: function(event) {
+    delete_search: function(event) {
       var id     = this.get('content').get('id');
       var search = Checklist.local_store.find(Checklist.SavedSearch, id);
 
       search.deleteRecord();
       Checklist.local_store.commit();
     }
-  }),
+  })
 });

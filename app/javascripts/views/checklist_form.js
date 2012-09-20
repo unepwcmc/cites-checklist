@@ -2,22 +2,19 @@ Checklist.ChecklistForm = Em.View.extend({
   tagName: 'form',
   controller: null,
   filtersController: null,
-  countryFilter: null,
-  regionFilter: null,
-  taxonomicLayoutSwitch: null,
+
+  templateName: "checklist_form",
 
   submit: function(event) {
     event.preventDefault();
 
     this.get('filtersController').set('page', 0);
 
-    Checklist.get('router').get('savedSearchController').set('selection', null);
-
     var filters = this.get('filtersController').toParams();
     var params = $.param(filters);
 
     Checklist.get('router').transitionTo('search',{params: params});
-  },
+  }
 
 });
 
@@ -28,6 +25,8 @@ Checklist.ChecklistForm = Em.View.extend({
  */
 Checklist.SearchTextField = Em.TextField.extend({
   value: '',
+
+  attributeBindings: ['autocomplete'],
 
   click: function(event) {
     var params = {
@@ -44,10 +43,18 @@ Checklist.SearchTextField = Em.TextField.extend({
           source: {url: url, params: params},
           parser: this.parser,
           highlighter: this.highlighter,
-          updater: this.updater
+          updater: this.updater,
+          menu: '<div class="drop-holder"><div class="scroll-area"> <ul> </ul> </div> </div>',
+          location: '#autocomplete-dropdown'
         }
       );
     }
+
+    this.$().attr('placeholder', '');
+  },
+
+  focusOut: function(event) {
+    this.$().attr('placeholder', this.get('placeholder'));
   },
 
   updater: function(item) {
@@ -56,18 +63,18 @@ Checklist.SearchTextField = Em.TextField.extend({
   },
 
   highlighter: function(item) {
-    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+    var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
     var transform = function ($1, match) {
-      return '<strong>' + match + '</strong>'
-    }
+      return '<span style="text-decoration:underline">' + match + '</span>';
+    };
     return item.
     replace(new RegExp('^(' + query + ')', 'i'), transform).
-    replace(new RegExp('[ =](' + query + ')', 'ig'), transform)
+    replace(new RegExp('[ =](' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
     var content = data;
-    var results = {}
+    var results = {};
 
     // Extract the names of each result row for use by typeahead.js
     content.forEach(function(item,i) {
@@ -76,12 +83,46 @@ Checklist.SearchTextField = Em.TextField.extend({
       }
 
       var entry = item.full_name;
-      if (item.synonyms !== '') {
-        entry += " (=" + item.synonyms + ")";
+      if (item.synonyms.length > 0) {
+        entry += " (=" + item.synonyms.join(", ") + ")";
       }
       results[item.rank_name].push(entry);
     });
 
     return results;
+  }
+});
+
+/*
+ * An extended TextField for use in location search.
+ *
+ * Handles text change events and creates an autocomplete box for the text.
+ */
+Checklist.GeoEntityTextField = Em.TextField.extend({
+  value: '',
+
+  attributeBindings: ['autocomplete'],
+
+  keyUp: function(event) {
+    var controller = Checklist.get('router').get('filtersController');
+    var pattern = new RegExp("^"+event.currentTarget.value,"i");
+    controller.set(
+      'autoCompleteCountriesContent',
+      controller.get('countriesContent').filter(
+        function(item, index, enumerable){
+          return (pattern.test(item.get('name')));
+        }
+      )
+    );
+
+    pattern = new RegExp("^[0-9]- "+event.currentTarget.value,"i");
+    controller.set(
+      'autoCompleteRegionsContent',
+      controller.get('regionsContent').filter(
+        function(item, index, enumerable){
+          return (pattern.test(item.get('name')));
+        }
+      )
+    );
   }
 });

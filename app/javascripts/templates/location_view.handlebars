@@ -1,0 +1,44 @@
+<div class="btn-holder">
+  <a class="btn"><span>{{view.buttonString}}</span></a>
+  <div class="drop">
+    <div class="drop-search">
+      <form action="#">
+        <fieldset>
+          {{view Checklist.GeoEntityTextField
+            valueBinding="controllers.filtersController.geoEntityName"
+            id="geo_entity_name"
+            title="search"
+            placeholder="Type to filter countries or regions"
+            autocomplete="off"
+          }}
+          <input type="submit" value="search" />
+        </fieldset>
+      </form>
+
+      <div class="selected-locations">
+        <h3>Selected Locations</h3>
+          {{collection Checklist.SelectedLocationsView
+          contentBinding="controllers.filtersController.regions"
+          locationType="regions"}}
+          {{collection Checklist.SelectedLocationsView
+          contentBinding="controllers.filtersController.countries"
+          locationType="countries"}}
+      </div>
+    </div>
+    <div class="drop-holder">
+      <div class="scroll-area">
+        <h3>Regions</h3>
+          {{collection Checklist.LocationsCollectionView
+          contentBinding="controllers.filtersController.autoCompleteRegionsContent"
+          locationType="regions"}}
+
+        <h3>Countries</h3>
+          {{collection Checklist.LocationsCollectionView
+          contentBinding="controllers.filtersController.autoCompleteCountriesContent"
+          locationType="countries"}}
+      </div>
+      <div class="shadow"></div>
+    </div>
+    <img src="images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
+  </div>
+</div>

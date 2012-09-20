@@ -2,6 +2,9 @@ Checklist.PdfDownloadView = Em.View.extend({
   templateName: 'pdf_download_view',
   filtersController: null,
 
+  // Bound to the custom PDF checkbox
+  checked: true,
+
   /*
    * Returns the URL for the desired PDF.
    *
@@ -15,11 +18,11 @@ Checklist.PdfDownloadView = Em.View.extend({
                   custom: false };
     }
 
-    params = this.get('filtersController').toParams();
+    params = Checklist.get('router').get('filtersController').toParams();
 
     // For non-custom PDFs, maintain only the selected output layout
     if (!options.custom) {
-      params = {output_layout: params.output_layout}
+      params = {output_layout: params.output_layout};
     }
 
     return Checklist.store.adapter.url +
@@ -32,19 +35,22 @@ Checklist.PdfDownloadView = Em.View.extend({
   },
 
   downloadIndexPdf: function(event) {
-    window.location = this.pdfLink({type: 'Index', custom: false});
+    window.location = this.pdfLink({type: 'Index', custom: this.get('checked')});
   },
 
   downloadHistoryPdf: function(event) {
-    window.location = this.pdfLink({type: 'History', custom: false});
+    window.location = this.pdfLink({type: 'History', custom: this.get('checked')});
   },
 
-  downloadCustomIndexPdf: function(event) {
-    window.location = this.pdfLink({type: 'Index', custom: true});
-  },
+  didInsertElement: function() {
+    var cf = new CustomFormElements({
+      cssClass: 'styled'
+    });
 
-  downloadCustomHistoryPdf: function(event) {
-    window.location = this.pdfLink({type: 'History', custom: true});
+    $("#download").fancybox({
+      fitToView : true,
+      autoSize  : true,
+      closeClick  : false
+    });
   }
-
 });

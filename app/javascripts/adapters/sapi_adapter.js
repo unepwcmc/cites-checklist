@@ -1,6 +1,5 @@
 //TODO refactor
 Checklist.SAPIAdapter = DS.Adapter.extend({
-
   findAll: function(store, type) {
     var url = this.url + type.collectionUrl;
 
@@ -13,7 +12,7 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       xdr.onerror = function(){};
       xdr.onload = function () {
         var JSON = $.parseJSON(xdr.responseText);
-        if (JSON == null || typeof (JSON) == 'undefined'){
+        if (JSON === null || typeof (JSON) == 'undefined'){
           JSON = $.parseJSON(data.firstChild.textContent);
         }
         store.loadMany(type, JSON);
@@ -31,7 +30,6 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
         error : function(xhr, status, error) {}
       });
     }
-
   },
   findQuery: function(store, type, query, modelArray) {
     var url = this.url + type.collectionUrl;
@@ -46,12 +44,12 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
       xdr.onerror = function(){};
       xdr.onload = function () {
         var JSON = $.parseJSON(xdr.responseText);
-        if (JSON == null || typeof (JSON) == 'undefined'){
+        if (JSON === null || typeof (JSON) == 'undefined'){
           JSON = $.parseJSON(data.firstChild.textContent);
         }
         modelArray.load(JSON);
       };
-      
+
       xdr.send();
     } else {
       $.ajax({
@@ -65,6 +63,37 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
         error : function(xhr, status, error) {}
       });
     }
-  }
+  },
+  findMany: function(store, type, ids) {
+    var url = this.url + type.url;
+    url = url.fmt(ids.join(','));
 
+    if($.browser.msie && window.XDomainRequest) {
+      // Use Microsoft XDR
+      var xdr = new XDomainRequest();
+      xdr.contentType = "text/plain";
+      xdr.open("get", url);
+      xdr.onprogress = function(){};
+      xdr.onerror = function(){};
+      xdr.onload = function () {
+        var JSON = $.parseJSON(xdr.responseText);
+        if (JSON === null || typeof (JSON) == 'undefined'){
+          JSON = $.parseJSON(data.firstChild.textContent);
+        }
+        store.loadMany(type, ids, JSON);
+      };
+      xdr.send();
+    } else {
+      $.ajax({
+        type : "GET",
+        url : url,
+        dataType : "json",
+        data : {},
+        success : function(data) {
+          store.loadMany(type, ids, data);
+        },
+        error : function(xhr, status, error) {}
+      });
+    }
+  }
 });

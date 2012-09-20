@@ -1,25 +1,78 @@
 {{#if view.showHigherTaxaBar}}
-  {{unbound higherTaxaBar}}
+  {{view Ember.View templateName="higher_taxa"}}
 {{else}}
   {{#unless view.isHigherTaxa}}
-    <span class="full-name accepted-{{unbound cites_accepted}}">{{unbound full_name}}</span>
-    {{unbound spp}}:
-    {{#if view.showListing}}
-      <span class="listing">{{unbound current_listing}}</span>
-    {{/if}}
-    <span class="family">{{unbound family_name}}</span>
-    <span class="class">{{unbound class_name}}</span>
-    {{#if view.showEnglish }}
-      (E) {{unbound english}}
-    {{/if}}
-    {{#if view.showSpanish }}
-      (S) {{ unbound spanish}}
-    {{/if}}
-    {{#if view.showFrench }}
-      (F) {{unbound french}}
-    {{/if}}
-    {{#if view.showSynonyms }}
-      (syn) {{unbound synonyms}}
-    {{/if}}
+  <div class="column-holder">
+    <div class="column-frame">
+      <div class="column-container">
+        <div class="column">
+          <h2 style="{{unbound view.headingStyle}}">{{{unbound view.full_name}}}</h2>
+          {{#if view.showSynonyms }}
+            <div class="synonym">({{unbound synonyms}})</div>
+          {{/if}}
+          <ul class="details">
+            <li>{{unbound class_name}}</li>
+            <li>{{unbound family_name}}</li>
+          </ul>
+          <ul class="default-list">
+            {{#if view.showEnglish }}
+              <li>ENG - {{collection Checklist.TaxonConceptCommonNameView
+              contentBinding="view.english"}}</li>
+            {{/if}}
+            {{#if view.showSpanish }}
+              <li>SPA - {{collection Checklist.TaxonConceptCommonNameView
+              contentBinding="view.spanish"}}</li>
+            {{/if}}
+            {{#if view.showFrench }}
+              <li>FRE - {{collection Checklist.TaxonConceptCommonNameView
+              contentBinding="view.french"}}</li>
+            {{/if}}
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column-area">
+            <div class="holder">
+              <div class="frame">
+                <ul class="icons">
+                  {{#each view.currentListingParts}}
+                    <li>
+                    <div class="circle {{unbound this.colour}}">{{unbound this.symbol}}</div>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column style01">
+          <div class="column-area">
+            <div class="holder">
+              <div class="frame">
+                <p>
+                  {{view Checklist.CountryListingView
+                  contentBinding="countries"}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="column-container">
+          <div class="column">
+            <div class="area-holder">
+              {{view Checklist.TaxonConceptHistoryView
+                contentBinding="timelines_for_taxon_concept"
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="opener-holder">
+    <div class="opener">&#9660;</div>
+    <div class="closer">x</div>
+  </div>
   {{/unless}}
 {{/if}}

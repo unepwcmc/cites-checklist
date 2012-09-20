@@ -1,0 +1,17 @@
+<div class="area-b">
+  {{#each timelines}}
+    {{view Checklist.TimelineView contentBinding="this"}}
+  {{/each}}
+  {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
+  {{#each timelines}}
+    {{#if hasNestedTimelines}}
+      <div class="text-holder">
+        <span>Appendix {{unbound appendix}} per country classifications:</span>
+      </div>
+      {{#each timelines}}
+        {{view Checklist.TimelineView contentBinding="this"}}
+      {{/each}}
+      {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
+    {{/if}}
+  {{/each}}
+</div>

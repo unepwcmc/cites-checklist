@@ -1,14 +1,28 @@
-{{#if view.showAnimalia }}
-  <h2>FAUNA</h2>
-  {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
-{{/if}}
-{{#if view.showPlantae }}
-  <h2>FLORA</h2>
-  {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
-{{/if}}
-{{# if view.showPrev }}
-  <a href="#" {{action "prevPage" target="view" on="click"}}>Prev</a>
-{{/if}}
-{{# if view.showNext }}
-  <a href="#" {{action "nextPage" target="view" on="click"}}>Next</a>
+{{#if total_cnt}}
+  <div class="c1">
+    {{#if view.showAnimalia }}
+      {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+    {{/if}}
+    {{#if view.showPlantae }}
+      {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+    {{/if}}
+  </div>
+
+  {{#if view.showPageControls}}
+    <ul class="paging">
+      {{# if view.showPrev }}
+        <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
+      {{/if}}
+
+      <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
+
+      {{# if view.showNext }}
+        <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
+      {{/if}}
+    </ul>
+  {{/if}}
+{{else}}
+  <div class="c1 error">
+    Your search did not match any taxa.
+  </div>
 {{/if}}

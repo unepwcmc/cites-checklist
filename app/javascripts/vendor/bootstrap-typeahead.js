@@ -79,7 +79,9 @@
     this.select = this.options.select || this.select
     this.render = this.options.render || this.render
 
-    this.$menu = $(this.options.menu).appendTo('body')
+    this.$location = $(this.options.location) || $(this.location)
+
+    this.$menu = $(this.options.menu).appendTo(this.$location)
     this.source = this.options.source
     this.shown = false
     this.listen()
@@ -113,18 +115,13 @@
         height: this.$element[0].offsetHeight
       })
 
-      this.$menu.css({
-        top: pos.top + pos.height
-      , left: pos.left
-      })
-
-      this.$menu.show()
+      this.$location.show()
       this.shown = true
       return this
     }
 
   , hide: function () {
-      this.$menu.hide()
+      this.$location.hide()
       this.shown = false
       return this
     }
@@ -132,17 +129,16 @@
   , lookup: function (event) {
       var that = this
         , items
-        , q
+        , q;
 
-      this.query = this.$element.val()
+      this.query = this.$element.val();
 
       if (!this.query) {
-        return this.shown ? this.hide() : this
+        return this.shown ? this.hide() : this;
       }
 
       // If the source is defined as a URL, perform an AJAX request for
       // the resource
-      var src = [];
       if (this.source.length === undefined) {
         var url = this.source.url;
 
@@ -160,31 +156,11 @@
           xdr.onerror = function(){};
           xdr.onload = function () {
             var JSON = $.parseJSON(xdr.responseText);
-            if (JSON == null || typeof (JSON) == 'undefined'){
+            if (JSON === null || typeof (JSON) == 'undefined'){
               JSON = $.parseJSON(data.firstChild.textContent);
             }
 
-            src = that.parser(data);
-
-            if (src.length === undefined) {
-              if ($.isEmptyObject(src)) {
-                return that.shown ? that.hide() : that
-              }
-
-              return that.render(src).show()
-            } else {
-              items = $.grep(src, function (item) {
-                return that.matcher(item)
-              })
-
-              items = that.sorter(items)
-
-              if (!items.length) {
-                return that.shown ? that.hide() : that
-              }
-
-              return that.render(items.splice(0, this.options.items)).show();
-            }
+            that.handleResponse(JSON, that);
           };
           xdr.send();
         } else {
@@ -194,59 +170,44 @@
             dataType : "json",
             data : params,
             success : function(data) {
-              src = that.parser(data);
-
-              if (src.length === undefined) {
-                if ($.isEmptyObject(src)) {
-                  return that.shown ? that.hide() : that
-                }
-
-                return that.render(src).show()
-              } else {
-                items = $.grep(src, function (item) {
-                  return that.matcher(item)
-                })
-
-                items = that.sorter(items)
-
-                if (!items.length) {
-                  return that.shown ? that.hide() : that
-                }
-
-                return that.render(items.splice(0, this.options.items)).show();
-              }
+              that.handleResponse(data, that);
             },
             error : function(xhr, status, error) {}
           });
         }
       } else {
-        src = this.parser(this.source);
+        this.handleResponse(this.source, this);
+      }
+    }
 
-        if (src.length === undefined) {
-          if ($.isEmptyObject(src)) {
-            return this.shown ? this.hide() : this
-          }
+  , handleResponse: function(data, context) {
+      var src = context.parser(data);
 
-          return this.render(src).show()
-        } else {
-          items = $.grep(src, function (item) {
-            return this.matcher(item)
-          })
-
-          items = this.sorter(items)
-
-          if (!items.length) {
-            return this.shown ? this.hide() : this
-          }
-
-          return this.render(items.splice(0, this.options.items)).show();
+      if (src.length === undefined) {
+        if ($.isEmptyObject(src)) {
+          return context.shown ? context.hide() : context;
         }
+
+        context.render(src).show();
+      } else {
+        items = $.grep(src, function (item) {
+          return context.matcher(item);
+        });
+
+        items = context.sorter(items);
+
+        if (!items.length) {
+          return context.shown ? context.hide() : context;
+        }
+
+        context.render(items.splice(0, context.options.items)).show();
       }
 
+      $('.search .scroll-area').jScrollPane({verticalDragMinHeight:20});
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~item.toLowerCase().indexOf(this.query.toLowerCase());
     }
 
   , sorter: function (items) {
@@ -289,7 +250,7 @@
         }
 
         $(result[1]).addClass('active')
-        this.$menu.html(result)
+        this.inject_menu(result)
       } else {
         items = $(items).map(function (i, item) {
           i = $(that.options.item).attr('data-value', item)
@@ -298,10 +259,18 @@
         })
 
         items.first().addClass('active')
-        this.$menu.html(items)
+        this.inject_menu(items)
       }
 
       return this
+    }
+
+    /*
+     * Injects the given HTML in to the deepest child element in the
+     * provided menu HTML
+     */
+  , inject_menu: function(html) {
+      return this.$menu.find('ul').html(html);
     }
 
   , next: function (event) {
@@ -368,6 +337,11 @@
           break
 
         default:
+          if (this.$element.val().length < 3) {
+            this.hide();
+            return;
+          }
+
           // Check if the source is an object or array
           if (this.source.length === undefined) {
             this.source.params.value = this.$element.val();
@@ -443,6 +417,7 @@
   , items: 4
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , location: 'body'
   }
 
   $.fn.typeahead.Constructor = Typeahead
@@ -458,6 +433,47 @@
       e.preventDefault()
       $this.typeahead($this.data())
     })
+  })
+
+}(window.jQuery);
+
+!function ($) {
+
+  $(function () {
+
+    "use strict"; // jshint ;_;
+
+
+    /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
+     * ======================================================= */
+
+    $.support.transition = (function () {
+
+      var transitionEnd = (function () {
+
+        var el = document.createElement('bootstrap')
+          , transEndEventNames = {
+               'WebkitTransition' : 'webkitTransitionEnd'
+            ,  'MozTransition'    : 'transitionend'
+            ,  'OTransition'      : 'oTransitionEnd otransitionend'
+            ,  'transition'       : 'transitionend'
+            }
+          , name
+
+        for (name in transEndEventNames){
+          if (el.style[name] !== undefined) {
+            return transEndEventNames[name]
+          }
+        }
+
+      }())
+
+      return transitionEnd && {
+        end: transitionEnd
+      }
+
+    })()
+
   })
 
 }(window.jQuery);

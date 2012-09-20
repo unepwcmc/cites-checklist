@@ -1,0 +1,13 @@
+<div class="row">
+  {{#unless view.isPartyTimeline}}
+    <div class="circle {{unbound view.colour}} category">{{unbound appendix}}</div>
+  {{else}}
+    <div class="circle {{unbound view.colour}} category">{{unbound party}}</div>
+  {{/unless}}
+  {{collection Checklist.TimelineYearBarListView contentBinding="view.parentView.content.timeline_years"}}
+  {{collection Checklist.TimelineIntervalListView contentBinding="timeline_intervals"}}
+  {{collection Checklist.TimelineEventListView contentBinding="timeline_events"}}
+  {{#if view.continuesInPresent}}
+    <div class="arrow {{unbound view.colour}}" style="right:3px"></div>
+  {{/if}}
+</div>

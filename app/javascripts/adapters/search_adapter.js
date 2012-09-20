@@ -11,7 +11,9 @@ Checklist.searchAdapter = DS.Adapter.extend({
   createRecord: function(store, type, model) {
     var item = model.toJSON({associations: true});
 
-    this.storage.setById(this.storage_method, type, model.get('id'), item);
+    this.storage.useLocalStorage = this.useLocalStorage;
+
+    this.storage.setById(type, model.get('id'), item);
     store.didCreateRecord(model, item);
   },
   updateRecord: function(store, type, model) {
@@ -21,7 +23,9 @@ Checklist.searchAdapter = DS.Adapter.extend({
     var id   = model.get('id');
     var item = model.toJSON({associations: true});
 
-    var records = this.storage.getAll(this.storage_method, type);
+    this.storage.useLocalStorage = this.useLocalStorage;
+
+    var records = this.storage.getAll(type);
     records.forEach(function(record, i) {
       if (record.id == id) {
         records.splice(i,1);
@@ -29,16 +33,18 @@ Checklist.searchAdapter = DS.Adapter.extend({
       }
     });
 
-    this.storage.setAll(this.storage_method, type, records);
+    this.storage.setAll(type, records);
 
     store.didDeleteRecord(model, item);
   },
 
   find: function(store, type, id) {
-    store.load(type, this.storage.getById(this.storage_method, id));
+    this.storage.useLocalStorage = this.useLocalStorage;
+    store.load(type, this.storage.getById(id));
   },
   findAll: function(store, type) {
-    store.loadMany(type, this.storage.getAll(this.storage_method, type));
+    this.storage.useLocalStorage = this.useLocalStorage;
+    store.loadMany(type, this.storage.getAll(type));
   },
 
   // this.storage is an interface between the ember-data library methods
@@ -48,26 +54,29 @@ Checklist.searchAdapter = DS.Adapter.extend({
   // model name as a namespace and stores all key/values in stringified
   // JSON in a single bucket.
   storage: {
-    getById: function(method, type, id) {
-      var values = this.getAll(method, type);
+    useLocalStorage: true,
+
+    getById: function(type, id) {
+      var values = this.getAll(type);
 
       values.forEach(function(item) {
         if (item.id == id) return item;
       });
     },
 
-    getAll: function(method, type) {
-      if (method == 'localStorage') {
-        var value = localStorage.getItem(type);
+    getAll: function(type) {
+      var value;
+      if (this.useLocalStorage) {
+        value = localStorage.getItem(type);
       } else {
-        var value = jQuery.cookie(type.toString());
+        value = jQuery.cookie(type.toString());
       }
 
       return JSON.parse(value || 'null') || [];
     },
 
-    setById: function(method, type, id, value) {
-      var values = this.getAll(method, type);
+    setById: function(type, id, value) {
+      var values = this.getAll(type);
 
       // Iterate over the stored valuese and look to see if the ID
       // already exists, and mark the index for replacement if so
@@ -86,11 +95,11 @@ Checklist.searchAdapter = DS.Adapter.extend({
         values.push(value);
       }
 
-      this.setAll(method, type, values);
+      this.setAll(type, values);
     },
 
-    setAll: function(method, type, value) {
-      if (method == 'localStorage') {
+    setAll: function(type, value) {
+      if (this.useLocalStorage) {
         localStorage.setItem(type, JSON.stringify(value));
       } else {
         jQuery.cookie(type.toString(), JSON.stringify(value));
