@@ -935,6 +935,7 @@ fieldset.saved-search {
 }
 * +html .content .column-holder .btn{display:inline;}
 
+@import "history_graph";
 @import "listing";
 
 .delete {
@@ -947,8 +948,6 @@ fieldset.saved-search {
     border: none;
   }
 }
-
-@import "history_graph";
 
 #footer{
   margin:-130px 0 0;

@@ -6,7 +6,15 @@
     <div class="column-frame">
       <div class="column-container">
         <div class="column">
-          <h2 style="{{unbound view.headingStyle}}">{{{unbound view.full_name}}}</h2>
+          <h2 style="{{unbound view.headingStyle}}">
+            {{{unbound view.full_name}}}
+
+            {{#if recently_changed}}
+              <a href="#" title="New" class="tooltip">
+                <img src="/images/bullet6.png" class="new-taxa" title="New Taxa" alt="New Taxa" />
+              </a>
+            {{/if}}
+          </h2>
           {{#if view.showSynonyms }}
             <div class="synonym">({{unbound synonyms}})</div>
           {{/if}}

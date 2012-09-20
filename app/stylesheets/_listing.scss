@@ -1,4 +1,9 @@
 .block {
+  .new-taxa {
+    width: 16px;
+    height: 16px;
+  }
+
   &.expanded{
     color:#333;
 
@@ -228,6 +233,19 @@
     .opener {
       display: none;
     }
+  }
+}
+
+.new-tooltip {
+  @extend .custom-tooltip;
+
+  .tooltip-text {
+    background: none;
+    padding: 0 !important;
+  }
+
+  .tooltip-decor {
+    left: 45%;
   }
 }
 
