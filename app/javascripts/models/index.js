@@ -3,11 +3,6 @@ Checklist.Index = DS.Model.extend({
   plantae: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
   result_cnt: DS.attr('number'),//cnt of returned records
   total_cnt: DS.attr('number'),//cnt of all matching records
-  contentIds: function(){
-    return this.get('animalia').mapProperty('id').concat(
-      this.get('plantae').mapProperty('id')
-    );
-  }.property(),
   animaliaPresent: function(){
     return this.get('animalia.length') > 0;
   }.property('animalia'),
