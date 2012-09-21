@@ -249,21 +249,17 @@
   }
 }
 
-.country-tooltip{
-  position:relative;
-  z-index:999;
-  border-radius: 15px;  -moz-border-radius: 15px; -webkit-border-radius: 15px;
-  background:#33536a;
-  margin:0 -65px 5px 0 !important;
-  padding:7px;
-  width: 200px;
+.country-holder {
+  @extend .saved-holder;
 
-  .tooltip-text{
-    float:left;
-    overflow:hidden;
-    color:#fff;
-    line-height:16px;
-    font-size:12px;
+  .drop {
+    top: auto;
+    margin-top: 10px;
+    @include vendor-prefix(user-select, text);
+
+    &:hover {
+      cursor: auto;
+    }
   }
 }
 
