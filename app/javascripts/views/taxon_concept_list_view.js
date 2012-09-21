@@ -108,7 +108,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property(),
 
     isHigherTaxa: function(){
-      return this.content.get('rank_name') == 'higher-taxa';
+      return this.content.get('itemType') == 'HigherTaxa';
     }.property(),
     showHigherTaxaBar: function(){
       return this.get('filtersController').taxonomicLayout &&

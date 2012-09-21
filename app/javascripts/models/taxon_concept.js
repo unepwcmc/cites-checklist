@@ -1,7 +1,5 @@
 Checklist.TaxonConcept = DS.Model.extend({
   id: DS.attr('number'),
-  taxon_name: DS.belongsTo('Checklist.TaxonName', { embedded: true }),
-  parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
   countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
   rank_name: DS.attr('string'),
@@ -19,18 +17,10 @@ Checklist.TaxonConcept = DS.Model.extend({
   spanish: DS.attr('string', { key: 'spanish_names_list' }),
   french: DS.attr('string', { key: 'french_names_list' }),
   synonyms: DS.attr('string', { key: 'synonyms_list' }),
+  itemType: DS.attr('string', { key: 'item_type' }),
+  ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
-    var ranks = ['PHYLUM', 'CLASS', 'ORDER', 'FAMILY'];
-    var rankIndex = ranks.indexOf(this.get('rank_name'));
-    if (rankIndex == -1){
-      rankIndex = ranks.length;
-    }
-    var res = [];
-    var that = this;
-    ranks.slice(0,rankIndex).forEach(function(rank){
-      res.push(that.get(rank.toLowerCase()+'_name'));
-    });
-    return res;
-  }.property('rank_name')
+    return this.get('ancestorsPath').split(',');
+  }.property()
 });
 

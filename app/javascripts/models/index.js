@@ -1,45 +1,19 @@
 Checklist.Index = DS.Model.extend({
-  taxon_concepts: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
-  animalia_idx: DS.attr('number'),
-  plantae_idx: DS.attr('number'),
+  animalia: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
+  plantae: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
   result_cnt: DS.attr('number'),//cnt of returned records
   total_cnt: DS.attr('number'),//cnt of all matching records
-  taxonConceptsFromIds: function(taxon_concepts, ids){
-    var result = [];
-    ids.forEach(function(item, index, enumerable){
-      var prevTc = taxon_concepts.objectAtContent(index-1);
-      var currTc = taxon_concepts.objectAtContent(index);
-      if (prevTc === undefined || prevTc.get('higherTaxa').join() != currTc.get('higherTaxa').join()){
-        result.push(
-          Checklist.TaxonConcept.createRecord(
-            {
-              rank_display_name: currTc.get('rank_name'),
-              rank_name:         'higher-taxa',
-              higherTaxaBar:     currTc.get('higherTaxa')
-            }
-          )
-        );
-      }
-      result.push(currTc);
-    });
-    return result;
-  },
-  animalia: function(){
-    var taxon_concepts = this.get('taxon_concepts');
-    var ids = taxon_concepts.get('content').slice(this.get('animalia_idx'), this.get('plantae_idx'));
-    return this.taxonConceptsFromIds(taxon_concepts, ids);
-  }.property('animalia_idx, plantae_idx'),
+  contentIds: function(){
+    return this.get('animalia').mapProperty('id').concat(
+      this.get('plantae').mapProperty('id')
+    );
+  }.property(),
   animaliaPresent: function(){
-    return this.get('animalia_idx') != this.get('plantae_idx');
-  }.property('animalia_idx, plantae_idx'),
-  plantae: function(){
-    var taxon_concepts = this.get('taxon_concepts');
-    var ids = taxon_concepts.get('content').slice(this.get('plantae_idx'));
-    return this.taxonConceptsFromIds(taxon_concepts, ids);
-  }.property('plantae_idx'),
+    return this.get('animalia.length') > 0;
+  }.property('animalia'),
   plantaePresent: function(){
-    return this.get('plantae_idx') != this.get('result_cnt');
-  }.property('plantae_idx, result_cnt')
+    return this.get('plantae.length') > 0;
+  }.property('plantae')
 });
 
 Checklist.Index.reopenClass({

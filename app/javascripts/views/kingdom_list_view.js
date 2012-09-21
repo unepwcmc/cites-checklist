@@ -85,8 +85,10 @@ Checklist.KingdomListView = Ember.View.extend({
       elements: '.column-area',
       flexible: true
     });
-
-    this.createFloatingElements();
+    Ember.run.next(this, function(){
+      // code to be executed in the next RunLoop, which will be scheduled after the current one
+      this.createFloatingElements();
+    });
     $(window)
      .scroll(this.updateFloatingElements)
      .trigger("scroll")
@@ -120,7 +122,7 @@ Checklist.KingdomListView = Ember.View.extend({
      * headers.
      *
      * This will be fixed soon, but for now given items are limited to
-     * 50 per page, the performance hit is minimal.
+     * 20 per page, the performance hit is minimal.
      */
     var current_group = [];
     $(".listing-item").each(function(index, item) {
