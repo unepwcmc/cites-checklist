@@ -7,6 +7,7 @@ Checklist.SavedSearchView = Em.View.extend({
     // beforeInvisible, etc. methods.
     $(view.target).hide();
     $(view.target).siblings('fieldset').fadeIn();
+    $(view.target).siblings('fieldset').find('input').focus();
   }
 });
 

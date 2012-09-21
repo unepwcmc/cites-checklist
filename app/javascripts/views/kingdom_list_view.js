@@ -68,6 +68,9 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   didInsertElement: function() {
+    $('#loading').fadeOut();
+    this.set('isVisible', true);
+
     this.$('a.more-countries-tooltip').hoverTooltip({
       positionTypeX: 'center',
       positionTypeY: 'bottom',
@@ -88,9 +91,6 @@ Checklist.KingdomListView = Ember.View.extend({
      .scroll(this.updateFloatingElements)
      .trigger("scroll")
      .resize(this.onWindowResize);
-
-    $('#loading').fadeOut();
-    this.set('isVisible', true);
   },
 
   onWindowResize: function() {

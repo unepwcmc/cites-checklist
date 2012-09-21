@@ -138,6 +138,19 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       this.$().toggleClass('expanded');
       this.$().find('.slide').slideToggle();
+    },
+
+    didInsertElement: function() {
+      $('.new-taxa').hoverTooltip({
+        positionTypeX: 'left',
+        positionTypeY: 'top',
+        attribute:'title',
+        extraOffsetX: -2,
+        extraOffsetY: 2,
+        tooltipStructure:
+        '<div class="new-tooltip"><div class="tooltip-text">Recently Added</div>' +
+        '<div class="tooltip-decor"></div></div>'
+      });
     }
   })
 });
@@ -145,35 +158,27 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 Checklist.CountryListingView = Ember.View.extend({
   content: [],
 
-  defaultTemplate: Ember.Handlebars.compile('{{{unbound view.countriesDisplay}}}'),
+  templateName: 'countries_list',
 
-  countriesDisplay: function() {
+  shortText: function() {
     var countries = this.get('content');
 
     var visible_countries = [];
-    var hidden_countries  = [];
 
     countries.forEach(function(item, index, enumerable) {
-      if (index >= 3) {
-        hidden_countries.push(item);
-      } else {
-        visible_countries.push(item);
-      }
+      if (index >= 3) return;
+
+      visible_countries.push(item.get('name'));
     });
 
-    hidden_countries = hidden_countries.mapProperty('name');
-    visible_countries = visible_countries.mapProperty('name');
+    return visible_countries.join(", ");
+  }.property(),
 
-    var display_string = [visible_countries.join(", ")];
+  fullText: function() {
+    return this.content.mapProperty('name');
+  }.property(),
 
-    if (hidden_countries.length > 0) {
-      display_string.push(' and <a title="');
-      display_string.push(hidden_countries.join(", "));
-      display_string.push('" class="more-countries-tooltip">');
-      display_string.push(hidden_countries.length);
-      display_string.push(' more</a>');
-    }
-
-    return display_string.join('');
+  count: function() {
+    return this.content.get('length');
   }.property()
 });
