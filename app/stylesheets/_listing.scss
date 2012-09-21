@@ -252,9 +252,22 @@
 .country-holder {
   @extend .saved-holder;
 
+  &:hover .drop {
+    left:-9999px;
+  }
+
+  a {
+    &:hover .drop {
+      left:auto;
+      right: -10px;
+    }
+  }
+
   .drop {
     top: auto;
-    margin-top: 10px;
+    margin-top: 5px;
+    padding-right: 20px;
+    z-index: 900;
     @include vendor-prefix(user-select, text);
 
     &:hover {

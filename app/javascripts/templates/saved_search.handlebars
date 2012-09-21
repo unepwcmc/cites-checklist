@@ -5,17 +5,13 @@
 </fieldset>
 
 <div class="saved-holder">
-  <p>
-    <strong>
-      <a class="btn-saved">
-        {{controllers.savedSearchController.count}}
-      </a>
-    </strong>
-  </p>
-  <div class="drop">
-    <div class="drop-holder">
-      {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
+  <a class="btn-saved">
+    {{controllers.savedSearchController.count}}
+    <div class="drop">
+      <div class="drop-holder">
+        {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
+      </div>
+      <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
     </div>
-    <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
-  </div>
+  </a>
 </div>
