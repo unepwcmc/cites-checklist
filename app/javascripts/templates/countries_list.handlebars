@@ -1,7 +1,9 @@
 <div class="country-holder">
   {{view.shortText}}
   <a class="btn-saved">
-    and {{view.count}} more...
+    {{#if view.showMore}}
+      and {{view.count}} more...
+    {{/if}}
     <div class="drop">
       <div class="drop-holder">
         <ul>

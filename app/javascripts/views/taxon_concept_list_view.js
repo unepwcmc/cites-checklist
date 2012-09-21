@@ -178,6 +178,9 @@ Checklist.CountryListingView = Ember.View.extend({
     return this.content.mapProperty('name');
   }.property(),
 
+  showMore: function() {
+    return this.get('count') > 3;
+  }.property(),
   count: function() {
     return this.content.get('length');
   }.property()
