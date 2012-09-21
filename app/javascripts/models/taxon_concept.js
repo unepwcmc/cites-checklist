@@ -21,6 +21,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   synonyms: DS.attr('string', { key: 'synonyms_list' }),
   itemType: DS.attr('string', { key: 'item_type' }),
 <<<<<<< HEAD
+<<<<<<< HEAD
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
     return this.get('ancestorsPath').split(',');
@@ -40,5 +41,15 @@ Checklist.TaxonConcept = DS.Model.extend({
     return res;
   }.property('rank_name')
 >>>>>>> parent of 85bf588... use the backend generated higher taxa bars
+=======
+  ancestorsPath: DS.attr('string'),
+  higherTaxa: function(){
+    if (this.get('ancestorsPath') !== null){
+      return this.get('ancestorsPath').split(',');
+    } else {
+      return [];
+    }
+  }.property('ancestorsPath')
+>>>>>>> parent of d5cd888... fixed display of higher taxa bar elements
 });
 
