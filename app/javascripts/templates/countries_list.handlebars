@@ -1,18 +1,18 @@
 <div class="country-holder">
   {{view.shortText}}
-  <a class="btn-saved">
-    {{#if view.showMore}}
+  {{#if view.showMore}}
+    <a class="btn-saved">
       and {{view.count}} more...
-    {{/if}}
-    <div class="drop">
-      <div class="drop-holder">
-        <ul>
-          {{#each view.fullText}}
-            <li>{{this}}</li>
-          {{/each}}
-        </ul>
+      <div class="drop">
+        <div class="drop-holder">
+          <ul>
+            {{#each view.fullText}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
       </div>
-      <img src="images/img-decor3.png" alt="image description" class="decor" width="24" height="13" >
-    </div>
-  </a>
+    </a>
+  {{/if}}
 </div>
