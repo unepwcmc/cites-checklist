@@ -8,6 +8,10 @@ Checklist.CustomSearch = Ember.View.extend({
       effect:'none',
       animSpeed:500
     });
+
+    var cf = new CustomFormElements({
+      cssClass: 'styled'
+    });
   }
 });
 
