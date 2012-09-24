@@ -7,7 +7,7 @@ Checklist.AppendixFormView = Ember.View.extend({
     if (appendices.length === 0 || appendices.length == 3) {
       return "All Appxs.";
     } else {
-      return appendices.join(", ");
+      return appendices.sort().join(", ");
     }
   }.property("@each")
 });
