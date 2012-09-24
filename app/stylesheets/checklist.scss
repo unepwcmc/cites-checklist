@@ -400,9 +400,11 @@ fieldset.saved-search {
     @include vendor-prefix(user-select, none);
 
     li {
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
+      a{ 
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
       }
     }
   }
