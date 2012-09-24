@@ -59,7 +59,11 @@
             <label for="history-checkbox">Show history of listing</label>
           </div>
           <div class="row">
-            <input id="item8" type="checkbox" checked="checked" class="styled">
+            {{view Checklist.LevelOfListingCheckbox
+              checkedBinding="controllers.filtersController.levelOfListing"
+              id="level-of-listing-checkbox"
+              class="styled"
+            }}
             <label for="item8">Show taxa at level of listing</label>
           </div>
         </div>

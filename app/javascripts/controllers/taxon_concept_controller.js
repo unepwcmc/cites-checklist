@@ -2,7 +2,7 @@
 Checklist.TaxonConceptController = Ember.ArrayController.extend({
   content: null,
   contentIds: function(){
-    return this.get('content').objectAt(0).get('taxon_concepts').mapProperty('id');
+    return this.get('content').objectAt(0).get('contentIds');
   }.property('content'),
   contentHistory: null,
   contentDidChange: function(){

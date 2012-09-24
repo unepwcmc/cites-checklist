@@ -8,7 +8,12 @@ Checklist.Index = DS.Model.extend({
   }.property('animalia'),
   plantaePresent: function(){
     return this.get('plantae.length') > 0;
-  }.property('plantae')
+  }.property('plantae'),
+  contentIds: function(){
+    return this.get('animalia').mapProperty('id').concat(
+      this.get('plantae').mapProperty('id')
+    );
+  }.property('content'),
 });
 
 Checklist.Index.reopenClass({
