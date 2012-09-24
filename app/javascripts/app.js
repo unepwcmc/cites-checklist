@@ -1,13 +1,15 @@
-require('checklist/config');
-
 minispade.requireAll(/vendor\/jquery/);
 require('checklist/vendor/custom-form-elements');
 require('checklist/vendor/bootstrap-typeahead');
 
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
+require('checklist/vendor/ember-i18n');
 
+minispade.requireAll(/locales/);
 minispade.requireAll(/templates/);
+
+require('checklist/config');
 
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
