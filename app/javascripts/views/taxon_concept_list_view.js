@@ -42,7 +42,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
         classes.push("block");
       }
 
-      classes.push(this.content.get('rank_name').toLowerCase() + '-taxon');
+      classes.push((this.content.get('rank_name') + '-taxon').toLowerCase());
 
       return classes.join(" ");
     }.property(),
