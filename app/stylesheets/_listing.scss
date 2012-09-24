@@ -257,15 +257,20 @@
   }
 
   a {
+    padding-bottom: 10px;
+    border-bottom: none;
+    color: #33536A;
+    display: block;
+
     &:hover .drop {
-      left:auto;
-      right: -10px;
+      left: auto;
+      right: auto;
     }
   }
 
   .drop {
     top: auto;
-    margin-top: 5px;
+    margin-top: 10px;
     z-index: 900;
     @include vendor-prefix(user-select, text);
 
