@@ -21,6 +21,6 @@ Checklist.TaxonConcept = DS.Model.extend({
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
     return this.get('ancestorsPath').split(',');
-  }.property()
+  }.property('ancestorsPath')
 });
 
