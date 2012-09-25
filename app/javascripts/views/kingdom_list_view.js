@@ -99,6 +99,17 @@ Checklist.KingdomListView = Ember.View.extend({
       tooltipStructure: '<div class="country-tooltip"><div class="tooltip-text"></div></div>'
     });
 
+    $('a.new-taxa').hoverTooltip({
+      positionTypeX: 'left',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: -2,
+      extraOffsetY: 2,
+      tooltipStructure:
+      '<div class="new-tooltip"><div class="tooltip-text"></div>' +
+      '<div class="tooltip-decor"></div></div>'
+    });
+
     // Vertical height management for listing rows
     $('.column-container').sameHeight({
       elements: '.column-area',
