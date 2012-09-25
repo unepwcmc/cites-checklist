@@ -206,12 +206,14 @@ Checklist.KingdomListView = Ember.View.extend({
     // to determine how much of the footer is visible
     var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
     var offset    = ($("#footer").outerHeight() - remaining);
-    //
-    // Constant space beneath paging
-    var bottom_offset = 20;
 
-    $(".paging").css({
-      "bottom": (offset > 0 ? offset + bottom_offset : bottom_offset) + "px"
-    });
+    if (remaining > 0) {
+      // Constant space beneath paging
+      var bottom_offset = 20;
+
+      $(".paging").css({
+        "bottom": (offset > 0 ? offset + bottom_offset : bottom_offset) + "px"
+      });
+    }
   }
 });
