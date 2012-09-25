@@ -3,17 +3,17 @@ Checklist.Index = DS.Model.extend({
   plantae: DS.hasMany('Checklist.TaxonConcept', { embedded: true }),
   result_cnt: DS.attr('number'),//cnt of returned records
   total_cnt: DS.attr('number'),//cnt of all matching records
-  contentIds: function(){
-    return this.get('animalia').mapProperty('id').concat(
-      this.get('plantae').mapProperty('id')
-    );
-  }.property(),
   animaliaPresent: function(){
     return this.get('animalia.length') > 0;
   }.property('animalia'),
   plantaePresent: function(){
     return this.get('plantae.length') > 0;
-  }.property('plantae')
+  }.property('plantae'),
+  contentIds: function(){
+    return this.get('animalia').mapProperty('id').concat(
+      this.get('plantae').mapProperty('id')
+    );
+  }.property('content'),
 });
 
 Checklist.Index.reopenClass({

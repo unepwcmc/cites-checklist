@@ -42,7 +42,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
         classes.push("block");
       }
 
-      classes.push(this.content.get('rank_name').toLowerCase() + '-taxon');
+      classes.push((this.content.get('rank_name') + '-taxon').toLowerCase());
 
       return classes.join(" ");
     }.property(),
@@ -148,7 +148,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
         extraOffsetX: -2,
         extraOffsetY: 2,
         tooltipStructure:
-        '<div class="new-tooltip"><div class="tooltip-text">Recently Added</div>' +
+        '<div class="new-tooltip"><div class="tooltip-text">Recently Changed</div>' +
         '<div class="tooltip-decor"></div></div>'
       });
     }

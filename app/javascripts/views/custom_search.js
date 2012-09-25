@@ -28,6 +28,32 @@ Checklist.SortingCheckbox = Ember.Checkbox.extend({
   }
 });
 
+Checklist.LevelOfListingCheckbox = Ember.Checkbox.extend({
+  change: function(event) {
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    filtersController.set('levelOfListing', this.get('checked'));
+
+    var filters = filtersController.toParams();
+    var params = $.param(filters);
+
+    Checklist.get('router').transitionTo('search',{params: params});
+  }
+});
+
+Checklist.LevelOfListing = Ember.Checkbox.extend({
+  change: function(event) {
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    filtersController.set('levelOfListing', this.get('checked'));
+
+    var filters = filtersController.toParams();
+    var params = $.param(filters);
+
+    Checklist.get('router').transitionTo('search',{params: params});
+  }
+});
+
 Checklist.UnfoldHistoryCheckbox = Ember.Checkbox.extend({
   change: function(){
     if (this.get('checked')) {

@@ -1,5 +1,7 @@
 Checklist.TaxonConcept = DS.Model.extend({
   id: DS.attr('number'),
+  taxon_name: DS.belongsTo('Checklist.TaxonName', { embedded: true }),
+  parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
   countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
   rank_name: DS.attr('string'),
