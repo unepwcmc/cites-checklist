@@ -1,5 +1,10 @@
 {{#if total_cnt}}
   <div class="c1" id="taxa">
+    {{#if view.isFiltered}}
+      <div class="filter-control">
+        <a {{action "clearSearch" on="click" target="view"}}>X Clear Search</a>
+      </div>
+    {{/if}}
     {{#if view.showAnimalia }}
       {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
     {{/if}}

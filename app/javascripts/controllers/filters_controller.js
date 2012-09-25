@@ -73,6 +73,16 @@ Checklist.FiltersController = Ember.Object.extend({
     }
   }.observes('appendicesContent.isLoaded','appendicesIds'),
 
+  resetParams: function() {
+    this.set('countries',[]);
+    this.set('countriesIds',[]);
+    this.set('regions',[]);
+    this.set('regionsIds',[]);
+    this.set('appendices',[]);
+    this.set('appendicesIds',[]);
+    this.set('scientificName',"");
+    this.set('page',0);
+  },
   toParams : function() {
     return {
       country_ids : this.get('countries').mapProperty('id'),

@@ -13,6 +13,23 @@ Checklist.KingdomListView = Ember.View.extend({
     return this.content.get('plantaePresent');
   }.property(),
 
+  isFiltered: function() {
+    var filtersController = Checklist.get('router').get('filtersController');
+    var params            = filtersController.toParams();
+
+    return (params.country_ids.length > 0) ||
+           (params.cites_appendices.length > 0) ||
+           (params.cites_region_ids.length > 0) ||
+           (params.scientific_name.length > 0);
+  }.property().volatile(),
+  clearSearch: function() {
+    var filtersController = Checklist.get('router').get('filtersController');
+
+    filtersController.resetParams();
+
+    Checklist.get('router').transitionTo('home');
+  },
+
   currentPage: function() {
     return Checklist.get('router').get('filtersController').get('page') + 1;
   }.property(),
@@ -87,10 +104,12 @@ Checklist.KingdomListView = Ember.View.extend({
       elements: '.column-area',
       flexible: true
     });
+
     Ember.run.next(this, function(){
       // code to be executed in the next RunLoop, which will be scheduled after the current one
       this.createFloatingElements();
     });
+
     $(window)
      .scroll(this.updateFloatingElements)
      .trigger("scroll")
