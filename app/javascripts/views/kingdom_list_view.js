@@ -117,13 +117,16 @@ Checklist.KingdomListView = Ember.View.extend({
     });
 
     Ember.run.next(this, function(){
-      // code to be executed in the next RunLoop, which will be scheduled after the current one
-      this.createFloatingElements();
+      var filtersController = Checklist.get('router').get('filtersController');
+
+      if (filtersController.get('taxonomicLayout')) {
+        // code to be executed in the next RunLoop, which will be scheduled after the current one
+        this.createFloatingElements();
+      }
     });
 
     $(window)
      .scroll(this.updateFloatingElements)
-     .trigger("scroll")
      .resize(this.onWindowResize);
   },
 
@@ -176,29 +179,33 @@ Checklist.KingdomListView = Ember.View.extend({
     });
   },
   updateFloatingElements: function() {
-    /*
-     * Hide and show the cloned headers as appropriate.
-     *
-     * When we scroll past a higher taxa heading, we make the cloned
-     * floating header visible and stick it to the top of the listing
-     * secion.
-     */
-    $(".persist-area").each(function(index, element) {
-      var el         = $(this),
-      offset         = el.offset(),
-      scrollTop      = $(window).scrollTop(),
-      floatingHeader = $($(".floatingHeader")[index]);
+    var filtersController = Checklist.get('router').get('filtersController');
 
-      if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
-        floatingHeader.css({
-          "visibility": "visible"
-        });
-      } else {
-        floatingHeader.css({
-          "visibility": "hidden"
-        });
-      }
-    });
+    if (filtersController.get('taxonomicLayout')) {
+      /*
+       * Hide and show the cloned headers as appropriate.
+       *
+       * When we scroll past a higher taxa heading, we make the cloned
+       * floating header visible and stick it to the top of the listing
+       * secion.
+       */
+      $(".persist-area").each(function(index, element) {
+        var el         = $(this),
+        offset         = el.offset(),
+        scrollTop      = $(window).scrollTop(),
+        floatingHeader = $($(".floatingHeader")[index]);
+
+        if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
+          floatingHeader.css({
+            "visibility": "visible"
+          });
+        } else {
+          floatingHeader.css({
+            "visibility": "hidden"
+          });
+        }
+      });
+    }
 
     /* Prevent the paging controls from floating over the footer */
 
@@ -207,13 +214,11 @@ Checklist.KingdomListView = Ember.View.extend({
     var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
     var offset    = ($("#footer").outerHeight() - remaining);
 
-    if (remaining > 0) {
-      // Constant space beneath paging
-      var bottom_offset = 20;
+    // Constant space beneath paging
+    var bottom_offset = 20;
 
-      $(".paging").css({
-        "bottom": (offset > 0 ? offset + bottom_offset : bottom_offset) + "px"
-      });
-    }
+    $(".paging").css({
+      "bottom": (offset > 0 ? offset + bottom_offset : bottom_offset) + "px"
+    });
   }
 });
