@@ -195,6 +195,25 @@ Checklist.KingdomListView = Ember.View.extend({
         scrollTop      = $(window).scrollTop(),
         floatingHeader = $($(".floatingHeader")[index]);
 
+        var nextEl = $($('.persist-area')[index+1]).children('.persist-header');
+
+        if (nextEl.length > 0) {
+          var floatingFromTop = (floatingHeader.offset().top + floatingHeader.outerHeight()) + scrollTop;
+          var fixedFromTop    = nextEl.offset().top + scrollTop;
+
+          var difference = floatingFromTop - fixedFromTop;
+
+          if (difference >= 0) {
+            floatingHeader.css({
+              "top": (parseFloat(floatingHeader.css('top')) - difference) + "px"
+            });
+          } else {
+            floatingHeader.css({
+              "top": "214px"
+            });
+          }
+        }
+
         if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
           floatingHeader.css({
             "visibility": "visible"
