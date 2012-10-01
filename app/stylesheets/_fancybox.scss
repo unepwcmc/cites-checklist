@@ -89,8 +89,12 @@
           background: #33536A;
           @include vendor-prefix(border-radius, 50%);
           color: #fff;
-          text-indent: 7px;
+          text-indent: 8px;
           line-height: 18px;
+
+          position: absolute;
+          right: 10px;
+          top: -10px;
         }
         .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
         .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}

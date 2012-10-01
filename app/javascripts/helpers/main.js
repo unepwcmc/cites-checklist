@@ -129,6 +129,8 @@ Checklist.Helpers = {
   colorboxSettings: {
     inline: true,
     transition: 'none',
-    close: 'x'
+    close: 'x',
+    maxWidth: 520,
+    innerWidth: 520
   }
 };
