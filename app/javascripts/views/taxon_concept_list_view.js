@@ -141,19 +141,6 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       this.$().toggleClass('expanded');
       this.$().find('.slide').slideToggle();
-    },
-
-    didInsertElement: function() {
-      $('.new-taxa').hoverTooltip({
-        positionTypeX: 'left',
-        positionTypeY: 'top',
-        attribute:'title',
-        extraOffsetX: -2,
-        extraOffsetY: 2,
-        tooltipStructure:
-        '<div class="new-tooltip"><div class="tooltip-text">Recently Changed</div>' +
-        '<div class="tooltip-decor"></div></div>'
-      });
     }
   })
 });

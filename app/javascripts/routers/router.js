@@ -19,13 +19,14 @@ Checklist.Router = Ember.Router.extend({
       route: '/search/:params',
       connectOutlets: function(router, event) {
         params = Checklist.Helpers.deparam(event.params);
+        router.get('filtersController').fromParams(params);
 
         router.get('applicationController')
         .connectOutlet({
           viewClass: Checklist.MainView,
           controller: router.get('taxonConceptController'),
           context: Checklist.store.find(
-            Checklist.Index, params
+            Checklist.Index, router.get('filtersController').toParams()
           )
         });
       }

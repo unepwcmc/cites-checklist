@@ -99,6 +99,17 @@ Checklist.KingdomListView = Ember.View.extend({
       tooltipStructure: '<div class="country-tooltip"><div class="tooltip-text"></div></div>'
     });
 
+    $('a.new-taxa').hoverTooltip({
+      positionTypeX: 'left',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: -2,
+      extraOffsetY: 2,
+      tooltipStructure:
+      '<div class="new-tooltip"><div class="tooltip-text"></div>' +
+      '<div class="tooltip-decor"></div></div>'
+    });
+
     // Vertical height management for listing rows
     $('.column-container').sameHeight({
       elements: '.column-area',
@@ -106,13 +117,16 @@ Checklist.KingdomListView = Ember.View.extend({
     });
 
     Ember.run.next(this, function(){
-      // code to be executed in the next RunLoop, which will be scheduled after the current one
-      this.createFloatingElements();
+      var filtersController = Checklist.get('router').get('filtersController');
+
+      if (filtersController.get('taxonomicLayout')) {
+        // code to be executed in the next RunLoop, which will be scheduled after the current one
+        this.createFloatingElements();
+      }
     });
 
     $(window)
      .scroll(this.updateFloatingElements)
-     .trigger("scroll")
      .resize(this.onWindowResize);
   },
 
@@ -165,29 +179,52 @@ Checklist.KingdomListView = Ember.View.extend({
     });
   },
   updateFloatingElements: function() {
-    /*
-     * Hide and show the cloned headers as appropriate.
-     *
-     * When we scroll past a higher taxa heading, we make the cloned
-     * floating header visible and stick it to the top of the listing
-     * secion.
-     */
-    $(".persist-area").each(function(index, element) {
-      var el         = $(this),
-      offset         = el.offset(),
-      scrollTop      = $(window).scrollTop(),
-      floatingHeader = $($(".floatingHeader")[index]);
+    var filtersController = Checklist.get('router').get('filtersController');
 
-      if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
-        floatingHeader.css({
-          "visibility": "visible"
-        });
-      } else {
-        floatingHeader.css({
-          "visibility": "hidden"
-        });
-      }
-    });
+    if (filtersController.get('taxonomicLayout')) {
+      /*
+       * Hide and show the cloned headers as appropriate.
+       *
+       * When we scroll past a higher taxa heading, we make the cloned
+       * floating header visible and stick it to the top of the listing
+       * secion.
+       */
+      $(".persist-area").each(function(index, element) {
+        var el         = $(this),
+        offset         = el.offset(),
+        scrollTop      = $(window).scrollTop(),
+        floatingHeader = $($(".floatingHeader")[index]);
+
+        var nextEl = $($('.persist-area')[index+1]).children('.persist-header');
+
+        if (nextEl.length > 0) {
+          var floatingFromTop = (floatingHeader.offset().top + floatingHeader.outerHeight()) + scrollTop;
+          var fixedFromTop    = nextEl.offset().top + scrollTop;
+
+          var difference = floatingFromTop - fixedFromTop;
+
+          if (difference >= 0) {
+            floatingHeader.css({
+              "top": (parseFloat(floatingHeader.css('top')) - difference) + "px"
+            });
+          } else {
+            floatingHeader.css({
+              "top": "214px"
+            });
+          }
+        }
+
+        if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
+          floatingHeader.css({
+            "visibility": "visible"
+          });
+        } else {
+          floatingHeader.css({
+            "visibility": "hidden"
+          });
+        }
+      });
+    }
 
     /* Prevent the paging controls from floating over the footer */
 
@@ -195,7 +232,7 @@ Checklist.KingdomListView = Ember.View.extend({
     // to determine how much of the footer is visible
     var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
     var offset    = ($("#footer").outerHeight() - remaining);
-    //
+
     // Constant space beneath paging
     var bottom_offset = 20;
 

@@ -76,11 +76,9 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
   content: [{
     name: 'Alphabetical',
     value: 'alphabetical',
-    isChecked: true
   }, {
     name: 'Taxonomic',
     value: 'taxonomic',
-    isChecked: false
   }],
 
   itemViewClass: Ember.View.extend({
@@ -93,7 +91,19 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
       return this.get('parentView').get('grouping');
     }.property(),
 
+    isChecked: function() {
+      var layout = Checklist.get('router').get('filtersController').get('taxonomicLayout');
+
+      if (this.get('context').value == 'alphabetical') {
+        return !layout;
+      } else {
+        return layout;
+      }
+    }.property(),
+
     mouseUp: function(event) {
+      if (this.get('isChecked')) { return; }
+
       var filtersController = Checklist.get('router').get('filtersController');
       filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
 
