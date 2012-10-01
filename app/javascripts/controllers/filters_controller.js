@@ -101,15 +101,6 @@ Checklist.FiltersController = Ember.Object.extend({
     };
   },
   fromParams: function(params) {
-    var controller = Checklist.get('router').get('taxonConceptController');
-
-    controller.set(
-      'content',
-      Checklist.store.findQuery(
-        Checklist.Index, params
-      )
-    );
-
     this.set('countriesIds',
       (params.country_ids === undefined ?
         []

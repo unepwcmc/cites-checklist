@@ -26,7 +26,7 @@ Checklist.Router = Ember.Router.extend({
           viewClass: Checklist.MainView,
           controller: router.get('taxonConceptController'),
           context: Checklist.store.find(
-            Checklist.Index, router.get('filtersController').toParams()
+            Checklist.Index, params
           )
         });
       }
