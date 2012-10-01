@@ -48,5 +48,9 @@ Checklist.PdfDownloadView = Em.View.extend({
       autoSize  : true,
       closeClick  : false
     });
+
+    var cf = new CustomFormElements({
+      cssClass: 'styled'
+    });
   }
 });
