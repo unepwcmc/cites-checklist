@@ -118,6 +118,9 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
     currentListingParts: function(){
       var listing = this.get('context').get('current_listing');
+      if (listing === null){
+        return [];
+      }
       return listing.split('/').map(function(appendix){
         switch (appendix) {
           case 'I':
