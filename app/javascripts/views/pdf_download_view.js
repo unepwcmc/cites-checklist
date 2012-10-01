@@ -43,11 +43,7 @@ Checklist.PdfDownloadView = Em.View.extend({
   },
 
   didInsertElement: function() {
-    $("#download").fancybox({
-      fitToView : true,
-      autoSize  : true,
-      closeClick  : false
-    });
+    $("#download").colorbox(Checklist.Helpers.colorboxSettings);
 
     var cf = new CustomFormElements({
       cssClass: 'styled'

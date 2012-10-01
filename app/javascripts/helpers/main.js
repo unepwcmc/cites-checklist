@@ -124,5 +124,11 @@ Checklist.Helpers = {
     } else {
       return symbol;
     }
+  },
+
+  colorboxSettings: {
+    inline: true,
+    transition: 'none',
+    close: 'x'
   }
 };
