@@ -68,7 +68,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         positionTypeX: 'left',
         positionTypeY: 'top',
         attribute:'title',
-        extraOffsetX: -2,
+        extraOffsetX: 16,
         extraOffsetY: 2,
         tooltipStructure:
         '<div class="custom-tooltip"><div class="ico-tooltip">' +
@@ -76,23 +76,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         '<div class="tooltip-decor"></div></div>'
       });
 
-      this.$().fancybox({
-        padding: 10,
-        cyclic: false,
-        overlayShow: true,
-        overlayOpacity: 0.65,
-        overlayColor: '#000',
-        titlePosition: 'inside',
-        onComplete: function(box) {
-          if(link.attr('href').indexOf('#') === 0) {
-            jQuery('#fancybox-content').find('a.close').unbind('click.fb').bind('click.fb', function(e){
-              jQuery.fancybox.close();
-              e.preventDefault();
-            });
-          }
-        }
-      });
-
+      this.$().colorbox(Checklist.Helpers.colorboxSettings);
     }
   })
 });
