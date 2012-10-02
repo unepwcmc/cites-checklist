@@ -65,6 +65,11 @@
       height: 20px;
       line-height: 1.5em;
     }
+
+    &.text {
+      font-size: 11px;
+      line-height: 2em;
+    }
   }
 
   .line{
@@ -183,6 +188,11 @@
     font-weight: bold;
     background:url(../images/ico-tooltip.png) no-repeat;
     align: center;
+
+    &.text {
+      font-size: 11px;
+      line-height: 1.7em;
+    }
   }
 
   .tooltip-text{

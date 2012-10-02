@@ -40,6 +40,17 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         return 'W';
       }
     }.property(),
+    eventClass: function() {
+      // Return an extra class for non-+/- symbols as these need
+      // different font sizes, etc.
+      switch (this.get('eventSymbol')) {
+        case '+':
+        case '-':
+          return;
+        default:
+          return 'text';
+      }
+    }.property(),
     eventDescription: function(){
       if (this.get('content.change_type_name') == 'ADDITION'){
         return 'ADDITION TO APPENDIX ' + this.get('appendix');
@@ -71,7 +82,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         extraOffsetX: 16,
         extraOffsetY: 2,
         tooltipStructure:
-        '<div class="custom-tooltip"><div class="ico-tooltip">' +
+        '<div class="custom-tooltip"><div class="ico-tooltip ' + this.get('eventClass') + '">' +
         this.get('eventSymbol') +'</div><div class="tooltip-text"></div>' +
         '<div class="tooltip-decor"></div></div>'
       });

@@ -42,7 +42,10 @@ table {
   border-spacing: 0;
 }
 
-* {font-size: 100.01%;}
+* {
+  font-size: 100.01%;
+  outline: none;
+}
 
 html {
   font-size: 62.5%;
