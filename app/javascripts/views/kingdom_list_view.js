@@ -6,6 +6,12 @@ Checklist.KingdomListView = Ember.View.extend({
 
   isVisible: false,
 
+  tagName: 'div',
+
+  classNames: ['c1'],
+
+  id: "taxa",
+
   showAnimalia: function(){
     return this.content.get('animaliaPresent');
   }.property(),

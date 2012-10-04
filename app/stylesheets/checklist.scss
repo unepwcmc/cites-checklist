@@ -661,15 +661,16 @@ fieldset.saved-search {
     border-width:0 1px 1px;
     background:#fff;
 
-    &#loading,
-    &.error {
+    &#loading {
       text-align: center;
       padding: 45px;
       font-size: 1.5em;
     }
 
-    &.error {
+    .error-msg {
+      text-align: center;
       padding: 55px;
+      font-size: 1.5em;
     }
   }
 
