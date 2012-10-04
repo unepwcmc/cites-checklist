@@ -85,8 +85,6 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     }.property(),
 
     mouseUp: function(event) {
-      if (this.get('isChecked')) { return; }
-
       var router = Checklist.get('router');
       var filtersController = router.get('filtersController');
 
