@@ -15,42 +15,25 @@ Checklist.CustomSearch = Ember.View.extend({
   }
 });
 
-Checklist.SortingCheckbox = Ember.Checkbox.extend({
+/*
+ * A generic checkbox extension that sets a boolean filter in the
+ * FiltersController.
+ *
+ * Pass a 'context' binding equal to the name of the filter, such as
+ * 'showSynonyms'
+ */
+Checklist.FilterCheckbox = Ember.Checkbox.extend({
   change: function(event) {
-    var filtersController = Checklist.get('router').get('filtersController');
+    var router = Checklist.get('router');
+    var filtersController = router.get('filtersController');
 
     filtersController.set(this.get('context'), this.get('checked'));
 
     var filters = filtersController.toParams();
     var params = $.param(filters);
 
-    Checklist.get('router').transitionTo('search',{params: params});
-  }
-});
-
-Checklist.LevelOfListingCheckbox = Ember.Checkbox.extend({
-  change: function(event) {
-    var filtersController = Checklist.get('router').get('filtersController');
-
-    filtersController.set('levelOfListing', this.get('checked'));
-
-    var filters = filtersController.toParams();
-    var params = $.param(filters);
-
-    Checklist.get('router').transitionTo('search',{params: params});
-  }
-});
-
-Checklist.LevelOfListing = Ember.Checkbox.extend({
-  change: function(event) {
-    var filtersController = Checklist.get('router').get('filtersController');
-
-    filtersController.set('levelOfListing', this.get('checked'));
-
-    var filters = filtersController.toParams();
-    var params = $.param(filters);
-
-    Checklist.get('router').transitionTo('search',{params: params});
+    var taxonConceptController = router.get('taxonConceptController');
+    taxonConceptController.refresh(filtersController.toParams());
   }
 });
 
@@ -104,13 +87,16 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     mouseUp: function(event) {
       if (this.get('isChecked')) { return; }
 
-      var filtersController = Checklist.get('router').get('filtersController');
+      var router = Checklist.get('router');
+      var filtersController = router.get('filtersController');
+
       filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
 
       var filters = Checklist.get('router').get('filtersController').toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
     }
   })
 });

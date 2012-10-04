@@ -512,6 +512,10 @@ fieldset.saved-search {
     margin:0 0 0 -135px;
     display: none;
     @include vendor-prefix(user-select, none);
+
+    label {
+      cursor: pointer;
+    }
   }
 }
 

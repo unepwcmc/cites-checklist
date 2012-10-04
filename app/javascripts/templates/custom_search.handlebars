@@ -6,31 +6,37 @@
         <div class="row-holder">
           <strong class="heading">COMMON NAMES</strong>
           <div class="row">
-            {{view Checklist.SortingCheckbox
-              context="showEnglish"
-              checkedBinding="controllers.filtersController.showEnglish"
-              id="eng-checkbox"
-              class="styled"
-            }}
-            <label for="eng-checkbox">ENG</label>
+            <label>
+              {{view Checklist.FilterCheckbox
+                context="showEnglish"
+                checkedBinding="controllers.filtersController.showEnglish"
+                id="eng-checkbox"
+                class="styled"
+              }}
+              ENG
+            </label>
           </div>
           <div class="row">
-            {{view Checklist.SortingCheckbox
-              context="showSpanish"
-              checkedBinding="controllers.filtersController.showSpanish"
-              id="spa-checkbox"
-              class="styled"
-            }}
-            <label for="spa-checkbox">SPA</label>
+            <label>
+              {{view Checklist.FilterCheckbox
+                context="showSpanish"
+                checkedBinding="controllers.filtersController.showSpanish"
+                id="spa-checkbox"
+                class="styled"
+              }}
+              SPA
+            </label>
           </div>
           <div class="row">
-            {{view Checklist.SortingCheckbox
-              context="showFrench"
-              checkedBinding="controllers.filtersController.showFrench"
-              id="fre-checkbox"
-              class="styled"
-            }}
-            <label for="fre-checkbox">FRE</label>
+            <label>
+              {{view Checklist.FilterCheckbox
+                context="showFrench"
+                checkedBinding="controllers.filtersController.showFrench"
+                id="fre-checkbox"
+                class="styled"
+              }}
+              FRE
+            </label>
           </div>
         </div>
 
@@ -42,29 +48,36 @@
         <div class="row-holder style01">
           <strong class="heading">OTHER OPTIONS</strong>
           <div class="row">
-            {{view Checklist.SortingCheckbox
-              checkedBinding="controllers.filtersController.showSynonyms"
-              context="showSynonyms"
-              id="synonyms-checkbox"
-              class="styled"
-            }}
-            <label for="synonyms-checkbox">Show synonyms</label>
+            <label>
+              {{view Checklist.FilterCheckbox
+                checkedBinding="controllers.filtersController.showSynonyms"
+                context="showSynonyms"
+                id="synonyms-checkbox"
+                class="styled"
+              }}
+              Show synonyms
+            </label>
           </div>
           <div class="row">
-            {{view Checklist.UnfoldHistoryCheckbox
-              checkedBinding="view.isChecked"
-              id="history-checkbox"
-              class="styled"
-            }}
-            <label for="history-checkbox">Show history of listing</label>
+            <label>
+              {{view Checklist.UnfoldHistoryCheckbox
+                checkedBinding="view.isChecked"
+                id="history-checkbox"
+                class="styled"
+              }}
+              Show history of listing
+            </label>
           </div>
           <div class="row">
-            {{view Checklist.LevelOfListingCheckbox
-              checkedBinding="controllers.filtersController.levelOfListing"
-              id="level-of-listing-checkbox"
-              class="styled"
-            }}
-            <label for="item8">Show taxa at level of listing</label>
+            <label>
+              {{view Checklist.FilterCheckbox
+                checkedBinding="controllers.filtersController.levelOfListing"
+                context="levelOfListing"
+                id="level-of-listing-checkbox"
+                class="styled"
+              }}
+              Show taxa at level of listing
+            </label>
           </div>
         </div>
       </fieldset>
