@@ -14,7 +14,8 @@ Checklist.ChecklistForm = Em.View.extend({
     var params = $.param(filters);
 
     var taxonConceptController = Checklist.get('router').get('taxonConceptController');
-    taxonConceptController.refresh(filtersController.toParams());
+    var params = Checklist.get('router').get('filtersController').toParams()
+    taxonConceptController.refresh(params);
   }
 
 });
