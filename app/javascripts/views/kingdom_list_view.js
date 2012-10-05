@@ -6,12 +6,6 @@ Checklist.KingdomListView = Ember.View.extend({
 
   isVisible: false,
 
-  tagName: 'div',
-
-  classNames: ['c1'],
-
-  id: "taxa",
-
   showAnimalia: function(){
     return this.content.get('animaliaPresent');
   }.property(),
@@ -33,9 +27,7 @@ Checklist.KingdomListView = Ember.View.extend({
 
     filtersController.resetParams();
 
-    // Keep the taxonomic view, common name languages, etc. in the URL
-    var params = filtersController.toParams();
-    Checklist.get('router').transitionTo('search',{params: $.param(params)});
+    Checklist.get('router').transitionTo('home');
   },
 
   currentPage: function() {
@@ -66,8 +58,7 @@ Checklist.KingdomListView = Ember.View.extend({
   }.property(),
 
   nextPage: function(){
-    var router = Checklist.get('router');
-    var filtersController = router.get('filtersController');
+    var filtersController = Checklist.get('router').get('filtersController');
 
     var currentPage = filtersController.get('page');
     if (this.get('showNext')){
@@ -76,13 +67,11 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   },
   prevPage: function(){
-    var router = Checklist.get('router');
-    var filtersController = router.get('filtersController');
+    var filtersController = Checklist.get('router').get('filtersController');
 
     var currentPage = filtersController.get('page');
     if (this.get('showPrev')){
@@ -91,8 +80,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   },
 

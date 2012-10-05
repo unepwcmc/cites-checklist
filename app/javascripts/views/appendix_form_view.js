@@ -56,8 +56,7 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
       // this is a bit of a hacky method of ignoring list item clicks
       if ($(event.target).not('div').length > 0) return;
 
-      var router = Checklist.get('router');
-      var filtersController = router.get('filtersController');
+      var filtersController = Checklist.get('router').get('filtersController');
 
       // Add the selected appendice to the appendice filter array
       // Equivalent to a selectionBinding in a dropdown list
@@ -83,8 +82,10 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       $(event.target).parent().toggleClass('inactive');
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      var filters = filtersController.toParams();
+      var params = $.param(filters);
+
+      Checklist.get('router').transitionTo('search',{params: params});
     }
   })
 });

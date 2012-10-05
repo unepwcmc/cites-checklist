@@ -512,10 +512,6 @@ fieldset.saved-search {
     margin:0 0 0 -135px;
     display: none;
     @include vendor-prefix(user-select, none);
-
-    label {
-      cursor: pointer;
-    }
   }
 }
 
@@ -661,16 +657,15 @@ fieldset.saved-search {
     border-width:0 1px 1px;
     background:#fff;
 
-    &#loading {
+    &#loading,
+    &.error {
       text-align: center;
       padding: 45px;
       font-size: 1.5em;
     }
 
-    .error-msg {
-      text-align: center;
+    &.error {
       padding: 55px;
-      font-size: 1.5em;
     }
   }
 

@@ -1,31 +1,33 @@
-{{#if view.isFiltered}}
-  <div class="filter-control">
-    <a {{action "clearSearch" on="click" target="view"}}>X Clear Search</a>
-  </div>
-{{/if}}
 {{#if total_cnt}}
-  {{#if view.showAnimalia }}
-    {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
-  {{/if}}
-  {{#if view.showPlantae }}
-    {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+  <div class="c1" id="taxa">
+    {{#if view.isFiltered}}
+      <div class="filter-control">
+        <a {{action "clearSearch" on="click" target="view"}}>X Clear Search</a>
+      </div>
+    {{/if}}
+    {{#if view.showAnimalia }}
+      {{collection Checklist.TaxonConceptListView contentBinding="animalia"}}
+    {{/if}}
+    {{#if view.showPlantae }}
+      {{collection Checklist.TaxonConceptListView contentBinding="plantae"}}
+    {{/if}}
+  </div>
+
+  {{#if view.showPageControls}}
+    <ul class="paging">
+      {{# if view.showPrev }}
+        <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
+      {{/if}}
+
+      <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
+
+      {{# if view.showNext }}
+        <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
+      {{/if}}
+    </ul>
   {{/if}}
 {{else}}
-  <div class="error-msg">
+  <div class="c1 error">
     Your search did not match any taxa.
   </div>
-{{/if}}
-
-{{#if view.showPageControls}}
-  <ul class="paging">
-    {{# if view.showPrev }}
-      <li><a class="btn-prev" href="#" {{action "prevPage" target="view" on="click"}}>&#9664;</a></li>
-    {{/if}}
-
-    <li>Page {{view.currentPage}}/{{view.totalPages}}</li>
-
-    {{# if view.showNext }}
-      <li><a class="btn-next" href="#" {{action "nextPage" target="view" on="click"}}>&#9654;</a></li>
-    {{/if}}
-  </ul>
 {{/if}}
