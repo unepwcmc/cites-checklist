@@ -6,6 +6,12 @@ Checklist.KingdomListView = Ember.View.extend({
 
   isVisible: false,
 
+  tagName: 'div',
+
+  classNames: ['c1'],
+
+  id: "taxa",
+
   showAnimalia: function(){
     return this.content.get('animaliaPresent');
   }.property(),
@@ -27,7 +33,9 @@ Checklist.KingdomListView = Ember.View.extend({
 
     filtersController.resetParams();
 
-    Checklist.get('router').transitionTo('home');
+    // Keep the taxonomic view, common name languages, etc. in the URL
+    var params = filtersController.toParams();
+    Checklist.get('router').transitionTo('search',{params: $.param(params)});
   },
 
   currentPage: function() {
@@ -58,7 +66,8 @@ Checklist.KingdomListView = Ember.View.extend({
   }.property(),
 
   nextPage: function(){
-    var filtersController = Checklist.get('router').get('filtersController');
+    var router = Checklist.get('router');
+    var filtersController = router.get('filtersController');
 
     var currentPage = filtersController.get('page');
     if (this.get('showNext')){
@@ -67,11 +76,13 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
     }
   },
   prevPage: function(){
-    var filtersController = Checklist.get('router').get('filtersController');
+    var router = Checklist.get('router');
+    var filtersController = router.get('filtersController');
 
     var currentPage = filtersController.get('page');
     if (this.get('showPrev')){
@@ -80,7 +91,8 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
     }
   },
 

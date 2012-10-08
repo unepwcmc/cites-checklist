@@ -30,14 +30,17 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
 
     delete_location: function(event) {
       var location_type = this.get('parentView').get('locationType');
-      var filtersController = Checklist.get('router').get('filtersController');
+
+      var router = Checklist.get('router');
+      var filtersController = router.get('filtersController');
 
       filtersController.get(location_type).removeObject(this.get('context'));
 
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
     }
   })
 });
@@ -59,14 +62,17 @@ Checklist.LocationsCollectionView = Ember.CollectionView.extend({
 
     click: function(event) {
       var location_type = this.get('parentView').get('locationType');
-      var filtersController = Checklist.get('router').get('filtersController');
+
+      var router = Checklist.get('router');
+      var filtersController = router.get('filtersController');
 
       filtersController.get(location_type).addObject(this.get('context'));
 
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
     },
 
     didInsertElement: function(event) {
