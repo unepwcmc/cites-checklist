@@ -163,13 +163,10 @@ Checklist.KingdomListView = Ember.View.extend({
     });
 
     /*
-     * A glorious hack. Calculates groups of species by determining
+     * Calculates groups of species by determining
      * the list items between each header, and using this information
      * to wrap them in a <div> to allow grouping necessary for sticky
      * headers.
-     *
-     * This will be fixed soon, but for now given items are limited to
-     * 20 per page, the performance hit is minimal.
      */
     var current_group = [];
     $(".listing-item").each(function(index, item) {
@@ -194,6 +191,11 @@ Checklist.KingdomListView = Ember.View.extend({
     var filtersController = Checklist.get('router').get('filtersController');
 
     if (filtersController.get('taxonomicLayout')) {
+      var top_offset = 214;
+      if ($('.filter-control').length > 0) {
+        top_offset = top_offset + 36;
+      }
+
       /*
        * Hide and show the cloned headers as appropriate.
        *
@@ -206,6 +208,11 @@ Checklist.KingdomListView = Ember.View.extend({
         offset         = el.offset(),
         scrollTop      = $(window).scrollTop(),
         floatingHeader = $($(".floatingHeader")[index]);
+
+        floatingHeader.width(el.children('.persist-header').width());
+        floatingHeader.css({
+          top: top_offset + "px"
+        });
 
         var nextEl = $($('.persist-area')[index+1]).children('.persist-header');
 
@@ -221,12 +228,12 @@ Checklist.KingdomListView = Ember.View.extend({
             });
           } else {
             floatingHeader.css({
-              "top": "214px"
+              "top": top_offset + "px"
             });
           }
         }
 
-        if ((scrollTop + 214 > offset.top) && (scrollTop < offset.top + el.height())) {
+        if ((scrollTop + top_offset > offset.top) && (scrollTop < offset.top + el.height())) {
           floatingHeader.css({
             "visibility": "visible"
           });
@@ -237,6 +244,22 @@ Checklist.KingdomListView = Ember.View.extend({
         }
       });
     }
+
+    if (!($('.filterFloatingHeader').length > 0)) {
+      clonedFilterControl = $('.filter-control');
+      clonedFilterControl
+        .before(clonedFilterControl.clone())
+        .css("width", clonedFilterControl.width())
+        .addClass("filterFloatingHeader");
+    }
+
+    $('.filter-control').css({
+      "visibility": ($(window).scrollTop() == 0) ? "visible" : "hidden"
+    });
+
+    $('.filterFloatingHeader').css({
+      "visibility": ($(window).scrollTop() > 0) ? "visible" : "hidden"
+    });
 
     /* Prevent the paging controls from floating over the footer */
 

@@ -123,6 +123,7 @@
   background:#f7f7f7;
   text-align: right;
   height: 10px;
+  z-index: 900;
 
   a {
     color: #E25E5E;
@@ -172,11 +173,16 @@
   }
 }
 
-.floatingHeader {
+.floatingHeader,
+.filterFloatingHeader {
   position: fixed;
   top: 214px;
   visibility: hidden;
   z-index: 900;
+}
+
+.floatingHeader {
+  z-index: 850;
 }
 
 .icons li{padding:0 0 4px;}
