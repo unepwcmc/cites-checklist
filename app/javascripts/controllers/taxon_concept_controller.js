@@ -11,5 +11,14 @@ Checklist.TaxonConceptController = Ember.ArrayController.extend({
         Checklist.store.findMany(Checklist.TimelinesForTaxonConcept, this.get('contentIds'))
       );
     }
-  }.observes('content.isLoaded','contentIds')
+  }.observes('content.isLoaded','contentIds'),
+
+  refresh: function(params) {
+    this.set('content', Checklist.store.find(
+      Checklist.Index,
+      params
+    ));
+
+    $('#loading').fadeIn();
+  }
 });

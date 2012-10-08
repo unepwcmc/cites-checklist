@@ -2,10 +2,8 @@ Checklist.LocationsView = Ember.View.extend({
   templateName: "location_view",
 
   buttonString: function() {
-    var filtersController = Checklist.get('router').get('filtersController');
-
-    var regions_count   = filtersController.get('regionsIds').get('length');
-    var countries_count = filtersController.get('countriesIds').get('length');
+    var regions_count   = this.get('regions').get('length');
+    var countries_count = this.get('countries').get('length');
 
     var locations_count = regions_count + countries_count;
 
@@ -14,7 +12,7 @@ Checklist.LocationsView = Ember.View.extend({
     } else {
       return locations_count + " location" + (locations_count > 1 ? "s" : "");
     }
-  }.property()
+  }.property("@each")
 });
 
 Checklist.SelectedLocationsView = Ember.CollectionView.extend({
@@ -30,14 +28,19 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
 
     delete_location: function(event) {
       var location_type = this.get('parentView').get('locationType');
-      var filtersController = Checklist.get('router').get('filtersController');
+
+      var router = Checklist.get('router');
+      var filtersController = router.get('filtersController');
 
       filtersController.get(location_type).removeObject(this.get('context'));
 
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
+
+      this.get('parentView').get('parentView').set('buttonString', '');
     }
   })
 });
@@ -59,14 +62,19 @@ Checklist.LocationsCollectionView = Ember.CollectionView.extend({
 
     click: function(event) {
       var location_type = this.get('parentView').get('locationType');
-      var filtersController = Checklist.get('router').get('filtersController');
+
+      var router = Checklist.get('router');
+      var filtersController = router.get('filtersController');
 
       filtersController.get(location_type).addObject(this.get('context'));
 
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search',{params: params});
+      var taxonConceptController = router.get('taxonConceptController');
+      taxonConceptController.refresh(filtersController.toParams());
+
+      this.get('parentView').get('parentView').set('buttonString', '');
     },
 
     didInsertElement: function(event) {

@@ -311,7 +311,7 @@ fieldset.saved-search {
       padding:0;
       color:#b6b6b6;
       font-weight:bold;
-      width:85%;
+      width:87%;
       height:18px;
       line-height:18px;
       border-radius: 0;
@@ -320,23 +320,11 @@ fieldset.saved-search {
       box-shadow: 0 0 0;
       -webkit-box-shadow: 0 0 0;
       -moz-box-shadow: 0 0 0;
-    }
 
-    input[type=submit] {
-      border:0;
-      padding:0;
-      width:15%;
-      height:18px;
-      margin:0;
-      font-size:0;
-      line-height:0;
-      text-indent:-9999px;
-      overflow:hidden;
-      background:url(../images/ico-search.png) no-repeat 50% 50%;
-    }
-
-    input[type=submit]:hover {
-      cursor:pointer;
+      background-image: url(../images/ico-search.png);
+      background-repeat: no-repeat;
+      background-position: right;
+      padding-right: 20px;
     }
 
     input[type=text],
@@ -396,6 +384,10 @@ fieldset.saved-search {
 }
 
 .btn-holder {
+  .drop {
+    width: 310px;
+  }
+
   ul {
     @include vendor-prefix(user-select, none);
 
@@ -512,6 +504,10 @@ fieldset.saved-search {
     margin:0 0 0 -135px;
     display: none;
     @include vendor-prefix(user-select, none);
+
+    label {
+      cursor: pointer;
+    }
   }
 }
 
@@ -657,15 +653,16 @@ fieldset.saved-search {
     border-width:0 1px 1px;
     background:#fff;
 
-    &#loading,
-    &.error {
+    &#loading {
       text-align: center;
       padding: 45px;
       font-size: 1.5em;
     }
 
-    &.error {
+    .error-msg {
+      text-align: center;
       padding: 55px;
+      font-size: 1.5em;
     }
   }
 

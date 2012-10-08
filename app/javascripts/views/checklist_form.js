@@ -13,7 +13,9 @@ Checklist.ChecklistForm = Em.View.extend({
     var filters = this.get('filtersController').toParams();
     var params = $.param(filters);
 
-    Checklist.get('router').transitionTo('search',{params: params});
+    var taxonConceptController = Checklist.get('router').get('taxonConceptController');
+    var params = Checklist.get('router').get('filtersController').toParams()
+    taxonConceptController.refresh(params);
   }
 
 });
@@ -102,6 +104,14 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
   value: '',
 
   attributeBindings: ['autocomplete'],
+
+  click: function() {
+    this.$().attr('placeholder', '');
+  },
+
+  focusOut: function(event) {
+    this.$().attr('placeholder', this.get('placeholder'));
+  },
 
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');

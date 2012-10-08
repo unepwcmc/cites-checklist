@@ -1,6 +1,7 @@
 # All of rake-pipeline's web goodness lives here.
 require "rake-pipeline-web-filters"
 require "json"
+require "uglifier"
 
 # All of our outputs will be relative to the `public/`
 # directory.
@@ -44,6 +45,9 @@ input "app" do
       # in our JS when we want to load ember.js.
       input.path.sub(/javascripts\//, 'checklist/').sub(/\.js$/, '')
     }
+
+    # Minify the Javascript
+    #uglify
 
     # After being wrapped in the minispade code, we want to concatenate
     # all the javascript files together.

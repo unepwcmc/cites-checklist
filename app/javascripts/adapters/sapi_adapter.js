@@ -6,7 +6,6 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
     if($.browser.msie && window.XDomainRequest) {
       // Use Microsoft XDR
       var xdr = new XDomainRequest();
-      xdr.contentType = "text/plain";
       xdr.open("get", url);
       xdr.onprogress = function(){};
       xdr.onerror = function(){};
@@ -37,7 +36,6 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
     if($.browser.msie && window.XDomainRequest) {
       // Use Microsoft XDR
       var xdr = new XDomainRequest();
-      xdr.contentType = "text/plain";
       url = url + '?' + $.param(query);
       xdr.open("get", url);
       xdr.onprogress = function(){};
@@ -71,7 +69,6 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
     if($.browser.msie && window.XDomainRequest) {
       // Use Microsoft XDR
       var xdr = new XDomainRequest();
-      xdr.contentType = "text/plain";
       xdr.open("get", url);
       xdr.onprogress = function(){};
       xdr.onerror = function(){};
