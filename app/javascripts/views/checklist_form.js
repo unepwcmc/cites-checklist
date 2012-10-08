@@ -105,6 +105,14 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
 
   attributeBindings: ['autocomplete'],
 
+  click: function() {
+    this.$().attr('placeholder', '');
+  },
+
+  focusOut: function(event) {
+    this.$().attr('placeholder', this.get('placeholder'));
+  },
+
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');
     var pattern = new RegExp("^"+event.currentTarget.value,"i");
