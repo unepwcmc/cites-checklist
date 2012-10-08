@@ -9,8 +9,6 @@ require('checklist/vendor/ember-i18n');
 minispade.requireAll(/locales/);
 minispade.requireAll(/templates/);
 
-require('checklist/config');
-
 Ember.ENV.CP_DEFAULT_CACHEABLE = true;
 Ember.ENV.VIEW_PRESERVES_CONTEXT = true;
 Checklist = Ember.Application.create({
@@ -19,6 +17,8 @@ Checklist = Ember.Application.create({
     templateName: 'application_view'
   })
 });
+
+require('checklist/config');
 
 minispade.requireAll(/helpers/);
 minispade.requireAll(/adapters/);

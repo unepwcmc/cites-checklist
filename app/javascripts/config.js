@@ -5,7 +5,7 @@ Checklist.CONFIG = {
   // Single page URL type for Ember to use:
   //   history - pushState
   //   hash    - location.hash
-  url_type: 'history'
+  url_type: 'hash'
 }
 
 Em.I18n.set('currentLocale', 'en');
