@@ -1,6 +1,6 @@
-= CITES Checklist
+# CITES Checklist
 
-== Development
+## Development
 
 We're using ember.js with ember-data to handle REST backend requests.
 
@@ -10,7 +10,7 @@ Here are some naming conventions to follow:
 Avoid using absolute object paths (e.g. MyApp.currentUserController.user) in classes. Explanation:
   http://www.emberist.com/2012/04/30/absolute-paths-in-classes.html
 
-=== Ember resources
+### Ember resources
 
 The rake pipeline setup taken from here:
   https://github.com/emberjs/todos
@@ -21,14 +21,14 @@ Tutorial Jan 2012
 Links to resources Feb 2012
   http://tomdale.net/2012/02/ember-js-resources/
 
-=== Important Vendor Note
+### Important Vendor Note
 
 We are using a customised version of Twitter Bootstrap Typeahead. There
 should be little need to upgrade in the future due to the simplicity of
 the library, however should it be necessary then a good read through
 `bootstrap.js` beforehand is required to see what needs to be kept.
 
-== Setup
+## Setup
 
 Assets are pre-compiled with [rake
 pipeline](https://github.com/livingsocial/rake-pipeline) and served
