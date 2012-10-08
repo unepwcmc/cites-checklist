@@ -131,8 +131,8 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('showEnglish', parseInt(params.show_english, 10) == 1 ? true : false);
     this.set('showSpanish', parseInt(params.show_spanish, 10) == 1 ? true : false);
     this.set('showFrench', parseInt(params.show_french, 10) == 1 ? true : false);
-    this.set('scientificName', params.scientific_name);
-    this.set('page', parseInt(params.page, 10));
-    this.set('perPage', parseInt(params.perPage, 10));
+    this.set('scientificName', params.scientific_name || "");
+    this.set('page', parseInt(params.page, 10) || 0);
+    this.set('perPage', parseInt(params.perPage, 10) || 20);
   }
 });

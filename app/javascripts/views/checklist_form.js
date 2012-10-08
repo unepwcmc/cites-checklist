@@ -37,7 +37,7 @@ Checklist.SearchTextField = Em.TextField.extend({
       per_page: 10
     };
 
-    var url = window.BACKEND_URL + 'taxon_concepts/autocomplete';
+    var url = Checklist.CONFIG.backend_url + 'taxon_concepts/autocomplete';
 
     if ($('.typeahead').length <= 0) {
       $('#scientific_name').typeahead(

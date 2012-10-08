@@ -1,5 +1,5 @@
 Checklist.Router = Ember.Router.extend({
-  location: 'hash',
+  location: Checklist.CONFIG.url_type,
 
   root: Ember.Route.extend({
     home: Ember.Route.extend({
