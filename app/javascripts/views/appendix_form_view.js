@@ -68,6 +68,8 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       var taxonConceptController = router.get('taxonConceptController');
       taxonConceptController.refresh(filtersController.toParams());
+
+      this.get('parentView').get('parentView').set('summary', '');
     }
   })
 });

@@ -20,11 +20,15 @@
 
               <div class="column">
                 {{view Checklist.AppendixFormView
-                  contentBinding="controllers.filtersController.appendices"}}
+                  contentBinding="controllers.filtersController.appendices"
+                }}
               </div>
 
               <div class="column style01">
-                {{view Checklist.LocationsView}}
+                {{view Checklist.LocationsView
+                  regionsBinding="controllers.filtersController.regions"
+                  countriesBinding="controllers.filtersController.countries"
+                }}
               </div>
 
             </div>

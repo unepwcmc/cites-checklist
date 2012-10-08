@@ -384,6 +384,10 @@ fieldset.saved-search {
 }
 
 .btn-holder {
+  .drop {
+    width: 310px;
+  }
+
   ul {
     @include vendor-prefix(user-select, none);
 
