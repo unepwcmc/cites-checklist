@@ -573,16 +573,7 @@ fieldset.saved-search {
           }
 
           a {
-            border-bottom:1px dotted #666;
-
-            &.delete {
-              border-bottom: none;
-            }
-
-            &:hover {
-              border: 0;
-              text-decoration: none;
-            }
+            border-bottom: none;
           }
         }
       }
