@@ -64,12 +64,12 @@ body {
   .btn-custom{
     float:left;
     padding:3px 0 4px 36px;
-    color:#dde3e9;
+    color:#B7C1CA;
     font-size:13px;
     line-height:13px;
     font-weight:bold;
     text-shadow:0 1px 1px #fff;
-    background:url(../images/ico5.png) no-repeat;
+    background:url(../images/options-off.png) no-repeat;
   }
 
   .appendix-holder,
@@ -95,7 +95,7 @@ body {
   .btn-custom:hover {
     color:#33536a;
     text-decoration:none;
-    background:url(../images/ico4.png) no-repeat;
+    background:url(../images/options-on.png) no-repeat;
   }
 }
 
@@ -909,7 +909,7 @@ fieldset.saved-search {
       span{
         display:block;
         padding:0 15px 0 0;
-        background:url(../images/bullet1.png) no-repeat 100% 50%;
+        background:url(../images/down-arrow.png) no-repeat 100% 50%;
       }
     }
 

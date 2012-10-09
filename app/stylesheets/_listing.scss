@@ -77,13 +77,7 @@
       overflow:hidden;
       vertical-align:top;
       padding:0 0 4px 9px;
-      background:url(../images/bullet2.gif) no-repeat 0 6px;
-
-      &.style01 {
-        color:#f66;
-        font-style:italic;
-        background:url(../images/bullet4.png) no-repeat 0 6px;
-      }
+      background:url(../images/bullet.gif) no-repeat 0 6px;
 
       ul {
         display: inline;
