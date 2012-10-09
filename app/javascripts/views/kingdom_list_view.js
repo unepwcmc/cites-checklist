@@ -1,8 +1,6 @@
 Checklist.KingdomListView = Ember.View.extend({
   templateName: 'kingdom_list_view',
   content: null,
-  taxonConceptsController: null,
-  filtersController: null,
 
   isVisible: false,
 

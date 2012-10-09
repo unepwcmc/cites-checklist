@@ -6,78 +6,72 @@
         <div class="row-holder">
           <strong class="heading">COMMON NAMES</strong>
           <div class="row">
-            <label>
               {{view Checklist.FilterCheckbox
                 context="showEnglish"
                 checkedBinding="controllers.filtersController.showEnglish"
                 id="eng-checkbox"
                 class="styled"
+                controllerBinding="controllers.filtersController"
               }}
-              ENG
-            </label>
+              <label for="eng-checkbox">ENG</label>
           </div>
           <div class="row">
-            <label>
-              {{view Checklist.FilterCheckbox
-                context="showSpanish"
-                checkedBinding="controllers.filtersController.showSpanish"
-                id="spa-checkbox"
-                class="styled"
-              }}
-              SPA
-            </label>
+            {{view Checklist.FilterCheckbox
+              context="showSpanish"
+              checkedBinding="controllers.filtersController.showSpanish"
+              id="spa-checkbox"
+              class="styled"
+              controllerBinding="controllers.filtersController"
+            }}
+            <label for="spa-checkbox">SPA</label>
           </div>
           <div class="row">
-            <label>
-              {{view Checklist.FilterCheckbox
-                context="showFrench"
-                checkedBinding="controllers.filtersController.showFrench"
-                id="fre-checkbox"
-                class="styled"
-              }}
-              FRE
-            </label>
+            {{view Checklist.FilterCheckbox
+              context="showFrench"
+              checkedBinding="controllers.filtersController.showFrench"
+              id="fre-checkbox"
+              class="styled"
+              controllerBinding="controllers.filtersController"
+            }}
+            <label for="fre-checkbox">FRE</label>
           </div>
         </div>
 
         <div class="row-holder">
           <strong class="heading">SORTING</strong>
-          {{collection Checklist.SortingRadioButtons}}
+          {{collection Checklist.SortingRadioButtons
+            controllerBinding="controllers.filtersController"}}
         </div>
 
         <div class="row-holder style01">
           <strong class="heading">OTHER OPTIONS</strong>
           <div class="row">
-            <label>
-              {{view Checklist.FilterCheckbox
-                checkedBinding="controllers.filtersController.showSynonyms"
-                context="showSynonyms"
-                id="synonyms-checkbox"
-                class="styled"
-              }}
-              Show synonyms
-            </label>
+            {{view Checklist.FilterCheckbox
+              checkedBinding="controllers.filtersController.showSynonyms"
+              context="showSynonyms"
+              id="synonyms-checkbox"
+              class="styled"
+              controllerBinding="controllers.filtersController"
+            }}
+            <label for="synonyms-checkbox">Show synonyms</label>
           </div>
           <div class="row">
-            <label>
-              {{view Checklist.UnfoldHistoryCheckbox
-                checkedBinding="view.isChecked"
-                id="history-checkbox"
-                class="styled"
-              }}
-              Show history of listing
-            </label>
+            {{view Checklist.UnfoldHistoryCheckbox
+              checkedBinding="view.isChecked"
+              id="history-checkbox"
+              class="styled"
+            }}
+            <label for="history-checkbox">Show history of listing</label>
           </div>
           <div class="row">
-            <label>
-              {{view Checklist.FilterCheckbox
-                checkedBinding="controllers.filtersController.levelOfListing"
-                context="levelOfListing"
-                id="level-of-listing-checkbox"
-                class="styled"
-              }}
-              Show taxa at level of listing
-            </label>
+            {{view Checklist.FilterCheckbox
+              checkedBinding="controllers.filtersController.levelOfListing"
+              context="levelOfListing"
+              id="level-of-listing-checkbox"
+              class="styled"
+              controllerBinding="controllers.filtersController"
+            }}
+            <label for="level-of-listing-checkbox">Show taxa at level of listing</label>
           </div>
         </div>
       </fieldset>

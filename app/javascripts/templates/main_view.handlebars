@@ -52,7 +52,7 @@
       </div>
       {{#each controllers.taxonConceptController.content}}
         {{view Checklist.KingdomListView contentBinding="this"
-          filtersControllerBinding="controllers.filtersController"
+          controllerBinding="controllers.filtersController"
         }}
       {{/each}}
     </div>
