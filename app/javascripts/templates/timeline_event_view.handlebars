@@ -13,7 +13,9 @@
       <div class="text-frame">
         <strong class="heading">NOTES</strong>
         {{#if view.hasNotes}}
-        <p>{{unbound notes}}</p>
+        <p>{{{unbound specific_notes}}}</p>
+        <strong class="heading">{{unbound symbol}}{{unbound parent_symbol}}</strong>
+        <p>{{{unbound generic_notes}}}</p>
         {{else}}
         <p>---</p>
         {{/if}}
