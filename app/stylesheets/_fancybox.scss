@@ -40,6 +40,13 @@
       display:block;
       color:#33526a;
     }
+
+    ol {
+      list-style: lower-alpha;
+    }
+    i {
+      font-style: italic;
+    }
   }
 
   .text-frame .heading{padding:0 0 5px;}

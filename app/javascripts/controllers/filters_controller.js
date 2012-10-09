@@ -97,7 +97,8 @@ Checklist.FiltersController = Ember.Object.extend({
       show_french : this.get('showFrench') === true ? 1 : 0,
       scientific_name : this.get('scientificName'),
       page : this.get('page'),
-      per_page : this.get('per_page')
+      per_page : this.get('per_page'),
+      locale : Em.I18n.currentLocale
     };
   },
   fromParams: function(params) {
