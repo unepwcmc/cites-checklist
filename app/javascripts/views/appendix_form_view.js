@@ -15,13 +15,13 @@ Checklist.AppendixFormView = Ember.View.extend({
 Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
   tagName: 'ul',
   content: [],
+
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'appendix_form_collection',
 
     classNameBindings: ['classes'],
     classes: function() {
-      var filtersController = Checklist.get('router').get('filtersController');
       var abbreviation      = this.get('context').get('abbreviation');
 
       var classes = [];
@@ -38,7 +38,7 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
           break;
       }
 
-      var selected_appendices = filtersController.get('appendices').mapProperty('abbreviation');
+      var selected_appendices = this.get('controller').get('appendices').mapProperty('abbreviation');
 
       if ($.inArray(abbreviation, selected_appendices) < 0) {
         classes.push("inactive");
@@ -53,7 +53,7 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
       if ($(event.target).not('div').length > 0) return;
 
       var router = Checklist.get('router');
-      var filtersController = router.get('filtersController');
+      var filtersController = this.get('controller');
 
       // Add the selected appendice to the appendice filter array
       // Equivalent to a selectionBinding in a dropdown list

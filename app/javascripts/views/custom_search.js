@@ -24,16 +24,10 @@ Checklist.CustomSearch = Ember.View.extend({
  */
 Checklist.FilterCheckbox = Ember.Checkbox.extend({
   change: function(event) {
-    var router = Checklist.get('router');
-    var filtersController = router.get('filtersController');
+    this.get('controller').set(this.get('context'), this.get('checked'));
 
-    filtersController.set(this.get('context'), this.get('checked'));
-
-    var filters = filtersController.toParams();
-    var params = $.param(filters);
-
-    var taxonConceptController = router.get('taxonConceptController');
-    taxonConceptController.refresh(filtersController.toParams());
+    var taxonConceptController = Checklist.get('router').get('taxonConceptController');
+    taxonConceptController.refresh(this.get('controller').toParams());
   }
 });
 
@@ -75,7 +69,7 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     }.property(),
 
     isChecked: function() {
-      var layout = Checklist.get('router').get('filtersController').get('taxonomicLayout');
+      var layout = this.get('controller').get('taxonomicLayout');
 
       if (this.get('context').value == 'alphabetical') {
         return !layout;
@@ -85,14 +79,11 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     }.property(),
 
     mouseUp: function(event) {
-      var router = Checklist.get('router');
-      var filtersController = router.get('filtersController');
+      var filtersController = this.get('controller');
 
       filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
 
-      var filters = Checklist.get('router').get('filtersController').toParams();
-      var params = $.param(filters);
-
+      var router = Checklist.get('router');
       var taxonConceptController = router.get('taxonConceptController');
       taxonConceptController.refresh(filtersController.toParams());
     }

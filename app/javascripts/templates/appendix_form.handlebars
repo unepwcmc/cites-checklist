@@ -7,7 +7,10 @@
   <div class="drop">
     <div class="drop-holder">
       {{collection Checklist.AppendixFormCollectionView
-        contentBinding="controllers.filtersController.appendicesContent"}}
+        contentBinding="controllers.filtersController.appendicesContent"
+        controllerBinding="controllers.filtersController"
+        taxonConceptControllerBinding="controllers.taxonConceptController"
+      }}
     </div>
     <img src="/images/img-decor2.png" alt="image description" class="decor" width="24" height="13" >
   </div>
