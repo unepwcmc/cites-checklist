@@ -71,7 +71,7 @@ Checklist.SearchTextField = Em.TextField.extend({
     };
     return item.
     replace(new RegExp('^(' + query + ')', 'i'), transform).
-    replace(new RegExp('[ =](' + query + ')', 'ig'), transform);
+    replace(new RegExp('=(' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
