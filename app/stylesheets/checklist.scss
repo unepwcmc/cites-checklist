@@ -449,7 +449,7 @@ fieldset.saved-search {
 }
 
 .circle {
-  border-radius: 50%;
+  @include vendor-prefix(border-radius, 50%);
   height: 26px;
   width: 26px;
 
@@ -544,6 +544,7 @@ fieldset.saved-search {
 
     .drop-holder {
       padding: 0;
+      word-wrap: break-word;
 
       ul {
         margin: 10px 0 0 35px;
@@ -553,6 +554,23 @@ fieldset.saved-search {
           font-weight: normal;
           color: #727272;
           list-style-type: square;
+          margin-right: 15px;
+          padding: 3px;
+
+          &:hover {
+            background: #EBECEE;
+            @include vendor-prefix(border-radius, 3px);
+            cursor: pointer;
+          }
+
+          .left-col {
+            width: 80%;
+          }
+
+          .right-col {
+            float: right;
+            width: 10%;
+          }
 
           a {
             border-bottom:1px dotted #666;
