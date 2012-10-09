@@ -120,12 +120,6 @@ Checklist.KingdomListView = Ember.View.extend({
       '<div class="tooltip-decor"></div></div>'
     });
 
-    // Vertical height management for listing rows
-    $('.column-container').sameHeight({
-      elements: '.column-area',
-      flexible: true
-    });
-
     Ember.run.next(this, function(){
       var filtersController = Checklist.get('router').get('filtersController');
 
