@@ -279,6 +279,13 @@
       max-height: 250px;
       overflow-y: scroll;
       margin: 5px;
+
+      ul {
+        li:hover {
+          background: none;
+          cursor: auto;
+        }
+      }
     }
   }
 }
