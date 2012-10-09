@@ -12,14 +12,10 @@ Avoid using absolute object paths (e.g. MyApp.currentUserController.user) in cla
 
 ### Ember resources
 
-The rake pipeline setup taken from here:
-  https://github.com/emberjs/todos
-A skeleton app for rake pipeline:
-  https://github.com/interline/ember-skeleton
-Tutorial Jan 2012
-  http://www.cerebris.com/blog/2012/01/24/beginning-ember-js-on-rails-part-1/
-Links to resources Feb 2012
-  http://tomdale.net/2012/02/ember-js-resources/
+* [Rake Pipeline setup example](https://github.com/emberjs/todos)
+* [A skeleton app for rake pipeline](https://github.com/interline/ember-skeleton)
+* [Tutorial Jan 2012](http://www.cerebris.com/blog/2012/01/24/beginning-ember-js-on-rails-part-1/)
+* [Links to resources Feb 2012]( http://tomdale.net/2012/02/ember-js-resources/)
 
 ### Important Vendor Note
 
