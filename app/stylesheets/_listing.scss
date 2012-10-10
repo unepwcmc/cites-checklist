@@ -28,6 +28,10 @@
     display:none;
     overflow:hidden;
     width:100%;
+
+    &:hover {
+      cursor: auto;
+    }
   }
 
   p {

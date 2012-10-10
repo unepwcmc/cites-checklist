@@ -14,5 +14,9 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   leftOffsetInPixels: 50,
   yearsOnTimescale: function(){
     return [1975,1985,1995,2005,2015];
-  }.property()
+  }.property(),
+
+  expandCountryTimeline: function(event) {
+    $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
+  }
 });

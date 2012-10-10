@@ -6,6 +6,17 @@
   .area-b {
     padding:0 0 29px;
 
+    a {
+      span {
+        float: right;
+        border-bottom: 1px dotted #000;
+
+        &:hover {
+          border-bottom: 1px solid #000;
+        }
+      }
+    }
+
     .text-holder{
       text-align:left;
       line-height:27px;
@@ -202,6 +213,7 @@
     font-size:12px;
     font-weight:bold;
     white-space:nowrap;
+    text-transform: uppercase;
   }
 
   .tooltip-decor{
@@ -209,9 +221,13 @@
     width:9px;
     height:5px;
     bottom:-5px;
-    left:50px;
+    left:47%;
     text-indent:-9999px;
     overflow:hidden;
     background:url(../images/decor-tooltip-down-arrow.png) no-repeat;
   }
+}
+
+.country-timelines {
+  display: none;
 }
