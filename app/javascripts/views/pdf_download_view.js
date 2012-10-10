@@ -45,8 +45,8 @@ Checklist.PdfDownloadView = Em.View.extend({
   didInsertElement: function() {
     $("#download").colorbox(Checklist.Helpers.colorboxSettings);
 
-    var cf = new CustomFormElements({
-      cssClass: 'pdf-styled'
+    var pdf_cf = new CustomFormElements({
+      cssClass: 'styled'
     });
   }
 });
