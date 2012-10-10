@@ -18,10 +18,14 @@
           {{#if view.showSynonyms }}
             <div class="synonym">({{unbound synonyms}})</div>
           {{/if}}
-          <ul class="details">
-            <li>{{unbound class_name}}</li>
-            <li>{{unbound family_name}}</li>
-          </ul>
+          {{#unless view.isTaxonomicLayout}}
+            <ul class="details">
+              <li>{{unbound phylum_name}}</li>
+              <li>{{unbound class_name}}</li>
+              <li>{{unbound order_name}}</li>
+              <li>{{unbound family_name}}</li>
+            </ul>
+          {{/unless}}
           <ul class="default-list">
             {{#if view.showEnglish }}
               <li>ENG - {{collection Checklist.TaxonConceptCommonNameView

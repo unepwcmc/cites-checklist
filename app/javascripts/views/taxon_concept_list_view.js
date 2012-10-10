@@ -117,6 +117,10 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
     }.property(),
 
+    isTaxonomicLayout: function() {
+      return this.get('filtersController').taxonomicLayout;
+    }.property(),
+
     currentListingParts: function(){
       var listing = this.get('context').get('current_listing');
       if (listing === null){
