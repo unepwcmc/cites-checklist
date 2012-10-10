@@ -66,10 +66,18 @@ body {
     padding:3px 0 4px 36px;
     color:#B7C1CA;
     font-size:13px;
-    line-height:13px;
+    line-height:12px;
     font-weight:bold;
     text-shadow:0 1px 1px #fff;
-    background:url(../images/options-off.png) no-repeat;
+    background:url(../images/options.png) no-repeat;
+  }
+
+  .expanded .btn-custom,
+  .btn-custom:hover {
+    color:#33536a;
+    text-decoration:none;
+    background:url(../images/options.png) no-repeat;
+    background-position: 0px -31px;
   }
 
   .appendix-holder,
@@ -89,13 +97,6 @@ body {
         cursor: pointer;
       }
     }
-  }
-
-  .expanded .btn-custom,
-  .btn-custom:hover {
-    color:#33536a;
-    text-decoration:none;
-    background:url(../images/options-on.png) no-repeat;
   }
 }
 

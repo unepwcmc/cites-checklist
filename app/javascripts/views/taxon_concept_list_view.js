@@ -143,14 +143,14 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       this.$().find('.slide').stop().slideToggle();
     },
 
-    didInsertElement: function() {
+    becameVisible: function() {
       // Ensure centre vertical alignment for appendix icon and countries
       // list in the taxa list
       $('.column-container').sameHeight({
         elements: '.column-area',
         flexible: true
       });
-    }
+    },
   })
 });
 
