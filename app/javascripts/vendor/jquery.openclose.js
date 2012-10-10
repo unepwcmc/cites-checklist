@@ -22,6 +22,30 @@
       var opener = $(options.opener, holder);
       var slider = $(options.slider, holder);
       if(slider.length) {
+        // Add a click handler to all DOM elements other than the drop
+        // down so that users can "click off" to close to drop down.
+        $('body').bind(options.event, function(e) {
+          if ($(e.target).closest(slider).length > 0) return;
+
+          if(holder.hasClass(options.activeClass)) {
+            animating = true;
+            toggleEffects[options.effect].hide({
+              speed: options.animSpeed,
+              box: slider,
+              complete: function() {
+                animating = false;
+                if(!options.addClassBeforeAnimation) {
+                  holder.removeClass(options.activeClass);
+                }
+                if(typeof options.animEnd === 'function') options.animEnd();
+              }
+            });
+            if(options.addClassBeforeAnimation) {
+              holder.removeClass(options.activeClass);
+            }
+          }
+        });
+
         opener.bind(options.event,function(){
           if(!animating) {
             animating = true;
