@@ -85,8 +85,8 @@ Checklist.SearchTextField = Em.TextField.extend({
       }
 
       var entry = item.full_name;
-      if (item.synonyms.length > 0) {
-        entry += " (=" + item.synonyms.join(", ") + ")";
+      if (item.matching_names.length > 0) {
+        entry += " (=" + item.matching_names.join(", ") + ")";
       }
       results[item.rank_name].push(entry);
     });
