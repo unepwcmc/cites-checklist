@@ -76,6 +76,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       return full_name;
     }.property('full_name'),
+
     english: function() {
       return this.content.get('english').split(',');
     }.property('english'),

@@ -1,6 +1,6 @@
 Checklist.TimelineEvent = DS.Model.extend({
   id: DS.attr('number'),
-  party: DS.attr('string'),
+  party: DS.belongsTo('Checklist.Country', { key: 'party' }),
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string'),
   specific_notes: DS.attr('string'),
