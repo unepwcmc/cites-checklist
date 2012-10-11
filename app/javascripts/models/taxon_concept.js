@@ -3,6 +3,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
   countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
+  current_listing_changes: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
   spp: DS.attr('string'),
   current_listing: DS.attr('string'),

@@ -45,13 +45,9 @@
           <div class="column-area">
             <div class="holder">
               <div class="frame">
-                <ul class="icons">
-                  {{#each view.currentListingParts}}
-                    <li>
-                    <div class="circle {{unbound this.colour}}">{{unbound this.symbol}}</div>
-                    </li>
-                  {{/each}}
-                </ul>
+                {{view Checklist.TaxonConceptCurrentListingView
+                  contentBinding="this"
+                }}
               </div>
             </div>
           </div>

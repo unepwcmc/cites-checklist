@@ -182,6 +182,13 @@
 
 .icons li{padding:0 0 4px;}
 .icons img{vertical-align:top;}
+a.icons-link {
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
 
 .icons {
   li {

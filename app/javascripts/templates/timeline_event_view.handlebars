@@ -6,20 +6,7 @@
       <strong class="heading">{{unbound view.eventDescription}} · <em class="date">{{unbound effective_at}}</em></strong>
     </div>
     <div class="text-holder">
-      {{#if view.hasParty}}
-      <strong class="heading">COUNTRY</strong>
-      <p>{{unbound party.name}}</p>
-      {{/if}}
-      <div class="text-frame">
-        <strong class="heading">NOTES</strong>
-        {{#if view.hasNotes}}
-        <p>{{{unbound specific_notes}}}</p>
-        <strong class="heading">{{unbound symbol}}{{unbound parent_symbol}}</strong>
-        <p>{{{unbound generic_notes}}}</p>
-        {{else}}
-        <p>---</p>
-        {{/if}}
-      </div>
+      {{view Ember.View templateName="taxon_concept_listing_change_view"}}
     </div>
   </div>
 </div>

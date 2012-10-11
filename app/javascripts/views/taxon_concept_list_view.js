@@ -121,28 +121,11 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       return this.get('filtersController').taxonomicLayout;
     }.property(),
 
-    currentListingParts: function(){
-      var listing = this.get('context').get('current_listing');
-      if (listing === null){
-        return [];
-      }
-      return listing.split('/').map(function(appendix){
-        switch (appendix) {
-          case 'I':
-            return {colour: "blue", symbol: 'I'};
-          case 'II':
-            return {colour: "green", symbol: 'II'};
-          case 'III':
-            return {colour: "orange", symbol: 'III'};
-          case 'NC':
-            return {colour: "grey", symbol: 'NC'};
-        }
-      });
-    }.property(),
-
     click: function(event) {
       // Ignore clicks on the history graph
       if ($(event.target).parents('.slide').length > 0) return;
+      // Ignore clicks on circle icons
+      if ($(event.target).hasClass('circle')) return;
 
       this.$().stop().toggleClass('expanded');
       this.$().find('.slide').stop().slideToggle();
