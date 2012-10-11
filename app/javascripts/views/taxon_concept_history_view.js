@@ -3,6 +3,8 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   classNames: ['area'],
   templateName: "taxon_concept_history_view",
 
+  id: null,
+
   contextBinding: 'content',
 
   totalWidthInPixels: 700,
@@ -11,10 +13,17 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
 
   didInsertElement: function() {
     var that = this;
-    $(window).resize(function() {
-      if (!that.isDestroyed) {
-        that.setWidth();
+
+    // Namespace the resize events so that they can be removed when the
+    // view is destroyed
+    this.set('id', Checklist.Helpers.generateId());
+    $(window).bind('resize.'+this.get('id'), function() {
+      if (that.isDestroyed) {
+        $(window).unbind('resize.'+that.get('id'));
+        return;
       }
+
+      that.setWidth();
     });
 
     Ember.run.next(this, function(){
