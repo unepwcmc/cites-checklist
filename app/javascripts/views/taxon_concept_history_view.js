@@ -9,7 +9,7 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
 
   totalWidthInPixels: 700,
   leftOffsetInPixels: 50,
-  rightOffsetInPixels: 5,
+  rightOffsetInPixels: 8,
 
   didInsertElement: function() {
     var that = this;
