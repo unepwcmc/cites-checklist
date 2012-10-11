@@ -16,7 +16,7 @@
       var holder = $(this);
       var elements = holder.find(options.elements).not('.' + options.skipClass);
       if(!elements.length) return;
-      
+
       // resize handler
       function doResize() {
         elements.css(options.useMinHeight && supportMinHeight ? 'minHeight' : 'height', '');
@@ -29,7 +29,7 @@
         }
       }
       doResize();
-      
+
       // handle flexible layout / font resize
       if(options.flexible) {
         $(window).bind('resize orientationchange fontresize', function(e){
@@ -44,10 +44,10 @@
       });
     });
   }
-  
+
   // detect css min-height support
   var supportMinHeight = typeof document.documentElement.style.maxHeight !== 'undefined';
-  
+
   // get elements by rows
   function resizeElementsByRows(boxes, options) {
     var currentRow = $(), maxHeight, firstOffset = boxes.eq(0).offset().top;
@@ -67,7 +67,7 @@
       resizeElements(currentRow, maxHeight, options);
     }
   }
-  
+
   // calculate max element height
   function getMaxHeight(boxes) {
     var maxHeight = 0;
@@ -76,14 +76,14 @@
     });
     return maxHeight;
   }
-  
+
   // resize helper function
   function resizeElements(boxes, parent, options) {
     var parentHeight = typeof parent === 'number' ? parent : parent.height();
     boxes.removeClass(options.leftEdgeClass).removeClass(options.rightEdgeClass).each(function(i){
       var element = $(this);
       var depthDiffHeight = 0;
-      
+
       if(typeof parent !== 'number') {
         element.parents().each(function(){
           var tmpParent = $(this);

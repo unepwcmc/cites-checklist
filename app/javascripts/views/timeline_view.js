@@ -1,14 +1,18 @@
 Checklist.TimelineView = Ember.View.extend({
   templateName: 'timeline_view',
-  content: null,
-  timelineYears: null,
+
   contextBinding: 'content',
+
   totalWidthInPixels: function(){
     return this.get('parentView.totalWidthInPixels');
   }.property(),
   leftOffsetInPixels: function(){
     return this.get('parentView.leftOffsetInPixels');
   }.property(),
+  rightOffsetInPixels: function(){
+    return this.get('parentView.rightOffsetInPixels');
+  }.property(),
+
   colour: function(){
     if (this.get('content').get('appendix') == 'I' ){
       return 'blue';
@@ -18,10 +22,11 @@ Checklist.TimelineView = Ember.View.extend({
       return 'orange';
     }
   }.property(),
+
   isPartyTimeline: function(){
     return (this.get('content.party') !== null);
   }.property(),
   continuesInPresent: function(){
     return this.get('content.timeline_intervals.lastObject.end_pos') == 1;
-  }.property()
+  }.property(),
 });

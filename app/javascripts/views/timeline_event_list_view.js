@@ -1,9 +1,12 @@
 Checklist.TimelineEventListView = Ember.CollectionView.extend({
-  content: null,
   itemViewClass: Ember.View.extend({
     tagName: 'a',
     classNames: ['ico'],
     classNameBindings: ['colour', 'tooltip'],
+    templateName: 'timeline_event_view',
+
+    contextBinding: 'content',
+
     colour: function(){
       return this.get('parentView.parentView.colour');
     }.property(),
@@ -22,14 +25,14 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       var symbol = this.get('eventSymbol');
       return res + Checklist.Helpers.symbolAsText(symbol);
     }.property(),
-    contextBinding: 'content',
-    templateName: 'timeline_event_view',
+
     positionInPixels: function(){
-      var total = this.get('parentView.parentView.totalWidthInPixels');
+      var total = this.get('parentView.parentView.parentView.totalWidthInPixels');
       var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
       var iconOffset = 10;//so that icon is centered
       return (this.get('content.pos') * (total - leftOffset)) + leftOffset - iconOffset;
-    }.property(),
+    }.property().volatile(),
+
     eventSymbol: function(){
       if (this.get('content.change_type_name') == 'ADDITION'){
         return '+';
@@ -63,10 +66,11 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         return 'RESERVATION WITHDRAWAL';
       }
     }.property(),
+
     attributeBindings: ['style', 'title', 'href'],
     style: function() {
       return 'left:' + this.get('positionInPixels') + 'px';
-    }.property(),
+    }.property('parentView.parentView.parentView.totalWidthInPixels'),
     title: function(){
       var res = this.get('content.effective_at');
       var party = this.get('content.party.iso_code2');

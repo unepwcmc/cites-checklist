@@ -153,7 +153,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       // list in the taxa list
       $('.column-container').sameHeight({
         elements: '.column-area',
-        flexible: true
+        flexible: false
       });
     },
   })
