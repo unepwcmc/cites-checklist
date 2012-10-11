@@ -12,7 +12,9 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   didInsertElement: function() {
     var that = this;
     $(window).resize(function() {
-      that.setWidth();
+      if (!that.isDestroyed) {
+        that.setWidth();
+      }
     });
 
     Ember.run.next(this, function(){
