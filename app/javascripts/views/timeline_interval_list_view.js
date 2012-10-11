@@ -1,32 +1,34 @@
 Checklist.TimelineIntervalListView = Ember.CollectionView.extend({
-  content: null,
   itemViewClass: Ember.View.extend({
     tagName: 'div',
     classNames: ['line'],
     classNameBindings: ['colour'],
+
+    contextBinding: 'content',
+
     colour: function(){
       return this.get('parentView.parentView.colour');
     }.property(),
-    contextBinding: 'content',
-    template: null,
+
     positionInPixels: function(){
-      var total = this.get('parentView.parentView.totalWidthInPixels');
+      var total = this.get('parentView.parentView.parentView.totalWidthInPixels');
       var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
       return (this.get('content.start_pos') * (total - leftOffset) + leftOffset);
-    }.property(),
+    }.property().volatile(),
     widthInPercent: function(){
-      var total = this.get('parentView').get('parentView').get('totalWidthInPixels');
-      var leftOffset = this.get('parentView').get('parentView').get('leftOffsetInPixels');
+      var total = this.get('parentView.parentView.parentView.totalWidthInPixels');
+      var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
+      var rightOffset = this.get('parentView.parentView.rightOffsetInPixels');
       return (
         (
-          (this.get('content.end_pos') - this.get('content.start_pos')) * (total - leftOffset)
+          ((this.get('content.end_pos') - this.get('content.start_pos')) * (total - leftOffset)) - rightOffset
         ) / total
       ) * 100;
-    }.property(),
+    }.property().volatile(),
+
     attributeBindings: ['style'],
     style: function() {
-        return 'width:' + this.get('widthInPercent') + '%;left:' + this.get('positionInPixels') + 'px';
-    }.property()
+      return 'width:' + this.get('widthInPercent') + '%;left:' + this.get('positionInPixels') + 'px';
+    }.property('parentView.parentView.parentView.totalWidthInPixels'),
   })
 });
-
