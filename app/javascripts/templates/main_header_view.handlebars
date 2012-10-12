@@ -19,14 +19,14 @@
 
             <div class="column">
               {{view Checklist.AppendixFormView
-                contentBinding="controllers.filtersController.appendices"
+                contentBinding="controllers.filtersController.appendicesIds"
               }}
             </div>
 
             <div class="column style01">
               {{view Checklist.LocationsView
-                regionsBinding="controllers.filtersController.regions"
-                countriesBinding="controllers.filtersController.countries"
+                regionsBinding="controllers.filtersController.regionsIds"
+                countriesBinding="controllers.filtersController.countriesIds"
               }}
             </div>
 

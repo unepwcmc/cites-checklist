@@ -3,7 +3,7 @@ Checklist.AppendixFormView = Ember.View.extend({
   templateName: 'appendix_form',
 
   summary: function() {
-    var appendices = this.get('content').mapProperty('abbreviation');
+    var appendices = this.get('content');
     if (appendices.length === 0 || appendices.length == 3) {
       return "All Appxs.";
     } else {
@@ -22,7 +22,7 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
     classNameBindings: ['classes'],
     classes: function() {
-      var abbreviation      = this.get('context').get('abbreviation');
+      var abbreviation = this.get('context').get('abbreviation');
 
       var classes = [];
 
@@ -57,11 +57,14 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       // Add the selected appendice to the appendice filter array
       // Equivalent to a selectionBinding in a dropdown list
-      appendices = filtersController.get('appendices');
+      appendices    = filtersController.get('appendices');
+      appendicesIds = filtersController.get('appendicesIds');
       if (appendices.contains(this.get('context'))) {
         appendices.removeObject(this.get('context'));
+        appendicesIds.removeObject(this.get('context').get('abbreviation'));
       } else {
         appendices.addObject(this.get('context'));
+        appendicesIds.addObject(this.get('context').get('abbreviation'));
       }
 
       $(event.target).parent().toggleClass('inactive');
