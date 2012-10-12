@@ -1,0 +1,16 @@
+<strong class="heading">{{unbound view.sectionTitle}}</strong>
+
+{{#if hasParty}}
+<strong class="heading">COUNTRY</strong>
+<p>{{unbound party.name}}</p>
+{{/if}}
+<div class="text-frame">
+  <strong class="heading">NOTES</strong>
+  {{#if hasSpecificNote}}
+  <p>{{{unbound specific_note}}}</p>
+  {{/if}}
+  {{#if hasGenericNote}}
+  <strong class="heading">{{unbound symbol}}{{unbound parent_symbol}}</strong>
+  <p>{{{unbound generic_note}}}</p>
+  {{/if}}
+</div>

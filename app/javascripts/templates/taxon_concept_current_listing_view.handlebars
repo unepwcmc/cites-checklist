@@ -1,0 +1,25 @@
+
+<ul class="icons">
+
+  {{#each view.currentListingParts}}
+    <li>
+
+      <div class="circle {{unbound this.colour}}">
+        {{unbound this.symbol}}
+      </div>
+
+    </li>
+  {{/each}}
+</ul>
+
+
+<div style="display: none">
+  <div class="lightbox" id="current-listing-popup{{unbound id}}">
+    <div class="heading-holder">
+      <strong class="heading">Current listing {{current_listing}}</strong>
+    </div>
+    <div class="text-holder">
+      {{collection Checklist.TaxonConceptCurrentListingChangesListView contentBinding="current_listing_changes"}}
+    </div>
+  </div>
+</div>
