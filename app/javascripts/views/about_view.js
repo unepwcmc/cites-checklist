@@ -1,3 +1,6 @@
 Checklist.AboutView = Ember.View.extend({
-  templateName: 'about_page'
+  tagName: 'section',
+  templateName: 'about_page',
+
+  classNames: ['about-main']
 });

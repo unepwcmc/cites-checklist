@@ -1,0 +1,43 @@
+<div class="wrap">
+  <div class="content">
+    <div class="c1">
+
+      <div class="logo-holder">
+        <h1 class="logo"><a href="/">{{tt title}}</a></h1>
+        <a href="#" {{action "doAbout"}} class="top-links">About</a>
+      </div>
+
+      <div class="header-frame">
+        <div class="column-holder">
+          <div class="column-frame">
+
+            <div class="column">
+              {{view Checklist.ChecklistForm
+                controllerBinding="controllers.taxonConceptController"
+                filtersControllerBinding="controllers.filtersController"}}
+            </div>
+
+            <div class="column">
+              {{view Checklist.AppendixFormView
+                contentBinding="controllers.filtersController.appendices"
+              }}
+            </div>
+
+            <div class="column style01">
+              {{view Checklist.LocationsView
+                regionsBinding="controllers.filtersController.regions"
+                countriesBinding="controllers.filtersController.countries"
+              }}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="aside">
+    {{view Checklist.CustomSearch}}
+  </div>
+</div>

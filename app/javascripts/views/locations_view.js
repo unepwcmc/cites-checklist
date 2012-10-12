@@ -34,11 +34,8 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
 
       filtersController.get(location_type).removeObject(this.get('context'));
 
-      var filters = filtersController.toParams();
-      var params = $.param(filters);
-
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      var params = filtersController.toParams();
+      router.transitionTo('search_without_render', {params: $.param(params)});
 
       this.get('parentView').get('parentView').set('buttonString', '');
     }
@@ -68,11 +65,8 @@ Checklist.LocationsCollectionView = Ember.CollectionView.extend({
 
       filtersController.get(location_type).addObject(this.get('context'));
 
-      var filters = filtersController.toParams();
-      var params = $.param(filters);
-
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      var params = filtersController.toParams();
+      router.transitionTo('search_without_render', {params: $.param(params)});
 
       this.get('parentView').get('parentView').set('buttonString', '');
     },

@@ -26,8 +26,11 @@ Checklist.FilterCheckbox = Ember.Checkbox.extend({
   change: function(event) {
     this.get('controller').set(this.get('context'), this.get('checked'));
 
-    var taxonConceptController = Checklist.get('router').get('taxonConceptController');
-    taxonConceptController.refresh(this.get('controller').toParams());
+    var router = Checklist.get('router');
+    var filtersController = router.get('filtersController');
+
+    var params = filtersController.toParams();
+    router.transitionTo('search_without_render', {params: $.param(params)});
   }
 });
 
@@ -80,12 +83,12 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
 
     mouseUp: function(event) {
       var filtersController = this.get('controller');
+      var router = Checklist.get('router');
 
       filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
 
-      var router = Checklist.get('router');
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      var params = filtersController.toParams();
+      router.transitionTo('search_without_render', {params: $.param(params)});
     }
   })
 });

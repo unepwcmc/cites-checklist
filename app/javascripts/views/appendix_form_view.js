@@ -66,8 +66,8 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       $(event.target).parent().toggleClass('inactive');
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      var params = filtersController.toParams();
+      router.transitionTo('search_without_render', {params: $.param(params)});
 
       this.get('parentView').get('parentView').set('summary', '');
     }

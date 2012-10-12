@@ -36,9 +36,9 @@ body {
 .search:after,
 .c1:after,
 .content .block:after,
-#main:after,
+.main:after,
 .content .column-container:after,
-#header:after {
+.header:after {
   display:block;
   content:"";
   clear:both;
@@ -49,7 +49,7 @@ body {
   min-height:100%;
 }
 
-#header{
+.header{
   position:fixed;
   z-index:990;
   width:100%;
@@ -231,8 +231,8 @@ fieldset.saved-search {
   }
 }
 
-* +html #header .btn-holder{display:inline;}
-* +html #header .appendix-holder{display:inline;}
+* +html .header .btn-holder{display:inline;}
+* +html .header .appendix-holder{display:inline;}
 
 .drop {
   position:absolute;
@@ -650,7 +650,7 @@ fieldset.saved-search {
   margin:0 135px 0 0;
 }
 
-#main{
+.main{
   font-size:1.3em;
   line-height:1.23em;
   background: #fff;

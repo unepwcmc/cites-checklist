@@ -1,3 +1,6 @@
 Checklist.MainView = Ember.View.extend({
-  templateName: 'main_view'
+  tagName: 'section',
+  templateName: 'main_view',
+
+  classNames: ['main']
 });

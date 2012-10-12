@@ -10,12 +10,8 @@ Checklist.ChecklistForm = Em.View.extend({
 
     this.get('filtersController').set('page', 0);
 
-    var filters = this.get('filtersController').toParams();
-    var params = $.param(filters);
-
-    var taxonConceptController = Checklist.get('router').get('taxonConceptController');
-    var params = Checklist.get('router').get('filtersController').toParams()
-    taxonConceptController.refresh(params);
+    var params = this.get('filtersController').toParams();
+    Checklist.get('router').transitionTo('search_without_render', {params: $.param(params)});
   }
 
 });

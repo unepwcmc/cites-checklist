@@ -1,5 +1,5 @@
-#about-header {
-  @extend #header;
+.about-header {
+  @extend .header;
 
   position: inherit;
   height: inherit;
@@ -19,8 +19,8 @@
   }
 }
 
-#about-main {
-  @extend #main;
+.about-main {
+  @extend .main;
   color: #6F6F6F;
 
   .c1 {

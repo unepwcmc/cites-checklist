@@ -5,39 +5,43 @@ Checklist.Router = Ember.Router.extend({
     home: Ember.Route.extend({
       route: '/',
       connectOutlets: function(router, event) {
-        router.get('applicationController')
-        .connectOutlet({
-          viewClass: Checklist.MainView,
-          controller: router.get('taxonConceptController'),
-          context: Checklist.store.find(
-            Checklist.Index, router.get('filtersController').toParams()
-          )
-        });
+        router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
+        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
       }
     }),
+
     search: Ember.Route.extend({
       route: '/search/:params',
       connectOutlets: function(router, event) {
-        params = Checklist.Helpers.deparam(event.params);
-        router.get('filtersController').fromParams(params);
+        var params = Checklist.Helpers.deparam(event.params);
 
-        router.get('applicationController')
-        .connectOutlet({
-          viewClass: Checklist.MainView,
-          controller: router.get('taxonConceptController'),
-          context: Checklist.store.find(
-            Checklist.Index, params
-          )
-        });
+        router.get('filtersController').fromParams(params);
+        router.get('taxonConceptController').refresh(params);
+
+        router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
+        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
       }
     }),
+    search_without_render: Ember.Route.extend({
+      route: '/search/:params',
+      connectOutlets: function(router, event) {
+        var params = Checklist.Helpers.deparam(event.params);
+
+        router.get('filtersController').fromParams(params);
+        router.get('taxonConceptController').refresh(params);
+
+        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
+      }
+    }),
+
     doAbout: function(router, event) {
       router.transitionTo('about');
     },
     about: Ember.Route.extend({
       route: '/about',
       connectOutlets: function(router, event) {
-        router.get('applicationController').connectOutlet({viewClass: Checklist.AboutView});
+        router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.AboutHeaderView});
+        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.AboutView});
       }
     })
   })
