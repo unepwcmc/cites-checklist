@@ -35,17 +35,23 @@
 .area {
   margin:0 0 2px;
 
-  &.no-listing-changes {
-    opacity: 0.5;
+  &.no-listing-changes .area-b {
+    opacity: 0.3;
   }
 
   .no-history-graphs {
     display: none;
     float: left;
     position: relative;
-    left: 30%;
-    top: 45px;
     z-index: 850;
+    width: 100%;
+    min-height: 125px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding-top: 45px;
+    box-sizing: border-box;
+    font-size: 1.5em;
+    color: #33536A;
   }
 
   .row, .timescale-row{
