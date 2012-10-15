@@ -93,7 +93,7 @@
 
   , select: function () {
       // Do nothing when a header is clicked on
-      if (this.$menu.find('.active').hasClass('header')) { return; }
+      if (this.$menu.find('.active').hasClass('list-header')) { return; }
 
       var val = this.$menu.find('.active').attr('data-value')
       this.$element
@@ -238,7 +238,7 @@
       if (items.length === undefined) {
         var result = [];
         for (var cat in items) {
-          var i = $(that.options.item).text(cat.toString()).addClass('header');
+          var i = $(that.options.item).text(cat.toString()).addClass('list-header');
           result.push(i[0]);
 
           items[cat].forEach(function(item, i) {
@@ -281,7 +281,7 @@
       }
 
       // Don't allow headers to be selected
-      if (next.hasClass('header')) {
+      if (next.hasClass('list-header')) {
         next = next.next();
       }
 
@@ -296,7 +296,7 @@
         prev = this.$menu.find('li').last()
       }
 
-      if (prev.hasClass('header')) {
+      if (prev.hasClass('list-header')) {
         prev = prev.prev();
       }
 
