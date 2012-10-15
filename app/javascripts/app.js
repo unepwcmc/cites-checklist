@@ -4,6 +4,8 @@ require('checklist/vendor/bootstrap-typeahead');
 
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
+
+require('checklist/vendor/plurals');
 require('checklist/vendor/ember-i18n');
 
 minispade.requireAll(/locales/);
