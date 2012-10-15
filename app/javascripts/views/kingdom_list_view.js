@@ -238,7 +238,7 @@ Checklist.KingdomListView = Ember.View.extend({
     }
 
     $('.filter-control').css({
-      "visibility": ($(window).scrollTop() == 0) ? "visible" : "hidden"
+      "visibility": ($(window).scrollTop() <= 0) ? "visible" : "hidden"
     });
 
     $('.filterFloatingHeader').css({
@@ -249,8 +249,11 @@ Checklist.KingdomListView = Ember.View.extend({
 
     // Calculate how much of the document remains, and use it
     // to determine how much of the footer is visible
-    var remaining = ($(document).height() - $(window).scrollTop())-$(window).height();
-    var offset    = ($("#footer").outerHeight() - remaining);
+    var remaining     = ($(document).height() - $(window).scrollTop())-$(window).height();
+    var footer_height = $('#footer').outerHeight();
+
+    var offset = (footer_height - remaining);
+    offset     = (offset > footer_height) ? footer_height : offset;
 
     // Constant space beneath paging
     var bottom_offset = 20;
