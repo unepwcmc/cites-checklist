@@ -2,7 +2,7 @@
   {{#unless view.isPartyTimeline}}
     <div class="circle {{unbound view.colour}} category">{{unbound appendix}}</div>
   {{else}}
-  <div class="circle {{unbound view.colour}} category" title="{{unbound party.name}}">
+    <div class="circle {{unbound view.colour}} category party-tooltip" title="{{unbound party.name}}">
       {{unbound party.iso_code2}}
     </div>
   {{/unless}}

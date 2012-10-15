@@ -100,15 +100,6 @@ Checklist.KingdomListView = Ember.View.extend({
       that.set('isVisible', true);
     });
 
-    this.$('a.more-countries-tooltip').hoverTooltip({
-      positionTypeX: 'center',
-      positionTypeY: 'bottom',
-      attribute:'title',
-      extraOffsetX: 15,
-      extraOffsetY: 40,
-      tooltipStructure: '<div class="country-tooltip"><div class="tooltip-text"></div></div>'
-    });
-
     $('a.new-taxa').hoverTooltip({
       positionTypeX: 'left',
       positionTypeY: 'top',

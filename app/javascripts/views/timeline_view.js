@@ -29,4 +29,16 @@ Checklist.TimelineView = Ember.View.extend({
   continuesInPresent: function(){
     return this.get('content.timeline_intervals.lastObject.end_pos') == 1;
   }.property(),
+
+  didInsertElement: function() {
+    this.$('.party-tooltip').hoverTooltip({
+      positionTypeX: 'center',
+      positionTypeY: 'top',
+      attribute:'title',
+      extraOffsetX: 20,
+      extraOffsetY: 2,
+      tooltipStructure: '<div class="custom-tooltip"><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
+    });
+
+  }
 });

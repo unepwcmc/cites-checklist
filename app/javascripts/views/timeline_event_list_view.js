@@ -79,12 +79,13 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     href: function(){
       return '#popup' + this.get('content.id');
     }.property(),
+
     didInsertElement: function(){
       this.$().hoverTooltip({
         positionTypeX: 'left',
         positionTypeY: 'top',
         attribute:'title',
-        extraOffsetX: 16,
+        extraOffsetX: 14,
         extraOffsetY: 2,
         tooltipStructure:
         '<div class="custom-tooltip"><div class="ico-tooltip ' + this.get('eventClass') + '">' +
