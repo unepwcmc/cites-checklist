@@ -39,6 +39,5 @@ Checklist.TimelineView = Ember.View.extend({
       extraOffsetY: 2,
       tooltipStructure: '<div class="custom-tooltip"><div class="tooltip-text"></div><div class="tooltip-decor"></div></div>'
     });
-
   }
 });

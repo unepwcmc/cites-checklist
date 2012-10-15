@@ -36,5 +36,12 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
 
   expandCountryTimeline: function(event) {
     $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
-  }
+  },
+
+  contentIsLoaded: function() {
+    if (this.get('content.timeline_event_count') == 0) {
+      this.$().addClass('no-listing-changes');
+      this.$().find('.no-history-graphs').show();
+    }
+  }.observes('content.isLoaded')
 });

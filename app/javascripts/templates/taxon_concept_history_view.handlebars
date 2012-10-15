@@ -1,10 +1,15 @@
 <div class="area-b">
+  <div class="no-history-graphs">
+    No history information is available for this taxa.
+  </div>
+
   {{#each timelines}}
     {{view Checklist.TimelineView contentBinding="this"}}
   {{/each}}
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
+
   {{#each timelines}}
-    {{#if timelines.length}}
+    {{#if hasNestedTimelines}}
       <a href="#" {{action "expandCountryTimeline" target="view"}}>
         <span>See {{unbound timelines.length}} per country
           classifications</span>
