@@ -6,7 +6,10 @@
 
 <div class="saved-holder">
   <a class="btn-saved">
-    {{controllers.savedSearchController.count}}
+    {{#if controllers.savedSearchController.content.length}}
+      {{tt saved_search.count
+        countBinding="controllers.savedSearchController.content.length"}}
+    {{/if}}
     <div class="drop">
       <div class="drop-holder">
         {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
