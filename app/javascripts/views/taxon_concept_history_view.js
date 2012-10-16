@@ -38,10 +38,23 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
     $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
   },
 
+  countryCount: 0,
+
   contentIsLoaded: function() {
     if (this.get('content.timeline_event_count') == 0) {
       this.$().addClass('no-listing-changes');
       this.$().find('.no-history-graphs').show();
+    }
+
+    if (this.get('content.timelines').get('length')) {
+      var that = this,
+          party_count = 0;
+
+      this.get('content.timelines').mapProperty('parties').forEach(function(item) {
+        party_count += item.length;
+      });
+
+      this.set('countryCount', party_count);
     }
   }.observes('content.isLoaded')
 });

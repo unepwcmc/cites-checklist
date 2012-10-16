@@ -9,3 +9,4 @@ Checklist.CONFIG = {
 }
 
 Em.I18n.set('currentLocale', 'en');
+CLDR.defaultLanguage = 'en';

@@ -45,7 +45,7 @@
       if ((count != null) && (pluralForm != null)) {
         suffix = pluralForm(count);
         interpolatedKey = "%@.%@".fmt(key, suffix);
-        result = findTemplate(interpolatedKey, false);
+        result = findTemplate(interpolatedKey, true);
       }
       return result != null ? result : result = findTemplate(key, true);
     },

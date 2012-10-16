@@ -8,21 +8,23 @@
   {{/each}}
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 
-  {{#each timelines}}
-    {{#if hasNestedTimelines}}
-      <a href="#" {{action "expandCountryTimeline" target="view"}}>
-        <span>See {{unbound timelines.length}} per country
-          classifications</span>
-      </a>
-      <div class="country-timelines">
-        <div class="text-holder">
-          <span>Appendix {{unbound appendix}} per country reservations:</span>
-        </div>
-        {{#each timelines}}
-          {{view Checklist.TimelineView contentBinding="this"}}
-        {{/each}}
-        {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
-      </div>
-    {{/if}}
-  {{/each}}
+  {{#if view.countryCount}}
+    <a href="#" {{action "expandCountryTimeline" target="view"}}>
+      <span>{{tt timeline.party countBinding="view.countryCount"}}</span>
+    </a>
+
+    <div class="country-timelines">
+      {{#each timelines}}
+        {{#if hasNestedTimelines}}
+          <div class="text-holder">
+            <span>Appendix {{unbound appendix}} per country reservations:</span>
+          </div>
+          {{#each timelines}}
+            {{view Checklist.TimelineView contentBinding="this"}}
+          {{/each}}
+          {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
