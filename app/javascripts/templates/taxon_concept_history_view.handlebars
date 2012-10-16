@@ -12,7 +12,7 @@
 
   {{#if view.countryCount}}
     <a href="#" {{action "expandCountryTimeline" target="view"}}>
-      <span>{{tt timeline.party countBinding="view.countryCount"}}</span>
+      {{tt timeline.party countBinding="view.countryCount"}}
     </a>
 
     <div class="country-timelines">

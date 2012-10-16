@@ -11,6 +11,10 @@
         float: right;
         border-bottom: 1px dotted #000;
 
+        span, span:hover {
+          border-bottom: none;
+        }
+
         &:hover {
           border-bottom: 1px solid #000;
         }
