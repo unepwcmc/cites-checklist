@@ -1,6 +1,8 @@
-<div class="no-history-graphs">
-  No history information is available for this taxa.
-</div>
+{{#if view.noTimelinesAvailable}}
+  <div class="no-history-graphs">
+    No history information is available for this taxa.
+  </div>
+{{/if}}
 
 <div class="area-b">
   {{#each timelines}}

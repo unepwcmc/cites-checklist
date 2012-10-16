@@ -39,11 +39,12 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   },
 
   countryCount: 0,
+  noTimelinesAvailable: false,
 
   contentIsLoaded: function() {
     if (this.get('content.timeline_event_count') == 0) {
       this.$().addClass('no-listing-changes');
-      this.$().find('.no-history-graphs').show();
+      this.set('noTimelinesAvailable', true);
     }
 
     if (this.get('content.timelines').get('length')) {
