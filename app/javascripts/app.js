@@ -1,6 +1,7 @@
 minispade.requireAll(/vendor\/jquery/);
 require('checklist/vendor/custom-form-elements');
 require('checklist/vendor/bootstrap-typeahead');
+require('checklist/vendor/spin.min');
 
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');

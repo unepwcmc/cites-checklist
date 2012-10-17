@@ -97,7 +97,7 @@ Checklist.KingdomListView = Ember.View.extend({
   didInsertElement: function() {
     var that = this;
     $('#loading').fadeOut('fast', function() {
-      that.set('isVisible', true);
+      that.$().fadeIn();
     });
 
     $('a.new-taxa').hoverTooltip({
