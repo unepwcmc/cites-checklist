@@ -98,6 +98,7 @@ Checklist.KingdomListView = Ember.View.extend({
     var that = this;
     $('#loading').fadeOut('fast', function() {
       that.$().fadeIn();
+      that.set('isVisible',true);
     });
 
     $('a.new-taxa').hoverTooltip({
@@ -124,6 +125,15 @@ Checklist.KingdomListView = Ember.View.extend({
     $(window)
      .scroll(this.updateFloatingElements)
      .resize(this.onWindowResize);
+  },
+
+  becameVisible: function() {
+    // Ensure centre vertical alignment for appendix icon and countries
+    // list in the taxa list
+    $('.column-container').sameHeight({
+      elements: '.column-area',
+      flexible: false
+    });
   },
 
   onWindowResize: function() {
