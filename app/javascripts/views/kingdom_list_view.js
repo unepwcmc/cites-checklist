@@ -33,7 +33,7 @@ Checklist.KingdomListView = Ember.View.extend({
 
     // Keep the taxonomic view, common name languages, etc. in the URL
     var params = filtersController.toParams();
-    Checklist.get('router').transitionTo('search',{params: $.param(params)});
+    Checklist.get('router').transitionTo('search_without_render', {params: $.param(params)});
   },
 
   currentPage: function() {
