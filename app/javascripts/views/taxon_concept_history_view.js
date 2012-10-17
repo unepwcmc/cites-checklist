@@ -11,8 +11,26 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   leftOffsetInPixels: 50,
   rightOffsetInPixels: 8,
 
+  countryCount: 0,
+  noTimelinesAvailable: false,
+
   didInsertElement: function() {
     var that = this;
+
+    if (this.get('content.timeline_event_count') == 0) {
+      this.$().addClass('no-listing-changes');
+      this.set('noTimelinesAvailable', true);
+    }
+
+    if (this.get('content.timelines').get('length')) {
+      var party_count = 0;
+
+      this.get('content.timelines').mapProperty('parties').forEach(function(item) {
+        party_count += item.length;
+      });
+
+      this.set('countryCount', party_count);
+    }
 
     // Namespace the resize events so that they can be removed when the
     // view is destroyed
@@ -37,25 +55,4 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   expandCountryTimeline: function(event) {
     $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
   },
-
-  countryCount: 0,
-  noTimelinesAvailable: false,
-
-  contentIsLoaded: function() {
-    if (this.get('content.timeline_event_count') == 0) {
-      this.$().addClass('no-listing-changes');
-      this.set('noTimelinesAvailable', true);
-    }
-
-    if (this.get('content.timelines').get('length')) {
-      var that = this,
-          party_count = 0;
-
-      this.get('content.timelines').mapProperty('parties').forEach(function(item) {
-        party_count += item.length;
-      });
-
-      this.set('countryCount', party_count);
-    }
-  }.observes('content.isLoaded')
 });
