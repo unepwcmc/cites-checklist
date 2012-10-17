@@ -120,6 +120,7 @@ Checklist.KingdomListView = Ember.View.extend({
       }
     });
 
+    this.onWindowResize();
     $(window)
      .scroll(this.updateFloatingElements)
      .resize(this.onWindowResize);
@@ -128,6 +129,24 @@ Checklist.KingdomListView = Ember.View.extend({
   onWindowResize: function() {
     $('.floatingHeader').width($('.persist-header').first().width());
     $('.filterFloatingHeader').width($('.filter-control').first().width());
+
+    if ($('.c1').width() <= 650) {
+      $('header .aside').css({
+        position: 'fixed'
+      });
+
+      $('.aside').css({
+        left: '900px'
+      });
+    } else {
+      $('header .aside').css({
+        position: 'relative',
+      });
+
+      $('.aside').css({
+        left: 'auto'
+      });
+    }
   },
   createFloatingElements: function() {
     var clonedHeaderRow;
