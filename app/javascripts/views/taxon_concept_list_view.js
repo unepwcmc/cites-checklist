@@ -138,9 +138,8 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
         });
 
         view._insertElementLater(function() {
-          this.set('isVisible', false);
+          this.set('isVisible', true);
           this.$().prependTo($timeline);
-          this.$().fadeIn();
         });
       }
 
