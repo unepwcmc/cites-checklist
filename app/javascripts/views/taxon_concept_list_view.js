@@ -129,9 +129,6 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       if (!this.get('context.isLoaded')) return;
 
-      this.$().stop().toggleClass('expanded');
-      this.$().find('.slide').stop().slideToggle();
-
       var $timeline = this.$().find('#timeline');
       var that = this;
 
@@ -146,6 +143,11 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
           this.$().fadeIn();
         });
       }
+
+      Ember.run.next(this, function(){
+        this.$().stop().toggleClass('expanded');
+        this.$().find('.slide').stop().slideToggle();
+      });
     }
   })
 });
