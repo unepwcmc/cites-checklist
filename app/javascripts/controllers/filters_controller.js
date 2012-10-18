@@ -16,6 +16,7 @@ Checklist.FiltersController = Ember.Object.extend({
   taxonomicLayout : false,
   levelOfListing : false,
   showSynonyms : true,
+  showAuthor : false,
   showEnglish : true,
   showSpanish : true,
   showFrench : true,
@@ -92,6 +93,7 @@ Checklist.FiltersController = Ember.Object.extend({
       output_layout : (this.get('taxonomicLayout') === true ? 'taxonomic' : 'alphabetical'),
       level_of_listing : this.get('levelOfListing') === true ? 1 : 0,
       show_synonyms : this.get('showSynonyms') === true ? 1 : 0,
+      show_author : this.get('showAuthor') === true ? 1 : 0,
       show_english : this.get('showEnglish') === true ? 1 : 0,
       show_spanish : this.get('showSpanish') === true ? 1 : 0,
       show_french : this.get('showFrench') === true ? 1 : 0,
@@ -129,6 +131,7 @@ Checklist.FiltersController = Ember.Object.extend({
     );
     this.set('taxonomicLayout', params.output_layout == 'taxonomic' ? true : false);
     this.set('showSynonyms', parseInt(params.show_synonyms, 10) == 1 ? true : false);
+    this.set('showAuthor', parseInt(params.show_author, 10) == 1 ? true : false);
     this.set('showEnglish', parseInt(params.show_english, 10) == 1 ? true : false);
     this.set('showSpanish', parseInt(params.show_spanish, 10) == 1 ? true : false);
     this.set('showFrench', parseInt(params.show_french, 10) == 1 ? true : false);

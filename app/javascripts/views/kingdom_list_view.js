@@ -74,8 +74,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      Checklist.get('router').transitionTo('search_without_render', {params: params});
     }
   },
   prevPage: function(){
@@ -89,8 +88,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      var taxonConceptController = router.get('taxonConceptController');
-      taxonConceptController.refresh(filtersController.toParams());
+      Checklist.get('router').transitionTo('search_without_render', {params: params});
     }
   },
 

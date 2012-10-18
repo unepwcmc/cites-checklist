@@ -56,6 +56,16 @@
             <label for="synonyms-checkbox">Show synonyms</label>
           </div>
           <div class="row">
+            {{view Checklist.FilterCheckbox
+              checkedBinding="controllers.filtersController.showAuthor"
+              context="showAuthor"
+              id="author-checkbox"
+              class="styled"
+              controllerBinding="controllers.filtersController"
+            }}
+            <label for="author-checkbox">Show author name</label>
+          </div>
+          <div class="row">
             {{view Checklist.UnfoldHistoryCheckbox
               checkedBinding="view.isChecked"
               id="history-checkbox"
