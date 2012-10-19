@@ -588,6 +588,35 @@ fieldset.saved-search {
   }
 }
 
+.quick-links-holder {
+  margin-top: 25px;
+
+  h3 {
+    margin-bottom: 5px;
+    color: #33536A;
+    text-transform: uppercase;
+  }
+
+  ul {
+    li {
+      font-weight: lighter;
+      margin-bottom: 7px;
+
+      a {
+        border-bottom: 1px dotted #727272;
+        color: #727272;
+        background: url(/images/external-link.png) center right no-repeat;
+        padding-right: 15px;
+
+        &:hover {
+          border-bottom: 1px solid #727272;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
 .custom-holder {
   margin:126px 0 0;
 
