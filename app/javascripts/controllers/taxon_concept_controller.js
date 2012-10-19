@@ -19,7 +19,5 @@ Checklist.TaxonConceptController = Ember.ArrayController.extend({
       Checklist.Index,
       params
     ));
-
-    $('#loading').fadeIn();
   }
 });
