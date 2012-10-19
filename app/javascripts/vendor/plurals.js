@@ -62,9 +62,17 @@
     return n === 0 || n === 1 ? One : Other;
   });
 
+  define([ 'en' ], function(n) {
+    switch ( n ) {
+      case 0: return Zero;
+      case 1: return One;
+      default: return Other;
+    }
+  });
+
   define([
     'af', 'sq', 'eu', 'bem', 'bn', 'brx', 'bg', 'ca', 'chr', 'cgg', 'da', 'dv',
-    'nl', 'en', 'eo', 'et', 'ee', 'fo', 'fi', 'fur', 'gl', 'lg', 'de', 'el',
+    'nl', 'eo', 'et', 'ee', 'fo', 'fi', 'fur', 'gl', 'lg', 'de', 'el',
     'gu', 'ha', 'haw', 'he', 'is', 'it', 'kl', 'kk', 'ku', 'lb', 'ml', 'mr',
     'mas', 'mn', 'nah', 'ne', 'no', 'nb', 'nn', 'nyn', 'or', 'om', 'pap', 'ps',
     'pt', 'pa', 'rm', 'ssy', 'saq', 'xog', 'so', 'es', 'sw', 'sv', 'gsw',

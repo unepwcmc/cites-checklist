@@ -919,9 +919,11 @@ fieldset.saved-search {
       background:#33536a;
 
       span{
-        display:block;
-        padding:0 15px 0 0;
-        background:url(../images/down-arrow.png) no-repeat 100% 50%;
+        span {
+          display:block;
+          padding:0 15px 0 0;
+          background:url(../images/down-arrow.png) no-repeat 100% 50%;
+        }
       }
     }
 

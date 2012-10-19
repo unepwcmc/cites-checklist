@@ -1,18 +1,12 @@
 Checklist.LocationsView = Ember.View.extend({
   templateName: "location_view",
 
-  buttonString: function() {
+  count: function() {
     var regions_count   = this.get('regions').get('length');
     var countries_count = this.get('countries').get('length');
 
-    var locations_count = regions_count + countries_count;
-
-    if (locations_count === 0) {
-      return "All Locations";
-    } else {
-      return locations_count + " location" + (locations_count > 1 ? "s" : "");
-    }
-  }.property("@each")
+    return regions_count + countries_count;
+  }.property('regions','countries').volatile(),
 });
 
 Checklist.SelectedLocationsView = Ember.CollectionView.extend({
@@ -36,8 +30,6 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
 
       var params = filtersController.toParams();
       router.transitionTo('search_without_render', {params: $.param(params)});
-
-      this.get('parentView').get('parentView').set('buttonString', '');
     }
   })
 });
@@ -67,8 +59,6 @@ Checklist.LocationsCollectionView = Ember.CollectionView.extend({
 
       var params = filtersController.toParams();
       router.transitionTo('search_without_render', {params: $.param(params)});
-
-      this.get('parentView').get('parentView').set('buttonString', '');
     },
 
     didInsertElement: function(event) {
