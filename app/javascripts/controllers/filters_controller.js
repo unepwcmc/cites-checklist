@@ -22,6 +22,7 @@ Checklist.FiltersController = Ember.Object.extend({
   showFrench : true,
   scientificName : "",
   geoEntityName : "",
+  locale: Em.I18n.currentLocale,
   autoCompleteCountriesContent : [],
   autoCompleteRegionsContent : [],
   searches : [],
@@ -74,6 +75,15 @@ Checklist.FiltersController = Ember.Object.extend({
     );
     }
   }.observes('appendicesContent.isLoaded','appendicesIds'),
+
+  localeDidChange: function() {
+    var locale = this.get('locale');
+
+    if (Em.I18n.get("locales")[locale]) {
+      Em.I18n.set('currentLocale', locale);
+      CLDR.defaultLanguage = locale;
+    }
+  }.observes('locale'),
 
   resetParams: function() {
     this.set('countries',[]);
@@ -138,5 +148,7 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('scientificName', params.scientific_name || "");
     this.set('page', parseInt(params.page, 10) || 0);
     this.set('perPage', parseInt(params.perPage, 10) || 20);
+
+    this.set('locale', params.locale);
   }
 });
