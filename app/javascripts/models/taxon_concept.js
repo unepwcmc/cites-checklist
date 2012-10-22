@@ -13,6 +13,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   family_name: DS.attr('string'),
   genus_name: DS.attr('string'),
   full_name: DS.attr('string'),
+  author_year: DS.attr('string'),
   cites_accepted: DS.attr('boolean'),
   recently_changed: DS.attr('boolean'),
   english: DS.attr('string', { key: 'english_names_list' }),
