@@ -946,6 +946,8 @@ fieldset.saved-search {
       -moz-border-radius: 15px;
       -webkit-border-radius: 15px;
       background:#33536a;
+      overflow: hidden;
+      white-space: nowrap;
 
       span{
         display:block;
