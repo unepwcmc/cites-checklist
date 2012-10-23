@@ -11,15 +11,15 @@
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 
   {{#if view.countryCount}}
-    <a href="#" {{action "expandCountryTimeline" target="view"}}>
-      {{tt timeline.party countBinding="view.countryCount"}}
+    <a {{action "expandCountryTimeline" target="view"}}>
+      {{tt timeline.party}}
     </a>
 
     <div class="country-timelines">
       {{#each timelines}}
         {{#if hasNestedTimelines}}
           <div class="text-holder">
-            <span>Appendix {{unbound appendix}} per country reservations:</span>
+            <span>Appendix {{unbound appendix}} reservations:</span>
           </div>
           {{#each timelines}}
             {{view Checklist.TimelineView contentBinding="this"}}
