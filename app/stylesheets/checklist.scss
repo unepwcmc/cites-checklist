@@ -411,6 +411,10 @@ fieldset.saved-search {
 .appendix-holder {
   @include vendor-prefix(user-select, none);
 
+  .btn {
+    width: 90px;
+  }
+
   .drop {
     background: #F5F6F7;
     width: 70px;
@@ -437,7 +441,7 @@ fieldset.saved-search {
   }
 
   &:hover .drop {
-    right:-5px;
+    right:-21px;
     left:auto;
   }
 
