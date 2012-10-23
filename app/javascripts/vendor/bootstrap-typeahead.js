@@ -99,6 +99,9 @@
       this.$element
         .val(this.updater(val))
         .change()
+
+      this.$element.parents('form').submit();
+
       return this.hide()
     }
 
@@ -299,9 +302,10 @@
           break
 
         case 9: // tab
+          break;
         case 13: // enter
-          if (!this.shown) return
-          this.select()
+          this.hide();
+          return this.$element.parents('form').submit();
           break
 
         case 27: // escape
@@ -338,15 +342,7 @@
           break
 
         case 38: // up arrow
-          if (e.type != 'keydown') break
-          e.preventDefault()
-          this.prev()
-          break
-
         case 40: // down arrow
-          if (e.type != 'keydown') break
-          e.preventDefault()
-          this.next()
           break
       }
 
