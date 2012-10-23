@@ -1,0 +1,11 @@
+<li>
+  {{unbound doc_type}} [{{unbound format}}] <span style="font-weight:normal">at 20:33 on 6 Jul</span>
+
+  <span style="float: right">
+    {{#if view.isDownloadable}}
+      <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" class="btn red small">Download</a>
+    {{else}}
+      <img src="/images/downloads-spinner.gif" alt="Downloading..." title="Downloading..." />
+    {{/if}}
+  </span>
+</li>

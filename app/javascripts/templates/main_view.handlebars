@@ -11,8 +11,7 @@
 
   <div class="aside">
     {{#each controllers.taxonConceptController.content}}
-      {{view Ember.View
-        templateName="download_view"
+      {{view Checklist.DownloadView
         contentBinding="this"}}
     {{/each}}
     {{view Checklist.SavedSearchView}}

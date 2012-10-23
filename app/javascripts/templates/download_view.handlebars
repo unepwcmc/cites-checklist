@@ -1,9 +1,36 @@
 {{#if total_cnt}}
   <div class="text-frame">
-    <strong class="heading">{{total_cnt}} <span>taxa</span></strong>
+    <strong class="heading">{{commaify total_cnt}} <span>taxa</span></strong>
   </div>
   <div class="btn-holder">
     <a id="download" class="btn red" href="#downloads">Download</a>
-    {{view Checklist.PdfDownloadView}}
+    <div style="display:none">
+      <div id="downloads" class="lightbox downloads">
+        <div class="heading-holder">
+          <strong class="heading">Download {{commaify total_cnt}} Taxa</strong>
+        </div>
+        <div class="text-holder">
+          <h2>Download Full Checklist</h2>
+
+          <a href="#" {{action "download" target="view" on="click"}} id="download" class="btn red"><strong>PDF</strong></a>
+          <a href="#" {{action "downloadIndexCsv" target="view" on="click"}} id="download" class="btn red"><strong>CSV</strong></a>
+          <a href="#" {{action "downloadIndexJson" target="view" on="click"}} id="download" class="btn red"><strong>JSON</strong></a>
+        </div>
+        <div class="text-holder">
+          <h2>Download Checklist History</h2>
+
+          <a href="#" {{action "downloadHistoryPdf" target="view" on="click"}} id="download" class="btn red"><strong>PDF</strong></a>
+          <a href="#" {{action "downloadHistoryCsv" target="view" on="click"}} id="download" class="btn red"><strong>CSV</strong></a>
+          <a href="#" {{action "downloadHistoryJson" target="view" on="click"}} id="download" class="btn red"><strong>JSON</strong></a>
+        </div>
+        <div class="text-holder">
+          <h2>Current Downloads</h2>
+
+          {{collection Checklist.DownloadCollectionView
+            contentBinding="controllers.downloadController.content"}}
+
+        </div>
+      </div>
+    </div>
   </div>
 {{/if}}
