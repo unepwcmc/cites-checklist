@@ -147,33 +147,7 @@
         var params = this.source.params;
         params[params.param_name] = params.value;
 
-        if($.browser.msie && window.XDomainRequest) {
-          // Use Microsoft XDR
-          var xdr = new XDomainRequest();
-          xdr.open("get", url);
-          xdr.onprogress = function(){};
-          xdr.onerror = function(){};
-          xdr.onload = function () {
-            var JSON = $.parseJSON(xdr.responseText);
-            if (JSON === null || typeof (JSON) == 'undefined'){
-              JSON = $.parseJSON(data.firstChild.textContent);
-            }
-
-            that.handleResponse(JSON, that);
-          };
-          xdr.send();
-        } else {
-          $.ajax({
-            type : "GET",
-            url : url,
-            dataType : "json",
-            data : params,
-            success : function(data) {
-              that.handleResponse(data, that);
-            },
-            error : function(xhr, status, error) {}
-          });
-        }
+        $.ajaxCors(url, "GET", params, "json", this, function(data) { this.handleResponse(data, this); });
       } else {
         this.handleResponse(this.source, this);
       }
