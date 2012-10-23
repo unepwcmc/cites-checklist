@@ -105,7 +105,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property(),
     showAuthor: function(){
       return this.get('filtersController').showAuthor &&
-        this.content.get('author_year').length > 0;
+        this.content.get('author_year') !== null && this.content.get('author_year').length > 0;
     }.property(),
     showListing: function(){return this.content.get('rank_name') != 'KINGDOM' &&
       this.content.get('rank_name') != 'PHYLUM' &&
