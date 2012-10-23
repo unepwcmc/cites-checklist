@@ -1,9 +1,11 @@
 {{#if total_cnt}}
-  <div class="text-frame">
-    <strong class="heading">{{commaify total_cnt}} <span>taxa</span></strong>
+  <div class="text-frame download-aside">
+    <span>{{commaify total_cnt}}</span> taxa
+    <h3>Download</h3>
   </div>
   <div class="btn-holder">
-    <a id="download" class="btn red" href="#downloads">Download</a>
+    <a id="download" class="btn red" href="#downloads">Index</a>
+    <a id="download" class="btn red" href="#downloads">History</a>
     <div style="display:none">
       <div id="downloads" class="lightbox downloads">
         <div class="heading-holder">
