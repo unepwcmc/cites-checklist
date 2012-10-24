@@ -47,6 +47,17 @@ minispade.requireAll(/views/);
 minispade.requireAll(/models/);
 minispade.requireAll(/controllers/);
 
+Checklist.download_store = DS.Store.create({
+  revision: 4,
+  adapter: DS.RESTAdapter.create({
+    bulkCommit: false,
+    mappings: {
+      downloads: Checklist.Download
+    },
+    url: "http://sapi.wcmc.cyanoryx.com"
+  })
+});
+
 require('checklist/routers/router');
 
 Checklist.initialize();

@@ -4,26 +4,19 @@
     <h3>Download</h3>
   </div>
   <div class="btn-holder">
-    <a id="download" class="btn red" href="#downloads">Index</a>
-    <a id="download" class="btn red" href="#downloads">History</a>
+    <a id="index-download-btn" class="btn red" href="#index-downloads">Index</a>
+
     <div style="display:none">
-      <div id="downloads" class="lightbox downloads">
+      <div id="index-downloads" class="lightbox downloads">
         <div class="heading-holder">
           <strong class="heading">Download {{commaify total_cnt}} Taxa</strong>
         </div>
         <div class="text-holder">
           <h2>Download Full Checklist</h2>
 
-          <a href="#" {{action "download" target="view" on="click"}} id="download" class="btn red"><strong>PDF</strong></a>
-          <a href="#" {{action "downloadIndexCsv" target="view" on="click"}} id="download" class="btn red"><strong>CSV</strong></a>
-          <a href="#" {{action "downloadIndexJson" target="view" on="click"}} id="download" class="btn red"><strong>JSON</strong></a>
-        </div>
-        <div class="text-holder">
-          <h2>Download Checklist History</h2>
-
-          <a href="#" {{action "downloadHistoryPdf" target="view" on="click"}} id="download" class="btn red"><strong>PDF</strong></a>
-          <a href="#" {{action "downloadHistoryCsv" target="view" on="click"}} id="download" class="btn red"><strong>CSV</strong></a>
-          <a href="#" {{action "downloadHistoryJson" target="view" on="click"}} id="download" class="btn red"><strong>JSON</strong></a>
+          <a href="#" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="index" id="download" class="btn red"><strong>PDF</strong></a>
+          <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="index" id="download" class="btn red"><strong>CSV</strong></a>
+          <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="index" id="download" class="btn red"><strong>JSON</strong></a>
         </div>
         <div class="text-holder">
           <h2>Current Downloads</h2>
@@ -34,5 +27,30 @@
         </div>
       </div>
     </div>
+
+    <a id="history-download-btn" class="btn red" href="#history-downloads">History</a>
+
+    <div style="display:none">
+      <div id="history-downloads" class="lightbox downloads">
+        <div class="heading-holder">
+          <strong class="heading">Download {{commaify total_cnt}} Taxa</strong>
+        </div>
+        <div class="text-holder">
+          <h2>Download Checklist History</h2>
+
+          <a href="#" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="history" id="download" class="btn red"><strong>PDF</strong></a>
+          <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="history" id="download" class="btn red"><strong>CSV</strong></a>
+          <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="history" id="download" class="btn red"><strong>JSON</strong></a>
+        </div>
+        <div class="text-holder">
+          <h2>Current Downloads</h2>
+
+          {{collection Checklist.DownloadCollectionView
+            contentBinding="controllers.downloadController.content"}}
+
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 {{/if}}

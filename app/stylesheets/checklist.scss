@@ -612,11 +612,10 @@ fieldset.saved-search {
   }
 }
 
-#download {
-  &.btn {
-    width: 65px;
-    text-align: center;
-  }
+#index-download-btn,
+#history-download-btn{
+  width: 65px;
+  text-align: center;
 }
 
 .quick-links-holder {

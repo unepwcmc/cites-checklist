@@ -19,13 +19,23 @@ Handlebars.registerHelper("commaify", function(value, options) {
 Checklist.DownloadView = Em.View.extend({
   templateName: 'download_view',
 
-  download: function(doc_type, format) {
+  download: function(event) {
+    var doc_type, format;
+    var $el = $(event.target);
+
+    if ($el.parents('a').length != 0) {
+      $el = $el.parents('a');
+    }
+
+    doc_type = $el.attr('data-doc-type');
+    format   = $el.attr('data-format');
+
     var download = Checklist.download_store.createRecord(
       Checklist.Download,
       {
         id: Checklist.Helpers.generateId(),
-        doc_type: 'index',
-        format: 'pdf'
+        doc_type: doc_type,
+        format: format
       }
     );
 
@@ -35,7 +45,8 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   didInsertElement: function() {
-    $("#download").colorbox(Checklist.Helpers.colorboxSettings);
+    $("#history-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
+    $("#index-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
 
     var pdf_cf = new CustomFormElements({
       cssClass: 'styled'
