@@ -166,7 +166,7 @@ Checklist.CountryListingView = Ember.View.extend({
     var visible_countries = [];
 
     countries.forEach(function(item, index, enumerable) {
-      if (index >= 3) return;
+      if (index >= 6) return;
 
       visible_countries.push(item.get('name'));
     });
@@ -179,9 +179,9 @@ Checklist.CountryListingView = Ember.View.extend({
   }.property(),
 
   showMore: function() {
-    return this.get('count') > 3;
+    return this.get('count') > 6;
   }.property(),
   count: function() {
-    return this.content.get('length');
+    return this.content.get('length')-6;
   }.property()
 });
