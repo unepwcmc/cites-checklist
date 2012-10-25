@@ -4067,11 +4067,7 @@ DS.RESTAdapter = DS.Adapter.extend({
     hash.contentType = 'application/json; charset=utf-8';
     hash.context = this;
 
-    if (hash.data && type !== 'GET') {
-      hash.data = JSON.stringify(hash.data);
-    }
-
-    jQuery.ajax(hash);
+    $.ajaxCors(hash.url, type, hash.data, hash.dataType, this, hash.success);
   },
 
   sideload: function(store, type, json, root) {
@@ -4126,8 +4122,10 @@ DS.RESTAdapter = DS.Adapter.extend({
     }
   },
 
+  url: "",
+
   buildURL: function(record, suffix) {
-    var url = [""];
+    var url = [this.url];
 
     Ember.assert("Namespace URL (" + this.namespace + ") must not start with slash", !this.namespace || this.namespace.toString().charAt(0) !== "/");
     Ember.assert("Record URL (" + record + ") must not start with slash", !record || record.toString().charAt(0) !== "/");
