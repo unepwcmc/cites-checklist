@@ -877,7 +877,9 @@ fieldset.saved-search {
 
 * +html .aside .btn{display:inline;}
 
-.downloads {
+.downloads,
+.lightbox.current-listing,
+.lightbox.event {
   text-align: center;
 
   .heading-holder {
@@ -951,6 +953,15 @@ fieldset.saved-search {
       padding: 5px 10px;
       font-size: 11px;
     }
+  }
+}
+
+.current-listing,
+.lightbox.event {
+  text-align: left;
+
+  .heading-holder {
+    text-align: center;
   }
 }
 
