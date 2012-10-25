@@ -740,9 +740,9 @@ fieldset.saved-search {
     color:#373f4c;
     font:bold italic 1.461em/1.157em Helvetica, Arial, sans-serif;
 
-    span {
+    span.author_year {
       color: #B6B6B6;
-      font-size: 0.6em;
+      font-size: 0.7em;
       font-weight: lighter;
       font-style: normal;
       margin-left: 5px;
@@ -879,14 +879,6 @@ fieldset.saved-search {
 
 .downloads {
   text-align: center;
-
-  .heading-holder {
-    background: #E3E4E6;
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-topright: 6px;
-  }
 
   .text-holder {
     padding: 28px 29px 24px !important;
