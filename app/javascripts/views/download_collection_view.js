@@ -11,7 +11,7 @@ Checklist.DownloadCollectionView = Ember.CollectionView.extend({
 
     download: function(event) {
       var id = $(event.target).attr('data-download-id');
-      window.location = Checklist.store.adapter.url + Checklist.Download.downloadUrl(id);
+      window.location = Checklist.Download.downloadUrl(id);
     },
 
     isDownloadable: function() {

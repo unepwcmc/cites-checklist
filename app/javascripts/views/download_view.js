@@ -30,15 +30,17 @@ Checklist.DownloadView = Em.View.extend({
     doc_type = $el.attr('data-doc-type');
     format   = $el.attr('data-format');
 
-    var params = Checklist.get('router').get('filtersController').toParams();
-
-    window.location = Checklist.store.adapter.url +
-    Checklist[doc_type].urlFromParams(
-      $.extend(
-        params,
-        {'format' : format}
-      )
+    var download = Checklist.download_store.createRecord(
+      Checklist.Download,
+      {
+        doc_type: doc_type,
+        format: format
+      }
     );
+
+    Checklist.download_store.commit();
+
+    Checklist.get('router').get('downloadController').refresh();
   },
 
   didInsertElement: function() {
