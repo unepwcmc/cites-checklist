@@ -11,19 +11,17 @@
         <strong class="heading">Download {{commaify this}} Taxa</strong>
       </div>
       <div class="text-holder">
-        <h2>Download Full Checklist</h2>
-
         <a href="#" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="Index" id="download" class="btn red"><strong>PDF</strong></a>
         <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="Index" id="download" class="btn red"><strong>CSV</strong></a>
         <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="Index" id="download" class="btn red"><strong>JSON</strong></a>
       </div>
-      <div class="text-holder">
-        <h2>Current Downloads</h2>
+    </div>
+    <div class="text-holder">
+      <h2>Current Downloads</h2>
 
-        {{collection Checklist.DownloadCollectionView
-        contentBinding="view.controllers.downloadController.content"}}
+      {{collection Checklist.DownloadCollectionView
+      contentBinding="controllers.downloadController.content"}}
 
-      </div>
     </div>
   </div>
 
@@ -32,23 +30,20 @@
   <div style="display:none">
     <div id="history-downloads" class="lightbox downloads">
       <div class="heading-holder">
-        <strong class="heading">Download {{commaify this}} Taxa</strong>
+        <strong class="heading">Download {{commaify this}} Taxa's History</strong>
       </div>
       <div class="text-holder">
-        <h2>Download Checklist History</h2>
-
         <a href="#" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="History" id="download" class="btn red"><strong>PDF</strong></a>
         <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="History" id="download" class="btn red"><strong>CSV</strong></a>
         <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="History" id="download" class="btn red"><strong>JSON</strong></a>
       </div>
-      <div class="text-holder">
-        <h2>Current Downloads</h2>
+    </div>
+    <div class="text-holder">
+      <h2>Current Downloads</h2>
 
-        {{collection Checklist.DownloadCollectionView
-        contentBinding="controllers.downloadController.content"}}
+      {{collection Checklist.DownloadCollectionView
+      contentBinding="controllers.downloadController.content"}}
 
-      </div>
     </div>
   </div>
-
 </div>
