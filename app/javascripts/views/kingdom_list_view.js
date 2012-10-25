@@ -99,6 +99,8 @@ Checklist.KingdomListView = Ember.View.extend({
       that.set('isVisible',true);
     });
 
+    $('#content-aside').show();
+
     $('a.new-taxa').hoverTooltip({
       positionTypeX: 'left',
       positionTypeY: 'top',

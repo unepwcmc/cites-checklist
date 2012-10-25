@@ -33,7 +33,6 @@ Checklist.DownloadView = Em.View.extend({
     var download = Checklist.download_store.createRecord(
       Checklist.Download,
       {
-        id: Checklist.Helpers.generateId(),
         doc_type: doc_type,
         format: format
       }
@@ -47,9 +46,5 @@ Checklist.DownloadView = Em.View.extend({
   didInsertElement: function() {
     $("#history-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
     $("#index-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
-
-    var pdf_cf = new CustomFormElements({
-      cssClass: 'styled'
-    });
   }
 });

@@ -9,11 +9,8 @@
     {{/each}}
   </div>
 
-  <div class="aside">
-    {{#each controllers.taxonConceptController.content}}
-      {{view Checklist.DownloadView
-        contentBinding="this"}}
-    {{/each}}
+  <div class="aside" id="content-aside" style="display:none">
+    {{view Checklist.DownloadView}}
     {{view Checklist.SavedSearchView}}
 
     <div class="quick-links-holder">

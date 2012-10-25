@@ -1,6 +1,7 @@
-//TODO change this to extend ObjectController
 Checklist.TaxonConceptController = Ember.ArrayController.extend({
   content: Checklist.store.find(Checklist.Index, {}),
+
+  taxaCount: 0,
 
   contentIds: function(){
     return this.get('content').objectAt(0).get('contentIds');
@@ -8,6 +9,7 @@ Checklist.TaxonConceptController = Ember.ArrayController.extend({
   contentHistory: null,
   contentDidChange: function(){
     if (this.get('content.isLoaded')){
+      this.set('taxaCount', this.get('content').objectAt(0).get('total_cnt'));
       this.set('contentHistory',
         Checklist.store.findMany(Checklist.TimelinesForTaxonConcept, this.get('contentIds'))
       );
