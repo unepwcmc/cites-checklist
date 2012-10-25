@@ -4,6 +4,8 @@ Handlebars.registerHelper("commaify", function(value, options) {
   value = Ember.Handlebars.getPath(context, value, options);
   value = new String(value);
 
+  if (!/^[0-9]+$/.test(value)) { return new Handlebars.SafeString(value); }
+
   value = value.split("").reverse();
 
   // http://stackoverflow.com/a/7125034
