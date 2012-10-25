@@ -13,6 +13,7 @@ Checklist.TaxonConceptCommonNameView = Ember.CollectionView.extend({
 Checklist.TaxonConceptListView = Ember.CollectionView.extend({
   content: null,
   filtersController: null,
+
   itemViewClass: Ember.View.extend({
     tagName: 'div',
     contextBinding: 'content',
