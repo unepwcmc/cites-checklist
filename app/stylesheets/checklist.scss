@@ -877,18 +877,8 @@ fieldset.saved-search {
 
 * +html .aside .btn{display:inline;}
 
-.downloads,
-.lightbox.current-listing,
-.lightbox.event {
+.downloads {
   text-align: center;
-
-  .heading-holder {
-    background: #E3E4E6;
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-topright: 6px;
-  }
 
   .text-holder {
     padding: 28px 29px 24px !important;
@@ -953,15 +943,6 @@ fieldset.saved-search {
       padding: 5px 10px;
       font-size: 11px;
     }
-  }
-}
-
-.current-listing,
-.lightbox.event {
-  text-align: left;
-
-  .heading-holder {
-    text-align: center;
   }
 }
 
