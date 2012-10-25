@@ -25,7 +25,7 @@ Checklist.TaxonConceptCurrentListingView = Ember.View.extend({
     return '#current-listing-popup' + this.get('content.id');
   }.property(),
   didInsertElement: function(){
-    this.$().colorbox(Checklist.Helpers.colorboxSettings);
+    this.$().colorbox(Checklist.CONFIG.colorbox);
   }
 });
 

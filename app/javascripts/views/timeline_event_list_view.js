@@ -93,7 +93,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         '<div class="tooltip-decor"></div></div>'
       });
 
-      this.$().colorbox(Checklist.Helpers.colorboxSettings);
+      this.$().colorbox(Checklist.CONFIG.colorbox);
     }
   })
 });

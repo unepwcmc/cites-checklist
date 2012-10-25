@@ -46,7 +46,7 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   didInsertElement: function() {
-    $("#history-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
-    $("#index-download-btn").colorbox(Checklist.Helpers.colorboxSettings);
+    $("#history-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#index-download-btn").colorbox(Checklist.CONFIG.colorbox);
   }
 });
