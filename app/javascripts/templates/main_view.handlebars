@@ -10,7 +10,9 @@
   </div>
 
   <div class="aside" id="content-aside" style="display:none">
-    {{view Checklist.DownloadView}}
+    {{#with controllers.taxonConceptController.taxaCount}}
+      {{view Checklist.DownloadView}}
+    {{/with}}
     {{view Checklist.SavedSearchView}}
 
     <div class="quick-links-holder">
