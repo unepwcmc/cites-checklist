@@ -1,8 +1,8 @@
-{{unbound doc_type}} [{{unbound format}}] <span style="font-weight:normal">at 20:33 on 6 Jul</span>
-
-<span style="float: right">
+<h4>{{unbound doc_type}}</h4>
+<span class="info">{{unbound updated_at}}</span>
+<span class="button">
   {{#if view.isDownloadable}}
-    <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" class="btn red small">Download</a>
+    <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" href="#" class="btn red small">Download</a>
   {{else}}
     <img src="/images/downloads-spinner.gif" alt="Downloading..." title="Downloading..." />
   {{/if}}

@@ -1,38 +1,52 @@
-<ul>
-  <li>
-    <a id="history-download-btn" href="#history-downloads">Generating 3 reports</a>
-  </li>
-</ul>
+{{#if controllers.downloadController.content.length}}
+  <ul>
+    {{#if controllers.downloadController.generating.length}}
+      <li>
+        <a {{action "generatingClick" target="view" on="click"}} id="generating-download-btn" href="#generating-downloads">
+          reports
+        </a>
+      </li>
+    {{/if}}
+    {{#if controllers.downloadController.complete.length}}
+      <li>
+        <a class="red" id="complete-download-btn" href="#complete-downloads">
+          ready
+        </a>
+      </li>
+    {{/if}}
+  </ul>
 
-<div style="display:none">
-  <div id="history-downloads" class="lightbox downloads">
-    <div class="heading-holder">
-      <strong class="heading">Your Reports</strong>
-    </div>
-    <div class="text-holder">
-      <h3>Your report is being generated.</h3>
+  <div style="display:none">
+    <div id="generating-downloads" class="lightbox downloads">
+      <div class="heading-holder">
+        <strong class="heading">Your Reports</strong>
+      </div>
+      <div class="text-holder">
+        <h3>Your report is being generated.</h3>
 
-      It can take some time, but you can close this window and
-      continue working in other CITES Checklist reports.
-    </div>
-    <div class="list-holder">
-      <div class="scroll-area">
-        <ul>
-          <li>
-            <h4>Report 1</h4>
-            <span class="info">Finished 2 min ago</span>
-            <span class="button"><a href="#" class="btn red small">Download</a></span>
-          </li>
-          <li>
-            <h4>Report 2</h4>
-            <span class="info">Finished 2 min ago</span>
-          </li>
-          <li>
-            <h4>Report 3</h4>
-            <span class="info">Finished 2 min ago</span>
-          </li>
-        </ul>
+        It can take some time, but you can close this window and
+        continue working in other CITES Checklist reports.
+      </div>
+      <div class="list-holder">
+        <div class="scroll-area">
+          {{collection Checklist.DownloadCollectionView
+            contentBinding="controllers.downloadController.content"}}
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div style="display:none">
+    <div id="complete-downloads" class="lightbox downloads">
+      <div class="heading-holder">
+        <strong class="heading">Your Reports</strong>
+      </div>
+      <div class="list-holder">
+        <div class="scroll-area">
+          {{collection Checklist.DownloadCollectionView
+            contentBinding="controllers.downloadController.complete"}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

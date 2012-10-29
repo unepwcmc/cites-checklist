@@ -1,10 +1,6 @@
 Checklist.DownloadCollectionView = Ember.CollectionView.extend({
   tagName: 'ul',
 
-  emptyView: Ember.View.extend({
-    template: Ember.Handlebars.compile("No downloads")
-  }),
-
   itemViewClass: Ember.View.extend({
     contextBinding: 'content',
     templateName: 'download_collection',

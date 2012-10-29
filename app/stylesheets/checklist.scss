@@ -832,6 +832,17 @@ fieldset.saved-search {
         border-bottom: 1px dotted #727272;
         color: #727272;
 
+        &.red {
+          background: none;
+          color: #f66;
+          border-bottom: 1px dotted #f66;
+
+          &:hover {
+            border-bottom: 1px solid #f66;
+            text-decoration: none;
+          }
+        }
+
         &:hover {
           border-bottom: 1px solid #727272;
           text-decoration: none;

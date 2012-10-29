@@ -35,8 +35,8 @@ Checklist.DownloadView = Em.View.extend({
     var download = Checklist.download_store.createRecord(
       Checklist.Download,
       {
-        doc_type: doc_type,
-        format: format
+        doc_type: doc_type.toLowerCase(),
+        format: format.toLowerCase()
       }
     );
 
@@ -46,7 +46,9 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   didInsertElement: function() {
-    $("#history-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#generating-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
+
     $("#download-btn").colorbox(Checklist.CONFIG.colorbox);
   }
 });

@@ -83,7 +83,7 @@
   .list-holder {
     .scroll-area {
       overflow: hidden;
-      height: 156px;
+      max-height: 156px;
       border-bottom: 1px solid #ECECEC;
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
