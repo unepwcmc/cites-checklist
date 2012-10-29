@@ -13,8 +13,9 @@ Checklist.CONFIG = {
     inline: true,
     transition: 'none',
     close: 'x',
-    maxWidth: 520,
-    innerWidth: 520,
+    maxWidth: 470,
+    innerWidth: 470,
+    opacity: 0.8,
     fixed: true
   }
 }

@@ -1,6 +1,8 @@
 Checklist.SavedSearchView = Em.View.extend({
   templateName: "saved_search",
 
+  classNames: ['saved-search-btn-holder'],
+
   save: function(view) {
     // Ember's inheritance isn't ideal for this situation, so
     // unfortunately we don't get to use the fancy isInvisible and

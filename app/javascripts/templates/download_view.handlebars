@@ -1,12 +1,11 @@
-<div class="text-frame download-aside">
-  <span>{{commaify this}}</span> taxa
-  <h3>Download</h3>
+<div class="text-frame">
+  <strong>{{commaify this}}</strong> taxa
 </div>
 <div class="btn-holder">
-  <a id="index-download-btn" class="btn red" href="#index-downloads">Index</a>
+  <a id="download-btn" class="btn red" href="#downloads">Download</a>
 
   <div style="display:none">
-    <div id="index-downloads" class="lightbox downloads">
+    <div id="downloads" class="lightbox downloads">
       <div class="heading-holder">
         <strong class="heading">Download {{commaify this}} Taxa</strong>
       </div>
@@ -15,35 +14,6 @@
         <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="Index" id="download" class="btn red"><strong>CSV</strong></a>
         <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="Index" id="download" class="btn red"><strong>JSON</strong></a>
       </div>
-    </div>
-    <div class="text-holder">
-      <h2>Current Downloads</h2>
-
-      {{collection Checklist.DownloadCollectionView
-      contentBinding="controllers.downloadController.content"}}
-
-    </div>
-  </div>
-
-  <a id="history-download-btn" class="btn red" href="#history-downloads">History</a>
-
-  <div style="display:none">
-    <div id="history-downloads" class="lightbox downloads">
-      <div class="heading-holder">
-        <strong class="heading">Download {{commaify this}} Taxa's History</strong>
-      </div>
-      <div class="text-holder">
-        <a href="#" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="History" id="download" class="btn red"><strong>PDF</strong></a>
-        <a href="#" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="History" id="download" class="btn red"><strong>CSV</strong></a>
-        <a href="#" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="History" id="download" class="btn red"><strong>JSON</strong></a>
-      </div>
-    </div>
-    <div class="text-holder">
-      <h2>Current Downloads</h2>
-
-      {{collection Checklist.DownloadCollectionView
-      contentBinding="controllers.downloadController.content"}}
-
     </div>
   </div>
 </div>
