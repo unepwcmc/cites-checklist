@@ -90,23 +90,28 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
     showEnglish: function(){
       return this.get('filtersController').showEnglish &&
+        this.content.get('english') !== null &&
         this.content.get('english').length > 0;
     }.property(),
     showSpanish: function(){
       return this.get('filtersController').showSpanish &&
+        this.content.get('spanish') !== null &&
         this.content.get('spanish').length > 0;
     }.property(),
     showFrench: function(){
       return this.get('filtersController').showFrench &&
+        this.content.get('french') !== null &&
         this.content.get('french').length > 0;
     }.property(),
     showSynonyms: function(){
       return this.get('filtersController').showSynonyms &&
+        this.content.get('synonyms') !== null &&
         this.content.get('synonyms').length > 0;
     }.property(),
     showAuthor: function(){
       return this.get('filtersController').showAuthor &&
-        this.content.get('author_year') !== null && this.content.get('author_year').length > 0;
+        this.content.get('author_year') !== null &&
+        this.content.get('author_year').length > 0;
     }.property(),
     showListing: function(){return this.content.get('rank_name') != 'KINGDOM' &&
       this.content.get('rank_name') != 'PHYLUM' &&
