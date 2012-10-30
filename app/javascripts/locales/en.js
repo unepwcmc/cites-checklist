@@ -9,5 +9,9 @@ Em.I18n.locales.en = {
 
   'locations.count.zero': 'All Locations',
   'locations.count.one': '1 Location',
-  'locations.count.other': '{{count}} Locations'
+  'locations.count.other': '{{count}} Locations',
+
+  'results.count.zero': 'taxa',
+  'results.count.one': 'taxon',
+  'results.count.other': 'taxa'
 };
