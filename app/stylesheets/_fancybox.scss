@@ -3,7 +3,7 @@
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
-  width: 450px !important;
+  width: 450px;
   background:#f5f6f7;
 
   .heading-holder{
@@ -162,6 +162,95 @@
       width: inherit;
       padding: 5px 10px;
       font-size: 11px;
+    }
+  }
+}
+
+.landing {
+  position: relative;
+  width: 633px;
+
+  h1 {
+    margin:0;
+    height:57px;
+    overflow:hidden;
+    background:url(../images/cites-logo.png) no-repeat;
+    padding-left: 115px;
+    line-height: 60px;
+    font-weight: lighter;
+    font-size: 1.2em;
+  }
+
+  .text-holder {
+    background: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 40px 0 20px 40px;
+    color: #33526a;
+    font-size: 1.7em;
+    font-weight: lighter;
+    line-height: 1.3em;
+
+    .image {
+      float: right;
+      width: 180px;
+      background-image: url(/images/landing-screenshot.png);
+      height: 256px;
+      position: absolute;
+      top: 40px;
+      right: 25px;
+      box-shadow: 0px 2px 5px 0px #999;
+    }
+
+    .appendix-ind-1 {
+      width: 65px;
+      height: 65px;
+      background-image: url(/images/landing-app1.png);
+      position: absolute;
+      top: 40px;
+      right: 145px;
+    }
+
+    .appendix-ind-2 {
+      width: 85px;
+      height: 85px;
+      background-image: url(/images/landing-app2.png);
+      position: absolute;
+      top: 20px;
+      right: -40px;
+    }
+
+    .appendix-ind-3 {
+      width: 105px;
+      height: 105px;
+      background-image: url(/images/landing-app3.png);
+      position: absolute;
+      top: 175px;
+      right: -50px;
+    }
+
+    .left-column {
+      float: left;
+      width: 350px;
+
+      .btn {
+        display: inline-block;
+        color: white;
+        margin: 20px 0 4px;
+        line-height: 24px;
+        font-size: 13px;
+        vertical-align: middle;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px 15px;
+        border-radius: 15px;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        background: #33536A;
+        overflow: hidden;
+        white-space: nowrap;
+        text-transform: uppercase;
+      }
     }
   }
 }

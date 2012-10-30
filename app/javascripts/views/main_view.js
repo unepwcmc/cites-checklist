@@ -24,5 +24,23 @@ Checklist.MainView = Ember.View.extend({
     };
     var target = document.getElementById('loading');
     var spinner = new Spinner(opts).spin(target);
+
+    if (!$.cookie("Checklist.CONFIG.visited")) {
+      var landing_colorbox_config = {
+        inline: true,
+        transition: 'none',
+        close: 'x',
+        maxWidth: 675,
+        innerWidth: 675,
+        opacity: 0.8,
+        fixed: true,
+        open: true,
+        onClosed: function(event) {
+          $.cookie("Checklist.CONFIG.visited", true);
+        }
+      };
+
+      $('#landing-btn').colorbox(landing_colorbox_config);
+    }
   }
 });
