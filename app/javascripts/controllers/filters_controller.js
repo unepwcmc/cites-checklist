@@ -79,8 +79,8 @@ Checklist.FiltersController = Ember.Object.extend({
   localeDidChange: function() {
     var locale = this.get('locale');
 
-    if (Em.I18n.get("locales")[locale]) {
-      Em.I18n.set('currentLocale', locale);
+    if (Em.I18n.locales[locale]) {
+      Em.I18n.currentLocale = locale;
       CLDR.defaultLanguage = locale;
     }
   }.observes('locale'),

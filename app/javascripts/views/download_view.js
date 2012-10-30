@@ -1,7 +1,7 @@
 Handlebars.registerHelper("commaify", function(value, options) {
   var context = (options.contexts && options.contexts[0]) || this;
 
-  value = Ember.Handlebars.getPath(context, value, options);
+  value = Ember.Handlebars.get(context, value, options);
   value = new String(value);
 
   if (!/^[0-9]+$/.test(value)) { return new Handlebars.SafeString(value); }
