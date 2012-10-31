@@ -299,15 +299,10 @@
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
-          break
-
         case 9: // tab
-          break;
-        case 13: // enter
-          this.hide();
-          return this.$element.parents('form').submit();
           break
 
+        case 13: // enter
         case 27: // escape
           if (!this.shown) return
           this.hide()
@@ -326,9 +321,6 @@
 
           this.lookup();
       }
-
-      e.stopPropagation()
-      e.preventDefault()
   }
 
   , keypress: function (e) {
@@ -338,15 +330,10 @@
         case 9: // tab
         case 13: // enter
         case 27: // escape
-          e.preventDefault()
-          break
-
         case 38: // up arrow
         case 40: // down arrow
           break
       }
-
-      e.stopPropagation()
     }
 
   , blur: function (e) {
