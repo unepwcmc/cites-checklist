@@ -17,5 +17,9 @@ Em.I18n.locales.en = {
   'reports.count.other': 'Generating {{count}} reports',
 
   'reports.ready.count.one': '1 report ready',
-  'reports.ready.count.other': '{{count}} reports ready'
+  'reports.ready.count.other': '{{count}} reports ready',
+
+  'results.count.zero': 'taxa',
+  'results.count.one': 'taxon',
+  'results.count.other': 'taxa'
 };

@@ -44,7 +44,7 @@
         </div>
 
         <div class="row-holder style01">
-          <strong class="heading">DISPLAY OPTIONS</strong>
+          <strong class="heading">DISPLAY</strong>
           <div class="row">
             {{view Checklist.FilterCheckbox
               checkedBinding="controllers.filtersController.showSynonyms"
@@ -53,7 +53,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="synonyms-checkbox">Show synonyms</label>
+            <label for="synonyms-checkbox">Synonyms</label>
           </div>
           <div class="row">
             {{view Checklist.FilterCheckbox
@@ -63,7 +63,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="author-checkbox">Show author name</label>
+            <label for="author-checkbox">Author name</label>
           </div>
           <div class="row">
             {{view Checklist.UnfoldHistoryCheckbox
@@ -71,7 +71,7 @@
               id="history-checkbox"
               class="styled"
             }}
-            <label for="history-checkbox">Show history of listing</label>
+            <label for="history-checkbox">History of listing</label>
           </div>
           <div class="row">
             {{view Checklist.FilterCheckbox
@@ -81,7 +81,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="level-of-listing-checkbox">Show taxa at level of listing</label>
+            <label for="level-of-listing-checkbox">Taxa at level of listing</label>
           </div>
         </div>
       </fieldset>
