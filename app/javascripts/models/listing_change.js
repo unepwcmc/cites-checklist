@@ -3,7 +3,7 @@ Checklist.ListingChange = DS.Model.extend({
   party: DS.belongsTo('Checklist.Country', { key: 'party_id' }),
   species_listing_name: DS.attr('string'),
   change_type_name: DS.attr('string'),
-  effective_at: DS.attr('string'),
+  effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
   generic_note: DS.attr('string'),
   specific_note: DS.attr('string'),
   symbol:DS.attr('string'),
