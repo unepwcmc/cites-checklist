@@ -214,15 +214,26 @@ a.icons-link {
   .closer {
     display:block;
     vertical-align:top;
-    width:24px;
+    width:115px;
     height:24px;
     margin:0 auto;
     overflow:hidden;
     background: #33536A;
-    border-radius: 50%;
+    border-radius: 12px;
     color: #fff;
     line-height: 25px;
     font-size:  10px;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    span {
+      font-size: 0.7em;
+      display: inline;
+      height: 100%;
+      top: -1px;
+      position: relative;
+      left: 2px;
+    }
 
     &:hover {
       cursor: pointer;

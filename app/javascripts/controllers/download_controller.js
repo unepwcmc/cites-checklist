@@ -1,18 +1,38 @@
 Checklist.DownloadController = Ember.ArrayController.extend({
-  //content: Checklist.store.findQuery(Checklist.Download, {ids: function() {
-    //var store = Checklist.LocalStorageAdapter;
-    //return store.getAll(Checklist.Download);
-  //}}),
+  generating: function() {
+    console.log('gen');
+    console.log(this.get('content.length'));
+    return this.get('content').filter(
+      function(item, index, enumerable) {
+        return item.get('status') === "working";
+      }
+    );
+  }.property('content.length'),
 
-  //refresh: function() {
-    //this.set('content', this.contentFromIds());
-  //},
+  complete: function() {
+    console.log('com');
+    console.log(this.get('content.length'));
+    return this.get('content').filter(
+      function(item, index, enumerable) {
+        return item.get('status') === "completed";
+      }
+    );
+  }.property('content.length'),
 
-  //contentFromIds: function() {
-    //Checklist.store.findQuery(Checklist.Download, {ids: function() {
-      //var store = Checklist.LocalStorageAdapter;
+  content: Checklist.store.findQuery(Checklist.Download, {ids: function() {
+    var store = Checklist.LocalStorageAdapter;
+    return store.getAll(Checklist.Download);
+  }()}),
 
-      //return store.getAll(Checklist.Download);
-    //}});
-  //}
+  refresh: function() {
+    this.set('content', this.contentFromIds());
+  },
+
+  contentFromIds: function() {
+    return Checklist.store.findQuery(Checklist.Download, {ids: function() {
+      var store = Checklist.LocalStorageAdapter;
+
+      return store.getAll(Checklist.Download);
+    }()});
+  }
 });

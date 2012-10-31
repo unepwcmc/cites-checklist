@@ -26,6 +26,11 @@ Checklist.SearchTextField = Em.TextField.extend({
 
   attributeBindings: ['autocomplete'],
 
+  keyUp: function(event) {
+    var filtersController = Checklist.get('router').get('filtersController');
+    filtersController.set('scientific_name', $(event.target).val());
+  },
+
   click: function(event) {
     var params = {
       param_name: 'scientific_name',

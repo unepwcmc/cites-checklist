@@ -13,14 +13,41 @@
     {{#with controllers.taxonConceptController.taxaCount}}
       {{view Checklist.DownloadView}}
     {{/with}}
+
+    {{view Checklist.ReportView}}
+
     {{view Checklist.SavedSearchView}}
 
-    <div class="quick-links-holder">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#">Species index</a></li>
-        <li><a href="#">History of listings</a></li>
-      </ul>
+    {{view Checklist.QuickLinksView}}
+  </div>
+</div>
+
+<a href="#landing" id="landing-btn" style="display:none;">You can't see me</a>
+<div style="display:none">
+  <div id="landing" class="lightbox landing">
+    <div class="heading-holder">
+      <h1 class="logo">{{t title}}</h1>
+    </div>
+    <div class="text-holder">
+      <div class="left-column">
+        <p>
+          CITES is a multilateral treaty to ensure that international
+          trade does not threaten the survival of the species in the wild.
+        </p>
+        <p>
+          The current checklist allows the exploration of more than
+          33,000 species of animals and plants and their degree of
+          protection.
+        </p>
+        <p>
+          <a href="#" {{action "closeLandingBox" target="view" on="click"}} class="btn">Start Exploring</a>
+        </p>
+      </div>
+      <div class="image">
+        <div class="appendix-ind-1"></div>
+        <div class="appendix-ind-2"></div>
+        <div class="appendix-ind-3"></div>
+      </div>
     </div>
   </div>
 </div>

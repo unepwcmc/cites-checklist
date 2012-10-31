@@ -143,6 +143,10 @@ body {
       }
     }
   }
+  span.beta{
+    font-size: 13px;
+    color: #f66;
+  }
 }
 
 .search{
@@ -595,56 +599,6 @@ fieldset.saved-search {
   }
 }
 
-.download-aside {
-  font-size: 15px;
-  font-weight: normal;
-
-  h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: bold;
-  }
-
-  span.count {
-    font-weight: bold;
-  }
-}
-
-#index-download-btn,
-#history-download-btn{
-  width: 65px;
-  text-align: center;
-}
-
-.quick-links-holder {
-  margin-top: 25px;
-
-  h3 {
-    margin-bottom: 5px;
-    color: #33536A;
-    text-transform: uppercase;
-  }
-
-  ul {
-    li {
-      font-weight: lighter;
-      margin-bottom: 7px;
-
-      a {
-        border-bottom: 1px dotted #727272;
-        color: #727272;
-
-        &:hover {
-          border-bottom: 1px solid #727272;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-}
-
 .custom-holder {
   margin:126px 0 0;
 
@@ -824,26 +778,24 @@ fieldset.saved-search {
   }
 
   .text-frame {
-    padding:0 3px;
+    padding:0 3px 8px;
     font-size:1.307em;
     color:#f66;
+    font-weight: normal;
 
-    .heading{
-      display:block;
-      padding:0 0 7px;
-      color:#f66;
-      font-weight:bold;
-      line-height:18px;
+    strong {
+      font-weight: bold;
     }
+  }
 
-    p {
-      margin:0 0 5px;
-    }
+  h3 {
+    margin-bottom: 5px;
+    color: #33536A;
+    text-transform: uppercase;
   }
 
   .btn-holder{
     overflow:hidden;
-    padding:0 0 23px;
   }
 
   .btn {
@@ -873,78 +825,46 @@ fieldset.saved-search {
   .red {
     background:#f66;
   }
-}
 
-* +html .aside .btn{display:inline;}
+  ul {
+    li {
+      font-weight: lighter;
+      margin-bottom: 7px;
+      margin-top: 3px;
 
-.downloads {
-  text-align: center;
+      a {
+        border-bottom: 1px dotted #727272;
+        color: #727272;
 
-  .text-holder {
-    padding: 28px 29px 24px !important;
-    border-bottom: 1px solid #CCC;
+        &.red {
+          background: none;
+          color: #f66;
+          border-bottom: 1px dotted #f66;
 
-    h2 {
-      color: #33526A;
-      margin-bottom: 20px;
-      font-size: 1.2em;
-      font-weight: normal;
-    }
-  }
-
-  .text-holder:last-child {
-    border-bottom: none;
-
-    ul {
-      text-align: left;
-
-      li {
-        padding: 5px;
-        background-color: #E3E4E6;
-        border-top: 1px solid #F5F6F7;
-        border-bottom: 1px solid #F5F6F7;
-        color: #33536A;
-        line-height: 35px;
-
-        &:first-child {
-          border-top: none;
-          border-top-left-radius: 6px;
-          border-top-right-radius: 6px;
+          &:hover {
+            border-bottom: 1px solid #f66;
+            text-decoration: none;
+          }
         }
 
-        &:last-child {
-          border-bottom: none;
-          border-bottom-left-radius: 6px;
-          border-bottom-right-radius: 6px;
+        &:hover {
+          border-bottom: 1px solid #727272;
+          text-decoration: none;
         }
       }
     }
   }
 
-  .btn {
-    margin:0 0 3px;
-    display:inline-block;
-    padding:10px 20px;
-    overflow:hidden;
-    text-transform:uppercase;
-    font-size:13px;
-    line-height:13px;
-    color:#fff;
-    border-radius: 20px; -moz-border-radius: 20px;  -webkit-border-radius: 20px;
-    background:#33536a;
-    width: 50px;
-  }
-
-  .red {
-    background:#f66;
-
-    &.small {
-      width: inherit;
-      padding: 5px 10px;
-      font-size: 11px;
-    }
+  .saved-search-btn-holder {
+    margin: 25px 0 25px;
   }
 }
+
+#content-aside {
+  width: 120px;
+}
+
+* +html .aside .btn{display:inline;}
 
 .content {
   position:relative;
@@ -961,11 +881,6 @@ fieldset.saved-search {
     border-top:1px solid #e5e5e5;
 
     &.style01{padding:34px 0 24px;}
-
-    &:hover{
-      background:#F2F6FA;
-      cursor: pointer;
-    }
 
     &:first-child {
       border:0;
