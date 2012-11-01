@@ -420,7 +420,9 @@ fieldset.saved-search {
   @include vendor-prefix(user-select, none);
 
   .btn {
-    width: 90px;
+    span.fixed-width {
+      width: 75px;
+    }
   }
 
   .drop {

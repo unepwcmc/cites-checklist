@@ -1,8 +1,7 @@
 <div class="appendix-holder">
   <a class="btn">
-    <span>
-      {{view.summary}}
-    </span>
+    {{view Checklist.AppendixBtnView
+      contentBinding="controllers.filtersController.appendicesIds"}}
   </a>
   <div class="drop">
     <div class="drop-holder">

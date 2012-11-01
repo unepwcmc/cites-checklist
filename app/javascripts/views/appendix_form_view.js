@@ -1,15 +1,65 @@
-Checklist.AppendixFormView = Ember.View.extend({
-  content: [],
-  templateName: 'appendix_form',
+Checklist.AppendixBtnView = Ember.View.extend({
+  tagName: 'span',
+
+  classNameBindings: ['classes'],
+  classes: function() {
+    var width = $(window).width();
+
+    if (width > 1200) {
+      return "fixed-width";
+    }
+
+    return "";
+  }.property().volatile(),
+
+  template: Ember.Handlebars.compile("{{view.summary}}"),
 
   summary: function() {
+    var width = $(window).outerWidth(),
+        prefix = '';
+
+    if (width > 1200) {
+      prefix = "All ";
+    }
+
     var appendices = this.get('content');
     if (appendices.length === 0 || appendices.length == 3) {
-      return "All Appxs.";
+      return prefix + "Appxs.";
     } else {
       return appendices.sort().join(", ");
     }
   }.property("@each"),
+
+  contentDidChange: function() {
+    this.set('summary', '');
+  }.observes('content'),
+
+  _resizeInterval: null,
+  didInsertElement: function() {
+    var that = this;
+    $(window).resize(function() {
+      clearInterval(that.get('_resizeInterval'));
+
+      that.set('_resizeInterval', setInterval(
+        function() {
+          var width = $(window).width();
+
+          if (width > 1200) {
+            $('.appendix-holder .btn span').addClass('fixed-width');
+          } else {
+            $('.appendix-holder .btn span').removeClass('fixed-width');
+          }
+
+          that.set('summary', '');
+        },
+      100));
+    });
+  }
+});
+
+Checklist.AppendixFormView = Ember.View.extend({
+  content: [],
+  templateName: 'appendix_form',
 });
 
 Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
@@ -71,8 +121,6 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       var params = filtersController.toParams();
       router.transitionTo('search_without_render', {params: $.param(params)});
-
-      this.get('parentView').get('parentView').set('summary', '');
     }
   })
 });
