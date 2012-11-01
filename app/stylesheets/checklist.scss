@@ -463,26 +463,29 @@ fieldset.saved-search {
 }
 
 .circle {
-  @include vendor-prefix(border-radius, 50%);
   height: 26px;
   width: 26px;
 
   color: #fff;
 
   .green &, &.green {
-    background: $appendix_green;
+    background: url(/images/appendix-sprite.png);
+    background-position: 0px 78px;
   }
 
   .orange &, &.orange {
-    background: $appendix_orange;
+    background: url(/images/appendix-sprite.png);
+    background-position: 0px 52px;
   }
 
   .blue &, &.blue {
-    background: $appendix_blue;
+    background: url(/images/appendix-sprite.png);
+    background-position: 0px 0px;
   }
 
   .grey &, .inactive &, &.grey {
-    background: $appendix_grey;
+    background: url(/images/appendix-sprite.png);
+    background-position: 0px 26px;
   }
 }
 

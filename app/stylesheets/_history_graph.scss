@@ -98,6 +98,21 @@
       line-height: 1.5em;
     }
 
+    &.green.event {
+      background: url(/images/graph-event.png);
+      background-position: 0px 20px;
+    }
+
+    &.orange.event {
+      background: url(/images/graph-event.png);
+      background-position: 0px 40px;
+    }
+
+    &.blue.event {
+      background: url(/images/graph-event.png);
+      background-position: 0px 0px;
+    }
+
     &.text {
       font-size: 11px;
       line-height: 2em;
