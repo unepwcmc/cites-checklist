@@ -140,6 +140,7 @@ Checklist.FiltersController = Ember.Object.extend({
       )
     );
     this.set('taxonomicLayout', params.output_layout == 'taxonomic' ? true : false);
+    this.set('levelOfListing', params.level_of_listing == 1 ? true : false);
     this.set('showSynonyms', parseInt(params.show_synonyms, 10) == 1 ? true : false);
     this.set('showAuthor', parseInt(params.show_author, 10) == 1 ? true : false);
     this.set('showEnglish', parseInt(params.show_english, 10) == 1 ? true : false);

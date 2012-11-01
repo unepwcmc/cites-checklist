@@ -59,6 +59,9 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
   }, {
     name: 'Taxonomic',
     value: 'taxonomic',
+  }, {
+    name: 'Appendix',
+    value: 'appendix',
   }],
 
   itemViewClass: Ember.View.extend({
@@ -72,22 +75,42 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     }.property(),
 
     isChecked: function() {
-      var layout = this.get('controller').get('taxonomicLayout');
+      var controller = this.get('controller');
 
-      if (this.get('context').value == 'alphabetical') {
-        return !layout;
-      } else {
-        return layout;
+      switch (this.get('context').value) {
+        case "alphabetical":
+          return !controller.get('taxonomicLayout');
+          break;
+        case "taxonomic":
+          return controller.get('taxonomicLayout') &&
+                 !controller.get('levelOfListing');
+          break;
+        case "appendix":
+          return controller.get('taxonomicLayout') &&
+                 controller.get('levelOfListing');
+          break;
       }
     }.property(),
 
     mouseUp: function(event) {
-      var filtersController = this.get('controller');
       var router = Checklist.get('router');
+      var controller = this.get('controller');
 
-      filtersController.set('taxonomicLayout', (this.get('content').value != 'alphabetical'));
+      switch (this.get('context').value) {
+        case "alphabetical":
+          controller.set('taxonomicLayout', false);
+          break;
+        case "taxonomic":
+          controller.set('taxonomicLayout', true);
+          controller.set('levelOfListing', false);
+          break;
+        case "appendix":
+          controller.set('taxonomicLayout', true);
+          controller.set('levelOfListing', true);
+          break;
+      }
 
-      var params = filtersController.toParams();
+      var params = controller.toParams();
       router.transitionTo('search_without_render', {params: $.param(params)});
     }
   })
