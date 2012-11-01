@@ -1,7 +1,31 @@
 <div class="quick-links-holder">
   <h3>Quick Links</h3>
-  <ul>
-    <li><a href="#" {{action "downloadIndexPdf" target="view" on="click"}}>Species index</a></li>
-    <li><a href="#" {{action "downloadHistoryPdf" target="view" on="click"}}>History of listings</a></li>
+  <ul class="quick-links">
+    <li>
+      <a href="#">Download full list</a>
+      <div class="drop">
+        <h3>Format</h3>
+
+        <ul>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="pdf">PDF</a></li>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="csv">CSV</a></li>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="json">JSON</a></li>
+        </ul>
+        <img src="/images/decor-dropdown-dark.png" alt="image description" class="decor" width="24" height="13" >
+      </div>
+    </li>
+    <li>
+      <a href="#">Download history</a>
+      <div class="drop">
+        <h3>Format</h3>
+
+        <ul>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="pdf">PDF</a></li>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="csv">CSV</a></li>
+          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="json">JSON</a></li>
+        </ul>
+        <img src="/images/decor-dropdown-dark.png" alt="image description" class="decor" width="24" height="13" >
+      </div>
+    </li>
   </ul>
 </div>

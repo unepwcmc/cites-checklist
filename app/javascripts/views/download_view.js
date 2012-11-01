@@ -32,35 +32,26 @@ Checklist.DownloadView = Em.View.extend({
     doc_type = $el.attr('data-doc-type').toLowerCase();
     format   = $el.attr('data-format');
 
-
     var params = Checklist.get('router').get('filtersController').toParams();
-    window.location = Checklist.store.adapter.url +
-    'download_' + doc_type + '.' + format + '?' +
-    $.param(
-      $.extend(
-        params,
-        {'format' : format}
-      )
-    )
-    /*
-    var download = Checklist.download_store.createRecord(
+
+    var download = Checklist.DownloadAdapter.createDownload(
       Checklist.Download,
-      {
-        doc_type: doc_type.toLowerCase(),
-        format: format.toLowerCase()
-      }
+      $.extend({
+        download: {
+          doc_type: doc_type.toLowerCase(),
+          format: format.toLowerCase()
+        }}, params)
     );
 
-    Checklist.download_store.commit();
-
     Checklist.get('router').get('downloadController').refresh();
-    */
   },
 
   didInsertElement: function() {
     $("#generating-download-btn").colorbox(Checklist.CONFIG.colorbox);
     $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
 
-    $("#download-btn").colorbox(Checklist.CONFIG.colorbox);
+    this.$().find('a').each(function(index, item) {
+      $(item).colorbox(Checklist.CONFIG.colorbox);
+    });
   }
 });

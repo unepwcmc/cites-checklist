@@ -11,7 +11,7 @@ Checklist.CONFIG = {
 
   colorbox: {
     inline: true,
-    transition: 'none',
+    transition: 'fade',
     close: 'x',
     maxWidth: 470,
     innerWidth: 470,

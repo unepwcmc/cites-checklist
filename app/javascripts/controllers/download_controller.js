@@ -1,7 +1,5 @@
 Checklist.DownloadController = Ember.ArrayController.extend({
   generating: function() {
-    console.log('gen');
-    console.log(this.get('content.length'));
     return this.get('content').filter(
       function(item, index, enumerable) {
         return item.get('status') === "working";
@@ -10,8 +8,6 @@ Checklist.DownloadController = Ember.ArrayController.extend({
   }.property('content.length'),
 
   complete: function() {
-    console.log('com');
-    console.log(this.get('content.length'));
     return this.get('content').filter(
       function(item, index, enumerable) {
         return item.get('status') === "completed";
@@ -19,20 +15,41 @@ Checklist.DownloadController = Ember.ArrayController.extend({
     );
   }.property('content.length'),
 
-  content: Checklist.store.findQuery(Checklist.Download, {ids: function() {
+  content: Checklist.store.findQuery(Checklist.Download, {ids: (function() {
     var store = Checklist.LocalStorageAdapter;
-    return store.getAll(Checklist.Download);
-  }()}),
+    return store.getAll(Checklist.Download).map(function(item, index) {
+      return item["id"];
+    });
+  })()}),
 
   refresh: function() {
     this.set('content', this.contentFromIds());
   },
 
   contentFromIds: function() {
-    return Checklist.store.findQuery(Checklist.Download, {ids: function() {
+    return Checklist.store.findQuery(Checklist.Download, {ids: (function() {
       var store = Checklist.LocalStorageAdapter;
 
-      return store.getAll(Checklist.Download);
-    }()});
+      return store.getAll(Checklist.Download).map(function(item, index) {
+        return item["id"];
+      });
+    })()});
+  },
+
+  _interval: null,
+  startPolling: function() {
+    if (this.get('_interval') == null) {
+      var that = this;
+      var id = setInterval(function() {
+        that.refresh();
+      }, 5000);
+
+      this.set('_interval', id);
+    }
+  },
+  stopPolling: function() {
+    if (this.get('_interval') != null) {
+      clearInterval(this.get('_interval'));
+    }
   }
 });

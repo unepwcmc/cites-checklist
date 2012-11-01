@@ -57,6 +57,8 @@
 }
 
 .downloads {
+  text-align: center;
+
   .text-holder {
     padding: 28px 29px 24px;
     border-bottom: 1px solid #ECECEC;
@@ -77,6 +79,10 @@
       text-transform: uppercase;
       margin-bottom: 10px;
       font-weight: bold;
+    }
+
+    p {
+      margin-top: 20px;
     }
   }
 
@@ -101,6 +107,13 @@
         h4 {
           font-size: 1.7em;
           font-weight: bold;
+
+          span {
+            font-weight: lighter;
+            color: #CACACA;
+            font-size: 0.6em;
+            text-transform: uppercase;
+          }
         }
 
         span.info {
@@ -142,12 +155,13 @@
   }
 
   .btn {
-    margin:0 0 3px;
+    margin:0 5px 3px;
     display:inline-block;
     padding:10px 20px;
     overflow:hidden;
     text-transform:uppercase;
     font-size:13px;
+    font-weight: bold;
     line-height:13px;
     color:#fff;
     border-radius: 20px; -moz-border-radius: 20px;  -webkit-border-radius: 20px;
@@ -164,6 +178,10 @@
       font-size: 11px;
     }
   }
+}
+
+.status {
+  text-align: left;
 }
 
 .landing {
@@ -277,7 +295,7 @@
 .cboxIframe{background:#fff;}
 #cboxError{padding:50px; border:1px solid #ccc;}
 #cboxLoadedContent{background:none; padding:1px;}
-#cboxLoadingGraphic{background:url(../images/loading.gif) no-repeat center center;}
+#cboxLoadingGraphic{}
 #cboxLoadingOverlay {
   background:#F5F6F7;
   @include vendor-prefix(border-radius, 6px);

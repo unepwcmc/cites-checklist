@@ -1,52 +1,50 @@
-{{#if controllers.downloadController.content.length}}
-  <ul>
+<ul>
+  <li>
     {{#if controllers.downloadController.generating.length}}
-      <li>
-        <a {{action "generatingClick" target="view" on="click"}} id="generating-download-btn" href="#generating-downloads">
-          reports
-        </a>
-      </li>
+      <a {{action "generatingClick" target="view" on="click"}} id="generating-download-btn" href="#generating-downloads">
+        {{tt reports.count countBinding="controllers.downloadController.generating.length"}}
+      </a>
     {{/if}}
+  </li>
+  <li>
     {{#if controllers.downloadController.complete.length}}
-      <li>
-        <a class="red" id="complete-download-btn" href="#complete-downloads">
-          ready
-        </a>
-      </li>
+      <a class="red" id="complete-download-btn" href="#complete-downloads">
+        {{tt reports.ready.count countBinding="controllers.downloadController.complete.length"}}
+      </a>
     {{/if}}
-  </ul>
+  </li>
+</ul>
 
-  <div style="display:none">
-    <div id="generating-downloads" class="lightbox downloads">
-      <div class="heading-holder">
-        <strong class="heading">Your Reports</strong>
-      </div>
-      <div class="text-holder">
-        <h3>Your report is being generated.</h3>
+<div style="display:none">
+  <div id="generating-downloads" class="lightbox downloads status">
+    <div class="heading-holder">
+      <strong class="heading">Your Reports</strong>
+    </div>
+    <div class="text-holder">
+      <h3>Your report is being generated.</h3>
 
-        It can take some time, but you can close this window and
-        continue working in other CITES Checklist reports.
-      </div>
-      <div class="list-holder">
-        <div class="scroll-area">
-          {{collection Checklist.DownloadCollectionView
-            contentBinding="controllers.downloadController.content"}}
-        </div>
+      It can take some time, but you can close this window and
+      continue working in other CITES Checklist reports.
+    </div>
+    <div class="list-holder">
+      <div class="scroll-area">
+        {{collection Checklist.DownloadCollectionView
+          contentBinding="controllers.downloadController.content"}}
       </div>
     </div>
   </div>
+</div>
 
-  <div style="display:none">
-    <div id="complete-downloads" class="lightbox downloads">
-      <div class="heading-holder">
-        <strong class="heading">Your Reports</strong>
-      </div>
-      <div class="list-holder">
-        <div class="scroll-area">
-          {{collection Checklist.DownloadCollectionView
-            contentBinding="controllers.downloadController.complete"}}
-        </div>
+<div style="display:none">
+  <div id="complete-downloads" class="lightbox downloads status">
+    <div class="heading-holder">
+      <strong class="heading">Your Reports</strong>
+    </div>
+    <div class="list-holder">
+      <div class="scroll-area">
+        {{collection Checklist.DownloadCollectionView
+          contentBinding="controllers.downloadController.complete"}}
       </div>
     </div>
   </div>
-{{/if}}
+</div>

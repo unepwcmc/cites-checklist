@@ -393,6 +393,60 @@ fieldset.saved-search {
   }
 }
 
+ul.quick-links {
+  li {
+    position:relative;
+    display:inline-block;
+
+    .drop {
+      top: 25px;
+      margin:0;
+      left:-9999px;
+      text-align:left;
+      background: #F5F6F7;
+      padding: 20px;
+      width: 85%;
+
+      .decor {
+        left: 47px;
+      }
+
+      &:hover {
+        right: auto;
+        left: -10px;
+      }
+
+      h3 {
+        font-weight: bold;
+      }
+    }
+
+    &:hover {
+      padding-bottom: 10px;
+
+      .drop {
+        right: auto;
+        left: -10px;
+      }
+    }
+
+    ul {
+      line-height: 1.1em;
+      padding: 0;
+
+      li {
+        text-transform: none;
+        font-size: 0.7em;
+        display: block;
+
+        &:hover {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
 .btn-holder {
   .drop {
     width: 310px;

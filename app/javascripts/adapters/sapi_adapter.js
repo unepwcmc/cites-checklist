@@ -24,3 +24,27 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
     });
   }
 });
+
+/*
+ * Ember Data is unstable and doesn't work as expected.
+ * When creating a record it doesn't properly return
+ * the data from the server. Because of this, we send a request to the
+ * server using a special Download Adapter and manually handle the
+ * loading of the response from the server.
+ */
+Checklist.DownloadAdapter = {
+  createDownload: function(type, query) {
+    var url = Checklist.CONFIG.backend_url + type.collectionUrl;
+
+    $.ajaxCors(url, "post", query, "json", this, function(data) {
+      var download = Checklist.local_store.createRecord(
+        Checklist.Download,
+        {
+          id: data.id,
+        }
+      );
+
+      Checklist.local_store.commit();
+    });
+  }
+};

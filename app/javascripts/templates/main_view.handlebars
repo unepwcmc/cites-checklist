@@ -14,7 +14,8 @@
       {{view Checklist.DownloadView}}
     {{/with}}
 
-    {{view Checklist.ReportView}}
+    {{view Checklist.ReportView
+      downloadControllerBinding="controllers.downloadController"}}
 
     {{view Checklist.SavedSearchView}}
 
