@@ -53,10 +53,20 @@ Checklist.SearchTextField = Em.TextField.extend({
       );
     }
 
+    if (this.$().val() === this.get('placeholder')) {
+      this.$().val('');
+    }
+
     this.$().attr('placeholder', '');
   },
 
   focusOut: function(event) {
+    if ($.browser.msie) {
+      if (this.$().val().length == 0) {
+        this.$().val(this.get('placeholder'));
+      }
+    }
+
     this.$().attr('placeholder', this.get('placeholder'));
   },
 
@@ -93,6 +103,12 @@ Checklist.SearchTextField = Em.TextField.extend({
     });
 
     return results;
+  },
+
+  didInsertElement: function() {
+    if ($.browser.msie) {
+      this.$().val(this.$().attr('placeholder'));
+    }
   }
 });
 
@@ -107,10 +123,20 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
   attributeBindings: ['autocomplete'],
 
   click: function() {
+    if (this.$().val() === this.get('placeholder')) {
+      this.$().val('');
+    }
+
     this.$().attr('placeholder', '');
   },
 
   focusOut: function(event) {
+    if ($.browser.msie) {
+      if (this.$().val().length == 0) {
+        this.$().val(this.get('placeholder'));
+      }
+    }
+
     this.$().attr('placeholder', this.get('placeholder'));
   },
 
@@ -135,5 +161,11 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
         }
       )
     );
+  },
+
+  didInsertElement: function() {
+    if ($.browser.msie) {
+      this.$().val(this.$().attr('placeholder'));
+    }
   }
 });
