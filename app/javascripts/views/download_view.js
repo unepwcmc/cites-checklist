@@ -44,6 +44,7 @@ Checklist.DownloadView = Em.View.extend({
     );
 
     Checklist.get('router').get('downloadController').refresh();
+    Checklist.get('router').get('downloadController').startPolling();
   },
 
   didInsertElement: function() {

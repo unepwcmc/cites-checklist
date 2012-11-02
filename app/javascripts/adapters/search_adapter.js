@@ -10,9 +10,7 @@ Checklist.LocalStorageAdapter = {
   getById: function(type, id) {
     var values = this.getAll(type);
 
-    values.forEach(function(item) {
-      if (item.id == id) return item;
-    });
+    return values.findProperty("id", id);
   },
 
   getAll: function(type) {
@@ -29,15 +27,7 @@ Checklist.LocalStorageAdapter = {
   setById: function(type, id, value) {
     var values = this.getAll(type);
 
-    // Iterate over the stored valuese and look to see if the ID
-    // already exists, and mark the index for replacement if so
-    var index = -1;
-    values.forEach(function(item,i) {
-      if (item.id == id) {
-        index = i;
-        return; // Remember, as I didn't, that return breaks out of loops in jQuery.forEach
-      }
-    });
+    var index = values.indexOf(values.findProperty("id", id));
 
     if (index >= 0) {
       values[index] = value;
