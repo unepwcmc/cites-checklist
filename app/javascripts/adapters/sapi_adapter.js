@@ -38,7 +38,7 @@ Checklist.DownloadAdapter = {
 
     $.ajaxCors(url, "post", query, "json", this, function(data) {
       var download = Checklist.local_store.createRecord(
-        Checklist.Download, data
+        Checklist.Download, JSON.parse(data)
       );
 
       Checklist.local_store.commit();
