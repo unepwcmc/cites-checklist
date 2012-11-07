@@ -107,6 +107,11 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
         case "appendix":
           controller.set('taxonomicLayout', true);
           controller.set('levelOfListing', true);
+          controller.set('showSynonyms', false);
+          controller.set('showAuthor', false);
+          controller.set('showEnglish', false);
+          controller.set('showFrench', false);
+          controller.set('showSpanish', false);
           break;
       }
 

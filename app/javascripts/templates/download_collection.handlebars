@@ -4,6 +4,16 @@
   {{#if view.isDownloadable}}
     <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" href="#" class="btn red small">Download</a>
   {{else}}
-    <img src="/images/downloads-spinner.gif" alt="Downloading..." title="Downloading..." />
+    {{#if view.isFailed}}
+    <span class="error">
+      Failed.
+      <p>
+        <a href="#downloads" id="retry-download-btn" {{action "removeById" target="view" on="click"}}>Retry</a> or
+        <a href="#" {{action "deleteAndClose" target="view" on="click"}}>Delete</a>
+      </p>
+    </span>
+    {{else}}
+      <img src="/images/downloads-spinner.gif" alt="Downloading..." title="Downloading..." />
+    {{/if}}
   {{/if}}
 </span>

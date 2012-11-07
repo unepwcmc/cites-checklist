@@ -1,7 +1,7 @@
 <ul>
   <li>
     {{#if controllers.downloadController.generating.length}}
-      <a {{action "generatingClick" target="view" on="click"}} id="generating-download-btn" href="#generating-downloads">
+      <a {{action "generatingClick" target="view" on="click"}} id="generating-downloads-btn" href="#generating-downloads">
         {{tt reports.count countBinding="controllers.downloadController.generating.length"}}
       </a>
     {{/if}}
@@ -13,23 +13,44 @@
       </a>
     {{/if}}
   </li>
+  <li>
+    {{#if controllers.downloadController.failed.length}}
+      <a class="red" id="failed-download-btn" href="#failed-downloads">
+        {{tt reports.failed.count countBinding="controllers.downloadController.failed.length"}}
+      </a>
+    {{/if}}
+  </li>
 </ul>
+
+<div style="display:none">
+  <div id="generating-download" class="lightbox downloads status">
+    <div class="heading-holder">
+      <strong class="heading">{{t reports.latest.title}}</strong>
+    </div>
+    <div class="text-holder">
+      {{t reports.generating.description}}
+    </div>
+    <div class="list-holder">
+      <div class="scroll-area downloads-list">
+        {{collection Checklist.DownloadCollectionView
+          contentBinding="controllers.downloadController.latest"}}
+      </div>
+    </div>
+  </div>
+</div>
 
 <div style="display:none">
   <div id="generating-downloads" class="lightbox downloads status">
     <div class="heading-holder">
-      <strong class="heading">Your Reports</strong>
+      <strong class="heading">{{t reports.generating.title}}</strong>
     </div>
     <div class="text-holder">
-      <h3>Your report is being generated.</h3>
-
-      It can take some time, but you can close this window and
-      continue working in other CITES Checklist reports.
+      {{t reports.generating.description}}
     </div>
     <div class="list-holder">
-      <div class="scroll-area">
+      <div class="scroll-area downloads-list">
         {{collection Checklist.DownloadCollectionView
-          contentBinding="controllers.downloadController.content"}}
+          contentBinding="controllers.downloadController.generating"}}
       </div>
     </div>
   </div>
@@ -38,12 +59,29 @@
 <div style="display:none">
   <div id="complete-downloads" class="lightbox downloads status">
     <div class="heading-holder">
-      <strong class="heading">Your Reports</strong>
+      <strong class="heading">{{t reports.ready.title}}</strong>
     </div>
     <div class="list-holder">
-      <div class="scroll-area">
+      <div class="scroll-area downloads-list">
         {{collection Checklist.DownloadCollectionView
           contentBinding="controllers.downloadController.complete"}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="display:none">
+  <div id="failed-downloads" class="lightbox downloads status">
+    <div class="heading-holder">
+      <strong class="heading">{{tt reports.failed.count countBinding="controllers.downloadController.failed.length"}}</strong>
+    </div>
+    <div class="text-holder">
+      {{t reports.failed.description}}
+    </div>
+    <div class="list-holder">
+      <div class="scroll-area downloads-list">
+        {{collection Checklist.DownloadCollectionView
+          contentBinding="controllers.downloadController.failed"}}
       </div>
     </div>
   </div>

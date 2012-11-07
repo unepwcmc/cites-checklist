@@ -45,6 +45,18 @@ Checklist.LocalStorageAdapter = {
     } else {
       jQuery.cookie(type.toString(), JSON.stringify(value));
     }
+  },
+
+  deleteById: function(type, id) {
+    var values = this.getAll(type);
+
+    for (var i=0; i<values.length; i++) {
+      if (values[i].id == id) {
+        values.splice(i, 1);
+      }
+    }
+
+    this.setAll(Checklist.Download, values);
   }
 };
 

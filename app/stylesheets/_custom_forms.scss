@@ -99,6 +99,18 @@
   height: 100%;
 }
 
+.downloads-list {
+  .jspVerticalBar,
+  .jspContainer {
+    background: white;
+  }
+
+  .jspDrag {
+    margin-top: 4px;
+    left: -4px;
+  }
+}
+
 .cfe-radio,
 .cfe-checkbox {
     display: inline-block;

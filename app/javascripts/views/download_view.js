@@ -40,16 +40,15 @@ Checklist.DownloadView = Em.View.extend({
         download: {
           doc_type: doc_type.toLowerCase(),
           format: format.toLowerCase()
-        }}, params)
+      }}, params)
     );
 
-    Checklist.get('router').get('downloadController').refresh();
-    Checklist.get('router').get('downloadController').startPolling();
   },
 
   didInsertElement: function() {
-    $("#generating-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#generating-downloads-btn").colorbox(Checklist.CONFIG.colorbox);
     $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#failed-download-btn").colorbox(Checklist.CONFIG.colorbox);
 
     this.$().find('a').each(function(index, item) {
       $(item).colorbox(Checklist.CONFIG.colorbox);
