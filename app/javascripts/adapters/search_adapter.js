@@ -95,5 +95,5 @@ Checklist.searchAdapter = DS.Adapter.extend({
   findAll: function(store, type) {
     Checklist.LocalStorageAdapter.useLocalStorage = this.useLocalStorage;
     store.loadMany(type, Checklist.LocalStorageAdapter.getAll(type));
-  },
+  }
 });

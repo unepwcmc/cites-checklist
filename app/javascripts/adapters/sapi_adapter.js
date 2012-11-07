@@ -37,11 +37,28 @@ Checklist.DownloadAdapter = {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
 
     $.ajaxCors(url, "post", query, "json", this, function(data) {
+      if (data.length !== undefined) {
+        data = JSON.parse(data);
+      }
+
       var download = Checklist.local_store.createRecord(
-        Checklist.Download, JSON.parse(data)
+        Checklist.Download, data
       );
 
       Checklist.local_store.commit();
+
+      var downloadController = Checklist.get('router').get('downloadController');
+
+      var store = Checklist.LocalStorageAdapter;
+      var ids   = store.getAll(Checklist.Download).map(
+        function(item, index) {
+          return item["id"];
+        });
+
+      var content = Checklist.store.findQuery(Checklist.Download, {ids: ids});
+      downloadController.set('content', content);
+
+      downloadController.startPolling();
     });
   }
 };
