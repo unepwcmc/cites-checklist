@@ -2,7 +2,7 @@ Checklist.QuickLinksView = Ember.View.extend({
   templateName: 'quick_links',
 
   download: function(event){
-    var params = Checklist.get('router').get('filtersController').toParams();
+    var params = Checklist.get('router').get('filtersController').fullParams();
 
     var format = $(event.target).attr('data-format');
 

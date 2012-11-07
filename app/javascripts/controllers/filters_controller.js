@@ -113,6 +113,18 @@ Checklist.FiltersController = Ember.Object.extend({
       locale : Em.I18n.currentLocale
     };
   },
+
+  fullParams : function() {
+    return {
+      show_synonyms : 1,
+      show_author : 1,
+      show_english : 1,
+      show_spanish : 1,
+      show_french : 1,
+      locale : Em.I18n.currentLocale
+    }
+  },
+
   fromParams: function(params) {
     this.set('countriesIds',
       (params.country_ids === undefined ?
