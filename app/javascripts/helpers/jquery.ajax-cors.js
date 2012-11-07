@@ -7,6 +7,8 @@
       var xdr = new XDomainRequest();
       xdr.open(type, url);
 
+      xdr.onprogress = function(){};
+      xdr.onerror = function(){};
       xdr.onload = function () {
         var JSON = $.parseJSON(xdr.responseText);
         if (JSON === null || typeof (JSON) == 'undefined'){
