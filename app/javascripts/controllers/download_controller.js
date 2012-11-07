@@ -26,6 +26,25 @@ Checklist.DownloadController = Ember.ArrayController.extend({
     );
   }.property('content.length'),
 
+  latest: function() {
+    var that = this;
+    var latest = this.get('content').filter(
+      function(item, index, enumerable) {
+        return item == that.get('content').get('lastObject');
+      }
+    );
+
+    return latest;
+
+    //if (latest.length > 0) {
+      //if (latest[0].get('status') === "working") {
+        //return latest;
+      //}
+    //}
+
+    //return [];
+  }.property('content.length'),
+
   content: Checklist.store.findQuery(Checklist.Download, {ids: (function() {
     var store = Checklist.LocalStorageAdapter;
     return store.getAll(Checklist.Download).map(function(item, index) {
