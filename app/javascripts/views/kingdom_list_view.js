@@ -125,6 +125,9 @@ Checklist.KingdomListView = Ember.View.extend({
     $(window)
      .scroll(this.updateFloatingElements)
      .resize(this.onWindowResize);
+
+    // Redraw custom form elements (advanced options box)
+    Checklist.CFE.repaint();
   },
 
   becameVisible: function() {

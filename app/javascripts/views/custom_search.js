@@ -9,7 +9,12 @@ Checklist.CustomSearch = Ember.View.extend({
       animSpeed:500
     });
 
-    var cf = new CustomFormElements({
+    // Unfortunately we have to use a global for our form elements
+    // object so that we can repaint it later. An ideal solution would
+    // be to bind to the change event for the checkbox and repaint on
+    // that, but ember doesn't propagate the change event when it updates
+    // checkbox bindings.
+    Checklist.CFE = new CustomFormElements({
       cssClass: 'styled'
     });
   }
