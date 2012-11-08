@@ -42,9 +42,7 @@ Checklist.FilterCheckbox = Ember.Checkbox.extend({
 Checklist.UnfoldHistoryCheckbox = Ember.Checkbox.extend({
   change: function(){
     if (this.get('checked')) {
-      $('.listing-item').addClass('expanded');
-      $('.opener-holder').fadeIn();
-      $('.slide').slideDown();
+      $('.opener').each(function(index, item) { item.click(); });
     } else {
       $('.listing-item').removeClass('expanded');
       $('.opener-holder').fadeOut();

@@ -139,7 +139,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
 
       if (!this.get('context.isLoaded')) return;
 
-      var $timeline = this.$().find('#timeline');
+      var $timeline = this.$().find('.area-holder');
       var that = this;
 
       if ($timeline.find('.area-b').length == 0) {
