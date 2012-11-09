@@ -5,9 +5,7 @@
 {{/if}}
 
 <div class="area-b">
-  {{#each timelines}}
-    {{view Checklist.TimelineView contentBinding="this"}}
-  {{/each}}
+  {{collection Checklist.TimelineView contentBinding="timelines"}}
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 
   {{#if view.countryCount}}
@@ -21,9 +19,7 @@
           <div class="text-holder">
             <span>Appendix {{unbound appendix}} reservations:</span>
           </div>
-          {{#each timelines}}
-            {{view Checklist.TimelineView contentBinding="this"}}
-          {{/each}}
+          {{collection Checklist.TimelineView contentBinding="timelines"}}
           {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
         {{/if}}
       {{/each}}

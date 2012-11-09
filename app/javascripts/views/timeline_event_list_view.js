@@ -27,8 +27,8 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     }.property(),
 
     positionInPixels: function(){
-      var total = this.get('parentView.parentView.parentView.totalWidthInPixels');
-      var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
+      var total = this.get('parentView.parentView.parentView.parentView.totalWidthInPixels');
+      var leftOffset = this.get('parentView.parentView.parentView.leftOffsetInPixels');
       var iconOffset = 10;//so that icon is centered
       return (this.get('content.pos') * (total - leftOffset)) + leftOffset - iconOffset;
     }.property().volatile(),
@@ -70,7 +70,7 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     attributeBindings: ['style', 'title', 'href'],
     style: function() {
       return 'left:' + this.get('positionInPixels') + 'px';
-    }.property('parentView.parentView.parentView.totalWidthInPixels'),
+    }.property('parentView.parentView.parentView.parentView.totalWidthInPixels'),
     title: function(){
       var res = this.get('content.effective_at');
       var party = this.get('content.party.iso_code2');

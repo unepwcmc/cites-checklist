@@ -13,7 +13,7 @@ Checklist.Index = DS.Model.extend({
     return this.get('animalia').mapProperty('id').concat(
       this.get('plantae').mapProperty('id')
     );
-  }.property('content'),
+  }.property('content')
 });
 
 Checklist.Index.reopenClass({

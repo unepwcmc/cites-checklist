@@ -19,5 +19,5 @@ Checklist.Download.reopenClass({
   downloadUrl: function(id) {
     return this.statusUrl(id) +
       '/download';
-  },
+  }
 });
