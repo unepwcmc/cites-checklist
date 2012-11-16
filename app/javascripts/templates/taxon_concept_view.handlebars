@@ -1,5 +1,6 @@
 {{#if view.showHigherTaxaBar}}
-  {{view Ember.View templateName="higher_taxa"}}
+  {{collection Checklist.HigherTaxaCollectionView
+  contentBinding="higherTaxa"}}
 {{else}}
   {{#unless view.isHigherTaxa}}
   <div class="column-holder">
@@ -70,7 +71,7 @@
       <div class="slide">
         <div class="column-container">
           <div class="column">
-            <div class="area-holder" id="timeline">
+            <div class="area-holder">
             </div>
           </div>
         </div>

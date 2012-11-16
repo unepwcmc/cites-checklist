@@ -1,5 +1,5 @@
 Checklist.TaxonConceptController = Ember.ArrayController.extend({
-  content: Checklist.store.find(Checklist.Index, {}),
+  content: [],
 
   taxaCount: 0,
 

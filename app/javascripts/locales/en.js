@@ -19,6 +19,16 @@ Em.I18n.locales.en = {
   'reports.ready.count.one': '1 report ready',
   'reports.ready.count.other': '{{count}} reports ready',
 
+  'reports.failed.count.one': '1 report failed',
+  'reports.failed.count.other': '{{count}} reports failed',
+
+  'reports.failed.description': 'You can restart a download, or remove it from the list.',
+  'reports.generating.description': 'It can take some time, but you can close this window and continue working in other CITES Checklist reports.',
+
+  'reports.ready.title': 'Your Reports',
+  'reports.generating.title': 'Currently Generating Reportings',
+  'reports.latest.title': 'Your report is being generated',
+
   'results.count.zero': 'taxa',
   'results.count.one': 'taxon',
   'results.count.other': 'taxa'

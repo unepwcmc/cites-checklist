@@ -9,7 +9,12 @@ Checklist.CustomSearch = Ember.View.extend({
       animSpeed:500
     });
 
-    var cf = new CustomFormElements({
+    // Unfortunately we have to use a global for our form elements
+    // object so that we can repaint it later. An ideal solution would
+    // be to bind to the change event for the checkbox and repaint on
+    // that, but ember doesn't propagate the change event when it updates
+    // checkbox bindings.
+    Checklist.CFE = new CustomFormElements({
       cssClass: 'styled'
     });
   }
@@ -37,9 +42,7 @@ Checklist.FilterCheckbox = Ember.Checkbox.extend({
 Checklist.UnfoldHistoryCheckbox = Ember.Checkbox.extend({
   change: function(){
     if (this.get('checked')) {
-      $('.listing-item').addClass('expanded');
-      $('.opener-holder').fadeIn();
-      $('.slide').slideDown();
+      $('.opener').each(function(index, item) { item.click(); });
     } else {
       $('.listing-item').removeClass('expanded');
       $('.opener-holder').fadeOut();
@@ -107,6 +110,11 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
         case "appendix":
           controller.set('taxonomicLayout', true);
           controller.set('levelOfListing', true);
+          controller.set('showSynonyms', false);
+          controller.set('showAuthor', false);
+          controller.set('showEnglish', false);
+          controller.set('showFrench', false);
+          controller.set('showSpanish', false);
           break;
       }
 

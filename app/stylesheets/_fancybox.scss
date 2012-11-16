@@ -129,6 +129,28 @@
 
         span.button {
           float: right;
+          line-height: 1.5em;
+          text-align: right;
+
+          span.error {
+            position: relative;
+            top: -15px;
+            font-size: 1.2em;
+            color: #F66;
+
+            p {
+              color: #33536a;
+
+              a {
+                border-bottom: 1px dotted #33536a;
+
+                &:hover {
+                  border-bottom: none;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
         }
 
         .btn {

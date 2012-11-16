@@ -13,13 +13,18 @@ Checklist.ReportView = Em.View.extend({
   contentDidChange: function() {
     var count = this.get('downloadController.content.length');
 
+    // TODO
+    // If number of generating reports is 0, close colorbox, somehow
+    // open finished box
+
     if (count === 0) {
       this.$().fadeOut();
     } else {
       this.$().fadeIn();
     }
-  }.observes('downloadController.content', 'downloadController.content.isLoaded'),
 
-  didInsertElement: function() {
-  }
+    this.$().find('a').each(function(index, item) {
+      $(item).colorbox(Checklist.CONFIG.colorbox);
+    });
+  }.observes('downloadController.content', 'downloadController.content.isLoaded'),
 });

@@ -7,15 +7,15 @@ Checklist.TimelineYearBarListView = Ember.CollectionView.extend({
     contextBinding: 'content',
 
     positionInPixels: function(){
-      var total = this.get('parentView.parentView.parentView.totalWidthInPixels');
-      var leftOffset = this.get('parentView.parentView.leftOffsetInPixels');
+      var total = this.get('parentView.parentView.parentView.parentView.totalWidthInPixels');
+      var leftOffset = this.get('parentView.parentView.parentView.leftOffsetInPixels');
       return (this.get('content.pos') * (total - leftOffset)) + leftOffset;
     }.property().volatile(),
 
     attributeBindings: ['style'],
     style: function() {
       return 'left:' + this.get('positionInPixels') + 'px';
-    }.property('parentView.parentView.parentView.totalWidthInPixels'),
+    }.property('parentView.parentView.parentView.parentView.totalWidthInPixels')
   })
 });
 

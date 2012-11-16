@@ -5,6 +5,9 @@ Checklist.Router = Ember.Router.extend({
     home: Ember.Route.extend({
       route: '/',
       connectOutlets: function(router, event) {
+        var params = router.get('filtersController').toParams();
+        router.get('taxonConceptController').refresh(params);
+
         router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
         router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
       }
