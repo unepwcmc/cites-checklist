@@ -4,6 +4,7 @@ require 'capistrano/ext/multistage'
 # and Apache configs. Should be unique on the Brightbox
 set :application, "cites-checklist"
 set :default_stage, 'staging'
+require 'capistrano/ext/multistage'
 
 # Target directory for the application on the web and app servers.
 #set(:deploy_to) { File.join("", "home", user, application) }
