@@ -286,6 +286,20 @@ a.icons-link {
     }
   }
 
+  span.appendix_I_population {
+    border-bottom: 2px Solid #93c2d9;
+  }
+  span.appendix_II_population {
+    border-bottom: 2px Solid #99c575;
+  }
+  span.appendix_III_population {
+    border-bottom: 2px Solid #ffa366;
+  }
+  span.appendix__population {
+    color: #adadad;
+  }
+  span:after { content: ","; }
+  span:last-of-type:after { content: ""; }
   .drop {
     top: auto;
     margin-top: 10px;
@@ -305,6 +319,22 @@ a.icons-link {
         li:hover {
           background: none;
           cursor: auto;
+        }
+        li.appendix_I_population {
+          color: #93c2d9;
+          span {color: #727272}
+        }
+        li.appendix_II_population {
+          color: #99c575;
+          span {color: #727272}
+        }
+        li.appendix_III_population {
+          color: #ffa366;
+          span {color: #727272}
+        }
+        li.appendix__population {
+          color: #adadad;
+          span {color: #727272}
         }
       }
     }

@@ -24,5 +24,44 @@ Checklist.TaxonConcept = DS.Model.extend({
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
     return this.get('ancestorsPath').split(',');
-  }.property()
+  }.property(),
+  _cites_populations: [],
+  cites_populations: function(){
+    return this.get('_cites_populations');
+  }.property('_cites_populations.@each'),
+  countriesDidChange: function(){
+    Ember.run.once(this, 'createCitesPopulations')
+  }.observes('countries.@each', 'current_listing_changes.@each.countries.@each'),
+  createCitesPopulations: function(){
+    //this should run only once per taxon concept
+    var populations = this.get('countries').map(function(cnt){
+      return Checklist.CitesPopulation.create({
+        name: cnt.get('name')
+      });
+    });
+    var defaultAppendix = null;
+    this.get('current_listing_changes').forEach(function(listing_change){
+      if (listing_change.get('countries.length') > 0){
+        //now we go over countries listed under this appendix
+        //to mark them accordingly in the main distribution list
+        listing_change.get('countries').forEach(function(country){
+          var population = populations.findProperty('name', country.get('name'));
+          population.species_listing_name = listing_change.get('species_listing_name');
+        });
+      } else {
+        defaultAppendix = listing_change.get('species_listing_name');
+      }
+    });
+    if (defaultAppendix !== null){
+      //go over all the countries not yet marked with any appendix
+      //and mark them with default appendix
+      populations.filter(function(item){
+        return item.species_listing_name === null;
+      }).forEach(function(item){
+        item.species_listing_name = defaultAppendix;
+      })
+    }
+    this.set('_cites_populations', populations);
+  }
+
 });
