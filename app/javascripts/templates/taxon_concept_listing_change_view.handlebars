@@ -1,4 +1,8 @@
-<strong class="heading">{{unbound view.sectionTitle}}</strong>
+<div>
+  <div class="appendix">CITES Appendix {{unbound species_listing_name}}</div>
+  <div class="party">{{#if hasParty}}{{unbound party.name}}{{/if}}</div>
+  <div class="effective_at">{{unbound effective_at}}</div>
+</div>
 
 {{#if hasParty}}
 <strong class="heading">COUNTRY</strong>

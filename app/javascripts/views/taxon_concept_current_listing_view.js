@@ -34,11 +34,6 @@ Checklist.TaxonConceptCurrentListingChangesListView = Ember.CollectionView.exten
   itemViewClass: Ember.View.extend({
     tagName: 'div',
     templateName: 'taxon_concept_listing_change_view',
-    contextBinding: 'content',
-    sectionTitle: function(){
-      return this.get('content.species_listing_name') + " · " +
-      (this.get('content.hasParty') ? (this.get('content.party.iso_code2') + " · ") : '') +
-      this.get('content.effective_at');
-    }.property()
+    contextBinding: 'content'
   })
 });
