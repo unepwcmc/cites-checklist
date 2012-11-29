@@ -6,14 +6,16 @@ Checklist.ListingChange = DS.Model.extend({
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
   generic_note: DS.attr('string'),
-  specific_note: DS.attr('string'),
+  specific_short_note: DS.attr('string'),
+  specific_full_note: DS.attr('string'),
   symbol:DS.attr('string'),
   parent_symbol: DS.attr('string'),
   hasParty: function(){
     return (this.get('party') !== null);
   }.property(),
   hasSpecificNote: function(){
-    return (this.get('specific_note') !== null);
+    console.log(this.get('specific_full_note') );
+    return (this.get('specific_full_note') !== null);
   },
   hasGenericNote: function(){
     return (this.get('generic_note') !== null);
