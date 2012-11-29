@@ -1,14 +1,20 @@
 <div class="country-holder">
-  {{view.shortText}}
+  {{#each view.shortList}}
+    <span class="appendix_{{unbound this.species_listing_name}}_population">{{unbound this.name}}</span>
+  {{/each}}
   {{#if view.showMore}}
-    and {{view.count}} more.
+    and {{unbound view.count}} more.
     <a class="btn-saved">
       See all...
       <div class="drop">
         <div class="drop-holder">
           <ul>
-            {{#each view.fullText}}
-              <li>{{this}}</li>
+            {{#each view.content}}
+              <li>
+                <span class="appendix_{{unbound this.species_listing_name}}_population">
+                  {{unbound this.name}}
+                </span>
+              </li>
             {{/each}}
           </ul>
         </div>
