@@ -36,6 +36,8 @@ Checklist.DownloadAdapter = {
   createDownload: function(type, query) {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
 
+    Checklist.get('router').get('downloadController').set('latest', []);
+
     $.ajaxCors(url, "post", query, "json", this, function(data) {
       if (data.length !== undefined) {
         data = JSON.parse(data);
