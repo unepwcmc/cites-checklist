@@ -160,34 +160,3 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }
   })
 });
-
-Checklist.CountryListingView = Ember.View.extend({
-  content: [],
-
-  templateName: 'countries_list',
-
-  shortText: function() {
-    var countries = this.get('content');
-
-    var visible_countries = [];
-
-    countries.forEach(function(item, index, enumerable) {
-      if (index >= 6) return;
-
-      visible_countries.push(item.get('name'));
-    });
-
-    return visible_countries.join(", ");
-  }.property(),
-
-  fullText: function() {
-    return this.content.mapProperty('name');
-  }.property(),
-
-  showMore: function() {
-    return this.get('count') > 6;
-  }.property(),
-  count: function() {
-    return this.content.get('length')-6;
-  }.property()
-});

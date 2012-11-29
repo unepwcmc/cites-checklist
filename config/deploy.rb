@@ -3,13 +3,8 @@ require "bundler/capistrano"
 # and Apache configs. Should be unique on the Brightbox
 set :application, "cites-checklist"
 
-# Primary domain name of your application. Used in the Apache configs
-set :domain, "unepwcmc-005.vm.brightbox.net"
-
-## List of servers
-server "unepwcmc-005.vm.brightbox.net", :web, :primary => false
-
 set :default_stage, 'staging'
+require 'capistrano/ext/multistage'
 
 # Target directory for the application on the web and app servers.
 #set(:deploy_to) { File.join("", "home", user, application) }

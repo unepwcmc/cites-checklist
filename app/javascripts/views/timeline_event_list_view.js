@@ -17,8 +17,8 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       return (this.get('content.party') !== null);
     }.property(),
     hasNotes: function(){
-      return (this.get('content.specific_notes') !== null) ||
-        (this.get('content.generic_notes') !== null);
+      return (this.get('content.specific_full_note') !== null) ||
+        (this.get('content.generic_note') !== null);
     }.property(),
     tooltip: function(){
       var res = 'tooltip-';
@@ -42,6 +42,8 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
         return 'R';
       } if (this.get('content.change_type_name') == 'RESERVATION_WITHDRAWAL'){
         return 'W';
+      } if (this.get('content.change_type_name') == 'AMENDMENT'){
+        return 'A';
       }
     }.property(),
     eventClass: function() {
@@ -56,10 +58,11 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       }
     }.property(),
     eventDescription: function(){
-      if (this.get('content.change_type_name') == 'ADDITION'){
-        return 'ADDITION TO APPENDIX ' + this.get('appendix');
+      if (this.get('content.change_type_name') == 'ADDITION' ||
+        this.get('content.change_type_name') == 'AMENDMENT'){
+        return 'APPENDIX ' + this.get('appendix');
       } else if (this.get('content.change_type_name') == 'DELETION'){
-        return 'DELETION FROM APPENDIX ' + this.get('appendix');
+        return 'APPENDIX ' + this.get('appendix');
       } else if (this.get('content.change_type_name') == 'RESERVATION'){
         return 'RESERVATION';
       } else if (this.get('content.change_type_name') == 'RESERVATION_WITHDRAWAL'){

@@ -1,16 +1,17 @@
-<strong class="heading">{{unbound view.sectionTitle}}</strong>
-
-{{#if hasParty}}
-<strong class="heading">COUNTRY</strong>
-<p>{{unbound party.name}}</p>
-{{/if}}
-<div class="text-frame">
-  <strong class="heading">NOTES</strong>
-  {{#if hasSpecificNote}}
-  <p>{{{unbound specific_note}}}</p>
-  {{/if}}
-  {{#if hasGenericNote}}
-  <strong class="heading">{{unbound symbol}}{{unbound parent_symbol}}</strong>
-  <p>{{{unbound generic_note}}}</p>
-  {{/if}}
+<div class="listing-section">
+  <div class="listing-section-header">
+    <div class="appendix">CITES Appendix {{unbound species_listing_name}}</div>
+    <div class="party">{{#if hasParty}}{{unbound party.name}}{{/if}}</div>
+    <div class="effective_at">{{unbound effective_at}}</div>
+  </div>
+  <div class="text-frame">
+    {{#if hasSpecificNote}}
+    <p class="short-note">{{unbound specific_short_note}}</p>
+    <p class="long-note">{{{unbound specific_full_note}}}</p>
+    {{/if}}
+    {{#if hasGenericNote}}
+    <p class="short-note">{{unbound symbol}}{{unbound parent_symbol}}</p>
+    <p class="long-note">{{{unbound generic_note}}}</p>
+    {{/if}}
+  </div>
 </div>

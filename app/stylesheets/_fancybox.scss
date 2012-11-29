@@ -27,6 +27,9 @@
     display:block;
     font-weight:bold;
     text-transform: uppercase;
+    .parties {
+      text-transform: none;
+    }
   }
 
   .date{
@@ -52,6 +55,40 @@
     }
     i {
       font-style: italic;
+    }
+    .listing-section {
+      .listing-section-header {
+        .appendix {
+          width: 40%;
+          float: left;
+          font-weight: bold;
+        }
+        .party {
+          width: 40%;
+          float: left;
+          font-weight: bold;
+        }
+        .effective_at {
+          width: 20%;
+          float: right;
+          text-align: right;
+        }
+      }
+      .listing-section-header:after {
+        display:block;
+        content:"";
+        clear:both;
+      }
+      .short-note {
+        font-weight: bold;
+        padding: 15px 0 0 0;
+      }
+    }
+    .listing-section:after {
+      border-bottom: 1px solid #ECECEC;
+      display:block;
+      content:"";
+      margin-bottom: 10px;
     }
   }
 
