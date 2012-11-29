@@ -49,6 +49,8 @@ Checklist.DownloadAdapter = {
 
       var downloadController = Checklist.get('router').get('downloadController');
 
+      downloadController.set('latest', [download]);
+
       var store = Checklist.LocalStorageAdapter;
       var ids   = store.getAll(Checklist.Download).map(
         function(item, index) {
