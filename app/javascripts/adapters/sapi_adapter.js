@@ -36,6 +36,8 @@ Checklist.DownloadAdapter = {
   createDownload: function(type, query) {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
 
+    Checklist.get('router').get('downloadController').set('latest', []);
+
     $.ajaxCors(url, "post", query, "json", this, function(data) {
       if (data.length !== undefined) {
         data = JSON.parse(data);
@@ -48,6 +50,8 @@ Checklist.DownloadAdapter = {
       Checklist.local_store.commit();
 
       var downloadController = Checklist.get('router').get('downloadController');
+
+      downloadController.set('latest', [download]);
 
       var store = Checklist.LocalStorageAdapter;
       var ids   = store.getAll(Checklist.Download).map(
