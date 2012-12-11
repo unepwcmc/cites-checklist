@@ -157,6 +157,13 @@
           }
         }
 
+        span.display_name {
+          color: #b6b6b6;
+          font-weight: lighter;
+          font-size: 1.1em;
+          line-height: 15px;
+        }
+
         span.info {
           color: #b6b6b6;
           font-weight: lighter;
@@ -192,7 +199,7 @@
 
         .btn {
           position: relative;
-          top: -10px;
+          top: -25px;
           font-weight: bold;
         }
 
