@@ -16,7 +16,6 @@ Checklist.DownloadCollectionView = Ember.CollectionView.extend({
 
     title: function() {
       var type = this.content.get('doc_type');
-
       // Capitalise first letter for presentation purposes
       return type.charAt(0).toUpperCase() + type.slice(1);
     }.property(),

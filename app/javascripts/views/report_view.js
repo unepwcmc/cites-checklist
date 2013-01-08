@@ -3,25 +3,40 @@ Checklist.ReportView = Em.View.extend({
   templateName: 'report_view',
 
   generatingClick: function() {
-    //debugger;
     this.get('downloadController').refresh();
     this.get('downloadController').startPolling();
-
-    //$(this.$().find('#generating-downloads .scroll-area')).jScrollPane({verticalDragMinHeight:20, autoReinitialise: true});
   },
 
   contentDidChange: function() {
     var count = this.get('downloadController.content.length');
-
-    // TODO
-    // If number of generating reports is 0, close colorbox, somehow
-    // open finished box
 
     if (count === 0) {
       this.$().fadeOut();
     } else {
       this.$().fadeIn();
     }
+
+    $.colorbox.resize();
+
+    var config = $.extend({
+        onComplete: function() {
+          setTimeout(function() {
+            var list = $('.downloads-list:visible');
+
+            if (list.find('li').length > 2) {
+              list.jScrollPane({
+                verticalDragMinHeight: 20
+              })
+            }
+          }, 500);
+        }
+      },
+      Checklist.CONFIG.colorbox
+    );
+
+    $("#generating-downloads-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#failed-download-btn").colorbox(Checklist.CONFIG.colorbox);
 
     this.$().find('a').each(function(index, item) {
       $(item).colorbox(Checklist.CONFIG.colorbox);

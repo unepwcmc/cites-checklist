@@ -1,4 +1,5 @@
 <h4>{{view.title}} <span>{{unbound format}}</span></span></h4>
+<span class="display_name" style="display:block">{{unbound display_name}}</span>
 <span class="info">{{unbound updated_at}}</span>
 <span class="button">
   {{#if view.isDownloadable}}
@@ -8,8 +9,7 @@
     <span class="error">
       Failed.
       <p>
-        <a href="#downloads" id="retry-download-btn" {{action "removeById" target="view" on="click"}}>Retry</a> or
-        <a href="#" {{action "deleteAndClose" target="view" on="click"}}>Delete</a>
+        <a href="#" {{action "deleteAndClose" target="view" on="click"}}>Remove?</a>
       </p>
     </span>
     {{else}}

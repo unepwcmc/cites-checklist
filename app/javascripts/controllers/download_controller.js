@@ -26,24 +26,7 @@ Checklist.DownloadController = Ember.ArrayController.extend({
     );
   }.property('content.length'),
 
-  latest: function() {
-    var that = this;
-    var latest = this.get('content').filter(
-      function(item, index, enumerable) {
-        return item == that.get('content').get('lastObject');
-      }
-    );
-
-    return latest;
-
-    //if (latest.length > 0) {
-      //if (latest[0].get('status') === "working") {
-        //return latest;
-      //}
-    //}
-
-    //return [];
-  }.property('content.length'),
+  latest: [],
 
   content: Checklist.store.findQuery(Checklist.Download, {ids: (function() {
     var store = Checklist.LocalStorageAdapter;
@@ -64,13 +47,21 @@ Checklist.DownloadController = Ember.ArrayController.extend({
 
   contentCache: [],
   refresh: function() {
+    // Retrieve the IDs of all the downloads we are currently monitoring
+    // (defined by those stored in localStorage)
     var store = Checklist.LocalStorageAdapter;
     var ids   = store.getAll(Checklist.Download).map(
       function(item, index) {
         return item["id"];
       });
 
+    // Query the server to return the current state of the objects for
+    // the ids calculated above
     var content = Checklist.store.findQuery(Checklist.Download, {ids: ids});
+
+    // This cache is used to get a delta of each download's status
+    // relative to the server. If no changes have occurred, the cache
+    // will not be used
     this.set('contentCache', content);
   },
 
@@ -79,14 +70,30 @@ Checklist.DownloadController = Ember.ArrayController.extend({
 
     // Filter the status data from the server by whether or not the
     // status value has changed compared to the local version.
+    //
+    // Returns only downloads with statuses that have changed.
     var changed = this.get('contentCache').filter(function(item, index) {
       var current = store.getById(Checklist.Download, item.get('id'));
 
+      // Update localStorage with new (possible unchanged) statuses
+      // returned by the server
       store.setById(Checklist.Download, item.get('id'),
         { id: item.get('id'), status: item.get('status') });
 
       return !(current.status == item.get('status'));
     });
+
+    if (this.get('contentCache.length') > 0) {
+      var latest = this.get('latest').objectAt(0);
+
+      if (latest !== undefined) {
+        var new_latest = this.get('contentCache').findProperty('id', latest.get('id'));
+
+        if (latest.get('status') !== new_latest.get('status')) {
+          this.set('latest', [new_latest]);
+        }
+      }
+    }
 
     if (changed.length > 0) {
       this.set('content', this.get('contentCache'));

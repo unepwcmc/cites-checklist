@@ -42,16 +42,31 @@ Checklist.DownloadView = Em.View.extend({
           format: format.toLowerCase()
       }}, params)
     );
-
   },
 
   didInsertElement: function() {
-    $("#generating-downloads-btn").colorbox(Checklist.CONFIG.colorbox);
-    $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
-    $("#failed-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    var config = $.extend({
+        onComplete: function() {
+          setTimeout(function() {
+            var list = $('.downloads-list:visible');
+
+            if (list.find('li').length > 2) {
+              list.jScrollPane({
+                verticalDragMinHeight: 20
+              })
+            }
+          }, 500);
+        }
+      },
+      Checklist.CONFIG.colorbox
+    );
+
+    $("#generating-downloads-btn").colorbox(config);
+    $("#complete-download-btn").colorbox(config);
+    $("#failed-download-btn").colorbox(config);
 
     this.$().find('a').each(function(index, item) {
-      $(item).colorbox(Checklist.CONFIG.colorbox);
+      $(item).colorbox(config);
     });
   }
 });

@@ -1,6 +1,7 @@
 Checklist.Download = DS.Model.extend({
   id: DS.attr('number'),
   doc_type: DS.attr('string'),
+  display_name: DS.attr('string'),
   format: DS.attr('string'),
   created_at: DS.attr('string'),
   updated_at: DS.attr('string'),
