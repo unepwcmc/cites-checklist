@@ -32,14 +32,14 @@ default_run_options[:pty] = true
 set :user, "rails"
 set :rails_env, :production
 
-after "deploy:update_code", "deploy:symlink"
+after "deploy:create_symlink", "deploy:link_js_config"
 namespace :deploy do
-  task :symlink, :except => { :no_release => true } do
+  task :link_js_config, :except => { :no_release => true } do
     run "ln -nfs #{shared_path}/config.js #{release_path}/app/javascripts/config.js"
   end
 end
 
-after "deploy:symlink", "assets:precompile"
+after "deploy:link_js_config", "assets:precompile"
 namespace :assets do
   desc "precompile assets"
   task :precompile do
