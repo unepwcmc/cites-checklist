@@ -21,17 +21,9 @@ Checklist.Router = Ember.Router.extend({
         router.get('filtersController').fromParams(params);
         router.get('taxonConceptController').refresh(params);
 
-        router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
-        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
-      }
-    }),
-    search_without_render: Ember.Route.extend({
-      route: '/search/:params',
-      connectOutlets: function(router, event) {
-        var params = Checklist.Helpers.deparam(event.params);
-
-        router.get('filtersController').fromParams(params);
-        router.get('taxonConceptController').refresh(params);
+        if (event.redraw === undefined || event.redraw) {
+          router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
+        }
 
         router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
       }

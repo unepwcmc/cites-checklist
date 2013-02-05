@@ -120,7 +120,7 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
       $(event.target).parent().toggleClass('inactive');
 
       var params = filtersController.toParams();
-      router.transitionTo('search_without_render', {params: $.param(params)});
+      router.transitionTo('search', {redraw: false, params: $.param(params)});
     }
   })
 });

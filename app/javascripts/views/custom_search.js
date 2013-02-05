@@ -35,7 +35,7 @@ Checklist.FilterCheckbox = Ember.Checkbox.extend({
     var filtersController = router.get('filtersController');
 
     var params = filtersController.toParams();
-    router.transitionTo('search_without_render', {params: $.param(params)});
+    router.transitionTo('search', {redraw: false, params: $.param(params)});
   }
 });
 
@@ -119,7 +119,7 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
       }
 
       var params = controller.toParams();
-      router.transitionTo('search_without_render', {params: $.param(params)});
+      router.transitionTo('search', {redraw: false, params: $.param(params)});
     }
   })
 });

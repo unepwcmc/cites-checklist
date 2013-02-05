@@ -11,7 +11,7 @@ Checklist.ChecklistForm = Em.View.extend({
     this.get('filtersController').set('page', 0);
 
     var params = this.get('filtersController').toParams();
-    Checklist.get('router').transitionTo('search_without_render', {params: $.param(params)});
+    Checklist.get('router').transitionTo('search', {redraw: false, params: $.param(params)});
   }
 
 });
