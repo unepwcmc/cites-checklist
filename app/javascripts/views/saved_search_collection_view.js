@@ -24,7 +24,7 @@ Checklist.SavedSearchCollectionView = Ember.CollectionView.extend({
       var record    = Checklist.local_store.find(Checklist.SavedSearch, selection);
       var filters   = JSON.parse(record.get('filters'));
 
-      router.transitionTo('search_without_render', {params: $.param(filters)});
+      router.transitionTo('search', {params: $.param(filters), redraw: false});
     }
   })
 });

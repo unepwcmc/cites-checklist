@@ -29,7 +29,7 @@ Checklist.SelectedLocationsView = Ember.CollectionView.extend({
       filtersController.get(location_type).removeObject(this.get('context'));
 
       var params = filtersController.toParams();
-      router.transitionTo('search_without_render', {params: $.param(params)});
+      router.transitionTo('search', {redraw: false, params: $.param(params)});
     }
   })
 });
@@ -58,7 +58,7 @@ Checklist.LocationsCollectionView = Ember.CollectionView.extend({
       filtersController.get(location_type).addObject(this.get('context'));
 
       var params = filtersController.toParams();
-      router.transitionTo('search_without_render', {params: $.param(params)});
+      router.transitionTo('search', {redraw: false, params: $.param(params)});
     },
 
     didInsertElement: function(event) {

@@ -74,7 +74,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search_without_render', {params: params});
+      Checklist.get('router').transitionTo('search', {params: params, redraw: false});
     }
   },
   prevPage: function(){
@@ -88,7 +88,7 @@ Checklist.KingdomListView = Ember.View.extend({
       var filters = filtersController.toParams();
       var params = $.param(filters);
 
-      Checklist.get('router').transitionTo('search_without_render', {params: params});
+      Checklist.get('router').transitionTo('search', {params: params, redraw: false});
     }
   },
 
@@ -127,7 +127,9 @@ Checklist.KingdomListView = Ember.View.extend({
      .resize(this.onWindowResize);
 
     // Redraw custom form elements (advanced options box)
-    Checklist.CFE.repaint();
+    if (Checklist.CFE != null) {
+      Checklist.CFE.repaint();
+    }
   },
 
   becameVisible: function() {
