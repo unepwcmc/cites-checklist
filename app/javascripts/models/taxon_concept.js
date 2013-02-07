@@ -66,17 +66,5 @@ Checklist.TaxonConcept = DS.Model.extend({
     }
     this.set('_cites_populations', populations);
   },
-  _parties: [],
-  parties: function(){
-    return this.get('_parties');
-  }.property('_parties.@each'),
-  createParties: function(){
-    this.set(
-      '_parties',
-      this.get('current_listing_changes').filter(function(lc){
-        return lc.get('change_type_name') == 'ADDITION' && lc.get('party') !== null;
-      }).mapProperty('party')
-    );
-  }
-
+  parties: DS.hasMany('Checklist.Country', { key: 'current_party_ids' })
 });
