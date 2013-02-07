@@ -43,7 +43,6 @@ Checklist.TaxonConcept = DS.Model.extend({
       });
     });
     var defaultAppendix = null;
-    console.log(this.get('current_listing_changes.length'));
     if (this.get('current_listing_changes.length') > 0){
       this.get('current_listing_changes').forEach(function(listing_change){
         if (listing_change.get('countries.length') > 0){
