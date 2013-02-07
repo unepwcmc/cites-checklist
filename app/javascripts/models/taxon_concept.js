@@ -43,18 +43,23 @@ Checklist.TaxonConcept = DS.Model.extend({
       });
     });
     var defaultAppendix = null;
-    this.get('current_listing_changes').forEach(function(listing_change){
-      if (listing_change.get('countries.length') > 0){
-        //now we go over countries listed under this appendix
-        //to mark them accordingly in the main distribution list
-        listing_change.get('countries').forEach(function(country){
-          var population = populations.findProperty('name', country.get('name'));
-          population.species_listing_name = listing_change.get('species_listing_name');
-        });
-      } else {
-        defaultAppendix = listing_change.get('species_listing_name');
-      }
-    });
+    console.log(this.get('current_listing_changes.length'));
+    if (this.get('current_listing_changes.length') > 0){
+      this.get('current_listing_changes').forEach(function(listing_change){
+        if (listing_change.get('countries.length') > 0){
+          //now we go over countries listed under this appendix
+          //to mark them accordingly in the main distribution list
+          listing_change.get('countries').forEach(function(country){
+            var population = populations.findProperty('name', country.get('name'));
+            population.species_listing_name = listing_change.get('species_listing_name');
+          });
+        } else {
+          defaultAppendix = listing_change.get('species_listing_name');
+        }
+      });
+    } else {
+      defaultAppendix = this.get('current_listing');
+    }
     if (defaultAppendix !== null){
       //go over all the countries not yet marked with any appendix
       //and mark them with default appendix
