@@ -32,9 +32,6 @@ Checklist.TaxonConcept = DS.Model.extend({
   populationsDidChange: function(){
     Ember.run.once(this, 'createCitesPopulations');
   }.observes('countries.@each', 'current_listing_changes.@each.countries.@each'),
-  partiesDidChange: function(){
-    Ember.run.once(this, 'createParties');
-  }.observes('current_listing_changes.@each.party_id'),
   createCitesPopulations: function(){
     //this should run only once per taxon concept
     var populations = this.get('countries').map(function(cnt){
@@ -43,18 +40,22 @@ Checklist.TaxonConcept = DS.Model.extend({
       });
     });
     var defaultAppendix = null;
-    this.get('current_listing_changes').forEach(function(listing_change){
-      if (listing_change.get('countries.length') > 0){
-        //now we go over countries listed under this appendix
-        //to mark them accordingly in the main distribution list
-        listing_change.get('countries').forEach(function(country){
-          var population = populations.findProperty('name', country.get('name'));
-          population.species_listing_name = listing_change.get('species_listing_name');
-        });
-      } else {
-        defaultAppendix = listing_change.get('species_listing_name');
-      }
-    });
+    if (this.get('current_listing_changes.length') > 0){
+      this.get('current_listing_changes').forEach(function(listing_change){
+        if (listing_change.get('countries.length') > 0){
+          //now we go over countries listed under this appendix
+          //to mark them accordingly in the main distribution list
+          listing_change.get('countries').forEach(function(country){
+            var population = populations.findProperty('name', country.get('name'));
+            population.species_listing_name = listing_change.get('species_listing_name');
+          });
+        } else {
+          defaultAppendix = listing_change.get('species_listing_name');
+        }
+      });
+    } else {
+      defaultAppendix = this.get('current_listing');
+    }
     if (defaultAppendix !== null){
       //go over all the countries not yet marked with any appendix
       //and mark them with default appendix
@@ -66,17 +67,5 @@ Checklist.TaxonConcept = DS.Model.extend({
     }
     this.set('_cites_populations', populations);
   },
-  _parties: [],
-  parties: function(){
-    return this.get('_parties');
-  }.property('_parties.@each'),
-  createParties: function(){
-    this.set(
-      '_parties',
-      this.get('current_listing_changes').filter(function(lc){
-        return lc.get('change_type_name') == 'ADDITION' && lc.get('party') !== null;
-      }).mapProperty('party')
-    );
-  }
-
+  parties: DS.hasMany('Checklist.Country', { key: 'current_party_ids' })
 });
