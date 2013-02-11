@@ -33,9 +33,6 @@ Checklist.TaxonConcept = DS.Model.extend({
   populationsDidChange: function(){
     Ember.run.once(this, 'createCitesPopulations');
   }.observes('countries.@each', 'current_listing_changes.@each.countries.@each'),
-  partiesDidChange: function(){
-    Ember.run.once(this, 'createParties');
-  }.observes('current_listing_changes.@each.party_id'),
   createCitesPopulations: function(){
     //this should run only once per taxon concept
     var populations = this.get('countries').map(function(cnt){
@@ -71,17 +68,5 @@ Checklist.TaxonConcept = DS.Model.extend({
     }
     this.set('_cites_populations', populations);
   },
-  _parties: [],
-  parties: function(){
-    return this.get('_parties');
-  }.property('_parties.@each'),
-  createParties: function(){
-    this.set(
-      '_parties',
-      this.get('current_listing_changes').filter(function(lc){
-        return lc.get('change_type_name') == 'ADDITION' && lc.get('party') !== null;
-      }).mapProperty('party')
-    );
-  }
-
+  parties: DS.hasMany('Checklist.Country', { key: 'current_party_ids' })
 });
