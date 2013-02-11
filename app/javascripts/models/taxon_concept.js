@@ -67,5 +67,5 @@ Checklist.TaxonConcept = DS.Model.extend({
     }
     this.set('_cites_populations', populations);
   },
-  parties: DS.hasMany('Checklist.Country', { key: 'current_party_ids' })
+  current_parties: DS.hasMany('Checklist.Country', { key: 'current_parties_ids' })
 });

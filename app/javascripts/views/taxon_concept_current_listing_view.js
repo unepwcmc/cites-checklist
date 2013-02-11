@@ -28,11 +28,9 @@ Checklist.TaxonConceptCurrentListingView = Ember.View.extend({
     this.$().colorbox(Checklist.CONFIG.colorbox);
   },
   parties: function(){
-    if (this.get('content.parties').length > 0){
-      return '(' + 
-      this.get('content.parties').mapProperty('name').join(', ') +
-      ')';
-    }
+    return '(' + 
+      this.get('content.current_parties').mapProperty('name').join(', ') +
+    ')';
   }.property()
 });
 
