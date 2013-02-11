@@ -20,6 +20,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   spanish: DS.attr('string', { key: 'spanish_names' }),
   french: DS.attr('string', { key: 'french_names' }),
   synonyms: DS.attr('string', { key: 'synonyms' }),
+  synonyms_with_authors: DS.attr('string', { key: 'synonyms_with_authors' }),
   itemType: DS.attr('string', { key: 'item_type' }),
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   higherTaxa: function(){
