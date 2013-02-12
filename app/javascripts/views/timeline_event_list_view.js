@@ -16,10 +16,6 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     hasParty: function(){
       return (this.get('content.party') !== null);
     }.property(),
-    hasNotes: function(){
-      return (this.get('content.specific_full_note') !== null) ||
-        (this.get('content.generic_note') !== null);
-    }.property(),
     tooltip: function(){
       var res = 'tooltip-';
       var symbol = this.get('eventSymbol');

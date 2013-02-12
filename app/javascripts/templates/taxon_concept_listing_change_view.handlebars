@@ -5,13 +5,16 @@
     <div class="effective_at">{{unbound effective_at}}</div>
   </div>
   <div class="text-frame">
-    {{#if hasSpecificNote}}
-    <p class="short-note">{{unbound specific_short_note}}</p>
-    <p class="long-note">{{{unbound specific_full_note}}}</p>
+    {{#if hasFullNote}}
+    <p class="short-note">{{unbound full_note}}</p>
+    {{else}}
+      {{#if hasShortNote}}
+    <p class="long-note">{{{unbound short_note}}}</p>
+      {{/if}}
     {{/if}}
-    {{#if hasGenericNote}}
-    <p class="short-note">{{unbound symbol}}{{unbound parent_symbol}}</p>
-    <p class="long-note">{{{unbound generic_note}}}</p>
+    {{#if hasHashFullNote}}
+    <p class="short-note">{{unbound hash_ann_symbol}}{{unbound hash_ann_parent_symbol}}</p>
+    <p class="long-note">{{{unbound hash_full_note}}}</p>
     {{/if}}
   </div>
 </div>

@@ -27,10 +27,13 @@ Checklist.TaxonConceptCurrentListingView = Ember.View.extend({
   didInsertElement: function(){
     this.$().colorbox(Checklist.CONFIG.colorbox);
   },
-  parties: function(){
-    return '(' + 
-      this.get('content.current_parties').mapProperty('name').join(', ') +
-    ')';
+  current_parties: function(){
+    var res = null;
+    if (this.get('content.current_parties.length') > 0){
+      return '(' + 
+        this.get('content.current_parties').mapProperty('name').join(', ') +
+      ')';
+    }
   }.property()
 });
 
