@@ -5,21 +5,21 @@ Checklist.ListingChange = DS.Model.extend({
   species_listing_name: DS.attr('string'),
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
-  short_note: DS.attr('string'),
-  full_note: DS.attr('string'),
-  hash_full_note: DS.attr('string'),
+  short_note_en: DS.attr('string'),
+  full_note_en: DS.attr('string'),
+  hash_full_note_en: DS.attr('string'),
   hash_ann_symbol:DS.attr('string'),
   hash_ann_parent_symbol: DS.attr('string'),
   hasParty: function(){
     return (this.get('party') !== null);
   }.property(),
   hasFullNote: function(){
-    return (this.get('full_note') !== null);
-  },
+    return (this.get('full_note_en') !== null);
+  }.property(),
   hasShortNote: function(){
-    return (this.get('short_note') !== null);
-  },
+    return (this.get('short_note_en') !== null);
+  }.property(),
   hasHashFullNote: function(){
-    return (this.get('hash_full_note') !== null);
-  }
+    return (this.get('hash_full_note_en') !== null);
+  }.property()
 });

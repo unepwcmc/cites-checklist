@@ -6,15 +6,15 @@
   </div>
   <div class="text-frame">
     {{#if hasFullNote}}
-    <p class="short-note">{{unbound full_note}}</p>
+    <p class="long-note">{{{unbound full_note_en}}}</p>
     {{else}}
       {{#if hasShortNote}}
-    <p class="long-note">{{{unbound short_note}}}</p>
+    <p class="short-note">{{{unbound short_note_en}}}</p>
       {{/if}}
     {{/if}}
-    {{#if hasHashFullNote}}
     <p class="short-note">{{unbound hash_ann_symbol}}{{unbound hash_ann_parent_symbol}}</p>
-    <p class="long-note">{{{unbound hash_full_note}}}</p>
+    {{#if hasHashFullNote}}
+    <p class="long-note">{{{unbound hash_full_note_en}}}</p>
     {{/if}}
   </div>
 </div>
