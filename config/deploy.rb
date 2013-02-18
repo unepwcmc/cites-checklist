@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require 'capistrano/ext/multistage'
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
 set :application, "cites-checklist"
