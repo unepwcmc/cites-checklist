@@ -79,15 +79,21 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property('full_name'),
 
     english: function() {
-      return this.content.get('english').split(',');
+      return this.get('content.english').split(',');
     }.property('english'),
     spanish: function() {
-      return this.content.get('spanish').split(',');
+      return this.get('content.spanish').split(',');
     }.property('spanish'),
     french: function() {
-      return this.content.get('french').split(',');
+      return this.get('content.french').split(',');
     }.property('french'),
-
+    synonyms: function() {
+      if (this.get('filtersController').showAuthor) {
+        return this.get('content.synonyms_with_authors');
+      } else {
+        return this.get('content.synonyms');
+      }
+    }.property('content.synonyms', 'content.synonyms_with_authors'),
     showEnglish: function(){
       return this.get('filtersController').showEnglish &&
         this.content.get('english') !== null &&
@@ -105,8 +111,8 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property(),
     showSynonyms: function(){
       return this.get('filtersController').showSynonyms &&
-        this.content.get('synonyms') !== null &&
-        this.content.get('synonyms').length > 0;
+        this.get('synonyms') !== null &&
+        this.get('synonyms').length > 0;
     }.property(),
     showAuthor: function(){
       return this.get('filtersController').showAuthor &&
