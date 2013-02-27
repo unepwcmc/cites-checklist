@@ -35,6 +35,11 @@
       }
     }
   }
+
+  .current-listing {
+    height: 400px;
+    overflow: scroll;
+  }
 }
 
 @include tablet-landscape-only {
