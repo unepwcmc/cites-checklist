@@ -17,6 +17,12 @@ Checklist.KingdomListView = Ember.View.extend({
     return this.content.get('plantaePresent');
   }.property(),
 
+  touchEnd: function(event) {
+    if ($(event.target).is('a.clear-search')) {
+      this.clearSearch();
+    }
+  },
+
   isFiltered: function() {
     var filtersController = Checklist.get('router').get('filtersController');
     var params            = filtersController.toParams();
@@ -205,7 +211,7 @@ Checklist.KingdomListView = Ember.View.extend({
       current_group.push($(item));
     });
   },
-  updateFloatingElements: function() {
+  updateFloatingElements: function(event) {
     var filtersController = Checklist.get('router').get('filtersController');
 
     if (filtersController.get('taxonomicLayout')) {
@@ -261,6 +267,10 @@ Checklist.KingdomListView = Ember.View.extend({
           });
         }
       });
+    }
+
+    if (!$(event.target).is('div.scroll-area')) {
+      $('.drop.show').removeClass('show');
     }
 
     if (!($('.filterFloatingHeader').length > 0)) {

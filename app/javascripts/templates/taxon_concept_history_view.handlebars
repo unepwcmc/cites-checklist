@@ -9,7 +9,7 @@
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 
   {{#if view.countryCount}}
-    <a {{action "expandCountryTimeline" target="view"}}>
+    <a {{action "expandCountryTimeline" target="view"}} class="expandCountryTimeline">
       {{tt timeline.party}}
     </a>
 

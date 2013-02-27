@@ -1,6 +1,13 @@
 Checklist.LocationsView = Ember.View.extend({
   templateName: "location_view",
 
+  touchEnd: function(e) {
+    var $drop = this.$('.drop');
+    if ($drop.has($(e.target)).length === 0) {
+      $drop.toggleClass('show');
+    }
+  },
+
   count: function() {
     var regions_count   = this.get('regions').get('length');
     var countries_count = this.get('countries').get('length');

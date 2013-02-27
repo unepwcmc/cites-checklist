@@ -52,6 +52,14 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
     this.set('totalWidthInPixels', width || $('.column').width());
   },
 
+  touchEnd: function(event) {
+    console.log(event.target);
+    debugger;
+    if ($(event.target).is('div.area-b')) {
+      this.expandCountryTimeline(event);
+    }
+  },
+
   expandCountryTimeline: function(event) {
     $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
   },

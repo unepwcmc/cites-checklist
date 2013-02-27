@@ -137,11 +137,23 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
       return this.get('filtersController').taxonomicLayout;
     }.property(),
 
+    justScrolled: false,
+    touchMove: function(event) {
+      this.justScrolled = true;
+    },
+    touchEnd: function(event) {
+      if (this.justScrolled) {
+        this.justScrolled = false;
+      } else {
+        this.click(event);
+      }
+    },
     click: function(event) {
       // Ignore clicks on the history graph
       if ($(event.target).parents('.slide').length > 0) return;
       // Ignore clicks on circle icons
       if ($(event.target).hasClass('circle')) return;
+      if ($(event.target).is('a.btn-saved')) return;
 
       if (!this.get('context.isLoaded')) return;
 

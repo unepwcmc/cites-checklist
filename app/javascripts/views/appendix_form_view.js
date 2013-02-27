@@ -60,6 +60,13 @@ Checklist.AppendixBtnView = Ember.View.extend({
 Checklist.AppendixFormView = Ember.View.extend({
   content: [],
   templateName: 'appendix_form',
+
+  touchEnd: function(e) {
+    var $drop = this.$('.drop');
+    if ($drop.has($(e.target)).length === 0) {
+      $drop.toggleClass('show');
+    }
+  }
 });
 
 Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
@@ -96,6 +103,10 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
 
       return classes.join(" ");
     }.property().volatile(),
+
+    touchEnd: function(event) {
+      this.click(event);
+    },
 
     click: function(event) {
       // The click event fires for list items as well as circles,

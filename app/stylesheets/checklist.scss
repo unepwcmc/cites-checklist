@@ -1,14 +1,4 @@
-/*
- * SASS Mixins
- */
-
-@mixin vendor-prefix($name, $argument) {
-  #{$name}: $argument;
-  -webkit-#{$name}: $argument;
-  -ms-#{$name}: $argument;
-  -moz-#{$name}: $argument;
-  -o-#{$name}: $argument;
-}
+@import "mixins";
 
 /*
  * SASS Color Definitions
@@ -388,6 +378,7 @@ fieldset.saved-search {
     }
   }
 
+  .drop.show,
   &:hover .drop {
     right:-17px;
     left:auto;
@@ -412,6 +403,7 @@ ul.quick-links {
         left: 47px;
       }
 
+      &.show,
       &:hover {
         right: auto;
         left: -10px;
@@ -505,6 +497,7 @@ ul.quick-links {
     }
   }
 
+  .drop.show,
   &:hover .drop {
     right:-21px;
     left:auto;
@@ -657,6 +650,7 @@ ul.quick-links {
     }
   }
 
+  .drop.show,
   &:hover .drop {
     right:-10px;
     left:auto;
@@ -1104,7 +1098,6 @@ footer{
 }
 
 @import "about";
-
 @import "fancybox";
-
 @import "custom_forms";
+@import "tablets";

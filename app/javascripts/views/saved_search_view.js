@@ -3,6 +3,13 @@ Checklist.SavedSearchView = Em.View.extend({
 
   classNames: ['saved-search-btn-holder'],
 
+  touchEnd: function(e) {
+    var $drop = this.$('.drop');
+    if ($drop.has($(e.target)).length === 0) {
+      $drop.toggleClass('show');
+    }
+  },
+
   save: function(view) {
     // Ember's inheritance isn't ideal for this situation, so
     // unfortunately we don't get to use the fancy isInvisible and
