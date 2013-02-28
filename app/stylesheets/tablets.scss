@@ -35,12 +35,15 @@
       }
     }
   }
-
 }
 
-@include tablet-landscape-only {
+@include tablet-landscape-and-below {
   #content-aside {
     right: 22px;
+  }
+
+  .header-frame {
+    min-width: 773px;
   }
 }
 
