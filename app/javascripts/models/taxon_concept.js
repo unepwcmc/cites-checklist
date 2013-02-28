@@ -5,7 +5,6 @@ Checklist.TaxonConcept = DS.Model.extend({
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
   current_additions: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
-  spp: DS.attr('string'),
   current_listing: DS.attr('string'),
   phylum_name: DS.attr('string'),
   class_name: DS.attr('string'),
