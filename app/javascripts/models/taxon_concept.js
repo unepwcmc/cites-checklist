@@ -3,7 +3,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
   countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
-  current_listing_changes: DS.hasMany('Checklist.ListingChange', { embedded : true }),
+  current_additions: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
   spp: DS.attr('string'),
   current_listing: DS.attr('string'),
@@ -32,7 +32,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   }.property('_cites_populations.@each'),
   populationsDidChange: function(){
     Ember.run.once(this, 'createCitesPopulations');
-  }.observes('countries.@each', 'current_listing_changes.@each.countries.@each'),
+  }.observes('countries.@each', 'current_additions.@each.countries.@each'),
   createCitesPopulations: function(){
     //this should run only once per taxon concept
     var populations = this.get('countries').map(function(cnt){
@@ -41,8 +41,8 @@ Checklist.TaxonConcept = DS.Model.extend({
       });
     });
     var defaultAppendix = null;
-    if (this.get('current_listing_changes.length') > 0){
-      this.get('current_listing_changes').forEach(function(listing_change){
+    if (this.get('current_additions.length') > 0){
+      this.get('current_additions').forEach(function(listing_change){
         if (listing_change.get('countries.length') > 0){
           //now we go over countries listed under this appendix
           //to mark them accordingly in the main distribution list
