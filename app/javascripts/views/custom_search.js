@@ -103,6 +103,7 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
       switch (this.get('context').value) {
         case "alphabetical":
           controller.set('taxonomicLayout', false);
+          controller.set('levelOfListing', false);
           break;
         case "taxonomic":
           controller.set('taxonomicLayout', true);
