@@ -343,9 +343,12 @@
   }
 }
 
-.current-listing {
-  height: 400px;
-  overflow: scroll;
+.lightbox {
+  &.current-listing,
+  &.event {
+    max-height: 400px;
+    overflow: scroll;
+  }
 }
 
 
