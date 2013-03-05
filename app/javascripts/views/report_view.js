@@ -16,8 +16,6 @@ Checklist.ReportView = Em.View.extend({
       this.$().fadeIn();
     }
 
-    $.colorbox.resize();
-
     var config = $.extend({
         onComplete: function() {
           setTimeout(function() {
@@ -41,5 +39,8 @@ Checklist.ReportView = Em.View.extend({
     this.$().find('a').each(function(index, item) {
       $(item).colorbox(Checklist.CONFIG.colorbox);
     });
+
+    $.colorbox.resize();
+    setTimeout($.colorbox.resize, 300);
   }.observes('downloadController.content', 'downloadController.content.isLoaded'),
 });

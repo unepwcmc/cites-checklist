@@ -1,6 +1,6 @@
 Checklist.CONFIG = {
   // Please do not omit the trailing slash
-  backend_url: "http://localhost:3000/",
+  backend_url: "http://sapi.wcmc.koby.cyanoryx.com/",
 
   // Single page URL type for Ember to use:
   //   history - pushState
@@ -16,11 +16,7 @@ Checklist.CONFIG = {
     maxWidth: 470,
     innerWidth: 470,
     opacity: 0.8,
-    fixed: true,
-    onOpen: function() {
-    },
-    onClose: function() {
-    }
+    fixed: true
   },
 
   spinner: {
