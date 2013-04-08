@@ -46,3 +46,5 @@ namespace :assets do
   end
 end
 
+after "deploy:update", "deploy:cleanup"
+
