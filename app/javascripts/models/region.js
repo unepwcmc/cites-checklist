@@ -4,5 +4,5 @@ Checklist.Region = DS.Model.extend({
 });
 
 Checklist.Region.reopenClass({
-  collectionUrl: 'geo_entities/CITES_REGION'
+  collectionUrl: 'geo_entities?geo_entity_type=cites_region'
 });

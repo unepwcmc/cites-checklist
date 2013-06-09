@@ -5,5 +5,5 @@ Checklist.Appendix = DS.Model.extend({
 });
 
 Checklist.Appendix.reopenClass({
-  collectionUrl: 'species_listings/CITES'
+  collectionUrl: 'species_listings?designation=cites'
 });
