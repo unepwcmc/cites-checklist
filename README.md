@@ -2,20 +2,19 @@
 
 ## Development
 
-We're using ember.js with ember-data to handle REST backend requests.
+We're using Ember.js with Ember Data to handle REST backend requests.  
 
-Here are some naming conventions to follow:
-  http://www.emberist.com/2012/04/09/naming-conventions.html
-
-Avoid using absolute object paths (e.g. MyApp.currentUserController.user) in classes. Explanation:
-  http://www.emberist.com/2012/04/30/absolute-paths-in-classes.html
-
-### Ember resources
+### Old Ember resources - relevant to the version of Ember used in the Checklist
 
 * [Rake Pipeline setup example](https://github.com/emberjs/todos)
 * [A skeleton app for rake pipeline](https://github.com/interline/ember-skeleton)
 * [Tutorial Jan 2012](http://www.cerebris.com/blog/2012/01/24/beginning-ember-js-on-rails-part-1/)
 * [Links to resources Feb 2012]( http://tomdale.net/2012/02/ember-js-resources/)
+
+### More up to date Ember resources - relevant to the much needed upgrade
+
+* [Building an Ember app with RailsAPI](http://reefpoints.dockyard.com/ember/2013/01/07/building-an-ember-app-with-rails-api-part-1.html)
+* [Ember Official Getting Started Guide ](http://emberjs.com/guides/getting-started)
 
 ### Important Vendor Note
 
