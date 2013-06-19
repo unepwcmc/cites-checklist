@@ -6,6 +6,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   current_additions: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
   current_listing: DS.attr('string'),
+  kingdom_name: DS.attr('string'),
   phylum_name: DS.attr('string'),
   class_name: DS.attr('string'),
   order_name: DS.attr('string'),
@@ -22,6 +23,9 @@ Checklist.TaxonConcept = DS.Model.extend({
   synonyms_with_authors: DS.attr('string', { key: 'synonyms_with_authors' }),
   itemType: DS.attr('string', { key: 'item_type' }),
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
+  isPlant: function(){
+    return this.get('kingdom_name') == 'Plantae';
+  }.property(),
   higherTaxa: function(){
     return this.get('ancestorsPath').split(',');
   }.property(),

@@ -23,9 +23,11 @@
           {{/if}}
           {{#unless view.isTaxonomicLayout}}
             <ul class="details">
+              {{#unless isPlant}}
               <li>{{unbound phylum_name}}</li>
               <li>{{unbound class_name}}</li>
               <li>{{unbound order_name}}</li>
+              {{/unless}}
               <li>{{unbound family_name}}</li>
             </ul>
           {{/unless}}
