@@ -32,9 +32,9 @@ Checklist.ReportView = Em.View.extend({
       Checklist.CONFIG.colorbox
     );
 
-    $("#generating-downloads-btn").colorbox(Checklist.CONFIG.colorbox);
-    $("#complete-download-btn").colorbox(Checklist.CONFIG.colorbox);
-    $("#failed-download-btn").colorbox(Checklist.CONFIG.colorbox);
+    $("#generating-downloads-btn").colorbox(config);
+    $("#complete-download-btn").colorbox(config);
+    $("#failed-download-btn").colorbox(config);
 
     this.$().find('a').each(function(index, item) {
       $(item).colorbox(Checklist.CONFIG.colorbox);
