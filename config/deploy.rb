@@ -5,6 +5,8 @@ set :application, "cites-checklist"
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
+set :generate_webserver_config, false
+
 set(:pub_key) { Capistrano::CLI.ui.ask ("Enter Name of Public key: ") }
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", pub_key)]
 
