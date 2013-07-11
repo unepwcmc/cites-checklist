@@ -3,8 +3,7 @@ set :rails_env, "staging"
 set :domain, "unepwcmc-011.vm.brightbox.net"
 ## List of servers
 server "unepwcmc-011.vm.brightbox.net", :app, :web, :db, :primary => true
-server "unepwcmc-011.vm.brightbox.net", :app, :web, :db, :primary => true
-+ 
+ 
 set :application, "cites_checklist"
 set :server_name, "cites_checklist.unepwcmc-011.vm.brightbox.net"
 set :sudo_user, "rails"
