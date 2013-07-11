@@ -6,7 +6,8 @@ set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
 set(:pub_key) { Capistrano::CLI.ui.ask ("Enter Name of Public key: ") }
-ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "#{pub_key}")] 
+ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", pub_key)]
+
  
 # Target directory for the application on the web and app servers.
 #set(:deploy_to) { File.join("", "home", user, application) }
