@@ -4,10 +4,11 @@ set :domain, "unepwcmc-012.vm.brightbox.net"
 ## List of servers
 server "unepwcmc-012.vm.brightbox.net", :app, :web, :db, :primary => true
  
-set :application, "cites_checklist"
-set :server_name, "cites_checklist.unepwcmc-012.vm.brightbox.net"
+set :server_name, "#{application}.unepwcmc-012.vm.brightbox.net"
 set :sudo_user, "rails"
 set :app_port, "80" 
+
+set :branch, "NewBrightboxDeploy"
 
 set :default_environment, {
   'PATH' => "/home/rails/.rvm/gems/ruby-1.9.2-p320/bin:/home/rails/.rvm/bin:/home/rails/.rvm/rubies/ruby-1.9.2-p320/bin:$PATH",
@@ -25,7 +26,7 @@ server {
   client_max_body_size 4G;
   server_name #{application}.unepwcmc-012.vm.brightbox.net #{application}.sw01.matx.info;
   keepalive_timeout 5;
-  root #{deploy_to}/public;
+  root #{deploy_to}/current/public;
   passenger_enabled on;
   rails_env staging;
   gzip on;
@@ -40,7 +41,7 @@ server {
 
   error_page 500 502 504 /500.html;
   location = /500.html {
-    root #{deploy_to}/public;
+    root #{deploy_to}/current/public;
   }
 
   error_page 503 @maintenance;
@@ -55,22 +56,3 @@ sudo "ln -s /etc/nginx/sites-available/#{application} /etc/nginx/sites-enabled/#
 end
 
 after "deploy:setup", :config_vhost
-
-
-namespace :deploy do
-  desc "Restarting mod_rails with restart.txt"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
- 
-
-
-
-
-
-
-
-
-
-
