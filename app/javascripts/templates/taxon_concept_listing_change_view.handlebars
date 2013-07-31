@@ -5,6 +5,9 @@
     <div class="effective_at">{{unbound effective_at}}</div>
   </div>
   <div class="text-frame">
+    {{#if auto_note}}
+      <p>{{unbound auto_note}}</p>
+    {{/if}}
     {{#if hasFullNote}}
     <p class="long-note">{{{unbound full_note_en}}}</p>
     {{else}}

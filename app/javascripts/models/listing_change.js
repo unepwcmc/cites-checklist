@@ -5,6 +5,7 @@ Checklist.ListingChange = DS.Model.extend({
   species_listing_name: DS.attr('string'),
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
+  auto_note: DS.attr('string'),
   short_note_en: DS.attr('string'),
   full_note_en: DS.attr('string'),
   hash_full_note_en: DS.attr('string'),
