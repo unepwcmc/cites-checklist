@@ -1,11 +1,11 @@
 set :rails_env, "staging"
 # Primary domain name of your application. Used in the Apache configs
-set :domain, "unepwcmc-011.vm.brightbox.net"
+set :domain, "unepwcmc-012.vm.brightbox.net"
 ## List of servers
-server "unepwcmc-011.vm.brightbox.net", :app, :web, :db, :primary => true
+server "unepwcmc-012.vm.brightbox.net", :app, :web, :db, :primary => true
  
 set :application, "cites_checklist"
-set :server_name, "cites_checklist.unepwcmc-011.vm.brightbox.net"
+set :server_name, "cites_checklist.unepwcmc-012.vm.brightbox.net"
 set :sudo_user, "rails"
 set :app_port, "80" 
 
@@ -23,7 +23,7 @@ server {
   listen 80;
   
   client_max_body_size 4G;
-  server_name #{application}.unepwcmc-011.vm.brightbox.net #{application}.sw01.matx.info;
+  server_name #{application}.unepwcmc-012.vm.brightbox.net #{application}.sw01.matx.info;
   keepalive_timeout 5;
   root #{deploy_to}/public;
   passenger_enabled on;
