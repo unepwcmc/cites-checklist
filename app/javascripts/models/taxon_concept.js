@@ -33,9 +33,9 @@ Checklist.TaxonConcept = DS.Model.extend({
   cites_populations: function(){
     return this.get('_cites_populations');
   }.property('_cites_populations.@each'),
-  populationsDidChange: function(){
+  populationsDidLoad: function(){
     Ember.run.once(this, 'createCitesPopulations');
-  }.observes('countries.@each', 'current_additions.@each.countries.@each'),
+  }.observes('current_additions.@each.countries.@each.didLoad'),
   createCitesPopulations: function(){
     //this should run only once per taxon concept
     var populations = this.get('countries').map(function(cnt){
