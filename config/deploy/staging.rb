@@ -8,8 +8,6 @@ set :server_name, "#{application}.unepwcmc-012.vm.brightbox.net"
 set :sudo_user, "rails"
 set :app_port, "80" 
 
-set :branch, "NewBrightboxDeploy"
-
 set :default_environment, {
   'PATH' => "/home/rails/.rvm/gems/ruby-1.9.2-p320/bin:/home/rails/.rvm/bin:/home/rails/.rvm/rubies/ruby-1.9.2-p320/bin:$PATH",
   'RUBY_VERSION' => 'ruby-1.9.2-p320',
