@@ -11,16 +11,12 @@ Checklist.ListingChange = DS.Model.extend({
   hash_full_note_en: DS.attr('string'),
   hash_ann_symbol:DS.attr('string'),
   hash_ann_parent_symbol: DS.attr('string'),
+  inherited_short_note_en: DS.attr('string'),
+  inherited_full_note_en: DS.attr('string'),
   hasParty: function(){
     return (this.get('party') !== null);
   }.property(),
-  hasFullNote: function(){
-    return (this.get('full_note_en') !== null);
-  }.property(),
-  hasShortNote: function(){
-    return (this.get('short_note_en') !== null);
-  }.property(),
-  hasHashFullNote: function(){
-    return (this.get('hash_full_note_en') !== null);
+  hasInheritedNote: function(){
+    return (this.get('inherited_full_note_en') !== null || this.get('inherited_short_note_en') !== null);
   }.property()
 });

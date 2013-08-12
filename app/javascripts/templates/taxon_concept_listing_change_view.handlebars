@@ -5,18 +5,45 @@
     <div class="effective_at">{{unbound effective_at}}</div>
   </div>
   <div class="text-frame">
-    {{#if auto_note}}
-      <p>{{unbound auto_note}}</p>
-    {{/if}}
-    {{#if hasFullNote}}
-    <p class="long-note">{{{unbound full_note_en}}}</p>
+    {{#if hasInheritedNote}}
+      <!-- inclusion records have a combined inherited + own note -->
+      <!-- own note first -->
+      <p>
+        {{#if full_note_en}}
+          <p class="long-note">{{{unbound full_note_en}}}</p>
+        {{else}}
+          {{#if short_note_en}}
+            <p class="short-note">{{{unbound short_note_en}}}</p>
+          {{/if}}
+        {{/if}}
+      </p>
+      <!-- inherited note -->
+      {{#if auto_note}}
+        <p>{{unbound auto_note}}</p>
+      {{/if}}
+      {{#if inherited_full_note_en}}
+        <p class="long-note">{{{unbound inherited_full_note_en}}}</p>
+      {{else}}
+        {{#if inherited_short_note_en}}
+          <p class="short-note">{{{unbound inherited_short_note_en}}}</p>
+        {{/if}}
+      {{/if}}
     {{else}}
-      {{#if hasShortNote}}
-    <p class="short-note">{{{unbound short_note_en}}}</p>
+      <!-- other records have single inherited or own note -->
+      {{#if auto_note}}
+        <p>{{unbound auto_note}}</p>
+      {{/if}}
+      {{#if full_note_en}}
+        <p class="long-note">{{{unbound full_note_en}}}</p>
+      {{else}}
+        {{#if short_note_en}}
+          <p class="short-note">{{{unbound short_note_en}}}</p>
+        {{/if}}
       {{/if}}
     {{/if}}
+
     <p class="short-note">{{unbound hash_ann_symbol}}{{unbound hash_ann_parent_symbol}}</p>
-    {{#if hasHashFullNote}}
+    {{#if hash_full_note_en}}
     <p class="long-note">{{{unbound hash_full_note_en}}}</p>
     {{/if}}
   </div>
