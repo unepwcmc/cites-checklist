@@ -45,6 +45,7 @@ end
 
 ## Deployment settings
 set :user, "rails"
+set :use_sudo, false
 set :rails_env, :production
 
 after "deploy:create_symlink", "deploy:link_js_config"
