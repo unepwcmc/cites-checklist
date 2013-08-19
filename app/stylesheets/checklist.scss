@@ -390,6 +390,11 @@ ul.quick-links {
     position:relative;
     display:inline-block;
 
+    .no-link {
+      pointer-events: none;
+      cursor: default;
+    }
+
     .drop {
       top: 25px;
       margin:0;
