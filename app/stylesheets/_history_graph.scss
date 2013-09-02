@@ -57,6 +57,17 @@
     color: #33536A;
   }
 
+  .sub-timeline-note {
+    float: left;
+    position: relative;
+    z-index: 850;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #33536A;    
+  }
+
   .row, .timescale-row{
     height:29px;
     padding:1px 0;

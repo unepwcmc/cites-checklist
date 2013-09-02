@@ -1,8 +1,8 @@
-{{#if view.noTimelinesAvailable}}
+{{#unless has_events}}
   <div class="no-history-graphs">
-    No history information is available for this taxa.
+    No history information is available for this taxon.
   </div>
-{{/if}}
+{{/unless}}
 
 <div class="area-b">
   {{collection Checklist.TimelineView contentBinding="timelines"}}
@@ -26,3 +26,10 @@
     </div>
   {{/if}}
 </div>
+
+
+{{#if has_descendant_timelines}}
+  <div class="sub-timeline-note">
+    See also lower taxa timeline(s).
+  </div>
+{{/if}}
