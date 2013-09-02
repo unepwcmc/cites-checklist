@@ -51,7 +51,7 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     headingStyle: function() {
       var style = "";
 
-      if (this.content.get('cites_accepted')) {
+      if (!this.content.get('cites_accepted')) {
         style += "font-weight:normal;";
       }
 

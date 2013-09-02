@@ -17,7 +17,7 @@
       {{#each timelines}}
         {{#if hasNestedTimelines}}
           <div class="text-holder">
-            <span>Appendix {{unbound appendix}} reservations:</span>
+            <span>Appendix-{{unbound appendix}} reservations:</span>
           </div>
           {{collection Checklist.TimelineView contentBinding="timelines"}}
           {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
