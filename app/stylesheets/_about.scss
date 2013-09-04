@@ -1,3 +1,15 @@
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+ul {
+  padding-left: 1em;
+}
+
 .about-header {
   @extend .header;
 
@@ -59,6 +71,7 @@
           a {
             color: #33536A;
             border-bottom: 1px dotted #33536A;
+            line-height: 20px;
 
             &:hover {
               text-decoration: none;
