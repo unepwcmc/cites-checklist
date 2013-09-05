@@ -7,8 +7,26 @@
 }
 
 ul {
-  padding-left: 1em;
+  list-style-type: disc;
+  padding-left: 2em;
+  ul {
+    list-style-type:circle;
+  }
 }
+
+ol {
+  list-style-type: decimal;
+  padding-left: 2.2em;
+}
+
+div.left { width: 39%; float:left; test-align:left; display:inline; }
+div.right { width: 39%; float:right; text-align:left; display:inline; }
+div.contacts { 
+  width: 100%; 
+  margin:auto;
+  padding-top: 1em;
+}
+
 
 .about-header {
   @extend .header;
@@ -82,5 +100,8 @@ ul {
         }
       }
     }
+
+
+
   }
 }
