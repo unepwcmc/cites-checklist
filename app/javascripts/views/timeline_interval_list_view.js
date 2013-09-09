@@ -29,6 +29,6 @@ Checklist.TimelineIntervalListView = Ember.CollectionView.extend({
     attributeBindings: ['style'],
     style: function() {
       return 'width:' + this.get('widthInPercent') + '%;left:' + this.get('positionInPixels') + 'px';
-    }.property('parentView.parentView.parentView.parentView.totalWidthInPixels'),
+    }.property('parentView.parentView.parentView.parentView.totalWidthInPixels')
   })
 });
