@@ -161,7 +161,7 @@ Checklist.KingdomListView = Ember.View.extend({
       });
     } else {
       $('header .aside').css({
-        position: 'relative',
+        position: 'relative'
       });
 
       $('.aside').css({

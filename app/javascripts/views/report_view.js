@@ -42,5 +42,5 @@ Checklist.ReportView = Em.View.extend({
 
     $.colorbox.resize();
     setTimeout($.colorbox.resize, 300);
-  }.observes('downloadController.content', 'downloadController.content.isLoaded'),
+  }.observes('downloadController.content', 'downloadController.content.isLoaded')
 });

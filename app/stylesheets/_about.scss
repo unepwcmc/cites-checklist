@@ -1,3 +1,12 @@
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+
 .about-header {
   @extend .header;
 
@@ -22,6 +31,27 @@
 .about-main {
   @extend .main;
   color: #6F6F6F;
+
+  ul {
+    list-style-type: disc;
+    padding-left: 2em;
+    ul {
+      list-style-type:circle;
+    }
+  }
+  
+  ol {
+    list-style-type: decimal;
+    padding-left: 2.2em;
+  }
+  
+  div.left { width: 39%; float:left; test-align:left; display:inline; }
+  div.right { width: 39%; float:right; text-align:left; display:inline; }
+  div.contacts { 
+    width: 100%; 
+    margin:auto;
+    padding-top: 1em;
+  }
 
   .c1 {
     margin-top: 0px;
@@ -59,6 +89,7 @@
           a {
             color: #33536A;
             border-bottom: 1px dotted #33536A;
+            line-height: 20px;
 
             &:hover {
               text-decoration: none;
@@ -69,5 +100,8 @@
         }
       }
     }
+
+
+
   }
 }

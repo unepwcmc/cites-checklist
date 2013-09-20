@@ -21,7 +21,7 @@ Checklist.LocalStorageAdapter = {
       value = jQuery.cookie(type.toString());
     }
 
-    return JSON.parse(value || 'null') || [];
+    return $.parseJSON(value || 'null') || [];
   },
 
   setById: function(type, id, value) {

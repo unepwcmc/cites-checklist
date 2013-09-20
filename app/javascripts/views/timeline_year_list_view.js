@@ -17,7 +17,7 @@ Checklist.TimelineYearListView = Ember.CollectionView.extend({
     attributeBindings: ['style'],
     style: function() {
       return 'left:' + this.get('positionInPixels') + 'px';
-    }.property('parentView.parentView.totalWidthInPixels'),
+    }.property('parentView.parentView.totalWidthInPixels')
   })
 });
 

@@ -56,5 +56,5 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
 
   expandCountryTimeline: function(event) {
     $(event.target).closest('a').siblings('.country-timelines').stop().slideToggle();
-  },
+  }
 });

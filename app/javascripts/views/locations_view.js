@@ -13,7 +13,7 @@ Checklist.LocationsView = Ember.View.extend({
     var countries_count = this.get('countries').get('length');
 
     return regions_count + countries_count;
-  }.property('regions','countries').volatile(),
+  }.property('regions','countries').volatile()
 });
 
 Checklist.SelectedLocationsView = Ember.CollectionView.extend({

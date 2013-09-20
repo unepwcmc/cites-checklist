@@ -9,5 +9,5 @@ Checklist.QuickLinksView = Ember.View.extend({
       Checklist.Download.collectionUrl + 'download_' +
       $(event.target).attr('data-doc-type') +
       "?" + $.param($.extend(params, {format: format}));
-  },
+  }
 });
