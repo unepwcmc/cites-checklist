@@ -26,7 +26,7 @@ Checklist.FiltersController = Ember.Object.extend({
   autoCompleteCountriesContent : [],
   autoCompleteRegionsContent : [],
   searches : [],
-  page: 0,
+  page: 1,
   per_page: 20,
 
   /*
@@ -93,7 +93,7 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('appendices',[]);
     this.set('appendicesIds',[]);
     this.set('scientificName',"");
-    this.set('page',0);
+    this.set('page',1);
   },
   toParams : function() {
     return {
@@ -159,7 +159,7 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('showSpanish', parseInt(params.show_spanish, 10) == 1 ? true : false);
     this.set('showFrench', parseInt(params.show_french, 10) == 1 ? true : false);
     this.set('scientificName', params.scientific_name || "");
-    this.set('page', parseInt(params.page, 10) || 0);
+    this.set('page', parseInt(params.page, 10) || 1);
     this.set('perPage', parseInt(params.perPage, 10) || 20);
 
     this.set('locale', params.locale);

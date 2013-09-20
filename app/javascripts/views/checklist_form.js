@@ -8,7 +8,7 @@ Checklist.ChecklistForm = Em.View.extend({
   submit: function(event) {
     event.preventDefault();
 
-    this.get('filtersController').set('page', 0);
+    this.get('filtersController').set('page', 1);
 
     var params = this.get('filtersController').toParams();
     Checklist.get('router').transitionTo('search', {redraw: false, params: $.param(params)});

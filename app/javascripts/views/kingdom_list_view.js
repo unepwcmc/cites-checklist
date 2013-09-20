@@ -43,7 +43,7 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   currentPage: function() {
-    return Checklist.get('router').get('filtersController').get('page') + 1;
+    return Checklist.get('router').get('filtersController').get('page');
   }.property(),
   totalPages: function() {
     var filtersController = Checklist.get('router').get('filtersController');
@@ -63,10 +63,10 @@ Checklist.KingdomListView = Ember.View.extend({
     var per_page     = filtersController.get('per_page');
     var total_pages  = Math.ceil(total_taxa / per_page);
 
-    return (current_page + 1) < total_pages;
+    return (current_page) < total_pages;
   }.property(),
   showPrev: function(){
-    return Checklist.get('router').get('filtersController').get('page') > 0;
+    return Checklist.get('router').get('filtersController').get('page') > 1;
   }.property(),
 
   nextPage: function(){
