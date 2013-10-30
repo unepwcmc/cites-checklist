@@ -38,6 +38,17 @@ Checklist.Router = Ember.Router.extend({
         router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.AboutHeaderView});
         router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.AboutView});
       }
+    }),
+
+    doTermsOfUse: function(router, event) {
+      router.transitionTo('termsOfUse');
+    },
+    termsOfUse: Ember.Route.extend({
+      route: '/terms-of-use',
+      connectOutlets: function(router, event) {
+        router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.TermsOfUseHeaderView});
+        router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.TermsOfUseView});
+      }
     })
   })
 });
