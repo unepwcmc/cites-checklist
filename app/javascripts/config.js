@@ -36,7 +36,7 @@ Checklist.CONFIG = {
     top: 'auto', // Top position relative to parent in px
     left: 'auto' // Left position relative to parent in px
   }
-}
+};
 
 Em.I18n.translations = Em.I18n.locales[Checklist.CONFIG.default_locale];
 Em.I18n.currentLocale = Checklist.CONFIG.default_locale;

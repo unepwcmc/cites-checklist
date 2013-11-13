@@ -51,7 +51,7 @@ Checklist.TaxonConcept = DS.Model.extend({
           //to mark them accordingly in the main distribution list
           listing_change.get('countries').forEach(function(country){
             var population = populations.findProperty('name', country.get('name'));
-            if (population != null){
+            if (population !== null){
               population.species_listing_name = listing_change.get('species_listing_name');
             }
           });
@@ -69,7 +69,7 @@ Checklist.TaxonConcept = DS.Model.extend({
         return item.species_listing_name === null;
       }).forEach(function(item){
         item.species_listing_name = defaultAppendix;
-      })
+      });
     }
     this.set('_cites_populations', populations);
   },

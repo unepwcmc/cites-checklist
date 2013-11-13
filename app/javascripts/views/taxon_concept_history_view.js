@@ -47,8 +47,6 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   },
 
   touchEnd: function(event) {
-    console.log(event.target);
-    debugger;
     if ($(event.target).is('div.area-b')) {
       this.expandCountryTimeline(event);
     }

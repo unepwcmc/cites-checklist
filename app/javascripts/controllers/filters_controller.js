@@ -122,7 +122,7 @@ Checklist.FiltersController = Ember.Object.extend({
       show_spanish : 1,
       show_french : 1,
       locale : Em.I18n.currentLocale
-    }
+    };
   },
 
   fromParams: function(params) {

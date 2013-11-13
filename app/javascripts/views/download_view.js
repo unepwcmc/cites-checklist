@@ -25,7 +25,7 @@ Checklist.DownloadView = Em.View.extend({
     var doc_type, format;
     var $el = $(event.target);
 
-    if ($el.parents('a').length != 0) {
+    if ($el.parents('a').length !== 0) {
       $el = $el.parents('a');
     }
 
@@ -53,7 +53,7 @@ Checklist.DownloadView = Em.View.extend({
             if (list.find('li').length > 2) {
               list.jScrollPane({
                 verticalDragMinHeight: 20
-              })
+              });
             }
           }, 500);
         }

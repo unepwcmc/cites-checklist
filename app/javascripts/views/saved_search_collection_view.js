@@ -14,7 +14,9 @@ Checklist.SavedSearchCollectionView = Ember.CollectionView.extend({
     },
 
     click: function(event) {
-      if ($(event.target).hasClass('delete')) return;
+      if ($(event.target).hasClass('delete')){
+        return;
+      }
 
       var router                 = Checklist.get('router');
       var filtersController      = router.get('filtersController');

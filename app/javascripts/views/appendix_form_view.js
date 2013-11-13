@@ -111,7 +111,9 @@ Checklist.AppendixFormCollectionView = Ember.CollectionView.extend({
     click: function(event) {
       // The click event fires for list items as well as circles,
       // this is a bit of a hacky method of ignoring list item clicks
-      if ($(event.target).not('div').length > 0) return;
+      if ($(event.target).not('div').length > 0){
+        return;
+      }
 
       var router = Checklist.get('router');
       var filtersController = this.get('controller');

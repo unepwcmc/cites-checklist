@@ -24,7 +24,7 @@ Checklist.ReportView = Em.View.extend({
             if (list.find('li').length > 2) {
               list.jScrollPane({
                 verticalDragMinHeight: 20
-              })
+              });
             }
           }, 500);
         }

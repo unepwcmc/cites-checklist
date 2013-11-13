@@ -8,7 +8,7 @@ DS.attr.transforms.array = {
   to: function(deserialized) {
     return deserialized;
   }
-}
+};
 
 Checklist.Timeline = DS.Model.extend({
   id: DS.attr('number'),
