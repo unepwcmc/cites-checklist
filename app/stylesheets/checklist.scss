@@ -13,6 +13,16 @@ $appendix_grey: #adadad;
 
 /* Beginning of actual styles! */
 
+p.browsehappy {
+  text-align: center;
+  color: black;
+  z-index: 1000;
+  font-size:14px;
+}
+p.browsehappy a {
+  color: darkRed;
+}
+
 body {
   background: #F3F6F9;
 }
