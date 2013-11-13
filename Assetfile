@@ -2,7 +2,6 @@
 require "rake-pipeline-web-filters"
 require "json"
 require "uglifier"
-require 'jslint'
 
 # All of our outputs will be relative to the `public/`
 # directory.
