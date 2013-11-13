@@ -13,4 +13,5 @@ gem "therubyracer"
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
+  gem "jslint_on_rails"
 end

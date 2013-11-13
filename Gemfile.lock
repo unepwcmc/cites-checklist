@@ -35,6 +35,7 @@ GEM
       multi_json (~> 1.0)
     fssm (0.2.10)
     highline (1.6.19)
+    jslint_on_rails (1.1.1)
     json (1.7.7)
     libv8 (3.11.8.13)
     multi_json (1.5.1)
@@ -64,6 +65,7 @@ DEPENDENCIES
   capistrano
   capistrano-ext
   compass
+  jslint_on_rails
   json
   rack
   rake-pipeline!

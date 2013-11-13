@@ -1,0 +1,2 @@
+require 'jslint/tasks'
+
