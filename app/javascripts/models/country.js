@@ -5,5 +5,5 @@ Checklist.Country = DS.Model.extend({
 });
 
 Checklist.Country.reopenClass({
-  collectionUrl: 'geo_entities?geo_entity_types[]=country&geo_entity_types[]=territory'
+  collectionUrl: 'geo_entities?geo_entity_types_set=2'
 });
