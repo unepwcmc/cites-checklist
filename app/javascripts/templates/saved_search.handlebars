@@ -1,4 +1,6 @@
-<a href="#" {{action "save" target="view"}} class="btn"><span class="ico-star"></span>SAVE THIS</a>
+<a href="#" {{action "save" target="view"}} class="btn">
+  <span class="ico-star"></span>{{t saved_search.button}}
+</a>
 <fieldset class="saved-search">
   {{view Checklist.SavedSearchTextField
     filtersControllerBinding="controllers.filtersController"}}
