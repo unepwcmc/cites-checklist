@@ -23,13 +23,13 @@
     return false;
   }
 
-  function define(languages, rule) {
+  function defineLanguageRule(languages, rule) {
     for ( var i = 0; i < languages.length; ++i ) {
       Data[ languages[i] ] = rule;
     }
   }
 
-  define([
+  defineLanguageRule([
     'az', 'bm', 'my', 'zh', 'dz', 'ka', 'hu', 'ig', 'id', 'ja', 'jv', 'kea',
     'kn', 'km', 'ko', 'ses', 'lo', 'kde', 'ms', 'fa', 'root', 'sah', 'sg',
     'ii', 'th', 'bo', 'to', 'tr', 'vi', 'wo', 'yo'
@@ -37,42 +37,34 @@
     return Other;
   });
 
-  define([ 'gv' ], function(n) {
+  defineLanguageRule([ 'gv' ], function(n) {
     if ( isAmong(n % 10, [ 1, 2 ]) || n % 20 === 0 ) { return One; }
     return Other;
   });
 
-  define([ 'tzm' ], function(n) {
+  defineLanguageRule([ 'tzm' ], function(n) {
     if ( n === 0 || n === 1 ) { return One; }
     if ( isInt(n) && n >= 11 && n <= 99 ) { return One; }
     return Other;
   });
 
-  define([ 'mk' ], function(n) {
+  defineLanguageRule([ 'mk' ], function(n) {
     return n % 10 === 1 && n !== 11 ? One : Other;
   });
 
-  define([ 'fr', 'ff', 'kab' ], function(n) {
+  defineLanguageRule([ 'fr', 'ff', 'kab' ], function(n) {
     return n >= 0 && n < 2 ? One : Other;
   });
 
-  define([
+  defineLanguageRule([
     'ak', 'am', 'bh', 'fil', 'guw', 'hi', 'ln', 'mg', 'nso', 'tl', 'ti', 'wa'
   ], function(n) {
     return n === 0 || n === 1 ? One : Other;
   });
 
-  define([ 'en' ], function(n) {
-    switch ( n ) {
-      case 0: return Zero;
-      case 1: return One;
-      default: return Other;
-    }
-  });
-
-  define([
+  defineLanguageRule([
     'af', 'sq', 'eu', 'bem', 'bn', 'brx', 'bg', 'ca', 'chr', 'cgg', 'da', 'dv',
-    'nl', 'eo', 'et', 'ee', 'fo', 'fi', 'fur', 'gl', 'lg', 'de', 'el',
+    'nl', 'en', 'eo', 'et', 'ee', 'fo', 'fi', 'fur', 'gl', 'lg', 'de', 'el',
     'gu', 'ha', 'haw', 'he', 'is', 'it', 'kl', 'kk', 'ku', 'lb', 'ml', 'mr',
     'mas', 'mn', 'nah', 'ne', 'no', 'nb', 'nn', 'nyn', 'or', 'om', 'pap', 'ps',
     'pt', 'pa', 'rm', 'ssy', 'saq', 'xog', 'so', 'es', 'sw', 'sv', 'gsw',
@@ -81,25 +73,25 @@
     return n === 1 ? One : Other;
   });
 
-  define([ 'lv' ], function(n) {
+  defineLanguageRule([ 'lv' ], function(n) {
     if (n === 0) { return Zero; }
     if (n % 10 === 1 && n % 100 !== 11) { return One; }
     return Other;
   });
 
-  define([ 'ksh' ], function(n) {
+  defineLanguageRule([ 'ksh' ], function(n) {
     if (n === 0) { return Zero; }
     if (n === 1) { return One; }
     return Other;
   });
 
-  define([ 'lag' ], function(n) {
+  defineLanguageRule([ 'lag' ], function(n) {
     if (n === 0) { return Zero; }
     if (n > 0 && n < 2) { return One; }
     return Other;
   });
 
-  define([
+  defineLanguageRule([
     'kw', 'smn', 'iu', 'ga', 'smj', 'se', 'smi', 'sms', 'sma'
   ], function(n) {
     if (n === 1) { return One; }
@@ -107,7 +99,7 @@
     return Other;
   });
 
-  define([
+  defineLanguageRule([
     'be', 'bs', 'hr', 'ru', 'sr', 'sh', 'uk'
   ], function(n) {
     var mod10  = n % 10,
@@ -124,7 +116,7 @@
     return Other;
   });
 
-  define([ 'pl' ], function(n) {
+  defineLanguageRule([ 'pl' ], function(n) {
     var mod10  = n % 10,
         mod100 = n % 100;
 
@@ -139,7 +131,7 @@
     return Other;
   });
 
-  define([ 'lt' ], function(n) {
+  defineLanguageRule([ 'lt' ], function(n) {
     var mod10  = n % 10,
         mod100 = n % 100;
 
@@ -152,13 +144,13 @@
     return Other;
   });
 
-  define([ 'shi' ], function(n) {
+  defineLanguageRule([ 'shi' ], function(n) {
     if ( n >= 0 && n <= 1 ) { return One; }
     if ( isInt(n) && n >= 2 && n <= 9 ) { return Few; }
     return Other;
   });
 
-  define([ 'mo', 'ro' ], function(n) {
+  defineLanguageRule([ 'mo', 'ro' ], function(n) {
     var mod100 = n % 100;
 
     if ( n === 1 ) { return One; }
@@ -169,13 +161,13 @@
     return Other;
   });
 
-  define([ 'cs', 'sk' ], function(n) {
+  defineLanguageRule([ 'cs', 'sk' ], function(n) {
     if ( n === 1 ) { return One; }
     if ( isAmong(n, [ 2, 3, 4 ]) ) { return Few; }
     return Other;
   });
 
-  define([ 'sl' ], function(n) {
+  defineLanguageRule([ 'sl' ], function(n) {
     var mod100 = n % 100;
     if ( mod100 === 1 ) { return One; }
     if ( mod100 === 2 ) { return Two; }
@@ -183,7 +175,7 @@
     return Other;
   });
 
-  define([ 'mt' ], function(n) {
+  defineLanguageRule([ 'mt' ], function(n) {
     if ( n === 1 ) { return One; }
     var mod100 = n % 100;
     if ( isInt(mod100) && mod100 >= 2 && mod100 <= 10 ) { return Few; }
@@ -191,7 +183,7 @@
     return Other;
   });
 
-  define([ 'ar' ], function(n) {
+  defineLanguageRule([ 'ar' ], function(n) {
     if ( n === 0 ) { return Zero; }
     if ( n === 1 ) { return One; }
     if ( n === 2 ) { return Two; }
@@ -201,7 +193,7 @@
     return Other;
   });
 
-  define([ 'br', 'cy' ], function(n) {
+  defineLanguageRule([ 'br', 'cy' ], function(n) {
     switch ( n ) {
       case 0: return Zero;
       case 1: return One;
@@ -233,16 +225,16 @@
     if (count == null) { throw new Error("CLDR.pluralForm requires a count"); }
     language = language || CLDR.defaultLanguage;
     if (language == null) { throw new Error("CLDR.pluralForm requires a language"); }
-    language = language.replace(/^(\w\w).*/, "$1");
+    language = language.replace(/^(\w\w\w?)-?.*/, "$1");
     if (Data[language] == null) { throw new Error("No CLDR pluralization information for " + language); }
     return Data[language].call(CLDR, +count);
   };
 
-  CLDR.pluralForm.Zero  = 'zero';
-  CLDR.pluralForm.One   = 'one';
-  CLDR.pluralForm.Two   = 'two';
-  CLDR.pluralForm.Few   = 'few';
-  CLDR.pluralForm.Many  = 'many';
-  CLDR.pluralForm.Other = 'other';
+  CLDR.pluralForm.Zero  = Zero;
+  CLDR.pluralForm.One   = One;
+  CLDR.pluralForm.Two   = Two;
+  CLDR.pluralForm.Few   = Few;
+  CLDR.pluralForm.Many  = Many;
+  CLDR.pluralForm.Other = Other;
 
 }(this));

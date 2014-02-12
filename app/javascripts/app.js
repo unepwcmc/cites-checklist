@@ -6,8 +6,8 @@ require('checklist/vendor/spin.min');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 
-require('checklist/vendor/plurals');
-require('checklist/vendor/ember-i18n');
+require('checklist/vendor/cldr-1.0.0');
+require('checklist/vendor/i18n');
 
 minispade.requireAll(/locales/);
 minispade.requireAll(/templates/);
