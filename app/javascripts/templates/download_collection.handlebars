@@ -3,17 +3,17 @@
 <span class="info">{{unbound updated_at}}</span>
 <span class="button">
   {{#if view.isDownloadable}}
-    <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" href="#" class="btn red small">Download</a>
+    <a {{action "download" target="view" on="click"}} data-download-id="{{unbound id}}" href="#" class="btn red small">{{t download.button}}</a>
   {{else}}
     {{#if view.isFailed}}
     <span class="error">
-      Failed.
+      {{t download.failed}}
       <p>
-        <a href="#" {{action "deleteAndClose" target="view" on="click"}}>Remove?</a>
+        <a href="#" {{action "deleteAndClose" target="view" on="click"}}>{{t download.remove}}</a>
       </p>
     </span>
     {{else}}
-      <img src="/images/downloads-spinner.gif" alt="Downloading..." title="Downloading..." />
+      <img src="/images/downloads-spinner.gif" {{translateAttr title="download.spinner" alt="download.spinner"}} />
     {{/if}}
   {{/if}}
 </span>

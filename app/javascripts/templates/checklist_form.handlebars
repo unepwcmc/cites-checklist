@@ -6,12 +6,12 @@
           valueBinding="controllers.filtersController.scientificName"
           id="scientific_name"
           title="search"
-          placeholder="Species, higher taxon, synonym or common name..."
+          placeholderTranslation="search.by_taxon.placeholder"
           autocomplete="off"
         }}
       </div>
     </div>
-    <input type="submit" value="SEARCH" {{action "submit" target="view"}} />
+    <input type="submit" {{translateAttr value="search.by_taxon.button"}} {{action "submit" target="view"}} />
   </fieldset>
   <div class="drop" style="display: none;" id="autocomplete-dropdown">
     <img src="/images/decor-dropdown-light.png" alt="arrow for autocomplete dropdown box" class="decor" width="24" height="13" >
