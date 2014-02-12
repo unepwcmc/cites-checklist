@@ -29,7 +29,4 @@ Em.I18n.locales.en = {
   'reports.generating.title': 'Currently Generating Reportings',
   'reports.latest.title': 'Your report is being generated',
 
-  'results.count.zero': 'taxa',
-  'results.count.one': 'taxon',
-  'results.count.other': 'taxa'
 };

@@ -2,21 +2,21 @@
   <li>
     {{#if controllers.downloadController.generating.length}}
       <a {{action "generatingClick" target="view" on="click"}} id="generating-downloads-btn" href="#generating-downloads">
-        {{tt reports.count countBinding="controllers.downloadController.generating.length"}}
+        {{t reports.count countBinding="controllers.downloadController.generating.length"}}
       </a>
     {{/if}}
   </li>
   <li>
     {{#if controllers.downloadController.complete.length}}
       <a class="red" id="complete-download-btn" href="#complete-downloads">
-        {{tt reports.ready.count countBinding="controllers.downloadController.complete.length"}}
+        {{t reports.ready.count countBinding="controllers.downloadController.complete.length"}}
       </a>
     {{/if}}
   </li>
   <li>
     {{#if controllers.downloadController.failed.length}}
       <a class="red" id="failed-download-btn" href="#failed-downloads">
-        {{tt reports.failed.count countBinding="controllers.downloadController.failed.length"}}
+        {{t reports.failed.count countBinding="controllers.downloadController.failed.length"}}
       </a>
     {{/if}}
   </li>
@@ -73,7 +73,7 @@
 <div style="display:none">
   <div id="failed-downloads" class="lightbox downloads status">
     <div class="heading-holder">
-      <strong class="heading">{{tt reports.failed.count countBinding="controllers.downloadController.failed.length"}}</strong>
+      <strong class="heading">{{t reports.failed.count countBinding="controllers.downloadController.failed.length"}}</strong>
     </div>
     <div class="text-holder">
       {{t reports.failed.description}}
