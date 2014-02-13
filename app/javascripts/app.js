@@ -6,7 +6,16 @@ require('checklist/vendor/spin.min');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 
-require('checklist/vendor/cldr-1.0.0');
+// rather than include CLDR here, just a simple plural form implementation
+// EN, ES, FR only ever have 'one' or 'other'
+// 'zero' is for convenience
+
+CLDR = {
+  pluralForm: function myCustomInflector(n) {
+    return n === 0 ? 'zero' : n === 1 ? 'one' : 'other';
+  }
+};
+
 require('checklist/vendor/i18n');
 
 minispade.requireAll(/locales/);

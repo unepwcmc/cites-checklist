@@ -76,12 +76,15 @@ Em.I18n.locales.en = {
   'locations.count.one': '1 Location',
   'locations.count.other': '{{count}} Locations',
 
+  'reports.count.zero': '',
   'reports.count.one': 'Generating 1 report',
   'reports.count.other': 'Generating {{count}} reports',
 
+  'reports.ready.count.zero': '',
   'reports.ready.count.one': '1 report ready',
   'reports.ready.count.other': '{{count}} reports ready',
 
+  'reports.failed.count.zero': '',
   'reports.failed.count.one': '1 report failed',
   'reports.failed.count.other': '{{count}} reports failed',
 
