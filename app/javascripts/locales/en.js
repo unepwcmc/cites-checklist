@@ -24,7 +24,7 @@ Em.I18n.locales.en = {
 
   'search.result.show_history': 'Show History',
   'search.result.hide_history': 'Hide History',
-  'distribution.more.count': 'and {{count}} more.',
+  'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 
   'timeline.party': 'See reservations to CITES listings',
