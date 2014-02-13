@@ -14,9 +14,10 @@ Checklist.SavedSearchView = Em.View.extend({
     // Ember's inheritance isn't ideal for this situation, so
     // unfortunately we don't get to use the fancy isInvisible and
     // beforeInvisible, etc. methods.
-    $(view.target).hide();
-    $(view.target).siblings('fieldset').fadeIn();
-    $(view.target).siblings('fieldset').find('input').focus();
+    var el = $(view.target).parent();
+    el.hide();
+    el.siblings('fieldset').fadeIn();
+    el.siblings('fieldset').find('input').focus();
   }
 });
 
