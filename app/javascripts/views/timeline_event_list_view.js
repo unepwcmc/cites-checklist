@@ -35,11 +35,11 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
       } else if (this.get('content.change_type_name') == 'DELETION'){
         return '-';
       } if (this.get('content.change_type_name') == 'RESERVATION'){
-        return Em.I18n.translations['timeline.event.symbol.reservation'];
+        return Em.I18n.t('timeline.event.symbol.reservation');
       } if (this.get('content.change_type_name') == 'RESERVATION_WITHDRAWAL'){
-        return Em.I18n.translations['timeline.event.symbol.reservation_withdrawal'];
+        return Em.I18n.t('timeline.event.symbol.reservation_withdrawal');
       } if (this.get('content.change_type_name') == 'AMENDMENT'){
-        return Em.I18n.translations['timeline.event.symbol.amendment'];
+        return Em.I18n.t('timeline.event.symbol.amendment');
       }
     }.property(),
     eventClass: function() {
@@ -56,13 +56,13 @@ Checklist.TimelineEventListView = Ember.CollectionView.extend({
     eventDescription: function(){
       if (this.get('content.change_type_name') == 'ADDITION' ||
         this.get('content.change_type_name') == 'AMENDMENT'){
-        return Em.I18n.translations['timeline.event.description.addition'] + this.get('appendix');
+        return Em.I18n.t('timeline.event.description.addition') + this.get('appendix');
       } else if (this.get('content.change_type_name') == 'DELETION'){
-        return Em.I18n.translations['timeline.event.description.addition'] + this.get('appendix');
+        return Em.I18n.t('timeline.event.description.addition') + this.get('appendix');
       } else if (this.get('content.change_type_name') == 'RESERVATION'){
-        return Em.I18n.translations['timeline.event.description.reservation'];
+        return Em.I18n.t('timeline.event.description.reservation');
       } else if (this.get('content.change_type_name') == 'RESERVATION_WITHDRAWAL'){
-        return Em.I18n.translations['timeline.event.description.reservation_withdrawal'];
+        return Em.I18n.t('timeline.event.description.reservation_withdrawal');
       }
     }.property(),
 

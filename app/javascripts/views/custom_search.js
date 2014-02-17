@@ -57,13 +57,13 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
   grouping: Checklist.Helpers.generateId(),
 
   content: [{
-    name: Em.I18n.translations['advanced.online_view.alphabetical'],
+    name: Em.I18n.t('advanced.online_view.alphabetical'),
     value: 'alphabetical'
   }, {
-    name: Em.I18n.translations['advanced.online_view.taxonomic'],
+    name: Em.I18n.t('advanced.online_view.taxonomic'),
     value: 'taxonomic'
   }, {
-    name: Em.I18n.translations['advanced.online_view.appendix'],
+    name: Em.I18n.t('advanced.online_view.appendix'),
     value: 'appendix'
   }],
 
