@@ -3,9 +3,9 @@
     <span class="appendix_{{unbound this.species_listing_name}}_population">{{unbound this.name}}</span>
   {{/each}}
   {{#if view.showMore}}
-    and {{unbound view.count}} more.
+    {{t distribution.more countBinding="view.count"}}
     <a class="btn-saved">
-      See all...
+      {{t distribution.see_all }}
       <div class="drop">
         <div class="drop-holder">
           <ul>

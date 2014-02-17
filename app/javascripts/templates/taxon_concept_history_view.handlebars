@@ -1,6 +1,6 @@
 {{#unless has_events}}
   <div class="no-history-graphs">
-    No history information is available for this taxon.
+    {{t timeline.nohistory}}
   </div>
 {{/unless}}
 
@@ -10,14 +10,14 @@
 
   {{#if view.countryCount}}
     <a {{action "expandCountryTimeline" target="view"}} class="expandCountryTimeline">
-      {{tt timeline.party}}
+      {{t timeline.party}}
     </a>
 
     <div class="country-timelines">
       {{#each timelines}}
         {{#if hasNestedTimelines}}
           <div class="text-holder">
-            <span>Appendix-{{unbound appendix}} reservations:</span>
+            <span>{{t timeline.reservations appendixBinding="appendix"}}</span>
           </div>
           {{collection Checklist.TimelineView contentBinding="timelines"}}
           {{collection Checklist.TimelineYearListView contentBinding="view.content.timeline_years"}}
@@ -30,6 +30,6 @@
 
 {{#if has_descendant_timelines}}
   <div class="sub-timeline-note">
-    NB: this taxon is split-listed. See also timeline(s) for lower taxa.
+    {{t timeline.split}}
   </div>
 {{/if}}

@@ -33,15 +33,15 @@
           {{/unless}}
           <ul class="default-list">
             {{#if view.showEnglish }}
-              <li>ENG - {{collection Checklist.TaxonConceptCommonNameView
+              <li>{{t advanced.common_names.en}} - {{collection Checklist.TaxonConceptCommonNameView
               contentBinding="view.english"}}</li>
             {{/if}}
             {{#if view.showSpanish }}
-              <li>SPA - {{collection Checklist.TaxonConceptCommonNameView
+              <li>{{t advanced.common_names.es}} - {{collection Checklist.TaxonConceptCommonNameView
               contentBinding="view.spanish"}}</li>
             {{/if}}
             {{#if view.showFrench }}
-              <li>FRE - {{collection Checklist.TaxonConceptCommonNameView
+              <li>{{t advanced.common_names.fr}} - {{collection Checklist.TaxonConceptCommonNameView
               contentBinding="view.french"}}</li>
             {{/if}}
           </ul>
@@ -82,12 +82,12 @@
   </div>
   <div class="opener-holder">
     <div class="opener">
-      Show History
-      <span>&#9660;</span>
+      {{t search.result.show_history}}
+      <span class="ico">&#9660;</span>
     </div>
     <div class="closer">
-      Hide History
-      <span>x</span>
+      {{t search.result.hide_history}}
+      <span class="ico">x</span>
     </div>
   </div>
   {{/unless}}

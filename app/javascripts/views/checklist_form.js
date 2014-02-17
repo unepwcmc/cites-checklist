@@ -112,6 +112,8 @@ Checklist.SearchTextField = Em.TextField.extend({
   }
 });
 
+Checklist.SearchTextField.reopen(Em.I18n.TranslateableAttributes);
+
 /*
  * An extended TextField for use in location search.
  *
@@ -169,3 +171,5 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
     }
   }
 });
+
+Checklist.GeoEntityTextField.reopen(Em.I18n.TranslateableAttributes);
