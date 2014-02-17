@@ -19,12 +19,12 @@ Checklist.AppendixBtnView = Ember.View.extend({
         prefix = '';
 
     if (width > 1200) {
-      prefix = Em.I18n.translations['search.by_appendix.all'] + ' ';
+      prefix = Em.I18n.t('search.by_appendix.all') + ' ';
     }
 
     var appendices = this.get('content');
     if (appendices.length === 0 || appendices.length == 3) {
-      return prefix + Em.I18n.translations['search.by_appendix.appxs'];
+      return prefix + Em.I18n.t('search.by_appendix.appxs');
     } else {
       return appendices.sort().join(", ");
     }
