@@ -9,5 +9,5 @@ Checklist.Country.reopenClass({
   // consequently, territories would not get fetched for location dropdown
   // this is an ugly workaround to a problem that seems to be too ember-data
   // specific
-  collectionUrl: 'geo_entities?geo_entity_types_set=2'
+  collectionUrl: 'geo_entities?geo_entity_types_set=2&1'
 });
