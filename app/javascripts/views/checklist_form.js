@@ -35,6 +35,7 @@ Checklist.SearchTextField = Em.TextField.extend({
     var params = {
       param_name: 'scientific_name',
       value: event.value,
+      visibility: 'checklist',
       per_page: 10
     };
 
