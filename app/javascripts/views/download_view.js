@@ -40,7 +40,9 @@ Checklist.DownloadView = Em.View.extend({
         download: {
           doc_type: doc_type.toLowerCase(),
           format: format.toLowerCase()
-      }}, params)
+        },
+        intro: $('#include-intro').is(':checked')
+      }, params)
     );
   },
 
