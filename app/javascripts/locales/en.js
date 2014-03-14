@@ -52,6 +52,8 @@ Em.I18n.locales.en = {
   'advanced.display.synonyms': 'Synonyms',
   'advanced.display.author_name': 'Author\'s name',
   'advanced.display.unfold_history': 'History of listing',
+  'advanced.downloads': 'Downloads',
+  'advanced.downloads.include_intro':  'Include introduction in PDF',
 
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
