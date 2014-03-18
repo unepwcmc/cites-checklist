@@ -18,6 +18,8 @@ CLDR = {
 
 require('checklist/vendor/i18n');
 
+Em.I18n.locales = {};
+
 minispade.requireAll(/locales/);
 minispade.requireAll(/templates/);
 

@@ -1,13 +1,13 @@
-Em.I18n.locales.en = {
-  'language.en': 'English',
-  'language.es': 'Spanish',
-  'language.fr': 'French',
-  'title': 'Checklist of CITES Species',
-  'about.title': 'About the CITES Checklist',
-  'terms.title': 'Terms of Use',
-  'toplink.about': 'About',
-  'toplink.terms': 'Terms of Use',
-  'powered.by': 'Powered By',
+Em.I18n.locales.es = {
+  'language.en': 'FR English',
+  'language.es': 'FR Spanish',
+  'language.fr': 'FR French',
+  'title': 'FR Checklist of CITES Species',
+  'about.title': 'FR About the CITES Checklist',
+  'terms.title': 'FR Terms of Use',
+  'toplink.about': 'FR About',
+  'toplink.terms': 'FR Terms of Use',
+  'powered.by': 'FR Powered By',
 
   'search.by_taxon.button': 'SEARCH',
   'search.by_taxon.placeholder': 'Species, higher taxon, synonym or common name...',
