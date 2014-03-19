@@ -11,10 +11,14 @@ Checklist.TaxonConceptController = Ember.ArrayController.extend({
     if (this.get('content.isLoaded')){
       this.set('taxaCount', this.get('content').objectAt(0).get('total_cnt'));
       this.set('contentHistory',
-        Checklist.store.findMany(Checklist.TimelinesForTaxonConcept, this.get('contentIds'))
+        Checklist.store.find(
+          Checklist.TimelinesForTaxonConcept, {
+            taxon_concept_ids: this.get('contentIds'), locale: Em.I18n.currentLocale
+          }
+        )
       );
     }
-  }.observes('content.isLoaded','contentIds'),
+  }.observes('content.@each.isLoaded','contentIds'),
 
   refresh: function(params) {
     this.set('content', Checklist.store.find(

@@ -1,8 +1,3 @@
-{{! Inline if helpers in Handlebars are rendered with binding elements
-    so an unpleasant repetition has to be made here. }}
-
-{{#if view.isChecked}}
-  <input type="radio" class="styled" name="{{unbound view.grouping}}" id="{{unbound name}}" checked> <label for="{{unbound name}}">{{unbound name}}</label>
-{{else}}
-  <input type="radio" class="styled" name="{{unbound view.grouping}}" id="{{unbound name}}"> <label for="{{unbound name}}">{{unbound name}}</label>
-{{/if}}
+<input type="radio" name="{{unbound view.grouping}}" id="{{unbound this}}"
+{{bindAttr checked="view.isChecked"}}>
+<label for="{{unbound this}}">{{view.displayName}}</label>

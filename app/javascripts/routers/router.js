@@ -20,12 +20,28 @@ Checklist.Router = Ember.Router.extend({
         }
         Em.I18n.translations = Em.I18n.locales[locale];
         Em.I18n.currentLocale = locale;
-        console.log(locale);
+        console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
+        router.get('filtersController').set(
+          'appendicesContent',
+          Checklist.store.findQuery(Checklist.Appendix, {})
+        );
       },
 
       index: Ember.Route.extend({
         route: '/',
         connectOutlets: function(router, event) {
+          router.get('filtersController').set(
+            'countriesContent',
+            Checklist.store.findQuery(
+              Checklist.Country, {geo_entity_types_set: 2, locale: Em.I18n.currentLocale}
+            )
+          );
+          router.get('filtersController').set(
+            'regionsContent',
+            Checklist.store.findQuery(
+              Checklist.Country, {geo_entity_types_set: 1, locale: Em.I18n.currentLocale}
+            )
+          );
           var params = router.get('filtersController').toParams();
           router.get('taxonConceptController').refresh(params);
 
@@ -37,7 +53,18 @@ Checklist.Router = Ember.Router.extend({
       search: Ember.Route.extend({
         route: '/search/:params',
         connectOutlets: function(router, event) {
-          console.log(event.locale);
+          router.get('filtersController').set(
+            'countriesContent',
+            Checklist.store.findQuery(
+              Checklist.Country, {geo_entity_types_set: 2, locale: Em.I18n.currentLocale}
+            )
+          );
+          router.get('filtersController').set(
+            'regionsContent',
+            Checklist.store.findQuery(
+              Checklist.Country, {geo_entity_types_set: 1, locale: Em.I18n.currentLocale}
+            )
+          );
           var params = Checklist.Helpers.deparam(event.params);
 
           router.get('filtersController').fromParams(params);
@@ -67,6 +94,10 @@ Checklist.Router = Ember.Router.extend({
         }
       })
     }),
+
+    doHome: function(router, event) {
+      router.transitionTo('index');
+    },
 
     doAbout: function(router, event) {
       router.transitionTo('about');
