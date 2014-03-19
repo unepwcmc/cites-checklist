@@ -121,6 +121,7 @@ Checklist.FiltersController = Ember.Object.extend({
       show_english : 1,
       show_spanish : 1,
       show_french : 1,
+      intro : 1,
       locale : Em.I18n.currentLocale
     };
   },
