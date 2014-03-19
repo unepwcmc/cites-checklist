@@ -1,7 +1,4 @@
 Em.I18n.locales.en = {
-  'language.en': 'English',
-  'language.es': 'Spanish',
-  'language.fr': 'French',
   'title': 'Checklist of CITES Species',
   'about.title': 'About the CITES Checklist',
   'terms.title': 'Terms of Use',
