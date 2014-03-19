@@ -4,13 +4,10 @@ Checklist.FiltersController = Ember.Object.extend({
    * loading events properly, so we use findQuery with an empty query
    * string.
    */
-  countriesContent : Checklist.store.findQuery(Checklist.Country, {}),
   countries : [],
   countriesIds : [],
-  regionsContent : Checklist.store.findQuery(Checklist.Region, {}),
   regions : [],
   regionsIds: [],
-  appendicesContent : Checklist.store.findQuery(Checklist.Appendix, {}),
   appendices : [],
   appendicesIds : [],
   taxonomicLayout : false,
@@ -72,18 +69,9 @@ Checklist.FiltersController = Ember.Object.extend({
             return that.get('appendicesIds').contains(item.get('abbreviation'));
           }
         )
-    );
+      );
     }
   }.observes('appendicesContent.isLoaded','appendicesIds'),
-
-  localeDidChange: function() {
-    var locale = this.get('locale');
-
-    if (Em.I18n.locales[locale]) {
-      Em.I18n.currentLocale = locale;
-      CLDR.defaultLanguage = locale;
-    }
-  }.observes('locale'),
 
   resetParams: function() {
     this.set('countries',[]);
@@ -162,7 +150,5 @@ Checklist.FiltersController = Ember.Object.extend({
     this.set('scientificName', params.scientific_name || "");
     this.set('page', parseInt(params.page, 10) || 1);
     this.set('perPage', parseInt(params.perPage, 10) || 20);
-
-    this.set('locale', params.locale);
   }
 });

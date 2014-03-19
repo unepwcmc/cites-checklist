@@ -56,16 +56,7 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
 
   grouping: Checklist.Helpers.generateId(),
 
-  content: [{
-    name: Em.I18n.t('advanced.online_view.alphabetical'),
-    value: 'alphabetical'
-  }, {
-    name: Em.I18n.t('advanced.online_view.taxonomic'),
-    value: 'taxonomic'
-  }, {
-    name: Em.I18n.t('advanced.online_view.appendix'),
-    value: 'appendix'
-  }],
+  content: ['alphabetical', 'taxonomic', 'appendix'],
 
   itemViewClass: Ember.View.extend({
     classNames: ['row'],
@@ -80,7 +71,7 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
     isChecked: function() {
       var controller = this.get('controller');
 
-      switch (this.get('context').value) {
+      switch (this.get('context')) {
         case "alphabetical":
           return !controller.get('taxonomicLayout') &&
                  !controller.get('levelOfListing');
@@ -96,11 +87,15 @@ Checklist.SortingRadioButtons = Ember.CollectionView.extend({
       }
     }.property(),
 
+    displayName: function(){
+      return Em.I18n.t('advanced.online_view.' + this.get('context'));
+    }.property('context'),
+
     mouseUp: function(event) {
       var router = Checklist.get('router');
       var controller = this.get('controller');
 
-      switch (this.get('context').value) {
+      switch (this.get('context')) {
         case "alphabetical":
           controller.set('taxonomicLayout', false);
           controller.set('levelOfListing', false);
