@@ -1,6 +1,6 @@
 Checklist.Router = Ember.Router.extend({
   location: Checklist.CONFIG.url_type,
-  enableLogging: true,
+  //enableLogging: true,
 
   root: Ember.Route.extend({
 
@@ -76,16 +76,26 @@ Checklist.Router = Ember.Router.extend({
       about: Ember.Route.extend({
         route: '/about',
         connectOutlets: function(router, event) {
-          router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.AboutHeaderView});
-          router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.AboutView});
+          Checklist.StaticPage.getCompiledTemplate('about_page').then(function(template) {
+            router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.AboutHeaderView});
+            router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.AboutView});
+          }, function(error) {
+            console.log(error);
+            router.transitionTo('index');
+          });
         }
       }),
 
       termsOfUse: Ember.Route.extend({
         route: '/terms-of-use',
         connectOutlets: function(router, event) {
-          router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.TermsOfUseHeaderView});
-          router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.TermsOfUseView});
+          Checklist.StaticPage.getCompiledTemplate('terms_of_use_page').then(function(template) {
+            router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.TermsOfUseHeaderView});
+            router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.TermsOfUseView});
+          }, function(error) {
+            console.log(error);
+            router.transitionTo('index');
+          });
         }
       })
     }),
