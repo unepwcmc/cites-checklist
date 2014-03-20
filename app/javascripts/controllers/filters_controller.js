@@ -1,15 +1,15 @@
 Checklist.FiltersController = Ember.Object.extend({
-  /*
-   * In the current version of Ember (0.9.8.1) findAll does not fire
-   * loading events properly, so we use findQuery with an empty query
-   * string.
-   */
   countries : [],
   countriesIds : [],
   regions : [],
   regionsIds: [],
   appendices : [],
   appendicesIds : [],
+  appendicesContent: [
+    Ember.Object.create({abbreviation: 'I'}),
+    Ember.Object.create({abbreviation: 'II'}),
+    Ember.Object.create({abbreviation: 'III'})
+  ],
   taxonomicLayout : false,
   levelOfListing : false,
   showSynonyms : true,
