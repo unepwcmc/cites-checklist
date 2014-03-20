@@ -21,10 +21,6 @@ Checklist.Router = Ember.Router.extend({
         Em.I18n.translations = Em.I18n.locales[locale];
         Em.I18n.currentLocale = locale;
         console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
-        router.get('filtersController').set(
-          'appendicesContent',
-          Checklist.store.findQuery(Checklist.Appendix, {})
-        );
       },
 
       index: Ember.Route.extend({
