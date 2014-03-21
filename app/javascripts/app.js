@@ -69,6 +69,7 @@ Checklist.download_store = DS.Store.create({
   })
 });
 
+require('checklist/static_page');
 require('checklist/routers/router');
 
 Checklist.initialize();
