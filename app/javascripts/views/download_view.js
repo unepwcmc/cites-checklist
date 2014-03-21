@@ -41,7 +41,8 @@ Checklist.DownloadView = Em.View.extend({
           doc_type: doc_type.toLowerCase(),
           format: format.toLowerCase()
         },
-        intro: $('#include-intro').is(':checked')
+        intro: $('#include-intro').is(':checked'),
+        locale: Em.I18n.currentLocale
       }, params)
     );
   },
