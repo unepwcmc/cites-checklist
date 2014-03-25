@@ -97,7 +97,40 @@ Checklist.Router = Ember.Router.extend({
             router.transitionTo('index');
           });
         }
-      })
+      }),
+
+      doLocaleEN: function(router, event) {
+        var newLocale = 'en';
+        var newState;
+        if (router.get('currentState.name') == 'search'){
+          newState = 'index';
+        } else {
+          newState = router.get('currentState.name');
+        }
+        router.transitionTo(newState, {locale: newLocale});
+      },
+
+      doLocaleES: function(router, event) {
+        var newLocale = 'es';
+        var newState;
+        if (router.get('currentState.name') == 'search'){
+          newState = 'index';
+        } else {
+          newState = router.get('currentState.name');
+        }
+        router.transitionTo(newState, {locale: newLocale});
+      },
+
+      doLocaleFR: function(router, event) {
+        var newLocale = 'fr';
+        var newState;
+        if (router.get('currentState.name') == 'search'){
+          newState = 'index';
+        } else {
+          newState = router.get('currentState.name');
+        }
+        router.transitionTo(newState, {locale: newLocale});
+      }
     }),
 
     doHome: function(router, event) {
@@ -110,18 +143,6 @@ Checklist.Router = Ember.Router.extend({
 
     doTermsOfUse: function(router, event) {
       router.transitionTo('termsOfUse');
-    },
-
-    doLocaleEN: function(router) {
-      router.transitionTo(router.get('currentPath'), {locale: 'en'});
-    },
-
-    doLocaleES: function(router) {
-      router.transitionTo(router.get('currentPath'), {locale: 'es'});
-    },
-
-    doLocaleFR: function(router) {
-      router.transitionTo(router.get('currentPath'), {locale: 'fr'});
     }
   })
 });
