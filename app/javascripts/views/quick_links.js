@@ -8,6 +8,6 @@ Checklist.QuickLinksView = Ember.View.extend({
     window.location = Checklist.store.adapter.url +
       Checklist.Download.collectionUrl + 'download_' +
       $(event.target).attr('data-doc-type') +
-      "?" + $.param($.extend(params, {format: format}));
+      "?" + $.param($.extend(params, {format: format, locale: Em.I18n.currentLocale}));
   }
 });
