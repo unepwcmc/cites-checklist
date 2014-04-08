@@ -98,7 +98,7 @@ Em.I18n.locales.fr = {
   'reports.generating.title': 'Rapports en cours de production',
   'reports.latest.title': 'Votre rapport est en cours de production',
 
-  'splash.p1': 'La CITES (Convention sur le commerce international des espèces de faune et de flore sauvages menacées d\'extinction) est un accord international entre Etats qui vise à s'assurer que le commerce international de spécimens d'animaux ou de plantes sauvages ne menace pas la survie de ces derniers',
+  'splash.p1': 'La CITES (Convention sur le commerce international des espèces de faune et de flore sauvages menacées d\'extinction) est un accord international entre Etats qui vise à s\'assurer que le commerce international de spécimens d\'animaux ou de plantes sauvages ne menace pas la survie de ces derniers',
   'splash.p2': 'La liste de contrôle CITES permet d\'explorer plus de 35 000 espèces animales ou végétales et de vérifier leur degré de protection',
   'splash.button': 'Commencer l\'exploration'
 };
