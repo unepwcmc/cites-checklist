@@ -52,6 +52,9 @@ Em.I18n.locales.en = {
   'advanced.display.unfold_history': 'History of listing',
   'advanced.downloads': 'Downloads',
   'advanced.downloads.include_intro':  'Include introduction in PDF',
+  'advanced.downloads.separator': 'CSV separator',
+  'advanced.downloads.separator.comma': 'comma',
+  'advanced.downloads.separator.semicolon': 'semicolon',
 
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
