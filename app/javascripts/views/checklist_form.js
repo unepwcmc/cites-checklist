@@ -36,8 +36,7 @@ Checklist.SearchTextField = Em.TextField.extend({
       param_name: 'scientific_name',
       value: event.value,
       visibility: 'checklist',
-      per_page: 10,
-      locale: Em.I18n.currentLocale
+      per_page: 10
     };
 
     var url = Checklist.CONFIG.backend_url + 'taxon_concepts/autocomplete';
