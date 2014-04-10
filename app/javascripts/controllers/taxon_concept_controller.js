@@ -23,7 +23,7 @@ Checklist.TaxonConceptController = Ember.ArrayController.extend({
   refresh: function(params) {
     this.set('content', Checklist.store.find(
       Checklist.Index,
-      params
+      $.extend({locale: Em.I18n.currentLocale}, params)
     ));
   }
 });
