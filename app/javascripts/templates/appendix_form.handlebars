@@ -1,8 +1,10 @@
 <div class="appendix-holder">
-  <a class="btn">
-    {{view Checklist.AppendixBtnView
-      contentBinding="controllers.filtersController.appendicesIds"}}
-  </a>
+  <div class="btn-wrapper">
+    <a class="btn">
+      {{view Checklist.AppendixBtnView
+        contentBinding="controllers.filtersController.appendicesIds"}}
+    </a>
+  </div>
   <div class="drop">
     <div class="drop-holder">
       {{collection Checklist.AppendixFormCollectionView
