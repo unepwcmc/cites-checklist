@@ -45,7 +45,7 @@ Em.I18n.locales.es = {
   'advanced.online_view': 'Vista en línea',
   'advanced.online_view.alphabetical': 'Alfabética',
   'advanced.online_view.taxonomic': 'Taxonómica',
-  'advanced.online_view.appendix': 'APÉNDICE',
+  'advanced.online_view.appendix': 'Apéndice',
   'advanced.display': 'MOSTRAR',
   'advanced.display.synonyms': 'Sinónimos',
   'advanced.display.author_name': 'Nombre del autor',
