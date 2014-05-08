@@ -33,19 +33,16 @@ Checklist.MainView = Ember.View.extend({
   },
 
   doLocaleEN: function(event) {
-    $.colorbox.remove();
     Checklist.router.transitionTo('home.index', {locale: 'en'});
     $('#landing-btn').colorbox(this.get('landingColorboxConfig'));
   },
 
   doLocaleES: function(event) {
-    $.colorbox.remove();
     Checklist.router.transitionTo('home.index', {locale: 'es'});
     $('#landing-btn').colorbox(this.get('landingColorboxConfig'));
   },
 
   doLocaleFR: function(event) {
-    $.colorbox.remove();
     Checklist.router.transitionTo('home.index', {locale: 'fr'});
     $('#landing-btn').colorbox(this.get('landingColorboxConfig'));
   }
