@@ -19,7 +19,7 @@ Checklist.Router = Ember.Router.extend({
           locale = 'en';
         }
         Em.I18n.translations = Em.I18n.locales[locale];
-        Em.I18n.currentLocale = locale;
+        Ember.set('Em.I18n.currentLocale',  locale);
         console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
       },
 
