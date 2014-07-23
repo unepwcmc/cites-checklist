@@ -36,6 +36,7 @@ Checklist.SearchTextField = Em.TextField.extend({
       param_name: 'scientific_name',
       value: event.value,
       visibility: 'checklist',
+      locale: Em.I18n.currentLocale,
       per_page: 10
     };
 
