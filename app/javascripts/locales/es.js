@@ -1,6 +1,6 @@
 Em.I18n.locales.es = {
   'title': 'Lista de especies CITES',
-  'about.title': 'Acerca de la Lista de especies CITES',
+  'about.title': 'Sobre la Lista de referencia CITES',
   'terms.title': 'Condiciones de uso',
   'toplink.about': 'Acerca de',
   'toplink.terms': 'Condiciones de uso',
