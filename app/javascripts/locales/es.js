@@ -65,7 +65,7 @@ Em.I18n.locales.es = {
   'download.remove': '¿Quitar?',
   'download.spinner': 'Descargando...',
 
-  'saved_search.button': 'GUARDAR ESTA',
+  'saved_search.button': 'GUARDAR ESTO',
   'saved_search.count.zero': '',
   'saved_search.count.one': '1 búsqueda guardada',
   'saved_search.count.other': '{{count}} búsquedas guardadas',
