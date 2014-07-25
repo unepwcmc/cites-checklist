@@ -39,9 +39,9 @@ Em.I18n.locales.fr = {
 
   'advanced.title': 'Options avancées',
   'advanced.common_names': 'NOMS COMMUNS',
-  'advanced.common_names.en': 'Anglais',
-  'advanced.common_names.es': 'Espagnol',
-  'advanced.common_names.fr': 'Français',
+  'advanced.common_names.en': 'EN',
+  'advanced.common_names.es': 'ES',
+  'advanced.common_names.fr': 'FR',
   'advanced.online_view': 'Affichage en ligne',
   'advanced.online_view.alphabetical': 'Alphabétique',
   'advanced.online_view.taxonomic': 'Taxonomique',
