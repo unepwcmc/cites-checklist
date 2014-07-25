@@ -39,9 +39,9 @@ Em.I18n.locales.es = {
 
   'advanced.title': 'Opciones avanzadas',
   'advanced.common_names': 'NOMBRES COMUNES',
-  'advanced.common_names.en': 'ENG',
-  'advanced.common_names.es': 'SPA',
-  'advanced.common_names.fr': 'FRE',
+  'advanced.common_names.en': 'EN',
+  'advanced.common_names.es': 'ES',
+  'advanced.common_names.fr': 'FR',
   'advanced.online_view': 'Vista en línea',
   'advanced.online_view.alphabetical': 'Alfabética',
   'advanced.online_view.taxonomic': 'Taxonómica',
