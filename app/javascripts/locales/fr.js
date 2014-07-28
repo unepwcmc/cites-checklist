@@ -1,6 +1,6 @@
 Em.I18n.locales.fr = {
-  'title': 'Liste de contrôle des espèces CITES',
-  'about.title': 'A propos de la liste de contrôle CITES',
+  'title': 'Liste des espèces CITES',
+  'about.title': 'A propos de la Liste des espèces CITES',
   'terms.title': 'Conditions d\'utilisation',
   'toplink.about': 'A propos de',
   'toplink.terms': 'Conditions d\'utilisation',
@@ -92,7 +92,7 @@ Em.I18n.locales.fr = {
   'reports.failed.count.other': 'Echec de {{count}} rapports',
 
   'reports.failed.description': 'Vous pouvez relancer un téléchargement, ou le supprimer de la liste',
-  'reports.generating.description': 'Cela peut prendre du temps, mais vous pouvez fermer cette fenêtre et continuer de travailler à d\'autres rapports sur les Listes de contrôle CITES',
+  'reports.generating.description': 'Cela peut prendre du temps, mais vous pouvez fermer cette fenêtre et continuer de travailler à d\'autres rapports sur les Listes des espèces CITES',
 
   'reports.ready.title': 'Vos rapports',
   'reports.generating.title': 'Rapports en cours de production',
