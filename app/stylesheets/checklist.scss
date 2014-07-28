@@ -1000,18 +1000,22 @@ ul.quick-links {
     }
 
     .btn{
-      display:inline-block;
-      color:#fff;
-      margin:4px 0;
-      line-height:12px;
-      font-size:12px;
-      font-weight:bold;
-      text-align:center;
-      padding:5px 12px;
+      background: none repeat scroll 0 0 #33536a;
+      border-radius: 15px;
+      color: #fff;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 14px;
       overflow: hidden;
+      padding: 5px 12px;
+      text-align: center;
+      vertical-align: middle;
 
       span{
-        display:block;
+        display:table-cell;
+        vertical-align: middle;
+        height: 24px;
         padding:0 15px 0 0;
         background:url(../images/down-arrow.png) no-repeat 100% 50%;
       }
@@ -1023,10 +1027,6 @@ ul.quick-links {
       text-decoration:none;
     }
     .btn-wrapper {
-      border-radius: 15px;
-      -moz-border-radius: 15px;
-      -webkit-border-radius: 15px;
-      background:#33536a;
       vertical-align:middle;
       margin:4px 0;
     }
