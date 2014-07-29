@@ -12,7 +12,7 @@ Handlebars.registerHelper("commaify", function(value, options) {
   var comma_value = "";
   for ( var i = 0; i <= value.length-1; i++ ){
     comma_value = value[i] + comma_value;
-    if ((i+1) % 3 == 0 && (value.length-1) !== i) comma_value = ',' + comma_value;
+    if ((i+1) % 3 === 0 && (value.length-1) !== i) { comma_value = ',' + comma_value; }
   }
 
   return new Handlebars.SafeString(comma_value);

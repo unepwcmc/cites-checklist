@@ -35,7 +35,9 @@ Checklist.SavedSearchTextField = Em.TextField.extend({
   },
   insertNewline: function(view) {
     var val = $(view.target).val();
-    if (!val) return;
+    if (!val) {
+      return;
+    }
 
     var saved_search = Checklist.local_store.createRecord(
       Checklist.SavedSearch,

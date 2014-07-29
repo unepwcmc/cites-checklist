@@ -26,7 +26,8 @@ Em.I18n.locales.es = {
   'distribution.see_all': 'Ver todos...',
 
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
-  'timeline.split': 'NB: inclusión dividida para este taxón. Vea también la(s) línea(s) de tiempo para los taxones inferiores.',
+  'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
+    'la(s) línea(s) de tiempo para los taxones inferiores.',
   'timeline.nohistory': 'No hay información de historial para este taxón.',
   'timeline.reservations': 'Reservas al Apéndice {{appendix}}:',
   'timeline.event.appendix': 'Apéndice {{appendix}} de la CITES',
@@ -91,14 +92,22 @@ Em.I18n.locales.es = {
   'reports.failed.count.one': 'Se produjo un error en 1 informe',
   'reports.failed.count.other': 'Se produjo un error en {{count}} informes',
 
-  'reports.failed.description': 'Puede reiniciar una descarga, o bien quitarla de la lista.',
-  'reports.generating.description': 'Puede demorar cierto tiempo, pero usted puede cerrar esta ventana y continuar trabajando con otros informes de la Lista de especies CITES.',
+  'reports.failed.description': 'Puede reiniciar una descarga, o bien ' +
+    'quitarla de la lista.',
+  'reports.generating.description': 'Puede demorar cierto tiempo, pero ' +
+    'usted puede cerrar esta ventana y continuar trabajando con otros ' +
+    'informes de la Lista de especies CITES.',
 
   'reports.ready.title': 'Sus informes',
   'reports.generating.title': 'Generando informes actualmente',
   'reports.latest.title': 'Se ha generado su informe',
 
-  'splash.p1': 'La CITES (la Convención sobre el Comercio Internacional de Especies Amenazadas de Fauna y Flora Silvestres) es un acuerdo internacional concertado entre los gobiernos. Tiene por finalidad velar por que el comercio internacional de especímenes de animales y plantas silvestres no constituya una amenaza para su supervivencia.',
-  'splash.p2': 'La Lista de especies CITES le permite explorar más de 35.000 especies de animales y plantas y su grado de protección.',
+  'splash.p1': 'La CITES (la Convención sobre el Comercio Internacional de ' +
+    'Especies Amenazadas de Fauna y Flora Silvestres) es un acuerdo ' +
+    'internacional concertado entre los gobiernos. Tiene por finalidad ' +
+    'velar por que el comercio internacional de especímenes de animales y ' +
+    'plantas silvestres no constituya una amenaza para su supervivencia.',
+  'splash.p2': 'La Lista de especies CITES le permite explorar más de ' +
+    '35.000 especies de animales y plantas y su grado de protección.',
   'splash.button': 'Comenzar a explorar'
 };

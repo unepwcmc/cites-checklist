@@ -11,4 +11,4 @@ Checklist.LocationsLoader = {
     });
     return promise;
   }
-}
+};

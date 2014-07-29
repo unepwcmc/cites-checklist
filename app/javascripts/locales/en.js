@@ -26,7 +26,8 @@ Em.I18n.locales.en = {
   'distribution.see_all': 'See all...',
 
   'timeline.party': 'See reservations to CITES listings',
-  'timeline.split': 'NB: this taxon is split-listed. See also timeline(s) for lower taxa.',
+  'timeline.split': 'NB: this taxon is split-listed. See also timeline(s) ' +
+    'for lower taxa.',
   'timeline.nohistory': 'No history information is available for this taxon.',
   'timeline.reservations': 'Appendix-{{appendix}} reservations:',
   'timeline.event.appendix': 'CITES Appendix {{appendix}}',
@@ -91,14 +92,21 @@ Em.I18n.locales.en = {
   'reports.failed.count.one': '1 report failed',
   'reports.failed.count.other': '{{count}} reports failed',
 
-  'reports.failed.description': 'You can restart a download, or remove it from the list.',
-  'reports.generating.description': 'It can take some time, but you can close this window and continue working in other CITES Checklist reports.',
+  'reports.failed.description': 'You can restart a download, or remove it ' +
+    'from the list.',
+  'reports.generating.description': 'It can take some time, but you can ' +
+    'close this window and continue working in other CITES Checklist reports.',
 
   'reports.ready.title': 'Your Reports',
   'reports.generating.title': 'Currently Generating Reportings',
   'reports.latest.title': 'Your report is being generated',
 
-  'splash.p1': 'CITES (the Convention on International Trade in Endangered Species of Wild Fauna and Flora) is an international agreement between governments that aims to ensure that international trade in specimens of wild animals and plants does not threaten their survival.',
-  'splash.p2': 'The Checklist of CITES Species allows the exploration of more than 35,000 species of animals and plants and their degree of protection.',
+  'splash.p1': 'CITES (the Convention on International Trade in Endangered ' +
+    'Species of Wild Fauna and Flora) is an international agreement between ' +
+    'governments that aims to ensure that international trade in specimens ' +
+    'of wild animals and plants does not threaten their survival.',
+  'splash.p2': 'The Checklist of CITES Species allows the exploration of ' +
+    'more than 35,000 species of animals and plants and their degree of ' +
+    'protection.',
   'splash.button': 'Start Exploring'
 };

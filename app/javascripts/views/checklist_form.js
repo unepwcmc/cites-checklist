@@ -64,7 +64,7 @@ Checklist.SearchTextField = Em.TextField.extend({
 
   focusOut: function(event) {
     if ($.browser.msie) {
-      if (this.$().val().length == 0) {
+      if (this.$().val().length === 0) {
         this.$().val(this.get('placeholder'));
       }
     }
@@ -82,9 +82,9 @@ Checklist.SearchTextField = Em.TextField.extend({
     var transform = function ($1, match) {
       return '<span style="text-decoration:underline">' + match + '</span>';
     };
-    return item.
-    replace(new RegExp('^(' + query + ')', 'i'), transform).
-    replace(new RegExp('=(' + query + ')', 'ig'), transform);
+    return item
+      .replace(new RegExp('^(' + query + ')', 'i'), transform)
+      .replace(new RegExp('=(' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
@@ -136,7 +136,7 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
 
   focusOut: function(event) {
     if ($.browser.msie) {
-      if (this.$().val().length == 0) {
+      if (this.$().val().length === 0) {
         this.$().val(this.get('placeholder'));
       }
     }

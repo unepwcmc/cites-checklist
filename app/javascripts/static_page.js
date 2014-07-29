@@ -19,4 +19,4 @@ Checklist.StaticPage = {
     }
     return promise;
   }
-}
+};
