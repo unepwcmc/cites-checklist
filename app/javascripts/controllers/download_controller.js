@@ -31,7 +31,7 @@ Checklist.DownloadController = Ember.ArrayController.extend({
   content: Checklist.store.findQuery(Checklist.Download, {ids: (function() {
     var store = Checklist.LocalStorageAdapter;
     return store.getAll(Checklist.Download).map(function(item, index) {
-      return item["id"];
+      return item.id;
     });
   })()}),
 
@@ -52,7 +52,7 @@ Checklist.DownloadController = Ember.ArrayController.extend({
     var store = Checklist.LocalStorageAdapter;
     var ids   = store.getAll(Checklist.Download).map(
       function(item, index) {
-        return item["id"];
+        return item.id;
       });
 
     // Query the server to return the current state of the objects for
@@ -102,7 +102,7 @@ Checklist.DownloadController = Ember.ArrayController.extend({
 
   _interval: null,
   startPolling: function() {
-    if (this.get('_interval') == null) {
+    if (this.get('_interval') === null) {
       var that = this;
       var id = setInterval(function() {
         that.refresh();
@@ -112,7 +112,7 @@ Checklist.DownloadController = Ember.ArrayController.extend({
     }
   },
   stopPolling: function() {
-    if (this.get('_interval') != null) {
+    if (this.get('_interval') !== null) {
       clearInterval(this.get('_interval'));
     }
   }

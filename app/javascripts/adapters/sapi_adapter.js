@@ -56,7 +56,7 @@ Checklist.DownloadAdapter = {
       var store = Checklist.LocalStorageAdapter;
       var ids   = store.getAll(Checklist.Download).map(
         function(item, index) {
-          return item["id"];
+          return item.id;
         });
 
       var content = Checklist.store.findQuery(Checklist.Download, {ids: ids});

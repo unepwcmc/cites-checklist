@@ -37,8 +37,12 @@ Checklist.Router = Ember.Router.extend({
               var params = router.get('filtersController').toParams();
               router.get('taxonConceptController').refresh(params);
 
-              router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
-              router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
+              router.get('applicationController').connectOutlet({
+                outletName: 'header', viewClass: Checklist.MainHeaderView
+              });
+              router.get('applicationController').connectOutlet({
+                outletName: 'main', viewClass: Checklist.MainView
+              });
             }, function(error){
               console.log(error);
             }
@@ -63,9 +67,13 @@ Checklist.Router = Ember.Router.extend({
               router.get('taxonConceptController').refresh(params);
 
               if (event.redraw === undefined || event.redraw) {
-                router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.MainHeaderView});
+                router.get('applicationController').connectOutlet({
+                  outletName: 'header', viewClass: Checklist.MainHeaderView
+                });
               }
-              router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.MainView});
+              router.get('applicationController').connectOutlet({
+                outletName: 'main', viewClass: Checklist.MainView
+              });
             }, function(error){
               console.log(error);
             }
@@ -77,8 +85,12 @@ Checklist.Router = Ember.Router.extend({
         route: '/about',
         connectOutlets: function(router, event) {
           Checklist.StaticPage.getCompiledTemplate('about_page').then(function(template) {
-            router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.AboutHeaderView});
-            router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.AboutView});
+            router.get('applicationController').connectOutlet({
+              outletName: 'header', viewClass: Checklist.AboutHeaderView
+            });
+            router.get('applicationController').connectOutlet({
+              outletName: 'main', viewClass: Checklist.AboutView
+            });
           }, function(error) {
             console.log(error);
             router.transitionTo('index');
@@ -90,8 +102,12 @@ Checklist.Router = Ember.Router.extend({
         route: '/terms-of-use',
         connectOutlets: function(router, event) {
           Checklist.StaticPage.getCompiledTemplate('terms_of_use_page').then(function(template) {
-            router.get('applicationController').connectOutlet({outletName: 'header', viewClass: Checklist.TermsOfUseHeaderView});
-            router.get('applicationController').connectOutlet({outletName: 'main', viewClass: Checklist.TermsOfUseView});
+            router.get('applicationController').connectOutlet({
+              outletName: 'header', viewClass: Checklist.TermsOfUseHeaderView
+            });
+            router.get('applicationController').connectOutlet({
+              outletName: 'main', viewClass: Checklist.TermsOfUseView
+            });
           }, function(error) {
             console.log(error);
             router.transitionTo('index');

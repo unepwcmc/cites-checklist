@@ -155,17 +155,17 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     },
     click: function(event) {
       // Ignore clicks on the history graph
-      if ($(event.target).parents('.slide').length > 0) return;
+      if ($(event.target).parents('.slide').length > 0) { return; }
       // Ignore clicks on circle icons
-      if ($(event.target).hasClass('circle')) return;
-      if ($(event.target).is('a.btn-saved')) return;
+      if ($(event.target).hasClass('circle')) { return; }
+      if ($(event.target).is('a.btn-saved')) { return; }
 
-      if (!this.get('context.isLoaded')) return;
+      if (!this.get('context.isLoaded')) { return; }
 
       var $timeline = this.$().find('.area-holder');
       var that = this;
 
-      if ($timeline.find('.area-b').length == 0) {
+      if ($timeline.find('.area-b').length === 0) {
         var view = Checklist.TaxonConceptHistoryView.create({
           content: that.get('context.timelines_for_taxon_concept')
         });
