@@ -20,7 +20,7 @@ Checklist.Router = Ember.Router.extend({
         }
         Em.I18n.translations = Em.I18n.locales[locale];
         Ember.set('Em.I18n.currentLocale',  locale);
-        console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
+        window.console && console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
       },
 
       index: Ember.Route.extend({
@@ -44,7 +44,7 @@ Checklist.Router = Ember.Router.extend({
                 outletName: 'main', viewClass: Checklist.MainView
               });
             }, function(error){
-              console.log(error);
+              window.console && console.log(error);
             }
           );
         }
@@ -75,7 +75,7 @@ Checklist.Router = Ember.Router.extend({
                 outletName: 'main', viewClass: Checklist.MainView
               });
             }, function(error){
-              console.log(error);
+              window.console && console.log(error);
             }
           );
         }
@@ -92,7 +92,7 @@ Checklist.Router = Ember.Router.extend({
               outletName: 'main', viewClass: Checklist.AboutView
             });
           }, function(error) {
-            console.log(error);
+            window.console && console.log(error);
             router.transitionTo('index');
           });
         }
@@ -109,7 +109,7 @@ Checklist.Router = Ember.Router.extend({
               outletName: 'main', viewClass: Checklist.TermsOfUseView
             });
           }, function(error) {
-            console.log(error);
+            window.console && console.log(error);
             router.transitionTo('index');
           });
         }
