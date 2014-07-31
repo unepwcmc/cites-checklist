@@ -11,20 +11,8 @@ Checklist.TaxonConceptHistoryView = Em.View.extend({
   leftOffsetInPixels: 50,
   rightOffsetInPixels: 8,
 
-  countryCount: 0,
-
   didInsertElement: function() {
     var that = this;
-
-    if (this.get('content.timelines').get('length')) {
-      var party_count = 0;
-
-      this.get('content.timelines').mapProperty('parties').forEach(function(item) {
-        party_count += item.length;
-      });
-
-      this.set('countryCount', party_count);
-    }
 
     // Namespace the resize events so that they can be removed when the
     // view is destroyed

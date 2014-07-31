@@ -18,7 +18,6 @@ Checklist.Timeline = DS.Model.extend({
   timeline_intervals: DS.hasMany('Checklist.TimelineInterval', { embedded: true }),
   timelines: DS.hasMany('Checklist.Timeline', { embedded: true }),
   parties: DS.attr('array', { defaultValue: [] }),
-  hasNestedTimelines: function(){
-    return this.get('timelines.length') > 0;
-  }.property()
+  continuesInPresent: DS.attr('boolean'),
+  hasNestedTimelines: DS.attr('boolean')
 });

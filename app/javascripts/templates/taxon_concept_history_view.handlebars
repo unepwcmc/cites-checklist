@@ -1,4 +1,4 @@
-{{#unless has_events}}
+{{#unless hasEvents}}
   <div class="no-history-graphs">
     {{t timeline.nohistory}}
   </div>
@@ -8,7 +8,7 @@
   {{collection Checklist.TimelineView contentBinding="timelines"}}
   {{collection Checklist.TimelineYearListView contentBinding="timeline_years"}}
 
-  {{#if view.countryCount}}
+  {{#if hasReservations}}
     <a {{action "expandCountryTimeline" target="view"}} class="expandCountryTimeline">
       {{t timeline.party}}
     </a>
@@ -28,7 +28,7 @@
 </div>
 
 
-{{#if has_descendant_timelines}}
+{{#if hasDescendantTimelines}}
   <div class="sub-timeline-note">
     {{t timeline.split}}
   </div>
