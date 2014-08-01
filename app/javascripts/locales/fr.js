@@ -15,6 +15,7 @@ Em.I18n.locales.fr = {
   'search.by_location.selected': 'Localisations sélectionnées',
   'search.by_location.regions': 'Régions',
   'search.by_location.countries': 'Pays et territoires',
+  'search.by_location.no_matches': 'Aucun résultat',
 
   'search.clear': 'Effacer la recherche',
   'search.no_results': 'Aucun taxon ne correspond à votre recherche',
