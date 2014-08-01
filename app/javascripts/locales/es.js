@@ -15,6 +15,7 @@ Em.I18n.locales.es = {
   'search.by_location.selected': 'Ubicaciones seleccionadas',
   'search.by_location.regions': 'Regiones',
   'search.by_location.countries': 'Países y territorios',
+  'search.by_location.no_matches': 'No resultados',
 
   'search.clear': 'Borrar el resultado de la búsqueda',
   'search.no_results': 'Su búsqueda no encontró ningún taxón.',

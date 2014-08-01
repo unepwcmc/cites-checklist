@@ -15,6 +15,7 @@ Em.I18n.locales.en = {
   'search.by_location.selected': 'Selected Locations',
   'search.by_location.regions': 'Regions',
   'search.by_location.countries': 'Countries and territories',
+  'search.by_location.no_matches': 'No matches',
 
   'search.clear': 'Clear Search',
   'search.no_results': 'Your search did not match any taxa.',
