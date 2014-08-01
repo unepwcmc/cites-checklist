@@ -33,7 +33,7 @@ Em.I18n.locales.es = {
   'timeline.event.appendix': 'Apéndice {{appendix}} de la CITES',
   'timeline.event.symbol.amendment': 'A',
   'timeline.event.symbol.reservation': 'R',
-  'timeline.event.symbol.reservation_withdrawal': 'W',
+  'timeline.event.symbol.reservation_withdrawal': 'RR',
   'timeline.event.description.addition': 'APÉNDICE',
   'timeline.event.description.reservation': 'RESERVA',
   'timeline.event.description.reservation_withdrawal': 'RETIRO DE RESERVA',
