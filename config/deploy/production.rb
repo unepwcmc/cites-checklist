@@ -3,16 +3,16 @@ set :rails_env, "production"
 set :domain, "unepwcmc-013.vm.brightbox.net"
 ## List of servers
 server "unepwcmc-013.vm.brightbox.net", :app, :web, :db, :primary => true
- 
+
 set :server_name, "#{application}.unepwcmc-013.vm.brightbox.net"
 set :sudo_user, "rails"
-set :app_port, "80" 
+set :app_port, "80"
 
 set :default_environment, {
-  'PATH' => "/home/rails/.rvm/gems/ruby-1.9.2-p320/bin:/home/rails/.rvm/bin:/home/rails/.rvm/rubies/ruby-1.9.2-p320/bin:$PATH",
-  'RUBY_VERSION' => 'ruby-1.9.2-p320',
-  'GEM_HOME' => '/home/rails/.rvm/gems/ruby-1.9.2-p320',
-  'GEM_PATH' => '/home/rails/.rvm/gems/ruby-1.9.2-p320',
+  'PATH' => "/home/rails/.rvm/gems/ruby-2.0.0-p481/bin:/home/rails/.rvm/bin:/home/rails/.rvm/rubies/ruby-2.0.0-p481/bin:$PATH",
+  'RUBY_VERSION' => 'ruby-2.0.0-p481',
+  'GEM_HOME' => '/home/rails/.rvm/gems/ruby-2.0.0-p481',
+  'GEM_PATH' => '/home/rails/.rvm/gems/ruby-2.0.0-p481',
 }
 
 desc "Configure VHost"
@@ -20,7 +20,7 @@ task :config_vhost do
 vhost_config =<<-EOF
 server {
   listen 80;
-  
+
   client_max_body_size 4G;
   server_name #{application}.unepwcmc-013.vm.brightbox.net #{application}.sw01.matx.info;
   keepalive_timeout 5;
@@ -32,7 +32,7 @@ server {
    expires max;
     add_header Cache-Control public;
   }
-  
+
   if (-f $document_root/system/maintenance.html) {
     return 503;
   }

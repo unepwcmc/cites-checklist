@@ -1,5 +1,5 @@
 <div class="row">
-  {{#unless view.isPartyTimeline}}
+  {{#unless party}}
     <div class="circle {{unbound view.colour}} category">{{unbound appendix}}</div>
   {{else}}
     <div class="circle {{unbound view.colour}} category party-tooltip" title="{{unbound party.name}}">
@@ -9,7 +9,7 @@
   {{collection Checklist.TimelineYearBarListView contentBinding="view.parentView.parentView.content.timeline_years"}}
   {{collection Checklist.TimelineIntervalListView contentBinding="timeline_intervals"}}
   {{collection Checklist.TimelineEventListView contentBinding="timeline_events"}}
-  {{#if view.continuesInPresent}}
+  {{#if continuesInPresent}}
     <div class="arrow {{unbound view.colour}}" style="right:3px"></div>
   {{/if}}
 </div>

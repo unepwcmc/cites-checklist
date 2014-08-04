@@ -6,8 +6,19 @@ require('checklist/vendor/spin.min');
 require('checklist/vendor/ember');
 require('checklist/vendor/ember-data');
 
-require('checklist/vendor/plurals');
-require('checklist/vendor/ember-i18n');
+// rather than include CLDR here, just a simple plural form implementation
+// EN, ES, FR only ever have 'one' or 'other'
+// 'zero' is for convenience
+
+CLDR = {
+  pluralForm: function myCustomInflector(n) {
+    return n === 0 ? 'zero' : n === 1 ? 'one' : 'other';
+  }
+};
+
+require('checklist/vendor/i18n');
+
+Em.I18n.locales = {};
 
 minispade.requireAll(/locales/);
 minispade.requireAll(/templates/);
@@ -58,6 +69,7 @@ Checklist.download_store = DS.Store.create({
   })
 });
 
+require('checklist/static_page');
 require('checklist/routers/router');
 
 Checklist.initialize();

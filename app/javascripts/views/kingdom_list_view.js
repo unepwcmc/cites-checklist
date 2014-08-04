@@ -133,7 +133,7 @@ Checklist.KingdomListView = Ember.View.extend({
      .resize(this.onWindowResize);
 
     // Redraw custom form elements (advanced options box)
-    if (Checklist.CFE != null) {
+    if (Checklist.CFE !== null) {
       Checklist.CFE.repaint();
     }
   },
@@ -200,7 +200,7 @@ Checklist.KingdomListView = Ember.View.extend({
       // wrapper in the grouping <div>
       if ($(item).hasClass('persist-area') || index == ($('.listing-item').length - 1)) {
         if (current_group.length > 0) {
-          var to_wrap = $(current_group).map (function () {return this.toArray();} );
+          var to_wrap = $(current_group).map(function() {return this.toArray();} );
           to_wrap.wrapAll('<div class="persist-area">');
         }
 

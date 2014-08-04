@@ -1,4 +1,6 @@
-<a href="#" {{action "save" target="view"}} class="btn"><span class="ico-star"></span>SAVE THIS</a>
+<a href="#" {{action "save" target="view"}} class="btn">
+  <span class="ico-star"></span>{{t saved_search.button}}
+</a>
 <fieldset class="saved-search">
   {{view Checklist.SavedSearchTextField
     filtersControllerBinding="controllers.filtersController"}}
@@ -6,13 +8,13 @@
 
 <div class="saved-holder">
   <a class="btn-saved">
-    {{tt saved_search.count
+    {{t saved_search.count
       countBinding="controllers.savedSearchController.content.length"}}
     <div class="drop">
       <div class="drop-holder">
         {{collection Checklist.SavedSearchCollectionView contentBinding="controllers.savedSearchController"}}
       </div>
-      <img src="/images/decor-dropdown-dark.png" alt="image description" class="decor" width="24" height="13" >
+      <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >
     </div>
   </a>
 </div>

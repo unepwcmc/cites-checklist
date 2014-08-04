@@ -35,6 +35,8 @@ Checklist.SearchTextField = Em.TextField.extend({
     var params = {
       param_name: 'scientific_name',
       value: event.value,
+      visibility: 'checklist',
+      locale: Em.I18n.currentLocale,
       per_page: 10
     };
 
@@ -62,7 +64,7 @@ Checklist.SearchTextField = Em.TextField.extend({
 
   focusOut: function(event) {
     if ($.browser.msie) {
-      if (this.$().val().length == 0) {
+      if (this.$().val().length === 0) {
         this.$().val(this.get('placeholder'));
       }
     }
@@ -80,9 +82,9 @@ Checklist.SearchTextField = Em.TextField.extend({
     var transform = function ($1, match) {
       return '<span style="text-decoration:underline">' + match + '</span>';
     };
-    return item.
-    replace(new RegExp('^(' + query + ')', 'i'), transform).
-    replace(new RegExp('=(' + query + ')', 'ig'), transform);
+    return item
+      .replace(new RegExp('^(' + query + ')', 'i'), transform)
+      .replace(new RegExp('=(' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
@@ -112,6 +114,8 @@ Checklist.SearchTextField = Em.TextField.extend({
   }
 });
 
+Checklist.SearchTextField.reopen(Em.I18n.TranslateableAttributes);
+
 /*
  * An extended TextField for use in location search.
  *
@@ -132,7 +136,7 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
 
   focusOut: function(event) {
     if ($.browser.msie) {
-      if (this.$().val().length == 0) {
+      if (this.$().val().length === 0) {
         this.$().val(this.get('placeholder'));
       }
     }
@@ -169,3 +173,5 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
     }
   }
 });
+
+Checklist.GeoEntityTextField.reopen(Em.I18n.TranslateableAttributes);

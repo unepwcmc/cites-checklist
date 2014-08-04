@@ -1,10 +1,10 @@
 <div class="custom-holder">
-  <a href="#" class="btn-custom">Advanced Options</a>
+  <a href="#" class="btn-custom">{{t advanced.title}}</a>
   <div class="drop">
     <form action="#">
       <fieldset>
         <div class="row-holder">
-          <strong class="heading">COMMON NAMES</strong>
+          <strong class="heading">{{t advanced.common_names}}</strong>
           <div class="row">
               {{view Checklist.FilterCheckbox
                 context="showEnglish"
@@ -13,7 +13,7 @@
                 class="styled"
                 controllerBinding="controllers.filtersController"
               }}
-              <label for="eng-checkbox">ENG</label>
+              <label for="eng-checkbox">{{t advanced.common_names.en}}</label>
           </div>
           <div class="row">
             {{view Checklist.FilterCheckbox
@@ -23,7 +23,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="spa-checkbox">SPA</label>
+            <label for="spa-checkbox">{{t advanced.common_names.es}}</label>
           </div>
           <div class="row">
             {{view Checklist.FilterCheckbox
@@ -33,18 +33,18 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="fre-checkbox">FRE</label>
+            <label for="fre-checkbox">{{t advanced.common_names.fr}}</label>
           </div>
         </div>
 
         <div class="row-holder">
-          <strong class="heading">Online view</strong>
+          <strong class="heading">{{t advanced.online_view}}</strong>
           {{collection Checklist.SortingRadioButtons
             controllerBinding="controllers.filtersController"}}
         </div>
 
         <div class="row-holder style01">
-          <strong class="heading">DISPLAY</strong>
+          <strong class="heading">{{t advanced.display}}</strong>
           <div class="row">
             {{view Checklist.FilterCheckbox
               checkedBinding="controllers.filtersController.showSynonyms"
@@ -53,7 +53,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="synonyms-checkbox">Synonyms</label>
+            <label for="synonyms-checkbox">{{t advanced.display.synonyms}}</label>
           </div>
           <div class="row">
             {{view Checklist.FilterCheckbox
@@ -63,7 +63,7 @@
               class="styled"
               controllerBinding="controllers.filtersController"
             }}
-            <label for="author-checkbox">Author's name</label>
+            <label for="author-checkbox">{{t advanced.display.author_name}}</label>
           </div>
           <div class="row">
             {{view Checklist.UnfoldHistoryCheckbox
@@ -71,11 +71,11 @@
               id="history-checkbox"
               class="styled"
             }}
-            <label for="history-checkbox">History of listing</label>
+            <label for="history-checkbox">{{t advanced.display.unfold_history}}</label>
           </div>
         </div>
       </fieldset>
     </form>
-    <img src="/images/decor-dropdown-dark.png" alt="image description" class="decor" width="24" height="13" >
+    <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >
   </div>
 </div>

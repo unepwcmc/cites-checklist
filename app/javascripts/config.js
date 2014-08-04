@@ -40,4 +40,3 @@ Checklist.CONFIG = {
 
 Em.I18n.translations = Em.I18n.locales[Checklist.CONFIG.default_locale];
 Em.I18n.currentLocale = Checklist.CONFIG.default_locale;
-CLDR.defaultLanguage = Checklist.CONFIG.default_locale;

@@ -1,19 +1,22 @@
 <div class="btn-holder">
-  <a id="download-btn" class="btn red" href="#downloads">Download</a>
+  <a id="download-btn" class="btn red" href="#downloads">{{t downloads.button}}</a>
 
   <div style="display:none">
     <div id="downloads" class="lightbox downloads">
       <div class="heading-holder">
-        <strong class="heading">Download Taxa</strong>
+        <strong class="heading">{{t downloads.popup.title}}</strong>
       </div>
       <div class="text-holder">
-        Please select the format of your choice
+        {{t downloads.popup.info}}
 
         <p>
           <a href="#generating-download" {{action "download" target="view" on="click"}} data-format="pdf" data-doc-type="Index" id="download" class="btn red"><strong>PDF</strong></a>
           <a href="#generating-download" {{action "download" target="view" on="click"}} data-format="csv" data-doc-type="Index" id="download" class="btn red"><strong>CSV</strong></a>
           <a href="#generating-download" {{action "download" target="view" on="click"}} data-format="json" data-doc-type="Index" id="download" class="btn red"><strong>JSON</strong></a>
         </p>
+
+        <input id="include-intro" type="checkbox" checked="checked">
+        <label for="author-checkbox">{{t advanced.downloads.include_intro}}</label>
       </div>
     </div>
   </div>

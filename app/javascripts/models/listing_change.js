@@ -6,17 +6,17 @@ Checklist.ListingChange = DS.Model.extend({
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
   auto_note: DS.attr('string'),
-  short_note_en: DS.attr('string'),
-  full_note_en: DS.attr('string'),
-  hash_full_note_en: DS.attr('string'),
+  short_note: DS.attr('string'),
+  full_note: DS.attr('string'),
+  hash_full_note: DS.attr('string'),
   hash_ann_symbol:DS.attr('string'),
   hash_ann_parent_symbol: DS.attr('string'),
-  inherited_short_note_en: DS.attr('string'),
-  inherited_full_note_en: DS.attr('string'),
+  inherited_short_note: DS.attr('string'),
+  inherited_full_note: DS.attr('string'),
   hasParty: function(){
     return (this.get('party') !== null);
   }.property(),
   hasInheritedNote: function(){
-    return (this.get('inherited_full_note_en') !== null || this.get('inherited_short_note_en') !== null);
+    return (this.get('inherited_full_note') !== null || this.get('inherited_short_note') !== null);
   }.property()
 });

@@ -1,6 +1,6 @@
 <div class="listing-section">
   <div class="listing-section-header">
-    <div class="appendix">CITES Appendix {{unbound species_listing_name}}</div>
+    <div class="appendix">{{t timeline.event.appendix appendixBinding="species_listing_name"}}</div>
     <div class="party">{{#if hasParty}}{{unbound party.name}}{{/if}}</div>
     <div class="effective_at">{{unbound effective_at}}</div>
   </div>
@@ -9,11 +9,11 @@
       <!-- inclusion records have a combined inherited + own note -->
       <!-- own note first -->
       <p>
-        {{#if full_note_en}}
-          <p class="long-note">{{{unbound full_note_en}}}</p>
+        {{#if full_note}}
+          <p class="long-note">{{{unbound full_note}}}</p>
         {{else}}
-          {{#if short_note_en}}
-            <p class="short-note">{{{unbound short_note_en}}}</p>
+          {{#if short_note}}
+            <p class="short-note">{{{unbound short_note}}}</p>
           {{/if}}
         {{/if}}
       </p>
@@ -21,11 +21,11 @@
       {{#if auto_note}}
         <p>{{unbound auto_note}}</p>
       {{/if}}
-      {{#if inherited_full_note_en}}
-        <p class="long-note">{{{unbound inherited_full_note_en}}}</p>
+      {{#if inherited_full_note}}
+        <p class="long-note">{{{unbound inherited_full_note}}}</p>
       {{else}}
-        {{#if inherited_short_note_en}}
-          <p class="short-note">{{{unbound inherited_short_note_en}}}</p>
+        {{#if inherited_short_note}}
+          <p class="short-note">{{{unbound inherited_short_note}}}</p>
         {{/if}}
       {{/if}}
     {{else}}
@@ -33,18 +33,18 @@
       {{#if auto_note}}
         <p>{{unbound auto_note}}</p>
       {{/if}}
-      {{#if full_note_en}}
-        <p class="long-note">{{{unbound full_note_en}}}</p>
+      {{#if full_note}}
+        <p class="long-note">{{{unbound full_note}}}</p>
       {{else}}
-        {{#if short_note_en}}
-          <p class="short-note">{{{unbound short_note_en}}}</p>
+        {{#if short_note}}
+          <p class="short-note">{{{unbound short_note}}}</p>
         {{/if}}
       {{/if}}
     {{/if}}
 
     <p class="short-note">{{unbound hash_ann_symbol}}{{unbound hash_ann_parent_symbol}}</p>
-    {{#if hash_full_note_en}}
-    <p class="long-note">{{{unbound hash_full_note_en}}}</p>
+    {{#if hash_full_note}}
+    <p class="long-note">{{{unbound hash_full_note}}}</p>
     {{/if}}
   </div>
 </div>

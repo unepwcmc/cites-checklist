@@ -5,9 +5,5 @@ Checklist.Country = DS.Model.extend({
 });
 
 Checklist.Country.reopenClass({
-  // IE10 for some reason aappends a questionmark to this url
-  // consequently, territories would not get fetched for location dropdown
-  // this is an ugly workaround to a problem that seems to be too ember-data
-  // specific
-  collectionUrl: 'geo_entities?geo_entity_types_set=2&1'
+  collectionUrl: 'geo_entities'
 });
