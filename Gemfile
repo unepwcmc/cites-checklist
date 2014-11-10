@@ -11,7 +11,7 @@ gem "uglifier"
 gem "therubyracer"
 
 group :development do
-  gem "capistrano"
+  gem "capistrano", "2.15.5"
   gem "capistrano-ext"
   gem "jslint_on_rails"
 end
