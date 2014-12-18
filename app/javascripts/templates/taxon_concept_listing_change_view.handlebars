@@ -10,7 +10,13 @@
       <!-- own note first -->
       <p>
         {{#if full_note}}
-          <p class="long-note">{{{unbound full_note}}}</p>
+          <p class="long-note">
+            {{{unbound full_note}}}
+            {{#if nomenclature_note_en}}
+              <br />
+              {{{unbound nomenclature_note_en}}}
+            {{/if}}
+          </p>
         {{else}}
           {{#if short_note}}
             <p class="short-note">{{{unbound short_note}}}</p>
@@ -34,7 +40,13 @@
         <p>{{unbound auto_note}}</p>
       {{/if}}
       {{#if full_note}}
-        <p class="long-note">{{{unbound full_note}}}</p>
+        <p class="long-note">
+          {{{unbound full_note}}}
+          {{#if nomenclature_note_en}}
+              <br />
+              {{{unbound nomenclature_note_en}}}
+            {{/if}}
+        </p>
       {{else}}
         {{#if short_note}}
           <p class="short-note">{{{unbound short_note}}}</p>
