@@ -12,10 +12,6 @@
         {{#if full_note}}
           <p class="long-note">
             {{{unbound full_note}}}
-            {{#if nomenclature_note_en}}
-              <br />
-              {{{unbound nomenclature_note_en}}}
-            {{/if}}
           </p>
         {{else}}
           {{#if short_note}}
@@ -42,16 +38,17 @@
       {{#if full_note}}
         <p class="long-note">
           {{{unbound full_note}}}
-          {{#if nomenclature_note_en}}
-              <br />
-              {{{unbound nomenclature_note_en}}}
-            {{/if}}
         </p>
       {{else}}
         {{#if short_note}}
           <p class="short-note">{{{unbound short_note}}}</p>
         {{/if}}
       {{/if}}
+    {{/if}}
+    {{#if nomenclature_note_en}}
+      <p class="nomenclature-note">
+        {{{unbound nomenclature_note_en}}}
+      </p>
     {{/if}}
 
     <p class="short-note">{{unbound hash_ann_symbol}}{{unbound hash_ann_parent_symbol}}</p>
