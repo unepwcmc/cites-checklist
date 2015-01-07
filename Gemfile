@@ -9,6 +9,7 @@ gem "compass"
 gem "uglifier"
 
 gem "therubyracer"
+gem "libv8", "3.16.14.3"
 
 group :development do
   gem "capistrano", "2.15.5"
