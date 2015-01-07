@@ -7,14 +7,6 @@ server "unepwcmc-012.vm.brightbox.net", :app, :web, :db, :primary => true
 set :server_name, "#{application}.unepwcmc-012.vm.brightbox.net"
 set :sudo_user, "rails"
 set :app_port, "80"
-set :branch, :develop
-
-set :default_environment, {
-  'PATH' => "/home/rails/.rvm/gems/ruby-2.1.5/bin:/home/rails/.rvm/bin:/home/rails/.rvm/rubies/ruby-2.1.5/bin:$PATH",
-  'RUBY_VERSION' => 'ruby-2.1.5',
-  'GEM_HOME' => '/home/rails/.rvm/gems/ruby-2.1.5',
-  'GEM_PATH' => '/home/rails/.rvm/gems/ruby-2.1.5',
-}
 
 desc "Configure VHost"
 task :config_vhost do
