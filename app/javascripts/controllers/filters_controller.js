@@ -13,7 +13,7 @@ Checklist.FiltersController = Ember.Object.extend({
   taxonomicLayout : false,
   levelOfListing : false,
   showSynonyms : true,
-  showAuthor : false,
+  showAuthor : true,
   showEnglish : true,
   showSpanish : true,
   showFrench : true,
