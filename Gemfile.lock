@@ -44,7 +44,7 @@ GEM
     highline (1.6.21)
     jslint_on_rails (1.1.1)
     json (1.8.1)
-    libv8 (3.16.14.3)
+    libv8 (3.11.8.13)
     multi_json (1.10.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -62,8 +62,8 @@ GEM
     rvm-capistrano (1.5.4)
       capistrano (~> 2.15.4)
     sass (3.4.7)
-    therubyracer (0.12.1)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.11.3)
+      libv8 (~> 3.11.8.12)
       ref
     thor (0.19.1)
     uglifier (2.5.3)
@@ -79,10 +79,10 @@ DEPENDENCIES
   compass
   jslint_on_rails
   json
-  libv8 (= 3.16.14.3)
+  libv8 (= 3.11.8.13)
   rack
   rake-pipeline!
   rake-pipeline-web-filters!
   rvm-capistrano
-  therubyracer
+  therubyracer (= 0.11.3)
   uglifier
