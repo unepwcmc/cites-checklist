@@ -59,6 +59,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     ref (1.0.5)
+    rvm-capistrano (1.5.4)
+      capistrano (~> 2.15.4)
     sass (3.4.7)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
@@ -80,5 +82,6 @@ DEPENDENCIES
   rack
   rake-pipeline!
   rake-pipeline-web-filters!
+  rvm-capistrano
   therubyracer
   uglifier

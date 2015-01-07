@@ -7,6 +7,9 @@ set :application, "cites-checklist"
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
+require 'rvm/capistrano'
+set :rvm_ruby_string, '2.1.5'
+
 set :generate_webserver_config, false
 
 # Target directory for the application on the web and app servers.
