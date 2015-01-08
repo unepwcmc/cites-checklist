@@ -19,8 +19,8 @@ Checklist.TaxonConcept = DS.Model.extend({
   english: DS.attr('string', { key: 'english_names' }),
   spanish: DS.attr('string', { key: 'spanish_names' }),
   french: DS.attr('string', { key: 'french_names' }),
-  synonyms: DS.attr('string', { key: 'synonyms' }),
-  synonyms_with_authors: DS.attr('string', { key: 'synonyms_with_authors' }),
+  synonyms: DS.attr('array', { defaultValue: [] }),
+  synonyms_with_authors: DS.attr('array', { defaultValue: [] }),
   itemType: DS.attr('string', { key: 'item_type' }),
   ancestorsPath: DS.attr('string', { key: 'ancestors_path' }),
   isPlant: function(){

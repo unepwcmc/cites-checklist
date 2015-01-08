@@ -35,6 +35,19 @@ Checklist = Ember.Application.create({
 require('checklist/config');
 
 minispade.requireAll(/helpers/);
+
+/*
+ * Add an array primitive to Ember Data models
+ */
+DS.attr.transforms.array = {
+  from: function(serialized) {
+    return serialized;
+  },
+  to: function(deserialized) {
+    return deserialized;
+  }
+};
+
 minispade.requireAll(/adapters/);
 
 Checklist.store = DS.Store.create({
