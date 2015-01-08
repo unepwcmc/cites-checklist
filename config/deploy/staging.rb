@@ -7,6 +7,7 @@ server "unepwcmc-012.vm.brightbox.net", :app, :web, :db, :primary => true
 set :server_name, "#{application}.unepwcmc-012.vm.brightbox.net"
 set :sudo_user, "rails"
 set :app_port, "80"
+set :branch, :develop
 
 desc "Configure VHost"
 task :config_vhost do
