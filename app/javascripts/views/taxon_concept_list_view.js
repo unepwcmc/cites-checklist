@@ -94,9 +94,9 @@ Checklist.TaxonConceptListView = Ember.CollectionView.extend({
     }.property('french'),
     synonyms: function() {
       if (this.get('filtersController').showAuthor) {
-        return this.get('content.synonyms_with_authors');
+        return this.get('content.synonyms_with_authors').join(', ');
       } else {
-        return this.get('content.synonyms');
+        return this.get('content.synonyms').join(', ');
       }
     }.property('content.synonyms', 'content.synonyms_with_authors'),
     showEnglish: function(){

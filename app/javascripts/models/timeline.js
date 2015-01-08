@@ -1,15 +1,3 @@
-/*
- * Add an array primitive to Ember Data models
- */
-DS.attr.transforms.array = {
-  from: function(serialized) {
-    return serialized;
-  },
-  to: function(deserialized) {
-    return deserialized;
-  }
-};
-
 Checklist.Timeline = DS.Model.extend({
   id: DS.attr('number'),
   appendix: DS.attr('string'),
