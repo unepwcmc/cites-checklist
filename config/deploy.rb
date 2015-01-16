@@ -1,3 +1,6 @@
+require 'rvm/capistrano'
+set :rvm_ruby_string, '1.9.3-p484'
+
 require "bundler/capistrano"
 
 # The name of your application.  Used for deployment directory and filenames

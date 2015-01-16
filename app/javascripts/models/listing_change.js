@@ -13,6 +13,8 @@ Checklist.ListingChange = DS.Model.extend({
   hash_ann_parent_symbol: DS.attr('string'),
   inherited_short_note: DS.attr('string'),
   inherited_full_note: DS.attr('string'),
+  nomenclature_note: DS.attr('string'),
+
   hasParty: function(){
     return (this.get('party') !== null);
   }.property(),
