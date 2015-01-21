@@ -146,7 +146,7 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
 
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');
-    var pattern = new RegExp("^"+event.currentTarget.value,"i");
+    var pattern = new RegExp("(^| )"+event.currentTarget.value,"i");
     controller.set(
       'autoCompleteCountriesContent',
       controller.get('countriesContent').filter(
