@@ -84,8 +84,7 @@ Checklist.SearchTextField = Em.TextField.extend({
     };
     var queryWithHyphens = query.replace(/\s/, '-');
     return item
-      .replace(new RegExp('(' + queryWithHyphens + '|' + query + ')', 'i'), transform)
-      .replace(new RegExp('=(' + queryWithHyphens + '|' + query + ')', 'ig'), transform);
+      .replace(new RegExp('(' + queryWithHyphens + '|' + query + ')', 'ig'), transform);
   },
 
   parser: function(data) {
