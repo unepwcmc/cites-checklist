@@ -1,5 +1,5 @@
 require 'rvm/capistrano'
-set :rvm_ruby_string, '1.9.3-p484'
+set :rvm_ruby_string, '2.0.0-p643'
 
 require "bundler/capistrano"
 
