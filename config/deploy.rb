@@ -1,67 +1,80 @@
-require 'rvm/capistrano'
-set :rvm_ruby_string, '2.0.0-p643'
+# config valid only for current version of Capistrano
+lock '3.4.0'
 
-require "bundler/capistrano"
+set :application, 'cites-checklist'
+set :repo_url, 'git@github.com:unepwcmc/cites-checklist.git'
 
-# The name of your application.  Used for deployment directory and filenames
-# and Apache configs. Should be unique on the Brightbox
-set :application, "cites-checklist"
 
-set :default_stage, 'staging'
-require 'capistrano/ext/multistage'
+set :rvm_type, :user
+set :rvm_ruby_version, '2.0.0-p643'
 
-set :generate_webserver_config, false
 
-# Target directory for the application on the web and app servers.
-#set(:deploy_to) { File.join("", "home", user, application) }
-set :deploy_to, "/home/rails/#{application}"
-# URL of your source repository. By default this will just upload
-# the local directory.  You should probably change this if you use
-# another repository, like git or subversion.
 
-set :repository,  "git@github.com:unepwcmc/cites-checklist.git"
-set :branch, "master"
+set :deploy_user, 'wcmc'
+set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
+
+
+
+
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
+# Default deploy_to directory is /var/www/my_app_name
+# set :deploy_to, '/var/www/my_app_name'
+
+# Default value for :scm is :git
 set :scm, :git
 set :scm_username, "unepwcmc-read"
-set :deploy_via, :remote_cache
 
-# SSH options. The forward agent option is used so that loopback logins
-# with keys work properly
-ssh_options[:forward_agent] = true
 
-# Forces a Pty so that svn+ssh repository access will work. You
-# don't need this if you are using a different SCM system. Note that
-# ptys stop shell startup scripts from running.
-default_run_options[:pty] = true
+set :ssh_options, {
+  forward_agent: true,
+}
 
-# if you want to clean up old releases on each deploy uncomment this:
-after "deploy:restart", "deploy:cleanup"
 
-# If you are using Passenger mod_rails uncomment this:
+before "deploy:symlink:shared", "rsync:sync"
+
+
+
+# Default value for :linked_files is []
+set :linked_files, %w{config/database.yml config/mailer_config.yml config/secrets.yml config.js}
+
+# Default value for linked_dirs is []
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+
+
+
+
+# Default value for :format is :pretty
+# set :format, :pretty
+
+# Default value for :log_level is :debug
+# set :log_level, :debug
+
+# Default value for :pty is false
+set :pty, true
+
+# Default value for :linked_files is []
+# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+
+# Default value for linked_dirs is []
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+set :keep_releases, 5
+
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
 
-## Deployment settings
-set :user, "rails"
-set :use_sudo, false
-set :rails_env, :production
-
-after "deploy:create_symlink", "deploy:link_js_config"
-namespace :deploy do
-  task :link_js_config, :except => { :no_release => true } do
-    run "ln -nfs #{shared_path}/config.js #{release_path}/app/javascripts/config.js"
+  desc "Restart app"
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join("tmp/restart.txt")
+    end
   end
-end
 
-after "deploy:link_js_config", "assets:precompile"
-namespace :assets do
-  desc "precompile assets"
-  task :precompile do
-    run("cd #{release_path} && bundle exec rakep clean && bundle exec rakep build")
-  end
+  after :finishing, "deploy:cleanup"
+
 end
