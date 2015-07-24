@@ -12,8 +12,8 @@ gem "therubyracer", "0.11.3"
 gem "libv8", "3.11.8.13"
 
 group :development do
-  gem "capistrano", "2.15.5"
-  gem "capistrano-ext"
-  gem "rvm-capistrano"
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rvm',   '~> 0.1', require: false
   gem "jslint_on_rails"
 end
