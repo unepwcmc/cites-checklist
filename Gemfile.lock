@@ -75,7 +75,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano (~> 3.0)
+  capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1)
   capistrano-rvm (~> 0.1)
   compass

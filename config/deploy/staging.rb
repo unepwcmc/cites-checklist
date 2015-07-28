@@ -1,3 +1,19 @@
+set :stage, :production
+set :branch, "LinodeCap3Deploy"
+
+server "139.162.195.186", roles: %w{app web db}
+
+set :domain, "139.162.195.186"
+
+set :application, "cites-checklist"
+
+set :server_name, "#{fetch(:application)}.#{fetch(:domain)}"
+
+set :sudo_user, "wcmc"
+
+set :app_port, "80"
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
