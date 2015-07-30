@@ -25,6 +25,8 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-maintenance (1.0.0)
+      capistrano (>= 3.0)
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
@@ -77,6 +79,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1)
+  capistrano-maintenance (~> 1.0)
   capistrano-rvm (~> 0.1)
   compass
   jslint_on_rails
