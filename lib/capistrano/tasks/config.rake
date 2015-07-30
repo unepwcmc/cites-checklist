@@ -22,21 +22,25 @@ server {
   # access_log /dev/null;
 }
 
-
-
- if (-f $document_root/system/maintenance.html) {
-   return 503;
- }
-
- error_page 500 502 504 /500.html;
- location = /500.html {
-   root /home/rails/cites-checklist/current/public;
- }
-
-  error_page 503 @maintenance;
-  location @maintenance {
-    rewrite  ^(.*)$  /system/maintenance.html break;
+error_page 503 @503;
+# Return a 503 error if the maintenance page exists.
+if (-f #{deploy_to}shared/public/system/maintenance.html) {
+  return 503;
+}
+location @503 {
+  # Serve static assets if found.
+  if (-f $request_filename) {
+    break;
   }
+  # Set root to the shared directory.
+  root #{deploy_to}/shared/public;
+  rewrite ^(.*)$ /system/maintenance.html break;
+}
+
+}
+
+
+
 }
 
   
