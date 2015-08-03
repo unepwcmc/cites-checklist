@@ -1,4 +1,13 @@
 namespace :config do
+
+task :setup do
+on roles (:app) do
+     upload! "app/javascripts/config.js", "#{shared_path}/config.js"
+  end
+ end
+end
+
+namespace :config do
 task :setup do
 
 vhost_config =<<-EOF
