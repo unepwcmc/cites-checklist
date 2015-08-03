@@ -32,6 +32,7 @@ set :ssh_options, {
 }
 
 before "deploy:symlink:shared", "symlink:config"
+after "symlink:config", "assets:precompile"
 
 
 # Default value for :linked_files is []
