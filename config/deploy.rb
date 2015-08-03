@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:unepwcmc/cites-checklist.git'
 
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.1.6'
+set :rvm_ruby_version, '2.2.2'
 
 
 
