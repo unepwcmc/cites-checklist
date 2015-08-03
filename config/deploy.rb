@@ -32,7 +32,6 @@ set :ssh_options, {
 }
 
 
-before "deploy:symlink:shared", "rsync:sync"
 
 # Default value for :linked_files is []
 set :linked_files, %w{app/javascripts/config.js}
