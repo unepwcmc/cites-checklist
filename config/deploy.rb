@@ -32,7 +32,7 @@ set :ssh_options, {
 }
 
 before "deploy:symlink:shared", "symlink:config"
-after "symlink:config", "assets:precompile"
+
 
 
 # Default value for :linked_files is []
@@ -41,7 +41,7 @@ after "symlink:config", "assets:precompile"
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-
+after "deploy:published", "assets:precompile"
 
 
 # Default value for :format is :pretty
