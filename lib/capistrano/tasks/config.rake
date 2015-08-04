@@ -17,42 +17,35 @@ server {
   client_max_body_size 4G;
   server_name #{fetch(:server_name)};
   keepalive_timeout 5;
-  root #{deploy_to}/current/public;
+  root #{fetch(:deploy_to)}/current/public;
   passenger_enabled on;
-  rails_env #{fetch(:rails_env)}:
+  passenger_ruby /home/wcmc/.rvm/gems/ruby-#{fetch(:rvm_ruby_version)}/wrappers/ruby;
+  rails_env #{fetch(:rails_env)};
 
-
- location ~ ^/(assets)/  {
-  root #{deploy_to}/current/public;
-  allow all;
-  gzip on;
-  expires max;
-  add_header Cache-Control public;
-  # access_log /dev/null;
-}
-
-error_page 503 @503;
-# Return a 503 error if the maintenance page exists.
-if (-f #{deploy_to}shared/public/system/maintenance.html) {
-  return 503;
-}
-location @503 {
-  # Serve static assets if found.
-  if (-f $request_filename) {
-    break;
+  location ~ ^/(assets)/ {
+    root #{deploy_to}/current/public;
+    allow all;
+    gzip on;
+    expires max;
+    add_header Cache-Control public;
+    # access_log /dev/null;
   }
-  # Set root to the shared directory.
-  root #{deploy_to}/shared/public;
-  rewrite ^(.*)$ /system/maintenance.html break;
+
+  error_page 503 @503;
+  # Return a 503 error if the maintenance page exists.
+  if (-f #{deploy_to}shared/public/system/maintenance.html) {
+    return 503;
+  }
+  location @503 {
+    # Serve static assets if found.
+    if (-f $request_filename) {
+      break;
+    }
+    # Set root to the shared directory.
+    root #{deploy_to}/shared/public;
+    rewrite ^(.*)$ /system/maintenance.html break;
+  }
 }
-
-}
-
-
-
-}
-
-  
 EOF
 
   on roles(:app) do
@@ -63,5 +56,3 @@ EOF
     end
   end
 end
-
-
