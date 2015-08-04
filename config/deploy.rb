@@ -4,17 +4,11 @@ lock '3.4.0'
 set :application, 'cites-checklist'
 set :repo_url, 'git@github.com:unepwcmc/cites-checklist.git'
 
-
 set :rvm_type, :user
 set :rvm_ruby_version, '2.2.2'
 
-
-
 set :deploy_user, 'wcmc'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
-
-
-
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -25,7 +19,6 @@ set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
 # Default value for :scm is :git
 set :scm, :git
 set :scm_username, "unepwcmc-read"
-
 
 set :ssh_options, {
   forward_agent: true,
@@ -38,7 +31,6 @@ set :linked_files, %w{app/javascripts/config.js}
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 after "deploy:published", "assets:precompile"
-
 
 # Default value for :format is :pretty
 # set :format, :pretty
@@ -62,4 +54,3 @@ set :pty, true
 set :keep_releases, 5
 
 set :passenger_restart_with_touch, false
-
