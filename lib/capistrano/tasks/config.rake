@@ -2,10 +2,12 @@ namespace :config do
 
 task :setup do
 on roles (:app) do
+     execute "mkdir -p #{shared_path}"
      upload! "app/javascripts/config.js", "#{shared_path}/config.js"
   end
  end
 end
+
 
 namespace :config do
 task :setup do
@@ -20,8 +22,9 @@ server {
   root #{fetch(:deploy_to)}/current/public;
   passenger_enabled on;
   passenger_ruby /home/wcmc/.rvm/gems/ruby-#{fetch(:rvm_ruby_version)}/wrappers/ruby;
-  rails_env #{fetch(:rails_env)};
 
+  rails_env #{fetch(:rails_env)};
+   
   location ~ ^/(assets)/ {
     root #{deploy_to}/current/public;
     allow all;

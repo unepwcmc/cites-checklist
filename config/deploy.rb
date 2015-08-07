@@ -24,8 +24,10 @@ set :ssh_options, {
   forward_agent: true,
 }
 
+before "deploy:symlink:shared", "symlink:config"
+
 # Default value for :linked_files is []
-set :linked_files, %w{app/javascripts/config.js}
+#set :linked_files, %w{app/javascripts/config.js}
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -53,4 +55,4 @@ set :pty, true
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :passenger_restart_with_touch, false
+set :passenger_restart_with_touch, true
