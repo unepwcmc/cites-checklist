@@ -3,7 +3,7 @@ namespace :config do
 task :setup do
 on roles (:app) do
      execute "mkdir -p #{shared_path}"
-     upload! "app/javascripts/config.js", "#{shared_path}/config.js"
+     upload! "app/javascripts/config.js", "#{shared_path}/app/javascripts/config.js"
   end
  end
 end
