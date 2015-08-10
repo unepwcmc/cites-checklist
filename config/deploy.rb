@@ -24,7 +24,6 @@ set :ssh_options, {
   forward_agent: true,
 }
 
-before "deploy:symlink:shared", "symlink:config"
 
 # Default value for :linked_files is []
 set :linked_files, %w{app/javascripts/config.js}
