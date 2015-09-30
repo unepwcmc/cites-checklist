@@ -5,7 +5,7 @@ set :application, 'cites-checklist'
 set :repo_url, 'git@github.com:unepwcmc/cites-checklist.git'
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.2'
+set :rvm_ruby_version, '2.2.3'
 
 set :deploy_user, 'wcmc'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
