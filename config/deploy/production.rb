@@ -1,6 +1,6 @@
 
 set :stage, :production
-set :branch, "LinodeCap3Deploy"
+set :branch, "master"
 
 server "sapi-production.linode.unep-wcmc.org", roles: %w{app web db}
 

@@ -1,9 +1,9 @@
 set :stage, :staging
-set :branch, "LinodeCap3Deploy"
+set :branch, "master"
 
-server "139.162.195.186", roles: %w{app web db}
+server "sapi-production.linode.unep-wcmc.org", roles: %w{app web db}
 
-set :domain, "139.162.195.186"
+set :domain, "sapi-production.linode.unep-wcmc.org"
 
 set :application, "cites-checklist"
 
