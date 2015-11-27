@@ -1,9 +1,9 @@
 set :stage, :staging
 set :branch, "master"
 
-server "sapi-production.linode.unep-wcmc.org", user: "wcmc", roles: %w{app web db}
+server "sapi-staging.linode.unep-wcmc.org", user: "wcmc", roles: %w{app web db}
 
-set :domain, "sapi-production.linode.unep-wcmc.org"
+set :domain, "sapi-staging.linode.unep-wcmc.org"
 
 set :application, "cites-checklist"
 
