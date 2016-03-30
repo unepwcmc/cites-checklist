@@ -25,39 +25,39 @@ Checklist.FiltersController = Ember.Object.extend({
   page: 1,
   per_page: 20,
 
-  /*
-   * These event handlers and the above arrays replace the functionality
-   * of the controllers for countries, regions and appendices.
-   * This is done primarily so that we can handle isLoaded events on the
-   * content arrays for each type of filter.
-   */
   countriesContentDidChange: function(){
-    if (this.get('countriesContent.isLoaded')){
+    if (this.get('geoEntitiesController.countries.isLoaded')){
       var that = this;
       this.set('countries',
-        this.get('countriesContent').filter(
+        this.get('geoEntitiesController.countries').filter(
           function(item, index, enumerable){
             return that.get('countriesIds').contains(item.get('id'));
           }
         )
       );
-      this.set('autoCompleteCountriesContent', this.get('countriesContent'));
-      this.set('autoCompleteRegionsContent', this.get('regionsContent'));
+      this.set(
+        'autoCompleteCountriesContent',
+        this.get('geoEntitiesController.countries').filterProperty('is_current')
+      );
     }
-  }.observes('countriesContent.isLoaded','countriesIds'),
+  }.observes('geoEntitiesController.countries.isLoaded','countriesIds.@each'),
 
   regionsContentDidChange: function(){
-    if (this.get('regionsContent.isLoaded')){
+    if (this.get('geoEntitiesController.regions.isLoaded')){
       var that = this;
       this.set('regions',
-        this.get('regionsContent').filter(
+        this.get('geoEntitiesController.regions').filter(
           function(item, index, enumerable){
             return that.get('regionsIds').contains(item.get('id'));
           }
         )
       );
+      this.set(
+        'autoCompleteRegionsContent',
+        this.get('geoEntitiesController.regions').filterProperty('is_current')
+      );
     }
-  }.observes('regionsContent.isLoaded','regionsIds'),
+  }.observes('geoEntitiesController.regions.isLoaded','regionsIds.@each'),
 
   appendicesContentDidChange: function(){
     if (this.get('appendicesContent.isLoaded')){

@@ -146,24 +146,25 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
 
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');
+    var geoEntitiesController = Checklist.get('router').get('geoEntitiesController');
     var pattern = new RegExp("(^|\\(| )"+event.currentTarget.value,"i");
     controller.set(
       'autoCompleteCountriesContent',
-      controller.get('countriesContent').filter(
+      geoEntitiesController.get('countries').filter(
         function(item, index, enumerable){
           return (pattern.test(item.get('name')));
         }
-      )
+      ).filterProperty('is_current')
     );
 
     pattern = new RegExp("^[0-9]- "+event.currentTarget.value,"i");
     controller.set(
       'autoCompleteRegionsContent',
-      controller.get('regionsContent').filter(
+      geoEntitiesController.get('regions').filter(
         function(item, index, enumerable){
           return (pattern.test(item.get('name')));
         }
-      )
+      ).filterProperty('is_current')
     );
   },
 
