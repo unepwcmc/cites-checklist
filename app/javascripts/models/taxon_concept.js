@@ -1,7 +1,7 @@
 Checklist.TaxonConcept = DS.Model.extend({
   id: DS.attr('number'),
   parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
-  countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
+  countries: DS.hasMany('Checklist.GeoEntity', { key: 'countries_ids' }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
   current_additions: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
@@ -73,5 +73,5 @@ Checklist.TaxonConcept = DS.Model.extend({
     }
     this.set('_cites_populations', populations);
   },
-  current_parties: DS.hasMany('Checklist.Country', { key: 'current_parties_ids' })
+  current_parties: DS.hasMany('Checklist.GeoEntity', { key: 'current_parties_ids' })
 });
