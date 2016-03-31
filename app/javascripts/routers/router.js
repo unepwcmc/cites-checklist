@@ -19,65 +19,50 @@ Checklist.Router = Ember.Router.extend({
           locale = 'en';
         }
         Em.I18n.translations = Em.I18n.locales[locale];
-        Ember.set('Em.I18n.currentLocale',  locale);
+        Ember.set('Em.I18n.currentLocale', locale);
         window.console && console.log('CURRENT LOCALE IS:', Em.I18n.currentLocale);
       },
 
       index: Ember.Route.extend({
         route: '/',
         connectOutlets: function(router, event) {
-          Checklist.LocationsLoader.load().then(
-            function(locations){
-              router.get('filtersController').set(
-                'countriesContent', locations.countries
-              );
-              router.get('filtersController').set(
-                'regionsContent', locations.regions
-              );
-              var params = router.get('filtersController').toParams();
-              router.get('taxonConceptController').refresh(params);
+          var geoEntitiesController = router.get('geoEntitiesController');
+          geoEntitiesController.load();
+          var filtersController = router.get('filtersController');
+          filtersController.set('geoEntitiesController', geoEntitiesController);
 
-              router.get('applicationController').connectOutlet({
-                outletName: 'header', viewClass: Checklist.MainHeaderView
-              });
-              router.get('applicationController').connectOutlet({
-                outletName: 'main', viewClass: Checklist.MainView
-              });
-            }, function(error){
-              window.console && console.log(error);
-            }
-          );
+          var params = router.get('filtersController').toParams();
+          router.get('taxonConceptController').refresh(params);
+
+          router.get('applicationController').connectOutlet({
+            outletName: 'header', viewClass: Checklist.MainHeaderView
+          });
+          router.get('applicationController').connectOutlet({
+            outletName: 'main', viewClass: Checklist.MainView
+          });
         }
       }),
 
       search: Ember.Route.extend({
         route: '/search/:params',
         connectOutlets: function(router, event) {
-          Checklist.LocationsLoader.load().then(
-            function(locations){
-              router.get('filtersController').set(
-                'countriesContent', locations.countries
-              );
-              router.get('filtersController').set(
-                'regionsContent', locations.regions
-              );
-              var params = Checklist.Helpers.deparam(event.params);
+          var geoEntitiesController = router.get('geoEntitiesController');
+          geoEntitiesController.load();
+          var filtersController = router.get('filtersController');
+          filtersController.set('geoEntitiesController', geoEntitiesController);
 
-              router.get('filtersController').fromParams(params);
-              router.get('taxonConceptController').refresh(params);
+          var params = Checklist.Helpers.deparam(event.params);
+          router.get('filtersController').fromParams(params);
+          router.get('taxonConceptController').refresh(params);
 
-              if (event.redraw === undefined || event.redraw) {
-                router.get('applicationController').connectOutlet({
-                  outletName: 'header', viewClass: Checklist.MainHeaderView
-                });
-              }
-              router.get('applicationController').connectOutlet({
-                outletName: 'main', viewClass: Checklist.MainView
-              });
-            }, function(error){
-              window.console && console.log(error);
-            }
-          );
+          if (event.redraw === undefined || event.redraw) {
+            router.get('applicationController').connectOutlet({
+              outletName: 'header', viewClass: Checklist.MainHeaderView
+            });
+          }
+          router.get('applicationController').connectOutlet({
+            outletName: 'main', viewClass: Checklist.MainView
+          });
         }
       }),
 

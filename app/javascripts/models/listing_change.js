@@ -1,7 +1,7 @@
 Checklist.ListingChange = DS.Model.extend({
   id: DS.attr('number'),
-  party: DS.belongsTo('Checklist.Country', { key: 'party_id' }),
-  countries: DS.hasMany('Checklist.Country', { key: 'countries_ids' }),
+  party: DS.belongsTo('Checklist.GeoEntity', { key: 'party_id' }),
+  countries: DS.hasMany('Checklist.GeoEntity', { key: 'countries_ids' }),
   species_listing_name: DS.attr('string'),
   change_type_name: DS.attr('string'),
   effective_at: DS.attr('string', { key: 'effective_at_formatted' }),
