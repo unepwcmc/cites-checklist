@@ -2,8 +2,6 @@ Checklist.KingdomListView = Ember.View.extend({
   templateName: 'kingdom_list_view',
   content: null,
 
-  isVisible: false,
-
   tagName: 'div',
 
   classNames: ['c1'],
@@ -99,10 +97,9 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   didInsertElement: function() {
-    var that = this;
+    var that = this.$();
     $('#loading').fadeOut('fast', function() {
-      that.$().fadeIn();
-      that.set('isVisible',true);
+      that.fadeIn();
     });
 
     $('#content-aside').show();
