@@ -108,6 +108,8 @@ Checklist.Router = Ember.Router.extend({
         } else {
           newState = router.get('currentState.name');
         }
+        var geoEntitiesController = router.get('geoEntitiesController');
+        geoEntitiesController.set('needsReload', true)
         router.transitionTo(newState, {locale: newLocale});
       },
 
@@ -119,6 +121,8 @@ Checklist.Router = Ember.Router.extend({
         } else {
           newState = router.get('currentState.name');
         }
+        var geoEntitiesController = router.get('geoEntitiesController');
+        geoEntitiesController.set('needsReload', true)
         router.transitionTo(newState, {locale: newLocale});
       },
 
@@ -130,6 +134,8 @@ Checklist.Router = Ember.Router.extend({
         } else {
           newState = router.get('currentState.name');
         }
+        var geoEntitiesController = router.get('geoEntitiesController');
+        geoEntitiesController.set('needsReload', true)
         router.transitionTo(newState, {locale: newLocale});
       }
     }),
