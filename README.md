@@ -2,7 +2,7 @@
 
 ## Development
 
-We're using Ember.js with Ember Data to handle REST backend requests.  
+We're using Ember.js with Ember Data to handle REST backend requests. The search & downloads functionality is implemented in Species+, this is just the front-end.
 
 ### Old Ember resources - relevant to the version of Ember used in the Checklist
 
