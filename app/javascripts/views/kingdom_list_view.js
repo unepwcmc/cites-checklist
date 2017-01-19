@@ -97,10 +97,7 @@ Checklist.KingdomListView = Ember.View.extend({
   },
 
   didInsertElement: function() {
-    var that = this.$();
-    $('#loading').fadeOut('fast', function() {
-      that.fadeIn();
-    });
+    $('#loading').fadeOut('fast')
 
     $('#content-aside').show();
 
@@ -191,9 +188,9 @@ Checklist.KingdomListView = Ember.View.extend({
      */
     var current_group = [];
     $(".listing-item").each(function(index, item) {
-      // For each iteration, if the current item is a header or the 
-      // last item then we can assume the previous items in 
-      // current_group are a headed group of species and can be 
+      // For each iteration, if the current item is a header or the
+      // last item then we can assume the previous items in
+      // current_group are a headed group of species and can be
       // wrapper in the grouping <div>
       if ($(item).hasClass('persist-area') || index == ($('.listing-item').length - 1)) {
         if (current_group.length > 0) {
