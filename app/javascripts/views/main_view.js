@@ -23,6 +23,11 @@ Checklist.MainView = Ember.View.extend({
     var target = document.getElementById('loading');
     var spinner = new Spinner(Checklist.CONFIG.spinner).spin(target);
 
+    var popup = location.href.split(/(&|\?)popup=/).pop()
+    if(popup !== undefined && popup == "0") {
+      $.cookie("Checklist.CONFIG.visited", true);
+    }
+
     if (!$.cookie("Checklist.CONFIG.visited")) {
       $('#landing-btn').colorbox(this.get('landingColorboxConfig'));
     }
