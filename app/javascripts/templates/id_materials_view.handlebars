@@ -1,21 +1,24 @@
 <div class="id-materials">
-  <h3>ID Manual entries</h3>
-  <button>Download all ID Manual entries for [TAXON NAME]</button>
-  <div>
-    <h3>Associated CITES ID materials</h3>
-    <div>
-      <ul>
-        <li>
-          <a>[NAME OF DOCUMENT]</a>
-          <span>Tooltip</span>
-          <span>EN, FR, ES</span>
+  <h3 class="id-materials__title">
+    ID Manual entries
+  </h3>
+
+  <button class="id-materials__download-button" {{action downloadIdManualEntries}}>
+    Download all ID Manual entries for [TAXON NAME]
+  </button>
+
+  <div class="id-materials__additional-materials">
+    <h3 class="id-materials__title">
+      Associated CITES ID materials
+    </h3>
+    <ul class="id-materials__links-container">
+      {{#each view.idMaterials}}
+        <li class="id-materials__link-row">
+          <a class="id-materials__link" title="Go to [NAME OF DOCUMENT]" target="_blank">[NAME OF DOCUMENT]</a>
+          <span class="id-materials__link-tooltip">Tooltip</span>
+          <span class="id-materials__link-languages">EN, FR, ES</span>
         </li>
-        <li>
-          <a>[NAME OF DOCUMENT]</a>
-          <span>Tooltip</span>
-          <span>EN, FR, ES</span>
-        </li>
-      </ul>
-    </div>
+      {{/each}}
+    </ul>
   </div>
 </div>
