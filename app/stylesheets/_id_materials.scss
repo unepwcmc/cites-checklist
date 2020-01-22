@@ -11,6 +11,11 @@ $additional-materials-padding: 6px;
     font-size: 11px;
     line-height: 1.8;
     margin-bottom: $id-materials-default-margin-bottom;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   &__additional-materials {
