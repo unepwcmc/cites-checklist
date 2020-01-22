@@ -77,6 +77,11 @@ Em.I18n.locales.en = {
   'featured.history': 'History of listings',
   'featured.format': 'Format',
 
+  'id_download.title': 'Identification manual',
+  'id_download.download_manual': 'Download manual',
+  'id_download.or': 'or',
+  'id_download.select_volumes': 'Select volume(s)',
+
   'locations.count.zero': 'All Locations',
   'locations.count.one': '1 Location',
   'locations.count.other': '{{count}} Locations',
