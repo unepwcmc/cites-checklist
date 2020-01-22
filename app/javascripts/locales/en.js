@@ -26,6 +26,11 @@ Em.I18n.locales.en = {
   'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 
+  'id_materials.title': 'ID Manual entries',
+  'id_materials.additional_materials_title': 'Associated CITES ID materials',
+  'id_materials.download_button_text': 'Download all ID Manual entries for ',
+
+  'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',
   'timeline.split': 'NB: this taxon is split-listed. See also timeline(s) ' +
     'for lower taxa.',

@@ -1,13 +1,9 @@
 $id-materials-default-margin-bottom: 12px;
+$additional-materials-padding: 6px;
 
 .id-materials {
   margin: 16px 0;
   max-width: 600px;
-
-  &__title {
-    font-weight: bold;
-    margin-bottom: $id-materials-default-margin-bottom;
-  }
 
   &__download-button {
     border: solid 1px grey;
@@ -19,7 +15,10 @@ $id-materials-default-margin-bottom: 12px;
 
   &__additional-materials {
     background-color: $blue-grey-background;
-    padding: 6px;
+    padding: $additional-materials-padding;
+    width: 100%;
+
+    transform: translateX(-$additional-materials-padding);
   }
 
   &__links-container {

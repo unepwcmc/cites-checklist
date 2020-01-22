@@ -26,6 +26,11 @@ Em.I18n.locales.es = {
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
+  'id_materials.title': 'ID Manual entries',
+  'id_materials.additional_materials_title': 'Associated CITES ID materials',
+  'id_materials.download_button_text': 'Download all ID Manual entries for ',
+
+  'timeline.title': 'CITES history',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
   'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
     'la(s) línea(s) de tiempo para los taxones inferiores.',

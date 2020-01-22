@@ -1,15 +1,15 @@
 <div class="id-materials">
   <h3 class="id-materials__title">
-    ID Manual entries
+    {{t id_materials.title}}
   </h3>
 
   <button class="id-materials__download-button" {{action downloadIdManualEntries}}>
-    Download all ID Manual entries for <em class="italic bold">[TAXON NAME]</em>
+    {{t id_materials.download_button_text}} <em class="italic bold">[TAXON NAME]</em>
   </button>
 
   <div class="id-materials__additional-materials">
     <h3 class="id-materials__title">
-      Associated CITES ID materials
+      {{t id_materials.additional_materials_title}}
     </h3>
     <ul class="id-materials__links-container">
       {{#each view.idMaterials}}

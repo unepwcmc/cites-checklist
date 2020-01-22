@@ -26,6 +26,11 @@ Em.I18n.locales.fr = {
   'distribution.more': 'et {{count}} supplémentaire(s)',
   'distribution.see_all': 'Voir tous les...',
 
+  'id_materials.title': 'ID Manual entries',
+  'id_materials.additional_materials_title': 'Associated CITES ID materials',
+  'id_materials.download_button_text': 'Download all ID Manual entries for ',
+
+  'timeline.title': 'CITES history',
   'timeline.party': 'Voir les réserves à l\'encontre des inscriptions CITES',
   'timeline.split': 'NB: ce taxon fait l\'objet d\'une inscription scindée; ' +
     'voir également le(s) calendrier(s) pour les taxons inférieurs',
