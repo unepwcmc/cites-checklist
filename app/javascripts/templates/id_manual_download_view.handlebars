@@ -21,12 +21,7 @@
             {{t id_download.select_volumes}}
           </label>
           <p class="id-manual-download__help-text">Please select volume(s) you wish to download (PDF format only)</p>
-          <fieldset 
-            id="id-manual-volumes" 
-            class="id-manual-download__volumes"
-          >
-            Multiselect
-            </fieldset>
+          {{view Checklist.MultiselectCheckboxView id="id-manual-volumes" class="id-manual-download__volumes"}}
           <div class="id-manual-download__center-align">
             <button class="btn red">Download selected</button>
             <div class="id-manual-download__divider">{{t id_download.or}}</div>
