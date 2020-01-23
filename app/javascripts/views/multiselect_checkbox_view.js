@@ -37,6 +37,30 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
     return this.get('id') + '-checkbox-' + optionId
   },
 
+  toggleCheckbox: function (event) {
+    const id = event.target.value
+
+    if (id === ALL_ID) {
+      this.toggleAllCheckboxes()
+    } else if (this.isSelected(id)) {
+      this.deselect(id)
+    } else {
+      this.select(id)
+    }
+  },
+
+  toggleAllCheckboxes () {
+    this.areAllSelected = !this.areAllSelected
+
+    if (this.areAllSelected) {
+      this.selected = this.options.map(function (opt) { return opt.id })
+      this.checkAll()
+    } else {
+      this.selected = []
+      this.uncheckAll()
+    }
+  },
+
   select: function (id) {
     this.selected.push(id)
 
@@ -80,28 +104,4 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
   isSelected: function (id) {
     return this.selected.indexOf(id) >= 0
   },
-
-  toggleCheckbox: function (event) {
-    const id = event.target.value
-
-    if (id === ALL_ID) {
-      this.toggleAllCheckboxes()
-    } else if (this.isSelected(id)) {
-      this.deselect(id)
-    } else {
-      this.select(id)
-    }
-  },
-
-  toggleAllCheckboxes () {
-    this.areAllSelected = !this.areAllSelected
-
-    if (this.areAllSelected) {
-      this.selected = this.options.map(function (opt) { return opt.id })
-      this.checkAll()
-    } else {
-      this.selected = []
-      this.uncheckAll()
-    }
-  }
 })
