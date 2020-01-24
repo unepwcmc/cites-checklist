@@ -47,6 +47,10 @@ Checklist.DownloadView = Em.View.extend({
     );
   },
 
+  downloadIdMaterials: function(event) {
+    console.log('Downloading id materials')
+  },
+
   didInsertElement: function() {
     var config = $.extend({
         onComplete: function() {

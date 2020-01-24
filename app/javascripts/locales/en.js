@@ -60,6 +60,7 @@ Em.I18n.locales.en = {
 
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
+  'downloads.popup.title_id': 'Download ID Materials',
   'downloads.popup.info': 'Please select the format of your choice',
 
   'download.button': 'Download',
