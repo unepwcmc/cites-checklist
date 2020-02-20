@@ -9,6 +9,8 @@ $appendix_green: #99c575;
 $appendix_orange: #ffa366;
 $appendix_grey: #adadad;
 
+$blue-grey-background: #F3F6F9;
+
 @import "reset";
 
 /* Beginning of actual styles! */
@@ -24,7 +26,7 @@ p.browsehappy a {
 }
 
 body {
-  background: #F3F6F9;
+  background: $blue-grey-background;
 }
 
 a:hover {
@@ -61,7 +63,7 @@ a:hover {
   box-shadow: 0 0 12px #ebebeb;
   -webkit-box-shadow: 0 0 12px #ebebeb;
   -moz-box-shadow: 0 0 12px #ebebeb;
-  background:#f3f6f9;
+  background:$blue-grey-background;
   border-bottom: 1px solid #D6D7D7;
   height: 198px;
 
@@ -1079,7 +1081,7 @@ footer{
   border-top:1px solid #ececec;
   overflow:hidden;
   padding:60px 0 35px;
-  background:#f3f6f9;
+  background:$blue-grey-background;
 
   .wrap {
     position: relative;
@@ -1124,3 +1126,4 @@ footer{
 @import "tablets";
 @import "id_manual_download";
 @import "multiselect-checkbox";
+@import "id_materials";
