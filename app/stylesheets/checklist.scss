@@ -401,7 +401,7 @@ fieldset.saved-search {
   }
 }
 
-ul.quick-links {
+ul.dropdown-links {
   li {
     position:relative;
     display:inline-block;
@@ -413,20 +413,20 @@ ul.quick-links {
     .drop {
       top: 25px;
       margin:0;
-      left:-9999px;
+      left: -9999px;
       text-align:left;
       background: #F5F6F7;
-      padding: 20px;
-      width: 85%;
+      padding: 12px;
+      width: 92%;
 
       .decor {
-        left: 47px;
+        left: 20px;
       }
 
       &.show,
       &:hover {
         right: auto;
-        left: -10px;
+        left: 0;
       }
 
       h3 {
@@ -439,7 +439,7 @@ ul.quick-links {
 
       .drop {
         right: auto;
-        left: -10px;
+        left: 0;
       }
     }
 
@@ -784,7 +784,7 @@ ul.quick-links {
   .aside{
     position: fixed;
     top: 214px;
-    right: 100px;
+    right: 60px;
     color:#666;
     font-weight:bold;
     padding:32px 0 0;
@@ -894,6 +894,11 @@ ul.quick-links {
       text-indent:-9999px;
       background:url(../images/ico-star.png) no-repeat;
     }
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   .red {
@@ -935,7 +940,7 @@ ul.quick-links {
 }
 
 #content-aside {
-  width: 120px;
+  width: 160px;
 }
 
 * +html .aside .btn{display:inline;}
@@ -1119,4 +1124,6 @@ footer{
 @import "fancybox";
 @import "custom_forms";
 @import "tablets";
+@import "id_manual_download";
+@import "multiselect-checkbox";
 @import "id_materials";
