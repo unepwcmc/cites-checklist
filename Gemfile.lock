@@ -56,7 +56,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    rack (1.6.4)
+    rack (1.6.12)
     rake (10.1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
