@@ -1,0 +1,24 @@
+<div class="id-materials">
+  <h3 class="id-materials__title">
+    {{t id_materials.title}}
+  </h3>
+
+  <button class="id-materials__download-button" {{action downloadIdManualEntries}}>
+    {{t id_materials.download_button_text}} <em class="italic bold">[TAXON NAME]</em>
+  </button>
+
+  <div class="id-materials__additional-materials">
+    <h3 class="id-materials__title">
+      {{t id_materials.additional_materials_title}}
+    </h3>
+    <ul class="id-materials__links-container">
+      {{#each view.idMaterials}}
+        <li class="id-materials__link-row">
+          <a class="id-materials__link" title="Go to [NAME OF DOCUMENT]" target="_blank">[NAME OF DOCUMENT]</a>
+          <span class="id-materials__link-tooltip">Tooltip</span>
+          <span class="id-materials__link-languages">EN, FR, ES</span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

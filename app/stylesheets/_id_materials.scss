@@ -1,0 +1,66 @@
+$id-materials-default-margin-bottom: 12px;
+$additional-materials-padding: 6px;
+
+.id-materials {
+  margin: 16px 0;
+  max-width: 600px;
+
+  &__download-button {
+    border: solid 1px grey;
+    border-radius: 20px;
+    font-size: 11px;
+    line-height: 1.8;
+    margin-bottom: $id-materials-default-margin-bottom;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__additional-materials {
+    background-color: $blue-grey-background;
+    padding: $additional-materials-padding;
+    width: 100%;
+
+    transform: translateX(-$additional-materials-padding);
+  }
+
+  &__links-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100px;
+  }
+
+    &__link-row {
+      border-bottom: solid 2px grey;
+      opacity: 0.7;
+      padding: 8px 0 5px 0;
+
+      display: flex;
+      width: 100%;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:first-child {
+        padding-top: 2px;
+      }
+    }
+
+      &__link {
+        color: inherit;
+        margin-right: 6px;
+      }
+
+      &__link-tooltip {
+        flex-shrink: 0;
+        margin-right: 6px;
+      }
+
+      &__link-languages {
+        flex-shrink: 0;
+        margin-left: auto;
+      }
+}

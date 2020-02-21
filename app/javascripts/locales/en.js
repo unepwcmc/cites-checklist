@@ -26,6 +26,11 @@ Em.I18n.locales.en = {
   'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 
+  'id_materials.title': 'ID Manual entries',
+  'id_materials.additional_materials_title': 'Associated CITES ID materials',
+  'id_materials.download_button_text': 'Download all ID Manual entries for ',
+
+  'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',
   'timeline.split': 'NB: this taxon is split-listed. See also timeline(s) ' +
     'for lower taxa.',
@@ -76,6 +81,11 @@ Em.I18n.locales.en = {
   'featured.index': 'Full species list',
   'featured.history': 'History of listings',
   'featured.format': 'Format',
+
+  'id_download.title': 'Identification manual',
+  'id_download.download_manual': 'Download manual',
+  'id_download.or': 'or',
+  'id_download.select_volumes': 'Select volume(s)',
 
   'locations.count.zero': 'All Locations',
   'locations.count.one': '1 Location',

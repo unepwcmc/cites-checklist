@@ -1,0 +1,11 @@
+{{#each view.optionsForView}}
+  <label class="multiselect-checkbox__label" {{bindAttr for="this.checkboxId"}}>
+    <input
+      type="checkbox"
+      class="multiselect-checkbox__input"
+      {{bindAttr id="this.checkboxId" value="this.id"}}
+      {{action "toggleCheckbox" target="view" on="change"}}
+    />
+    {{this.label}}
+  </label>
+{{/each}}
