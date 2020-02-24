@@ -26,8 +26,8 @@ Em.I18n.locales.en = {
   'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 
-  'id_materials.title': 'ID Manual entries',
-  'id_materials.additional_materials_title': 'Associated CITES ID materials',
+  'id_materials.title': 'CITES Identification Manual entries',
+  'id_materials.additional_materials_title': 'Other identification materials',
   'id_materials.download_button_text': 'Download all ID Manual entries for ',
 
   'timeline.title': 'CITES history',

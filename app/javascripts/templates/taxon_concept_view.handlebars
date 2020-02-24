@@ -8,7 +8,7 @@
       <div class="column-container">
         <div class="column">
           <h2 style="{{unbound view.headingStyle}}">
-            {{{unbound view.full_name}}}
+            {{{unbound view.formatted_name}}}
             {{# if view.showAuthor}}
               <span class="author_year">{{unbound author_year}}</span>
             {{/if}}
@@ -79,7 +79,9 @@
             </div>
             </div>
             {{view Checklist.IdMaterialsView
-            taxonConceptId="1"}}
+              taxonConceptNameBinding="full_name"
+              taxonConceptIdBinding="id"
+            }}
           </div>
         </div>
       </div>
