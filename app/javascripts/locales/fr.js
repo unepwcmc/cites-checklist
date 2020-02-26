@@ -37,6 +37,13 @@ Em.I18n.locales.fr = {
   'id_download.download_selected': 'Télécharger la sélection',
   'id_download.download_all': 'Télécharger tous les volumes',  
 
+  'id_manual_volume_1': 'Vol. 1 Mammalia (Mammifères)',
+  'id_manual_volume_1_flora': 'Vol. 1 Flora (Flore)',
+  'id_manual_volume_2': 'Vol. 2 Aves (Oiseaux)',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Amphibiens, Poissons, Invertébrés)',
+  'id_manual_volume_4': 'Vol. 4 Parties et Produits I',
+  'id_manual_volume_5_parts': 'Vol. 5 Parties et Produits II',
+
   'timeline.title': 'Historial de CITES',
   'timeline.party': 'Voir les réserves à l\'encontre des inscriptions CITES',
   'timeline.split': 'NB: ce taxon fait l\'objet d\'une inscription scindée; ' +

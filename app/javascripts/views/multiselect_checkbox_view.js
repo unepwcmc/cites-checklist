@@ -1,13 +1,7 @@
 const ALL_ID = '__all__'
 
 Checklist.MultiselectCheckboxView = Ember.View.extend({
-  options: [
-    {label: 'Vol 1', id:'1'},
-    {label: 'Vol 2', id:'2'},
-    {label: 'Vol 3', id:'3'},
-    {label: 'Vol 4', id:'4'},
-    {label: 'Vol 5', id:'5'},
-  ],
+  options: [],
   selected: [],
   id: 'multiselect-checkbox',
   tagName: 'fieldset',

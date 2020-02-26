@@ -37,6 +37,13 @@ Em.I18n.locales.en = {
   'id_download.select_volumes_long': 'Please select volume(s) you wish to download (PDF format only)',
   'id_download.download_selected': 'Download selected',
   'id_download.download_all': 'Download all volumes',
+  
+  'id_manual_volume_1': 'Vol. 1 Mammalia',
+  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_2': 'Vol 2. Aves',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata',
+  'id_manual_volume_4': 'Vol. 4 Parts and Derivatives I',
+  'id_manual_volume_5_parts': 'Vol. 5 Parts and Derivatives II',
 
   'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',

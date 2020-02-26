@@ -38,6 +38,13 @@ Em.I18n.locales.es = {
   'id_download.download_selected': 'Descargar la selección', 
   'id_download.download_all': 'Descargar todos los volúmenes', 
 
+  'id_manual_volume_1': 'Vol. 1 Mammalia (Mamíferos)',
+  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_2': 'Vol. 2 Aves',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Anfibios, Peces,  Invertebrados)',
+  'id_manual_volume_4': 'Vol. 4 Partes y Derivados I',
+  'id_manual_volume_5_parts': 'Vol. 5 Partes y Derivados II',
+
   'timeline.title': 'Historial de CITES',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
   'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
