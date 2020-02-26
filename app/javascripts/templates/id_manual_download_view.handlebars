@@ -20,13 +20,13 @@
           >
             {{t id_download.select_volumes}}
           </label>
-          <p class="id-manual-download__help-text">Please select volume(s) you wish to download (PDF format only)</p>
+          <p class="id-manual-download__help-text">{{t id_download.select_volumes_long}}</p>
           {{view Checklist.MultiselectCheckboxView id="id-manual-volumes" class="id-manual-download__volumes"}}
           <div class="id-manual-download__center-align">
-            <button class="btn red">Download selected</button>
+            <button class="btn red">{{t id_download.download_selected }}</button>
             <div class="id-manual-download__divider">{{t id_download.or}}</div>
             <button class="id-manual-download__text-button" {{action downloadAll target="view"}}>
-              Download all volumes
+              {{t id_download.download_all}}
             </button>
           </div>
         {{/unless}}
