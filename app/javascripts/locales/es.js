@@ -26,11 +26,19 @@ Em.I18n.locales.es = {
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
-  'id_materials.title': 'ID Manual entries',
-  'id_materials.additional_materials_title': 'Associated CITES ID materials',
-  'id_materials.download_button_text': 'Download all ID Manual entries for ',
+  'id_materials.title': 'Entradas del manual de identificación',
+  'id_materials.additional_materials_title': 'Materiales de identificación CITES asociados',
+  'id_materials.download_button_text': 'Descargar todas las entradas del Manual de identificación para {{taxon}}',  
 
-  'timeline.title': 'CITES history',
+  'id_download.title': 'Manual de Identificación',
+  'id_download.download_manual': 'Descargar el Manual',
+  'id_download.or': 'o',
+  'id_download.select_volumes': ' Seleccionar volúmen(es)',
+  'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',
+  'id_download.download_selected': 'Descargar la selección', 
+  'id_download.download_all': 'Descargar todos los volúmenes', 
+
+  'timeline.title': 'Historial de CITES',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
   'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
     'la(s) línea(s) de tiempo para los taxones inferiores.',
@@ -66,6 +74,8 @@ Em.I18n.locales.es = {
   'downloads.button': 'Descargar',
   'downloads.popup.title': 'Descargar taxones',
   'downloads.popup.info': 'Seleccione el formato preferido',
+  'downloads.popup.id_title': 'Descargar materiales de identificación', 
+  'downloads.popup.list_title': 'Descargar lista de especies', 
 
   'download.button': 'Descargar',
   'download.failed': 'Se produjo un error.',

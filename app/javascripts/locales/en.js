@@ -30,6 +30,14 @@ Em.I18n.locales.en = {
   'id_materials.additional_materials_title': 'Other identification materials',
   'id_materials.download_button_text': 'Download all ID Manual entries for ',
 
+  'id_download.title': 'Identification Manual',
+  'id_download.download_manual': 'Download Manual',
+  'id_download.or': 'or',
+  'id_download.select_volumes': 'Select volume(s)',
+  'id_download.select_volumes_long': 'Please select volume(s) you wish to download (PDF format only)',
+  'id_download.download_selected': 'Download selected',
+  'id_download.download_all': 'Download all volumes',
+
   'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',
   'timeline.split': 'NB: this taxon is split-listed. See also timeline(s) ' +
@@ -66,6 +74,8 @@ Em.I18n.locales.en = {
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
   'downloads.popup.info': 'Please select the format of your choice',
+  'downloads.popup.id_title': 'Download identification materials',
+  'downloads.popup.list_title': 'Download list of taxa',
 
   'download.button': 'Download',
   'download.failed': 'Failed.',
@@ -81,11 +91,6 @@ Em.I18n.locales.en = {
   'featured.index': 'Full species list',
   'featured.history': 'History of listings',
   'featured.format': 'Format',
-
-  'id_download.title': 'Identification manual',
-  'id_download.download_manual': 'Download manual',
-  'id_download.or': 'or',
-  'id_download.select_volumes': 'Select volume(s)',
 
   'locations.count.zero': 'All Locations',
   'locations.count.one': '1 Location',
