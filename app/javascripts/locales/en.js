@@ -39,11 +39,11 @@ Em.I18n.locales.en = {
   'id_download.download_all': 'Download all volumes',
   
   'id_manual_volume_1': 'Vol. 1 Mammalia',
-  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_6': 'Vol. 1 Flora',
   'id_manual_volume_2': 'Vol 2. Aves',
   'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata',
   'id_manual_volume_4': 'Vol. 4 Parts and Derivatives I',
-  'id_manual_volume_5_parts': 'Vol. 5 Parts and Derivatives II',
+  'id_manual_volume_5': 'Vol. 5 Parts and Derivatives II',
 
   'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',
@@ -80,7 +80,6 @@ Em.I18n.locales.en = {
 
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
-  'downloads.popup.title_id': 'Download ID Materials',
   'downloads.popup.info': 'Please select the format of your choice',
   'downloads.popup.id_title': 'Download identification materials',
   'downloads.popup.list_title': 'Download list of taxa',

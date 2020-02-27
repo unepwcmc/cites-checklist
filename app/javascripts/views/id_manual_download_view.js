@@ -2,17 +2,17 @@ Checklist.IdManualDownloadView = Ember.View.extend({
   templateName: 'id_manual_download_view',
   showVolumesDropdown: false,
   volumes: [
-    'id_manual_volume_1',
-    'id_manual_volume_1_flora',
-    'id_manual_volume_2',
-    'id_manual_volume_3',
-    'id_manual_volume_4',
-    'id_manual_volume_5_parts',
+    '1',
+    '6',
+    '2',
+    '3',
+    '4',
+    '5',
   ],
 
   volumeOptions: function () {
     return this.get('volumes').map(function (volId) {
-      return {id: volId, label: Em.I18n.t(volId)}
+      return {id: volId, label: Em.I18n.t('id_manual_volume_' + volId)}
     })
   }.property('volumes'),
 
