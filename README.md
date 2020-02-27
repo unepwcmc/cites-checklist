@@ -25,6 +25,15 @@ the library, however should it be necessary then a good read through
 
 ## Setup
 
+In order to install libv8 and therubyracer:
+
+```
+$ brew install v8@3.15
+$ bundle config build.libv8 --with-system-v8
+$ bundle config build.therubyracer --with-v8-dir=$(brew --prefix v8@3.15)
+$ bundle install
+```
+
 Assets are pre-compiled with [rake
 pipeline](https://github.com/livingsocial/rake-pipeline) and served
 statically:

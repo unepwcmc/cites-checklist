@@ -26,6 +26,26 @@ Em.I18n.locales.es = {
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
+  'id_materials.title': 'Entradas del manual de identificación',
+  'id_materials.additional_materials_title': 'Materiales de identificación CITES asociados',
+  'id_materials.download_button_text': 'Descargar todas las entradas del Manual de identificación para {{taxon}}',  
+
+  'id_download.title': 'Manual de Identificación',
+  'id_download.download_manual': 'Descargar el Manual',
+  'id_download.or': 'o',
+  'id_download.select_volumes': ' Seleccionar volúmen(es)',
+  'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',
+  'id_download.download_selected': 'Descargar la selección', 
+  'id_download.download_all': 'Descargar todos los volúmenes', 
+
+  'id_manual_volume_1': 'Vol. 1 Mammalia (Mamíferos)',
+  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_2': 'Vol. 2 Aves',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Anfibios, Peces,  Invertebrados)',
+  'id_manual_volume_4': 'Vol. 4 Partes y Derivados I',
+  'id_manual_volume_5_parts': 'Vol. 5 Partes y Derivados II',
+
+  'timeline.title': 'Historial de CITES',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
   'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
     'la(s) línea(s) de tiempo para los taxones inferiores.',
@@ -61,6 +81,8 @@ Em.I18n.locales.es = {
   'downloads.button': 'Descargar',
   'downloads.popup.title': 'Descargar taxones',
   'downloads.popup.info': 'Seleccione el formato preferido',
+  'downloads.popup.id_title': 'Descargar materiales de identificación', 
+  'downloads.popup.list_title': 'Descargar lista de especies', 
 
   'download.button': 'Descargar',
   'download.failed': 'Se produjo un error.',

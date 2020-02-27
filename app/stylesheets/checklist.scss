@@ -9,6 +9,8 @@ $appendix_green: #99c575;
 $appendix_orange: #ffa366;
 $appendix_grey: #adadad;
 
+$blue-grey-background: #F3F6F9;
+
 @import "reset";
 
 /* Beginning of actual styles! */
@@ -24,7 +26,7 @@ p.browsehappy a {
 }
 
 body {
-  background: #F3F6F9;
+  background: $blue-grey-background;
 }
 
 a:hover {
@@ -61,7 +63,7 @@ a:hover {
   box-shadow: 0 0 12px #ebebeb;
   -webkit-box-shadow: 0 0 12px #ebebeb;
   -moz-box-shadow: 0 0 12px #ebebeb;
-  background:#f3f6f9;
+  background:$blue-grey-background;
   border-bottom: 1px solid #D6D7D7;
   height: 198px;
 
@@ -399,7 +401,7 @@ fieldset.saved-search {
   }
 }
 
-ul.quick-links {
+ul.dropdown-links {
   li {
     position:relative;
     display:inline-block;
@@ -411,20 +413,20 @@ ul.quick-links {
     .drop {
       top: 25px;
       margin:0;
-      left:-9999px;
+      left: -9999px;
       text-align:left;
       background: #F5F6F7;
-      padding: 20px;
-      width: 85%;
+      padding: 12px;
+      width: 92%;
 
       .decor {
-        left: 47px;
+        left: 20px;
       }
 
       &.show,
       &:hover {
         right: auto;
-        left: -10px;
+        left: 0;
       }
 
       h3 {
@@ -437,7 +439,7 @@ ul.quick-links {
 
       .drop {
         right: auto;
-        left: -10px;
+        left: 0;
       }
     }
 
@@ -782,7 +784,7 @@ ul.quick-links {
   .aside{
     position: fixed;
     top: 214px;
-    right: 100px;
+    right: 45px;
     color:#666;
     font-weight:bold;
     padding:32px 0 0;
@@ -892,6 +894,11 @@ ul.quick-links {
       text-indent:-9999px;
       background:url(../images/ico-star.png) no-repeat;
     }
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   .red {
@@ -933,7 +940,7 @@ ul.quick-links {
 }
 
 #content-aside {
-  width: 120px;
+  width: 175px;
 }
 
 * +html .aside .btn{display:inline;}
@@ -1074,7 +1081,7 @@ footer{
   border-top:1px solid #ececec;
   overflow:hidden;
   padding:60px 0 35px;
-  background:#f3f6f9;
+  background:$blue-grey-background;
 
   .wrap {
     position: relative;
@@ -1117,3 +1124,7 @@ footer{
 @import "fancybox";
 @import "custom_forms";
 @import "tablets";
+@import "logos";
+@import "id_manual_download";
+@import "multiselect-checkbox";
+@import "id_materials";

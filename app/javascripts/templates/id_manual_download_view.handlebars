@@ -1,0 +1,37 @@
+<div class="id-manual-download">
+  <ul class="dropdown-links">
+    <li class="id-manual-download__drop-wrapper">
+      <a class="no-link">{{t id_download.title}}</a>
+      <div class="drop">
+        {{#unless view.showVolumesDropdown}}
+          <div class="id-manual-download__center-align">
+            <button class="btn red" {{action downloadAll target="view"}}>
+              {{t id_download.download_manual}}
+            </button>
+            <div class="id-manual-download__divider">{{t id_download.or}}</div>
+            <button class="id-manual-download__text-button" {{action toggleVolumesDropdown target="view"}}>
+              {{t id_download.select_volumes}}
+            </button>
+          </div>
+        {{else}}
+          <label 
+            for="id-manual-volumes"
+            class="id-manual-download__drop-title"
+          >
+            {{t id_download.select_volumes}}
+          </label>
+          <p class="id-manual-download__help-text">{{t id_download.select_volumes_long}}</p>
+          {{view Checklist.MultiselectCheckboxView id="id-manual-volumes" class="id-manual-download__volumes" optionsBinding="view.volumeOptions"}}
+          <div class="id-manual-download__center-align">
+            <button class="btn red">{{t id_download.download_selected }}</button>
+            <div class="id-manual-download__divider">{{t id_download.or}}</div>
+            <button class="id-manual-download__text-button" {{action downloadAll target="view"}}>
+              {{t id_download.download_all}}
+            </button>
+          </div>
+        {{/unless}}
+        <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >
+      </div>
+    </li>
+  </ul>
+</div>

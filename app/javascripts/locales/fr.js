@@ -26,6 +26,25 @@ Em.I18n.locales.fr = {
   'distribution.more': 'et {{count}} supplémentaire(s)',
   'distribution.see_all': 'Voir tous les...',
 
+  'id_materials.title': 'Entrées du Manuel d’Identification',
+  'id_materials.additional_materials_title': 'Matériaux d’identification CITES associés', 'id_materials.download_button_text': 'Télécharger toutes les entrées du Manuel d’Identification pour {{taxon}}',  
+
+  'id_download.title': 'Manuel d’Identification',
+  'id_download.download_manual': 'Télécharger le Manuel',
+  'id_download.or': 'ou',
+  'id_download.select_volumes': 'Sélectionner le(s) volume(s)',
+  'id_download.select_volumes_long': 'Veuillez sélectionner le(s) volume(s) à télécharger (format PDF seulement)',
+  'id_download.download_selected': 'Télécharger la sélection',
+  'id_download.download_all': 'Télécharger tous les volumes',  
+
+  'id_manual_volume_1': 'Vol. 1 Mammalia (Mammifères)',
+  'id_manual_volume_1_flora': 'Vol. 1 Flora (Flore)',
+  'id_manual_volume_2': 'Vol. 2 Aves (Oiseaux)',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Amphibiens, Poissons, Invertébrés)',
+  'id_manual_volume_4': 'Vol. 4 Parties et Produits I',
+  'id_manual_volume_5_parts': 'Vol. 5 Parties et Produits II',
+
+  'timeline.title': 'Historial de CITES',
   'timeline.party': 'Voir les réserves à l\'encontre des inscriptions CITES',
   'timeline.split': 'NB: ce taxon fait l\'objet d\'une inscription scindée; ' +
     'voir également le(s) calendrier(s) pour les taxons inférieurs',
@@ -61,6 +80,8 @@ Em.I18n.locales.fr = {
   'downloads.button': 'Télécharger',
   'downloads.popup.title': 'Télécharger les taxa',
   'downloads.popup.info': 'Sélectionnez le format au choix',
+  'downloads.popup.id_title': 'Télécharger les matériaux d’identification',
+  'downloads.popup.list_title': 'Télécharger la liste des taxons',
 
   'download.button': 'Télécharger',
   'download.failed': 'Echec',
