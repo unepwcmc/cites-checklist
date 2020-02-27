@@ -1,38 +1,62 @@
+ACTION = 'documents'
+DOCS_ENDPOINT = Checklist.CONFIG.backend_url + ACTION
+
 Checklist.IdMaterialsView = Ember.View.extend({
-  templateName: 'id_materials_view',  
-  idMaterials: [
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-    {
-      title: 'The title goes here',
-      languagesString: 'EN, FR, ES'
-    },
-  ],
+  templateName: 'id_materials_view',
+  taxonConceptName: '',
+  taxonConceptId: 0, 
+  idMaterials: [],
+
+  didInsertElement: function () {
+    this.loadIdMaterials()
+  },
+
+  loadIdMaterials: function () {
+    var promise = new RSVP.Promise()
+    var that = this
+
+    $.ajax({
+      url: DOCS_ENDPOINT,
+      dataType: 'json',
+      data: {
+        taxon_concepts_ids: [that.get('taxonConceptId')],
+        document_type: 'Document::VirtualCollege',
+        locale: Em.I18n.currentLocale
+      },
+      success: function(data){
+        that.set('idMaterials', that.getIdMaterialsForView(data.documents))
+        promise.resolve(ACTION);
+      },
+      error: function(xhr, msg){
+        promise.reject(msg);
+      }
+    })
+    
+    return promise
+  },
+    
+  getIdMaterialsForView: function (idMaterials) {
+    that = this
+    
+    return idMaterials.map(function (material) {      
+      return $.extend({}, material.locale_document[0], {
+        languagesString: that.getLanguagesString(material),
+        url: DOCS_ENDPOINT + '/' + material.locale_document[0].id
+      })
+    })
+  },
+
+
+  getLanguagesString: function (material) {
+    return material
+      .document_language_versions
+      .map(function (m) { return m.language })
+      .join(', ')
+  },
 
   downloadIdManualEntries: function () {
     console.log(this.get('taxonConceptName'))
     console.log(this.get('taxonConceptId'))
+    console.log(this.get('idMaterials'))
   }
 });
