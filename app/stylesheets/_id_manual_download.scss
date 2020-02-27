@@ -1,4 +1,6 @@
 .id-manual-download {
+  margin-top: 12px;
+
   &__drop-wrapper {
     width: 100%;
   }
@@ -6,6 +8,16 @@
     &__center-align {
       text-align: center;
     }
+
+      &__drop-link-wrapper {
+        display: inline-flex;
+        align-items: center;
+      }
+
+        &__drop-link-icon {
+          @include icon-download;
+          margin-right: 4px;
+        }
 
       &__drop-title {
         font-weight: 500;

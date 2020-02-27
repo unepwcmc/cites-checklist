@@ -1,5 +1,6 @@
 Checklist.CONFIG = {
   // Please do not omit the trailing slash
+  // Update this for staging and production environments
   backend_url: "http://localhost:3000/checklist/",
 
   // Single page URL type for Ember to use:

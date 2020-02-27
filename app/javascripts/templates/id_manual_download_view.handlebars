@@ -1,13 +1,23 @@
 <div class="id-manual-download">
   <ul class="dropdown-links">
     <li class="id-manual-download__drop-wrapper">
-      <a class="no-link">{{t id_download.title}}</a>
+      <div class="id-manual-download__drop-link-wrapper">
+        <span class="id-manual-download__drop-link-icon"></span>
+        <a class="no-link">{{t id_download.title}}</a>
+      </div>
       <div class="drop">
         {{#unless view.showVolumesDropdown}}
           <div class="id-manual-download__center-align">
-            <button class="btn red" {{action downloadAll target="view"}}>
+            <a 
+              href="#generating-download"
+              data-format="pdf" 
+              data-doc-type="CITESIdManual" 
+              id="download"
+              class="id-manual-download__download-btn btn"
+              {{action downloadAll target="view"}}
+            >
               {{t id_download.download_manual}}
-            </button>
+            </a>
             <div class="id-manual-download__divider">{{t id_download.or}}</div>
             <button class="id-manual-download__text-button" {{action toggleVolumesDropdown target="view"}}>
               {{t id_download.select_volumes}}
@@ -21,13 +31,34 @@
             {{t id_download.select_volumes}}
           </label>
           <p class="id-manual-download__help-text">{{t id_download.select_volumes_long}}</p>
-          {{view Checklist.MultiselectCheckboxView id="id-manual-volumes" class="id-manual-download__volumes" optionsBinding="view.volumeOptions"}}
+          {{view Checklist.MultiselectCheckboxView 
+            id="id-manual-volumes" 
+            class="id-manual-download__volumes" 
+            optionsBinding="view.volumeOptions" 
+            selectedBinding="view.selected"
+          }}
           <div class="id-manual-download__center-align">
-            <button class="btn red">{{t id_download.download_selected }}</button>
+            <a 
+              href="#generating-download"
+              data-format="pdf" 
+              data-doc-type="CITESIdManual" 
+              id="download"
+              {{bindAttr class=":id-manual-download__download-btn :btn view.isDownloadSelectedDisabled:disabled"}}
+              {{action downloadSelected target="view"}}
+            >
+              {{t id_download.download_selected }}
+            </a>
             <div class="id-manual-download__divider">{{t id_download.or}}</div>
-            <button class="id-manual-download__text-button" {{action downloadAll target="view"}}>
+            <a 
+              href="#generating-download"
+              data-format="pdf" 
+              data-doc-type="CITESIdManual" 
+              id="download"
+              class="id-manual-download__text-button"
+              {{action downloadAll target="view"}}
+            >
               {{t id_download.download_all}}
-            </button>
+            </a>
           </div>
         {{/unless}}
         <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >

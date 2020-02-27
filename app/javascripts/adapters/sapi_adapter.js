@@ -37,7 +37,7 @@ Checklist.DownloadAdapter = {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
     
     //FIXME: **TEMPORARY WORK AROUND**
-    if (type.collectionUrl == 'documents/download_zip/') {
+    if (type.collectionUrl == 'documents/download_zip/' || type.collectionUrl == 'documents/volume_download/') {
       window.open(url + '?' + $.param(query))
       return
     }

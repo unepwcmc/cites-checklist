@@ -9,6 +9,7 @@ Checklist.IdManualDownloadView = Ember.View.extend({
     '4',
     '5',
   ],
+  selected: [],
 
   volumeOptions: function () {
     return this.get('volumes').map(function (volId) {
@@ -16,11 +17,45 @@ Checklist.IdManualDownloadView = Ember.View.extend({
     })
   }.property('volumes'),
 
+  downloadSelected: function () {
+    console.log('Download', this.get('selected'))
+    this.download(this.get('selected'))
+  },
+
   downloadAll: function () {
     console.log('Download all')
+    this.download(this.get('volumes'))
+  },
+
+  download: function (volumes) {
+    var doc_type, format;
+    var $el = $(event.target);
+
+    if ($el.parents('a').length !== 0) {
+      $el = $el.parents('a');
+    }
+
+    doc_type = $el.attr('data-doc-type').toLowerCase();
+    format   = $el.attr('data-format');
+
+    var download = Checklist.DownloadAdapter.createDownload(
+      Checklist.DownloadIdManualVolume,
+      {
+        download: {
+          doc_type: doc_type.toLowerCase(),
+          format: format.toLowerCase()
+        },
+        locale: Em.I18n.currentLocale,
+        volume: volumes
+      }
+    );
   },
 
   toggleVolumesDropdown: function () {
     this.set('showVolumesDropdown', !this.get('showVolumesDropdown'))
-  }
+  },
+
+  isDownloadSelectedDisabled: function () {
+    return !this.get('selected.length')
+  }.property('selected')
 });
