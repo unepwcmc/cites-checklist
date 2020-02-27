@@ -15,9 +15,9 @@
       <ul class="id-materials__links-container">
         {{#each view.idMaterials}}
           <li class="id-materials__link-row">
-            <a class="id-materials__link" {{bindAttr title="this.title"}} target="_blank">{{this.title}}</a>
+            <a class="id-materials__link" {{bindAttr href="this.url" title="this.title"}} target="_blank">{{this.title}}</a>
             <span class="id-materials__link-languages">{{this.languagesString}}</span>
-            <a class="id-materials__link-icon" {{bindAttr title="this.title"}} target="_blank"></a>
+            <a class="id-materials__link-icon" {{bindAttr href="this.url" title="this.title"}} target="_blank"></a>
           </li>
         {{/each}}
       </ul>
