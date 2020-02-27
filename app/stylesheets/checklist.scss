@@ -900,6 +900,12 @@ ul.dropdown-links {
       cursor: pointer;
       text-decoration: underline;
     }
+
+    &.disabled {
+      cursor: default;
+      opacity: 0.7;
+      pointer-events: none;
+    }
   }
 
   .red {

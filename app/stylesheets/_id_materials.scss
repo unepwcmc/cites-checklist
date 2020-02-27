@@ -24,6 +24,10 @@ $additional-materials-padding: 6px;
       @include icon-download;
       margin-right: 4px;
     }
+
+    em {
+      margin-left: 0.25em;
+    }
   }
 
   &__additional-materials {
