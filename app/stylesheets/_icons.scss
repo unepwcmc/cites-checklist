@@ -1,0 +1,8 @@
+@mixin icon-download {
+  content: '';
+  background: url(../images/ic-download.svg) center no-repeat;
+  background-size: contain;
+  width: 1.1em; height: 1.1em;
+
+  display: inline-block;
+}

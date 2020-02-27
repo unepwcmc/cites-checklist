@@ -9,12 +9,20 @@ $additional-materials-padding: 6px;
     border: solid 1px grey;
     border-radius: 20px;
     font-size: 11px;
-    line-height: 1.8;
     margin-bottom: $id-materials-default-margin-bottom;
+    padding: 6px 10px;
+
+    display: inline-flex;
+    align-items: center;
 
     &:hover {
       cursor: pointer;
       text-decoration: underline;
+    }
+
+    &::before {
+      @include icon-download;
+      margin-right: 4px;
     }
   }
 
