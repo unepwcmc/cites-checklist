@@ -35,7 +35,12 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
 Checklist.DownloadAdapter = {
   createDownload: function(type, query) {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
-
+    
+    //FIXME: **TEMPORARY WORK AROUND**
+    if (type.collectionUrl == 'documents/download_zip/') {
+      window.open(url + '?' + $.param(query))
+      return
+    }
     Checklist.get('router').get('downloadController').set('latest', []);
 
     $.ajaxCors(url, "post", query, "json", this, function(data) {
@@ -44,7 +49,7 @@ Checklist.DownloadAdapter = {
       }
 
       var download = Checklist.local_store.createRecord(
-        Checklist.Download, data
+        type, data
       );
 
       Checklist.local_store.commit();

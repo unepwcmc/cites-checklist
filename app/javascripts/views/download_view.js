@@ -49,6 +49,30 @@ Checklist.DownloadView = Em.View.extend({
 
   downloadIdMaterials: function(event) {
     console.log('Downloading id materials')
+    var $el = $(event.target);
+
+    if ($el.parents('a').length !== 0) {
+      $el = $el.parents('a');
+    }
+
+    var params = Checklist.get('router').get('filtersController').toParams();
+    console.log($el)
+
+    doc_type = $el.attr('data-doc-type').toLowerCase();
+    format = $el.attr('data-format');
+
+    var download = Checklist.DownloadAdapter.createDownload(
+      Checklist.DownloadIdManual,
+      $.extend({
+        download: {
+          doc_type: doc_type,
+          format: format.toLowerCase()
+        },
+        locale: Em.I18n.currentLocale,
+        document_type: 'Document::IdManual',
+        taxon_name: params.scientific_name,
+      }, params)
+    );
   },
 
   didInsertElement: function() {

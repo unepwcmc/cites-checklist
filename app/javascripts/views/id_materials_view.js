@@ -55,8 +55,28 @@ Checklist.IdMaterialsView = Ember.View.extend({
   },
 
   downloadIdManualEntries: function () {
-    console.log(this.get('taxonConceptName'))
-    console.log(this.get('taxonConceptId'))
-    console.log(this.get('idMaterials'))
+    var doc_type, format;
+    var $el = $(event.target);
+
+    if ($el.parents('a').length !== 0) {
+      $el = $el.parents('a');
+    }
+
+    doc_type = $el.attr('data-doc-type').toLowerCase();
+    format   = $el.attr('data-format');
+
+    var download = Checklist.DownloadAdapter.createDownload(
+      Checklist.DownloadIdManual,
+      {
+        download: {
+          doc_type: doc_type.toLowerCase(),
+          format: format.toLowerCase()
+        },
+        intro: $('#include-intro').is(':checked'),
+        locale: Em.I18n.currentLocale,
+        taxon_concept_id: this.get('taxonConceptId'),
+        document_type: 'Document::IdManual'
+      }
+    );
   }
 });
