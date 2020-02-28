@@ -37,8 +37,12 @@ Checklist.IdMaterialsView = Ember.View.extend({
     
   getIdMaterialsForView: function (idMaterials) {
     that = this
+
+    idMaterialsForLocale = idMaterials.filter(function (material) {
+      return material.locale_document.length
+    })
     
-    return idMaterials.map(function (material) {      
+    return idMaterialsForLocale.map(function (material) {      
       return $.extend({}, material.locale_document[0], {
         languagesString: that.getLanguagesString(material),
         url: DOCS_ENDPOINT + '/' + material.locale_document[0].id
