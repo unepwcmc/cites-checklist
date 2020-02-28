@@ -1,7 +1,9 @@
+{{#if view.hasIdMaterials }}  
   <div class="id-materials">
     <h3 class="id-materials__title">
       {{t id_materials.title}}
     </h3>
+    {{#if view.hasIdManualEntries}}
       <a 
         class="id-materials__download-button" 
         href="#generating-download" 
@@ -13,6 +15,7 @@
         {{t id_materials.download_button_text}} 
         <em class="italic bold">{{view.taxonConceptName}}</em>
       </a>
+    {{/if}}
 
     {{#if view.idMaterials.length}}
       <div class="id-materials__additional-materials">
@@ -31,3 +34,4 @@
       </div>
     {{/if}}
   </div>
+{{/if}}

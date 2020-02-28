@@ -6,10 +6,16 @@ Checklist.IdMaterialsView = Ember.View.extend({
   taxonConceptName: '',
   taxonConceptId: 0, 
   idMaterials: [],
+  hasIdManualEntries: false,
 
   didInsertElement: function () {
     this.loadIdMaterials()
+    this.checkForIdManualEntries()
   },
+
+  hasIdMaterials: function () {
+    return this.get('idMaterials').length || this.get('hasIdManualEntries')
+  }.property('idMaterials', 'hasIdManualEntries'),
 
   loadIdMaterials: function () {
     var promise = new RSVP.Promise()
@@ -56,6 +62,30 @@ Checklist.IdMaterialsView = Ember.View.extend({
       .document_language_versions
       .map(function (m) { return m.language })
       .join(', ')
+  },
+
+  checkForIdManualEntries: function () {
+    var promise = new RSVP.Promise()
+    var that = this
+
+    $.ajax({
+      url: DOCS_ENDPOINT,
+      dataType: 'json',
+      data: {
+        taxon_concepts_ids: [that.get('taxonConceptId')],
+        document_type: 'Document::IdManual',
+        locale: Em.I18n.currentLocale
+      },
+      success: function(data){
+        that.set('hasIdManualEntries', data.documents.length > 0)
+        promise.resolve(ACTION);
+      },
+      error: function(xhr, msg){
+        promise.reject(msg);
+      }
+    })
+    
+    return promise
   },
 
   downloadIdManualEntries: function () {
