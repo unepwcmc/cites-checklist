@@ -7,7 +7,6 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
   tagName: 'fieldset',
   class: '',
   templateName: 'multiselect_checkbox_view',
-  selectAllLabel: 'All volumes',
   areAllSelected: false,
 
   optionsForView: function () {
@@ -15,7 +14,7 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
 
     options.unshift({
       id: ALL_ID,
-      label: this.get('selectAllLabel')
+      label: Em.I18n.t('id_download.all_volumes')
     })
 
     return options.map(function (option) {
@@ -25,7 +24,7 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
         checkboxId: this.getCheckboxId(option.id)
       }
     }.bind(this))
-  }.property('id', 'options', 'selectAllLabel'),
+  }.property('id', 'options'),
 
   getCheckboxId: function (optionId) {
     return this.get('id') + '-checkbox-' + optionId

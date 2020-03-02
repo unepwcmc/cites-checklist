@@ -30,6 +30,8 @@ Checklist.IdMaterialsView = Ember.View.extend({
         locale: Em.I18n.currentLocale
       },
       success: function(data){
+        if (that.isDestroyed) { return; }
+
         that.set('idMaterials', that.getIdMaterialsForView(data.documents))
         promise.resolve(ACTION);
       },
@@ -77,6 +79,8 @@ Checklist.IdMaterialsView = Ember.View.extend({
         locale: Em.I18n.currentLocale
       },
       success: function(data){
+        if (that.isDestroyed) { return; }
+
         that.set('hasIdManualEntries', data.documents.length > 0)
         promise.resolve(ACTION);
       },

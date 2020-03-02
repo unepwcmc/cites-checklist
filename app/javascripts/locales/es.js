@@ -34,6 +34,7 @@ Em.I18n.locales.es = {
   'id_download.download_manual': 'Descargar el Manual',
   'id_download.or': 'o',
   'id_download.select_volumes': ' Seleccionar volúmen(es)',
+  'id_download.all_volumes': 'Todos los volúmenes',
   'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',
   'id_download.download_selected': 'Descargar la selección', 
   'id_download.download_all': 'Descargar todos los volúmenes', 
