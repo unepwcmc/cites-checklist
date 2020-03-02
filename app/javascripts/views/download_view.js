@@ -48,7 +48,6 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   downloadIdMaterials: function(event) {
-    console.log('Downloading id materials')
     var $el = $(event.target);
 
     if ($el.parents('a').length !== 0) {
@@ -56,7 +55,6 @@ Checklist.DownloadView = Em.View.extend({
     }
 
     var params = Checklist.get('router').get('filtersController').toParams();
-    console.log($el)
 
     doc_type = $el.attr('data-doc-type').toLowerCase();
     format = $el.attr('data-format');

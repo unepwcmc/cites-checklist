@@ -18,12 +18,10 @@ Checklist.IdManualDownloadView = Ember.View.extend({
   }.property('volumes'),
 
   downloadSelected: function () {
-    console.log('Download', this.get('selected'))
     this.download(this.get('selected'))
   },
 
   downloadAll: function () {
-    console.log('Download all')
     this.download(this.get('volumes'))
   },
 
