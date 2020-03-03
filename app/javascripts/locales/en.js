@@ -35,7 +35,6 @@ Em.I18n.locales.en = {
   'id_download.or': 'or',
   'id_download.select_volumes': 'Select volume(s)',
   'id_download.all_volumes': 'All volumes',
-  'id_download.select_volumes_long': 'Please select volume(s) you wish to download (PDF format only)',
   'id_download.download_selected': 'Download selected',
   'id_download.download_all': 'Download all volumes',
   

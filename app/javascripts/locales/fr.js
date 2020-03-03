@@ -34,7 +34,6 @@ Em.I18n.locales.fr = {
   'id_download.or': 'ou',
   'id_download.select_volumes': 'Sélectionner le(s) volume(s)',
   'id_download.all_volumes': 'Tous les volumes',
-  'id_download.select_volumes_long': 'Veuillez sélectionner le(s) volume(s) à télécharger (format PDF seulement)',
   'id_download.download_selected': 'Télécharger la sélection',
   'id_download.download_all': 'Télécharger tous les volumes',  
 

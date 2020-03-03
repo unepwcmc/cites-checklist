@@ -418,7 +418,9 @@ ul.dropdown-links {
       text-align:left;
       background: #F5F6F7;
       padding: 12px;
-      width: 92%;
+      width: 100%;
+
+      z-index: 100;
 
       .decor {
         left: 20px;
