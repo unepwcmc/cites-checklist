@@ -69,19 +69,19 @@ Checklist.IdMaterialsView = Ember.View.extend({
   checkForIdManualEntries: function () {
     var promise = new RSVP.Promise()
     var that = this
-
     $.ajax({
-      url: DOCS_ENDPOINT,
+      url: DOCS_ENDPOINT + '/check_doc_presence/',
       dataType: 'json',
       data: {
-        taxon_concepts_ids: [that.get('taxonConceptId')],
-        document_type: 'Document::IdManual',
+        taxon_concept_id: that.get('taxonConceptId'),
+        doc_type: 'Document::IdManual',
         locale: Em.I18n.currentLocale
       },
       success: function(data){
         if (that.isDestroyed) { return; }
+        console.log(data)
 
-        that.set('hasIdManualEntries', data.documents.length > 0)
+        that.set('hasIdManualEntries', data)
         promise.resolve(ACTION);
       },
       error: function(xhr, msg){
