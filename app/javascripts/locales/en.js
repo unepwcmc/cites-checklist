@@ -21,8 +21,8 @@ Em.I18n.locales.en = {
   'search.no_results': 'Your search did not match any taxa.',
   'search.results.page': 'Page',
 
-  'search.result.show_history': 'Show History',
-  'search.result.hide_history': 'Hide History',
+  'search.result.show_more': 'Show More',
+  'search.result.hide': 'Hide',
   'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 

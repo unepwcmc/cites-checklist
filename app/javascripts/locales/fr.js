@@ -21,8 +21,8 @@ Em.I18n.locales.fr = {
   'search.no_results': 'Aucun taxon ne correspond à votre recherche',
   'search.results.page': 'Page',
 
-  'search.result.show_history': 'Afficher l\'historique',
-  'search.result.hide_history': 'Masquer l\'historique',
+  'search.result.show_more': 'Afficher',
+  'search.result.hide': 'Masquer',
   'distribution.more': 'et {{count}} supplémentaire(s)',
   'distribution.see_all': 'Voir tous les...',
 
