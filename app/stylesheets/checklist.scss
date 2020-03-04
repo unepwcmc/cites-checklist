@@ -407,45 +407,6 @@ ul.dropdown-links {
     position:relative;
     display:inline-block;
 
-    .no-link {
-      cursor: default;
-    }
-
-    .drop {
-      top: 25px;
-      margin:0;
-      left: -9999px;
-      text-align:left;
-      background: #F5F6F7;
-      padding: 12px;
-      width: 100%;
-
-      z-index: 100;
-
-      .decor {
-        left: 20px;
-      }
-
-      &.show,
-      &:hover {
-        right: auto;
-        left: 0;
-      }
-
-      h3 {
-        font-weight: bold;
-      }
-    }
-
-    &:hover {
-      padding-bottom: 10px;
-
-      .drop {
-        right: auto;
-        left: 0;
-      }
-    }
-
     ul {
       line-height: 1.1em;
       padding: 0;
@@ -454,10 +415,6 @@ ul.dropdown-links {
         text-transform: none;
         font-size: 0.7em;
         display: block;
-
-        &:hover {
-          padding: 0;
-        }
       }
     }
   }
@@ -1127,6 +1084,12 @@ footer{
 
 * +html #footer{
   margin:0;
+}
+
+.ul-inline {
+  li {
+    display: inline-block;
+  }
 }
 
 @import "about";

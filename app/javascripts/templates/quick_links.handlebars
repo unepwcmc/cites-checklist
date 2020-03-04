@@ -1,31 +1,50 @@
 <div class="dropdown-links-holder">
   <h3>{{t featured.title}}</h3>
   <ul class="dropdown-links">
-    <li>
-      <a class="no-link">{{t featured.index}}</a>
-      <div class="drop">
-        <h3>{{t featured.format}}</h3>
+    {{#each view.quickLinksForView}}
+      <li>
+        <a class="no-link" {{bindAttr id="this.btnId" href="this.href"}}>{{this.title}}</a>
 
-        <ul>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="pdf">PDF</a></li>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="csv">CSV</a></li>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="index" data-format="json">JSON</a></li>
-        </ul>
-        <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >
-      </div>
-    </li>
-    <li>
-      <a class="no-link">{{t featured.history}}</a>
-      <div class="drop">
-        <h3>{{t featured.format}}</h3>
+        <div style="display:none">
+          <div {{bindAttr id="this.id"}} class="lightbox downloads">
+            <div class="heading-holder">
+              <strong class="heading">{{this.title}}</strong>
+            </div>
+            <div class="text-holder">
+              {{t downloads.popup.info}}
 
-        <ul>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="pdf">PDF</a></li>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="csv">CSV</a></li>
-          <li><a href="#" {{action "download" target="view" on="click"}} data-doc-type="history" data-format="json">JSON</a></li>
-        </ul>
-        <img src="/images/decor-dropdown-dark.png" class="decor" width="24" height="13" >
-      </div>
-    </li>
+              <p>
+                <ul class="ul-inline">
+                  <li><a 
+                    href="#" 
+                    {{action "download" target="view" on="click"}} 
+                    {{ bindAttr data-doc-type="this.doc_type" }} 
+                    data-format="pdf" 
+                    class="btn red">
+                    PDF
+                  </a></li>
+                  <li><a 
+                    href="#" 
+                    {{action "download" target="view" on="click"}} 
+                    {{ bindAttr data-doc-type="this.doc_type" }} 
+                    data-format="csv" 
+                    class="btn red">
+                    CSV
+                  </a></li>
+                  <li><a 
+                    href="#" 
+                    {{action "download" target="view" on="click"}} 
+                    {{ bindAttr data-doc-type="this.doc_type" }} 
+                    data-format="json" 
+                    class="btn red">
+                    JSON
+                  </a></li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    {{/each}}
   </ul>
 </div>

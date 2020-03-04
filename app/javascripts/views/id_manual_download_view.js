@@ -17,6 +17,10 @@ Checklist.IdManualDownloadView = Ember.View.extend({
     })
   }.property('volumes'),
 
+  didInsertElement: function() {
+    $("#id-manual-download-btn").colorbox(Checklist.CONFIG.colorbox);
+  },
+
   downloadSelected: function () {
     this.download(this.get('selected'))
   },
@@ -51,6 +55,8 @@ Checklist.IdManualDownloadView = Ember.View.extend({
 
   toggleVolumesDropdown: function () {
     this.set('showVolumesDropdown', !this.get('showVolumesDropdown'))
+    console.log('here')
+    Ember.run.next(this, $.colorbox.resize)
   },
 
   isDownloadSelectedDisabled: function () {
