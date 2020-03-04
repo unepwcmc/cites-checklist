@@ -79,7 +79,6 @@ Checklist.IdMaterialsView = Ember.View.extend({
       },
       success: function(data){
         if (that.isDestroyed) { return; }
-        console.log(data)
 
         that.set('hasIdManualEntries', data)
         promise.resolve(ACTION);
