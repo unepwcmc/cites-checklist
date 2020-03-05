@@ -4,7 +4,7 @@ DOCS_ENDPOINT = Checklist.CONFIG.backend_url + ACTION
 Checklist.IdMaterialsView = Ember.View.extend({
   templateName: 'id_materials_view',
   taxonConceptName: '',
-  taxonConceptId: 0, 
+  taxonConceptId: 0,
   idMaterials: [],
   hasIdManualEntries: false,
 
@@ -39,18 +39,18 @@ Checklist.IdMaterialsView = Ember.View.extend({
         promise.reject(msg);
       }
     })
-    
+
     return promise
   },
-    
+
   getIdMaterialsForView: function (idMaterials) {
     that = this
 
     idMaterialsForLocale = idMaterials.filter(function (material) {
       return material.locale_document.length
     })
-    
-    return idMaterialsForLocale.map(function (material) {      
+
+    return idMaterialsForLocale.map(function (material) {
       return $.extend({}, material.locale_document[0], {
         languagesString: that.getLanguagesString(material),
         url: DOCS_ENDPOINT + '/' + material.locale_document[0].id
@@ -74,7 +74,7 @@ Checklist.IdMaterialsView = Ember.View.extend({
       dataType: 'json',
       data: {
         taxon_concept_id: that.get('taxonConceptId'),
-        doc_type: 'Document::IdManual',
+        document_type: 'Document::IdManual',
         locale: Em.I18n.currentLocale
       },
       success: function(data){
@@ -87,7 +87,7 @@ Checklist.IdMaterialsView = Ember.View.extend({
         promise.reject(msg);
       }
     })
-    
+
     return promise
   },
 
