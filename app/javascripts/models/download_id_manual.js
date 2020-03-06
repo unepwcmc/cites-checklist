@@ -9,7 +9,7 @@ Checklist.DownloadIdManual = DS.Model.extend({
 });
 
 Checklist.DownloadIdManual.reopenClass({
-  collectionUrl: 'documents/download_zip/',
+  collectionUrl: 'downloads/',
 
   statusUrl: function(id) {
     return Checklist.store.adapter.url +

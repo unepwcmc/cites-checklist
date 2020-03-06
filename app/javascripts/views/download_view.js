@@ -60,7 +60,7 @@ Checklist.DownloadView = Em.View.extend({
     format = $el.attr('data-format');
 
     var download = Checklist.DownloadAdapter.createDownload(
-      Checklist.DownloadIdManual,
+      Checklist.Download,
       $.extend({
         download: {
           doc_type: doc_type,

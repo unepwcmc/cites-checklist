@@ -103,7 +103,7 @@ Checklist.IdMaterialsView = Ember.View.extend({
     format   = $el.attr('data-format');
 
     var download = Checklist.DownloadAdapter.createDownload(
-      Checklist.DownloadIdManual,
+      Checklist.Download,
       {
         download: {
           doc_type: doc_type.toLowerCase(),
