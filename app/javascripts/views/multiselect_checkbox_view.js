@@ -42,7 +42,7 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
     }
   },
 
-  toggleAllCheckboxes () {
+  toggleAllCheckboxes: function () {
     this.areAllSelected = !this.areAllSelected
 
     if (this.areAllSelected) {
