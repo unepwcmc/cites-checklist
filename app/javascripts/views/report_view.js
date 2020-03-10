@@ -32,15 +32,17 @@ Checklist.ReportView = Em.View.extend({
       Checklist.CONFIG.colorbox
     );
 
-    $("#generating-downloads-btn").colorbox(config);
-    $("#complete-download-btn").colorbox(config);
-    $("#failed-download-btn").colorbox(config);
 
-    this.$().find('a').each(function(index, item) {
-      $(item).colorbox(Checklist.CONFIG.colorbox);
-    });
-
-    $.colorbox.resize();
-    setTimeout($.colorbox.resize, 300);
+    setTimeout(function () {
+      $("#generating-downloads-btn").colorbox(config);
+      $("#complete-download-btn").colorbox(config);
+      $("#failed-download-btn").colorbox(config);
+  
+      this.$().find('a').each(function(index, item) {
+        $(item).colorbox(Checklist.CONFIG.colorbox);
+      });
+  
+      $.colorbox.resize();
+    }, 500);
   }.observes('downloadController.content', 'downloadController.content.isLoaded')
 });
