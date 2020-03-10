@@ -21,8 +21,8 @@ Em.I18n.locales.fr = {
   'search.no_results': 'Aucun taxon ne correspond à votre recherche',
   'search.results.page': 'Page',
 
-  'search.result.show_history': 'Afficher l\'historique',
-  'search.result.hide_history': 'Masquer l\'historique',
+  'search.result.show_more': 'Afficher',
+  'search.result.hide': 'Masquer',
   'distribution.more': 'et {{count}} supplémentaire(s)',
   'distribution.see_all': 'Voir tous les...',
 
@@ -33,16 +33,17 @@ Em.I18n.locales.fr = {
   'id_download.download_manual': 'Télécharger le Manuel',
   'id_download.or': 'ou',
   'id_download.select_volumes': 'Sélectionner le(s) volume(s)',
-  'id_download.select_volumes_long': 'Veuillez sélectionner le(s) volume(s) à télécharger (format PDF seulement)',
+  'id_download.select_volumes_long': 'Veuillez sélectionner le(s) volume(s) à télécharger (format PDF seulement)',	
+  'id_download.all_volumes': 'Tous les volumes',
   'id_download.download_selected': 'Télécharger la sélection',
   'id_download.download_all': 'Télécharger tous les volumes',  
 
   'id_manual_volume_1': 'Vol. 1 Mammalia (Mammifères)',
-  'id_manual_volume_1_flora': 'Vol. 1 Flora (Flore)',
+  'id_manual_volume_6': 'Vol. 1 Flora (Flore)',
   'id_manual_volume_2': 'Vol. 2 Aves (Oiseaux)',
   'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Amphibiens, Poissons, Invertébrés)',
   'id_manual_volume_4': 'Vol. 4 Parties et Produits I',
-  'id_manual_volume_5_parts': 'Vol. 5 Parties et Produits II',
+  'id_manual_volume_5': 'Vol. 5 Parties et Produits II',
 
   'timeline.title': 'Historial de CITES',
   'timeline.party': 'Voir les réserves à l\'encontre des inscriptions CITES',

@@ -21,8 +21,8 @@ Em.I18n.locales.es = {
   'search.no_results': 'Su búsqueda no encontró ningún taxón.',
   'search.results.page': 'Página',
 
-  'search.result.show_history': 'Mostrar historial',
-  'search.result.hide_history': 'Ocultar historial',
+  'search.result.show_more': 'Mostrar más',
+  'search.result.hide': 'Ocultar',
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
@@ -34,16 +34,17 @@ Em.I18n.locales.es = {
   'id_download.download_manual': 'Descargar el Manual',
   'id_download.or': 'o',
   'id_download.select_volumes': ' Seleccionar volúmen(es)',
-  'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',
+  'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',	
+  'id_download.all_volumes': 'Todos los volúmenes',
   'id_download.download_selected': 'Descargar la selección', 
   'id_download.download_all': 'Descargar todos los volúmenes', 
 
   'id_manual_volume_1': 'Vol. 1 Mammalia (Mamíferos)',
-  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_6': 'Vol. 1 Flora',
   'id_manual_volume_2': 'Vol. 2 Aves',
   'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Anfibios, Peces,  Invertebrados)',
   'id_manual_volume_4': 'Vol. 4 Partes y Derivados I',
-  'id_manual_volume_5_parts': 'Vol. 5 Partes y Derivados II',
+  'id_manual_volume_5': 'Vol. 5 Partes y Derivados II',
 
   'timeline.title': 'Historial de CITES',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',

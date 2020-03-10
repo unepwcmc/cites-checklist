@@ -7,7 +7,6 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
   tagName: 'fieldset',
   class: '',
   templateName: 'multiselect_checkbox_view',
-  selectAllLabel: 'All volumes',
   areAllSelected: false,
 
   optionsForView: function () {
@@ -15,7 +14,7 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
 
     options.unshift({
       id: ALL_ID,
-      label: this.get('selectAllLabel')
+      label: Em.I18n.t('id_download.all_volumes')
     })
 
     return options.map(function (option) {
@@ -25,7 +24,7 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
         checkboxId: this.getCheckboxId(option.id)
       }
     }.bind(this))
-  }.property('id', 'options', 'selectAllLabel'),
+  }.property('id', 'options'),
 
   getCheckboxId: function (optionId) {
     return this.get('id') + '-checkbox-' + optionId
@@ -43,33 +42,33 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
     }
   },
 
-  toggleAllCheckboxes () {
+  toggleAllCheckboxes: function () {
     this.areAllSelected = !this.areAllSelected
 
     if (this.areAllSelected) {
-      this.selected = this.options.map(function (opt) { return opt.id })
+      this.set('selected', this.options.map(function (opt) { return opt.id }))
       this.checkAll()
     } else {
-      this.selected = []
+      this.set('selected', [])
       this.uncheckAll()
     }
   },
 
   select: function (id) {
-    this.selected.push(id)
+    this.set('selected', this.get('selected').concat([id]))
 
-    if (this.selected.length === this.options.length) {
+    if (this.get('selected').length === this.options.length) {
       this.areAllSelected = true
       this.checkAll()
     }
   },
 
   deselect: function (id) {
-    this.selected = this.selected.filter(function (currentId) {
+    this.set('selected', this.get('selected').filter(function (currentId) {
       return currentId !== id
-    })
+    }))
 
-    if (this.selected.length === this.options.length - 1) {
+    if (this.get('selected').length === this.options.length - 1) {
       this.areAllSelected = false
       this.uncheckSelectAllCheckbox()
     }
@@ -96,6 +95,6 @@ Checklist.MultiselectCheckboxView = Ember.View.extend({
   },
 
   isSelected: function (id) {
-    return this.selected.indexOf(id) >= 0
-  },
+    return this.get('selected').indexOf(id) >= 0
+  }
 })

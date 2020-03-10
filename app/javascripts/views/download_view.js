@@ -20,6 +20,7 @@ Handlebars.registerHelper("commaify", function(value, options) {
 
 Checklist.DownloadView = Em.View.extend({
   templateName: 'download_view',
+  hasIdManualEntries: false,
 
   download: function(event) {
     var doc_type, format;
@@ -47,7 +48,62 @@ Checklist.DownloadView = Em.View.extend({
     );
   },
 
+  checkForIdManualEntries: function () {
+    var promise = new RSVP.Promise()
+    var that = this
+    var params = Checklist.get('router').get('filtersController').toParams();
+
+    $.ajax({
+      url: DOCS_ENDPOINT + '/check_doc_presence/',
+      dataType: 'json',
+      data: {
+        taxon_name: params.scientific_name,
+        document_type: 'Document::IdManual',
+        locale: Em.I18n.currentLocale
+      },
+      success: function(data){
+        if (that.isDestroyed) { return; }
+
+        that.set('hasIdManualEntries', data)
+        promise.resolve(ACTION);
+      },
+      error: function(xhr, msg){
+        promise.reject(msg);
+      }
+    })
+
+    return promise
+  },
+
+  downloadIdMaterials: function(event) {
+    var $el = $(event.target);
+
+    if ($el.parents('a').length !== 0) {
+      $el = $el.parents('a');
+    }
+
+    var params = Checklist.get('router').get('filtersController').toParams();
+
+    doc_type = $el.attr('data-doc-type').toLowerCase();
+    format = $el.attr('data-format');
+
+    var download = Checklist.DownloadAdapter.createDownload(
+      Checklist.DownloadIdManual,
+      $.extend({
+        download: {
+          doc_type: doc_type,
+          format: format.toLowerCase()
+        },
+        locale: Em.I18n.currentLocale,
+        document_type: 'Document::IdManual',
+        taxon_name: params.scientific_name,
+      }, params)
+    );
+  },
+
   didInsertElement: function() {
+    this.checkForIdManualEntries()
+
     var config = $.extend({
         onComplete: function() {
           setTimeout(function() {

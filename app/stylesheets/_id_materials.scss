@@ -2,19 +2,31 @@ $id-materials-default-margin-bottom: 12px;
 $additional-materials-padding: 6px;
 
 .id-materials {
-  margin: 16px 0;
+  margin-top: 16px;
   max-width: 600px;
 
   &__download-button {
     border: solid 1px grey;
     border-radius: 20px;
     font-size: 11px;
-    line-height: 1.8;
     margin-bottom: $id-materials-default-margin-bottom;
+    padding: 6px 10px;
+
+    display: inline-flex;
+    align-items: center;
 
     &:hover {
       cursor: pointer;
       text-decoration: underline;
+    }
+
+    &::before {
+      @include icon-download;
+      margin-right: 4px;
+    }
+
+    em {
+      margin-left: 0.25em;
     }
   }
 

@@ -21,8 +21,8 @@ Em.I18n.locales.en = {
   'search.no_results': 'Your search did not match any taxa.',
   'search.results.page': 'Page',
 
-  'search.result.show_history': 'Show History',
-  'search.result.hide_history': 'Hide History',
+  'search.result.show_more': 'Show More',
+  'search.result.hide': 'Hide',
   'distribution.more': 'and {{count}} more.',
   'distribution.see_all': 'See all...',
 
@@ -34,16 +34,17 @@ Em.I18n.locales.en = {
   'id_download.download_manual': 'Download Manual',
   'id_download.or': 'or',
   'id_download.select_volumes': 'Select volume(s)',
-  'id_download.select_volumes_long': 'Please select volume(s) you wish to download (PDF format only)',
+  'id_download.select_volumes_long': 'Please select volume(s) you wish to download (PDF format only)',	
+  'id_download.all_volumes': 'All volumes',
   'id_download.download_selected': 'Download selected',
   'id_download.download_all': 'Download all volumes',
   
   'id_manual_volume_1': 'Vol. 1 Mammalia',
-  'id_manual_volume_1_flora': 'Vol. 1 Flora',
+  'id_manual_volume_6': 'Vol. 1 Flora',
   'id_manual_volume_2': 'Vol 2. Aves',
   'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata',
   'id_manual_volume_4': 'Vol. 4 Parts and Derivatives I',
-  'id_manual_volume_5_parts': 'Vol. 5 Parts and Derivatives II',
+  'id_manual_volume_5': 'Vol. 5 Parts and Derivatives II',
 
   'timeline.title': 'CITES history',
   'timeline.party': 'See reservations to CITES listings',
