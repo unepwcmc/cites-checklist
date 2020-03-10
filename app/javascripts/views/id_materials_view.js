@@ -7,11 +7,28 @@ Checklist.IdMaterialsView = Ember.View.extend({
   taxonConceptId: 0,
   idMaterials: [],
   hasIdManualEntries: false,
+  downloadIdManualButtonId: '',
 
   didInsertElement: function () {
     this.loadIdMaterials()
     this.checkForIdManualEntries()
   },
+
+  downloadIdManualButtonId: function () {
+    return "id-materials-id-manual-download" + "-" + this.get('taxonConceptId')
+  }.property(),
+
+  hasIdManualEntriesChanged: function() {
+    const that = this
+
+    if (that.get('hasIdManualEntries')) {
+      Em.run.next(
+        function () {
+          $("#" + that.get('downloadIdManualButtonId')).colorbox(Checklist.CONFIG.colorbox)
+        }
+      )
+    }
+  }.observes('hasIdManualEntries'),
 
   hasIdMaterials: function () {
     return this.get('idMaterials').length || this.get('hasIdManualEntries')
@@ -109,7 +126,6 @@ Checklist.IdMaterialsView = Ember.View.extend({
           doc_type: doc_type.toLowerCase(),
           format: format.toLowerCase()
         },
-        intro: $('#include-intro').is(':checked'),
         locale: Em.I18n.currentLocale,
         taxon_concept_id: this.get('taxonConceptId'),
         document_type: 'Document::IdManual'

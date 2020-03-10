@@ -8,8 +8,8 @@
       href="#generating-download"
       data-format="zip" 
       data-doc-type="CITESIdManual"
-      id="download"
-      {{action downloadIdManualEntries}}
+      {{ bindAttr id="view.downloadIdManualButtonId"}}
+      {{action downloadIdManualEntries target="view"}}
     >
       {{t id_materials.download_button_text}}
       <em class="italic bold">{{view.taxonConceptName}}</em>
