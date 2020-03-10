@@ -18,12 +18,14 @@
         <input id="include-intro" type="checkbox" checked="checked">
         <label for="author-checkbox">{{t advanced.downloads.include_intro}}</label>
       </div>
-      <div class="heading-holder">
-        <strong class="heading">{{t downloads.popup.id_title}}</strong>
-      </div>
-      <div class="text-holder">
-        <a href="#generating-download" {{action "downloadIdMaterials" target="view" on="click"}} data-format="pdf" data-doc-type="CITESIdManual" id="download" class="btn red"><strong>PDF</strong></a>
-      </div>
+      {{#if view.hasIdManualEntries}}
+        <div class="heading-holder">
+          <strong class="heading">{{t downloads.popup.id_title}}</strong>
+        </div>
+        <div class="text-holder">
+          <a href="#generating-download" {{action "downloadIdMaterials" target="view" on="click"}} data-format="pdf" data-doc-type="CITESIdManual" id="download" class="btn red"><strong>PDF</strong></a>
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>
