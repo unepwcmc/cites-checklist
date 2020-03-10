@@ -55,7 +55,6 @@ Checklist.IdManualDownloadView = Ember.View.extend({
 
   toggleVolumesDropdown: function () {
     this.set('showVolumesDropdown', !this.get('showVolumesDropdown'))
-    console.log('here')
     Ember.run.next(this, $.colorbox.resize)
   },
 

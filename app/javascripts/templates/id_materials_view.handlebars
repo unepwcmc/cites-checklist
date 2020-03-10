@@ -3,13 +3,13 @@
     <h3 class="id-materials__title">
       {{t id_materials.title}}
     </h3>
-    <a 
-      class="id-materials__download-button" 
-      href="#generating-download" 
+    <a
+      class="id-materials__download-button"
+      href="#generating-download"
       data-format="pdf" 
-      data-doc-type="CITESIdManual" 
-      id="download" 
-      {{action downloadIdManualEntries}}
+      data-doc-type="CITESIdManual"
+      {{ bindAttr id="view.downloadIdManualButtonId"}}
+      {{action downloadIdManualEntries target="view"}}
     >
       {{t id_materials.download_button_text}} 
       <em class="italic bold">{{view.taxonConceptName}}</em>
