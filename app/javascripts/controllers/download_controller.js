@@ -106,6 +106,10 @@ Checklist.DownloadController = Ember.ArrayController.extend({
       var that = this;
       var id = setInterval(function() {
         that.refresh();
+
+        if (!that.get('generating').length) {
+          that.stopPolling()
+        }
       }, 10000);
 
       this.set('_interval', id);
