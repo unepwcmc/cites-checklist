@@ -67,20 +67,43 @@ Checklist.IdMaterialsView = Ember.View.extend({
       return material.locale_document.length
     })
 
-    return idMaterialsForLocale.map(function (material) {
-      return $.extend({}, material.locale_document[0], {
-        languagesString: that.getLanguagesString(material),
-        url: DOCS_ENDPOINT + '/' + material.locale_document[0].id
-      })
+    return idMaterialsForLocale.map(function (material) {  
+      return $.extend({}, 
+        material.locale_document[0],
+        { 
+          linkId: 'id-materials-link-' + material.primary_document_id,
+          localeUrl: that.getDocUrl(material.locale_document[0].id),
+          versions: that.getLanguageVersions(material)
+        }
+      )
     })
   },
 
+  updateLinkHref: function (event) {
+    const linkId = event.target.dataset.linkId
+    const documentId = event.target.value
 
-  getLanguagesString: function (material) {
+    this.$('#' + linkId).attr('href', this.getDocUrl(documentId))
+  },
+
+  getDocUrl: function (id) {
+    return DOCS_ENDPOINT + '/' + id
+  },
+
+  getLanguageVersions: function (material) {
     return material
       .document_language_versions
-      .map(function (m) { return m.language })
-      .join(', ')
+      .map(function (m) { 
+        let selected = null
+
+        if (m.id === material.locale_document[0].id) { selected = 'selected' }
+
+        return {
+          language: m.language,
+          id: m.id,
+          selected: selected
+        }
+      })
   },
 
   checkForIdManualEntries: function () {

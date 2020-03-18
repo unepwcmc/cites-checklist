@@ -46,48 +46,49 @@ $additional-materials-padding: 6px;
 
     &__link-row {
       border-bottom: solid 2px grey;
-      opacity: 0.7;
       padding: 8px 0 5px 0;
       width: 100%;
 
       display: flex;
       align-items: center;
 
-      &:hover {
-        opacity: 1;
-      }
-
       &:first-child {
         padding-top: 2px;
       }
     }
 
-      &__link {
+      &__link-title {
         color: inherit;
         margin-right: 6px;
       }
 
-      &__link-tooltip {
-        flex-shrink: 0;
-        margin-right: 6px;
-      }
-
-      &__link-languages {
-        flex-shrink: 0;
+      &__link-select {
+        background-color: white;
+        border: solid 1px grey;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: inherit;
         margin-left: auto;
+        width: 50px; height: 22px;
+
+        flex-shrink: 0;
       }
 
       &__link-icon {
-        background: url(../images/ic-chevron.svg) center no-repeat;
-        background-size: contain;
-        flex-shrink: 0;
-        margin: 0px 30px;
-        width: 2.15em; height: 1.9em;
+        background: url(../images/ic-download.svg) center no-repeat;
+        background-size: 54%;
+        border: solid 1px grey;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-right: 30px;
+        margin-left: 6px;
+        width: 22px; height: 22px;
         
         display: inline-block;
-        
+        flex-shrink: 0;
+
         &:hover {
-          background-image: url(../images/ic-chevron-hover.svg);
+          border-width: 2px;
         }
       }
 }
