@@ -24,9 +24,22 @@
       <ul class="id-materials__links-container">
         {{#each view.idMaterials}}
           <li class="id-materials__link-row">
-            <a class="id-materials__link" {{bindAttr href="this.url" title="this.title"}} target="_blank">{{this.title}}</a>
-            <span class="id-materials__link-languages">{{this.languagesString}}</span>
-            <a class="id-materials__link-icon" {{bindAttr href="this.url" title="this.title"}} target="_blank"></a>
+            <span class="id-materials__link-title">{{this.title}}</span>
+            <select 
+              class="id-materials__link-select"
+              {{bindAttr data-link-id="this.linkId"}}
+              {{action updateLinkHref on="change" target="view"}}
+            >
+              {{#each version in this.versions}}
+                <option {{ bindAttr value="version.id" selected="version.selected"}}>
+                  {{version.language}}
+                </option>
+              {{/each}}
+            </select>
+            <a 
+              class="id-materials__link-icon" 
+              {{bindAttr id="this.linkId" href="this.localeUrl" title="this.title"}} 
+              target="_blank"></a>
           </li>
         {{/each}}
       </ul>
