@@ -29,6 +29,7 @@ Em.I18n.locales.en = {
   'id_materials.title': 'CITES Identification Manual entries',
   'id_materials.additional_materials_title': 'Other identification materials',
   'id_materials.download_button_text': 'Download all ID Manual entries for ',
+  'id_materials.select_language': 'Select language',
 
   'id_download.title': 'Identification Manual',
   'id_download.download_manual': 'Download Manual',

@@ -28,6 +28,7 @@ Em.I18n.locales.fr = {
 
   'id_materials.title': 'Entrées du Manuel d’Identification',
   'id_materials.additional_materials_title': 'Matériaux d’identification CITES associés', 'id_materials.download_button_text': 'Télécharger toutes les entrées du Manuel d’Identification pour {{taxon}}',  
+  'id_materials.select_language': 'Choisir la langue',
 
   'id_download.title': 'Manuel d’Identification',
   'id_download.download_manual': 'Télécharger le Manuel',
