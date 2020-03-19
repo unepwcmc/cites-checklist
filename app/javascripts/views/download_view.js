@@ -65,6 +65,17 @@ Checklist.DownloadView = Em.View.extend({
         if (that.isDestroyed) { return; }
 
         that.set('hasIdManualEntries', data)
+        if (data) {
+          const interval = setInterval(
+            function () {
+              const el = that.$('#id-manual-download')
+
+              if (el.length) {
+                el.colorbox(Checklist.CONFIG.colorbox)
+                clearInterval(interval)
+              }
+            }, 500)
+        }
         promise.resolve(ACTION);
       },
       error: function(xhr, msg){
