@@ -69,7 +69,7 @@ $additional-materials-padding: 6px;
         box-sizing: border-box;
         color: inherit;
         margin-left: auto;
-        width: 50px; height: 22px;
+        height: 22px;
 
         flex-shrink: 0;
       }
@@ -86,6 +86,12 @@ $additional-materials-padding: 6px;
         
         display: inline-block;
         flex-shrink: 0;
+
+        &.disabled {
+          cursor: default;
+          opacity: 0.5;
+          pointer-events: none;
+        }
 
         &:hover {
           border-width: 2px;

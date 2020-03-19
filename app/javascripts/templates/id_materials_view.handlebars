@@ -30,15 +30,16 @@
               {{bindAttr data-link-id="this.linkId"}}
               {{action updateLinkHref on="change" target="view"}}
             >
+              <option selected hidden value disabled>{{t id_materials.select_language}}</option>
               {{#each version in this.versions}}
-                <option {{ bindAttr value="version.id" selected="version.selected"}}>
+                <option {{ bindAttr value="version.id"}}>
                   {{version.language}}
                 </option>
               {{/each}}
             </select>
             <a 
-              class="id-materials__link-icon" 
-              {{bindAttr id="this.linkId" href="this.localeUrl" title="this.title"}} 
+              class="id-materials__link-icon disabled" 
+              {{bindAttr id="this.linkId" title="this.title"}} 
               target="_blank"></a>
           </li>
         {{/each}}

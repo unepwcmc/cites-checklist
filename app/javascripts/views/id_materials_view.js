@@ -72,7 +72,6 @@ Checklist.IdMaterialsView = Ember.View.extend({
         material.locale_document[0],
         { 
           linkId: 'id-materials-link-' + material.primary_document_id,
-          localeUrl: that.getDocUrl(material.locale_document[0].id),
           versions: that.getLanguageVersions(material)
         }
       )
@@ -82,8 +81,10 @@ Checklist.IdMaterialsView = Ember.View.extend({
   updateLinkHref: function (event) {
     const linkId = event.target.dataset.linkId
     const documentId = event.target.value
+    const linkEL = this.$('#' + linkId)
 
-    this.$('#' + linkId).attr('href', this.getDocUrl(documentId))
+    linkEL.attr('href', this.getDocUrl(documentId))
+    linkEL.removeClass('disabled')
   },
 
   getDocUrl: function (id) {
@@ -94,14 +95,9 @@ Checklist.IdMaterialsView = Ember.View.extend({
     return material
       .document_language_versions
       .map(function (m) { 
-        let selected = null
-
-        if (m.id === material.locale_document[0].id) { selected = 'selected' }
-
         return {
           language: m.language,
-          id: m.id,
-          selected: selected
+          id: m.id
         }
       })
   },
