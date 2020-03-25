@@ -63,19 +63,27 @@ Checklist.IdMaterialsView = Ember.View.extend({
   getIdMaterialsForView: function (idMaterials) {
     that = this
 
-    idMaterialsForLocale = idMaterials.filter(function (material) {
-      return material.locale_document.length
-    })
-
-    return idMaterialsForLocale.map(function (material) {  
+    return idMaterials.map(function (material) {  
       return $.extend({}, 
-        material.locale_document[0],
+        that.getLocaleOrPrimaryDocument(material),
         { 
           linkId: 'id-materials-link-' + material.primary_document_id,
           versions: that.getLanguageVersions(material)
         }
       )
     })
+  },
+
+  getLocaleOrPrimaryDocument: function (material) {
+    let document = material.locale_document[0]
+
+    if (!document) {
+      document = material.document_language_versions.filter(function (version) {
+        return version.id === parseInt(material.primary_document_id)
+      })[0]
+    }
+
+    return document
   },
 
   updateLinkHref: function (event) {
