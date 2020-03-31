@@ -131,7 +131,7 @@ Em.I18n.locales.fr = {
     'accord international entre Etats qui vise à s\'assurer que le commerce ' +
     'international de spécimens d\'animaux ou de plantes sauvages ne menace ' +
     'pas la survie de ces derniers',
-  'splash.p2': 'La Liste des espèces CITES permet d\'explorer plus de 35 000' +
+  'splash.p2': 'La Liste des espèces CITES permet d\'explorer plus de 36 000' +
     ' espèces animales ou végétales et de vérifier leur degré de protection',
   'splash.button': 'Commencer l\'exploration'
 };

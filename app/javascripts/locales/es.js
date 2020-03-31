@@ -133,6 +133,6 @@ Em.I18n.locales.es = {
     'velar por que el comercio internacional de especímenes de animales y ' +
     'plantas silvestres no constituya una amenaza para su supervivencia.',
   'splash.p2': 'La Lista de especies CITES le permite explorar más de ' +
-    '35.000 especies de animales y plantas y su grado de protección.',
+    '36.000 especies de animales y plantas y su grado de protección.',
   'splash.button': 'Comenzar a explorar'
 };

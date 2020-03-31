@@ -131,7 +131,7 @@ Em.I18n.locales.en = {
     'governments that aims to ensure that international trade in specimens ' +
     'of wild animals and plants does not threaten their survival.',
   'splash.p2': 'The Checklist of CITES Species allows the exploration of ' +
-    'more than 35,000 species of animals and plants and their degree of ' +
+    'more than 36,000 species of animals and plants and their degree of ' +
     'protection.',
   'splash.button': 'Start Exploring'
 };
