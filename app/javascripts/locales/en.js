@@ -31,7 +31,8 @@ Em.I18n.locales.en = {
   'id_materials.download_button_text': 'Download all ID Manual entries for ',
   'id_materials.select_language': 'Select language',
 
-  'id_download.title': 'Identification Manual',
+  'id_download.link': 'CITES Identification Manual',
+  'id_download.title': 'CITES Identification Manual (1980-2009)',
   'id_download.download_manual': 'Download Manual',
   'id_download.or': 'or',
   'id_download.select_volumes': 'Select volume(s)',
@@ -83,7 +84,7 @@ Em.I18n.locales.en = {
   'downloads.button': 'Download',
   'downloads.popup.title': 'Download Taxa',
   'downloads.popup.info': 'Please select the format of your choice',
-  'downloads.popup.id_title': 'Download identification materials',
+  'downloads.popup.id_title': 'Download CITES Identification Manual entries',
   'downloads.popup.list_title': 'Download list of taxa',
 
   'download.button': 'Download',
