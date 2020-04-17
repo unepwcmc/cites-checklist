@@ -26,11 +26,12 @@ Em.I18n.locales.fr = {
   'distribution.more': 'et {{count}} supplémentaire(s)',
   'distribution.see_all': 'Voir tous les...',
 
-  'id_materials.title': 'Entrées du Manuel d’Identification',
+  'id_materials.title': 'Entrées du Manuel d’Identification CITES',
   'id_materials.additional_materials_title': 'Matériaux d’identification CITES associés', 'id_materials.download_button_text': 'Télécharger toutes les entrées du Manuel d’Identification pour {{taxon}}',  
   'id_materials.select_language': 'Choisir la langue',
 
-  'id_download.title': 'Manuel d’Identification',
+  'id_download.link': 'Manuel d’Identification CITES',
+  'id_download.title': 'Manuel d’Identification CITES (1980-2009)',
   'id_download.download_manual': 'Télécharger le Manuel',
   'id_download.or': 'ou',
   'id_download.select_volumes': 'Sélectionner le(s) volume(s)',
@@ -82,7 +83,7 @@ Em.I18n.locales.fr = {
   'downloads.button': 'Télécharger',
   'downloads.popup.title': 'Télécharger les taxa',
   'downloads.popup.info': 'Sélectionnez le format au choix',
-  'downloads.popup.id_title': 'Télécharger les matériaux d’identification',
+  'downloads.popup.id_title': 'Télécharger les entrées du Manuel d’Identification CITES',
   'downloads.popup.list_title': 'Télécharger la liste des taxons',
 
   'download.button': 'Télécharger',

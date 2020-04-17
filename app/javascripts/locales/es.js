@@ -26,12 +26,13 @@ Em.I18n.locales.es = {
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
-  'id_materials.title': 'Entradas del manual de identificación',
+  'id_materials.title': 'Entradas del manual de identificación CITES',
   'id_materials.additional_materials_title': 'Materiales de identificación CITES asociados',
   'id_materials.download_button_text': 'Descargar todas las entradas del Manual de identificación para {{taxon}}',
   'id_materials.select_language': 'Seleccione un idioma',
 
-  'id_download.title': 'Manual de Identificación',
+  'id_download.link': 'Manual de Identificación CITES',
+  'id_download.title': 'Manual de Identificación CITES (1980-2009)',
   'id_download.download_manual': 'Descargar el Manual',
   'id_download.or': 'o',
   'id_download.select_volumes': ' Seleccionar volúmen(es)',
@@ -83,7 +84,7 @@ Em.I18n.locales.es = {
   'downloads.button': 'Descargar',
   'downloads.popup.title': 'Descargar taxones',
   'downloads.popup.info': 'Seleccione el formato preferido',
-  'downloads.popup.id_title': 'Descargar materiales de identificación', 
+  'downloads.popup.id_title': 'Descargar entradas del manual de identificación CITES', 
   'downloads.popup.list_title': 'Descargar lista de especies', 
 
   'download.button': 'Descargar',
