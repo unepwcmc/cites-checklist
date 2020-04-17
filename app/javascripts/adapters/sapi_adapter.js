@@ -35,9 +35,9 @@ Checklist.SAPIAdapter = DS.Adapter.extend({
 Checklist.DownloadAdapter = {
   createDownload: function(type, query) {
     var url = Checklist.CONFIG.backend_url + type.collectionUrl;
-    
+
     //FIXME: **TEMPORARY WORK AROUND**
-    if (type.collectionUrl == 'documents/download_zip/' || type.collectionUrl == 'documents/volume_download/') {
+    if (type.collectionUrl == 'documents/volume_download/') {
       window.open(url + '?' + $.param(query))
       return
     }

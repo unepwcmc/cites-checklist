@@ -65,6 +65,17 @@ Checklist.DownloadView = Em.View.extend({
         if (that.isDestroyed) { return; }
 
         that.set('hasIdManualEntries', data)
+        if (data) {
+          const interval = setInterval(
+            function () {
+              const el = that.$('#id-manual-download')
+
+              if (el.length) {
+                el.colorbox(Checklist.CONFIG.colorbox)
+                clearInterval(interval)
+              }
+            }, 500)
+        }
         promise.resolve(ACTION);
       },
       error: function(xhr, msg){
@@ -88,7 +99,7 @@ Checklist.DownloadView = Em.View.extend({
     format = $el.attr('data-format');
 
     var download = Checklist.DownloadAdapter.createDownload(
-      Checklist.DownloadIdManual,
+      Checklist.Download,
       $.extend({
         download: {
           doc_type: doc_type,

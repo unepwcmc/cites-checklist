@@ -13,10 +13,10 @@
           </div>
           <div class="text-holder">
             {{#unless view.showVolumesDropdown}}
-              <a 
+              <a
                 href="#generating-download"
-                data-format="pdf" 
-                data-doc-type="CITESIdManual" 
+                data-format="zip"
+                data-doc-type="CITESIdManual"
                 id="download"
                 class="id-manual-download__download-btn btn"
                 {{action downloadAll target="view"}}
@@ -28,22 +28,22 @@
                 {{t id_download.select_volumes}}
               </button>
             {{else}}
-              <label 
+              <label
                 for="id-manual-volumes"
                 class="id-manual-download__drop-title"
               >
                 {{t id_download.select_volumes_long}}
               </label>
-              {{view Checklist.MultiselectCheckboxView 
-                id="id-manual-volumes" 
-                class="id-manual-download__volumes" 
-                optionsBinding="view.volumeOptions" 
+              {{view Checklist.MultiselectCheckboxView
+                id="id-manual-volumes"
+                class="id-manual-download__volumes"
+                optionsBinding="view.volumeOptions"
                 selectedBinding="view.selected"
               }}
-              <a 
+              <a
                 href="#generating-download"
-                data-format="pdf" 
-                data-doc-type="CITESIdManual" 
+                data-format="zip"
+                data-doc-type="CITESIdManual"
                 id="download"
                 {{bindAttr class=":id-manual-download__download-btn :btn view.isDownloadSelectedDisabled:disabled"}}
                 {{action downloadSelected target="view"}}
@@ -51,10 +51,10 @@
                 {{t id_download.download_selected }}
               </a>
               <div class="id-manual-download__divider">{{t id_download.or}}</div>
-              <a 
+              <a
                 href="#generating-download"
-                data-format="pdf" 
-                data-doc-type="CITESIdManual" 
+                data-format="zip"
+                data-doc-type="CITESIdManual"
                 id="download"
                 class="id-manual-download__text-button"
                 {{action downloadAll target="view"}}

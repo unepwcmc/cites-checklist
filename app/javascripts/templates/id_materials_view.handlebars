@@ -6,12 +6,12 @@
     <a
       class="id-materials__download-button"
       href="#generating-download"
-      data-format="pdf" 
+      data-format="zip" 
       data-doc-type="CITESIdManual"
       {{ bindAttr id="view.downloadIdManualButtonId"}}
       {{action downloadIdManualEntries target="view"}}
     >
-      {{t id_materials.download_button_text}} 
+      {{t id_materials.download_button_text}}
       <em class="italic bold">{{view.taxonConceptName}}</em>
     </a>
   {{/if}}
