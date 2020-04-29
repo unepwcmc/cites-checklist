@@ -58,6 +58,8 @@ Checklist.DownloadView = Em.View.extend({
       dataType: 'json',
       data: {
         taxon_name: params.scientific_name,
+        country_ids: params.country_ids,
+        cites_appendices: params.cites_appendices,
         document_type: 'Document::IdManual',
         locale: Em.I18n.currentLocale
       },
