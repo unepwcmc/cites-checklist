@@ -13,7 +13,7 @@
   position: inherit;
   height: inherit;
   border-bottom: none;
-  background: #F3F6F9 url(../images/separator2.gif) repeat-x 0 100%;
+  background: $blue-grey-background url(../images/separator2.gif) repeat-x 0 100%;
   @include vendor-prefix(box-shadow, none);
 
   .header-frame {
