@@ -21,11 +21,34 @@ Em.I18n.locales.es = {
   'search.no_results': 'Su búsqueda no encontró ningún taxón.',
   'search.results.page': 'Página',
 
-  'search.result.show_history': 'Mostrar historial',
-  'search.result.hide_history': 'Ocultar historial',
+  'search.result.show_more': 'Mostrar más',
+  'search.result.hide': 'Ocultar',
   'distribution.more': 'y {{count}} más.',
   'distribution.see_all': 'Ver todos...',
 
+  'id_materials.title': 'Entradas del manual de identificación CITES',
+  'id_materials.additional_materials_title': 'Materiales de identificación CITES asociados',
+  'id_materials.download_button_text': 'Descargar todas las entradas del Manual de identificación para {{taxon}}',
+  'id_materials.select_language': 'Seleccione un idioma',
+
+  'id_download.link': 'Manual de Identificación CITES',
+  'id_download.title': 'Manual de Identificación CITES (1980-2009)',
+  'id_download.download_manual': 'Descargar el Manual',
+  'id_download.or': 'o',
+  'id_download.select_volumes': ' Seleccionar volúmen(es)',
+  'id_download.select_volumes_long': ' Seleccione los volúmenes que desean descargar (solamente formato PDF)',	
+  'id_download.all_volumes': 'Todos los volúmenes',
+  'id_download.download_selected': 'Descargar la selección', 
+  'id_download.download_all': 'Descargar todos los volúmenes', 
+
+  'id_manual_volume_1': 'Vol. 1 Mammalia (Mamíferos)',
+  'id_manual_volume_6': 'Vol. 1 Flora',
+  'id_manual_volume_2': 'Vol. 2 Aves',
+  'id_manual_volume_3': 'Vol. 3 Reptilia, Amphibia, Pisces, Invertebrata (Reptiles, Anfibios, Peces,  Invertebrados)',
+  'id_manual_volume_4': 'Vol. 4 Partes y Derivados I',
+  'id_manual_volume_5': 'Vol. 5 Partes y Derivados II',
+
+  'timeline.title': 'Historial de CITES',
   'timeline.party': 'Ver reservas a inclusiones en los Apéndices de la CITES',
   'timeline.split': 'NB: inclusión dividida para este taxón. Vea también ' +
     'la(s) línea(s) de tiempo para los taxones inferiores.',
@@ -61,6 +84,8 @@ Em.I18n.locales.es = {
   'downloads.button': 'Descargar',
   'downloads.popup.title': 'Descargar taxones',
   'downloads.popup.info': 'Seleccione el formato preferido',
+  'downloads.popup.id_title': 'Descargar entradas del manual de identificación CITES', 
+  'downloads.popup.list_title': 'Descargar lista de especies', 
 
   'download.button': 'Descargar',
   'download.failed': 'Se produjo un error.',
@@ -109,6 +134,6 @@ Em.I18n.locales.es = {
     'velar por que el comercio internacional de especímenes de animales y ' +
     'plantas silvestres no constituya una amenaza para su supervivencia.',
   'splash.p2': 'La Lista de especies CITES le permite explorar más de ' +
-    '35.000 especies de animales y plantas y su grado de protección.',
+    '36.000 especies de animales y plantas y su grado de protección.',
   'splash.button': 'Comenzar a explorar'
 };

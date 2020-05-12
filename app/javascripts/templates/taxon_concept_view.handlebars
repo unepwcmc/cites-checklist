@@ -8,7 +8,7 @@
       <div class="column-container">
         <div class="column">
           <h2 style="{{unbound view.headingStyle}}">
-            {{{unbound view.full_name}}}
+            {{{unbound view.formatted_name}}}
             {{# if view.showAuthor}}
               <span class="author_year">{{unbound author_year}}</span>
             {{/if}}
@@ -73,8 +73,15 @@
       <div class="slide">
         <div class="column-container">
           <div class="column">
-            <div class="area-holder">
+            <div class="cites-history">
+              <h3>{{t timeline.title}}</h3>
+              <div class="area-holder">
             </div>
+            </div>
+            {{view Checklist.IdMaterialsView
+              taxonConceptNameBinding="full_name"
+              taxonConceptIdBinding="id"
+            }}
           </div>
         </div>
       </div>
@@ -82,11 +89,11 @@
   </div>
   <div class="opener-holder">
     <div class="opener">
-      {{t search.result.show_history}}
+      {{t search.result.show_more}}
       <span class="ico">&#9660;</span>
     </div>
     <div class="closer">
-      {{t search.result.hide_history}}
+      {{t search.result.hide}}
       <span class="ico">x</span>
     </div>
   </div>

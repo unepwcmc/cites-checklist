@@ -29,7 +29,7 @@ set :ssh_options, {
 set :linked_files, %w{app/javascripts/config.js}
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/user_guide')
 
 after "deploy:published", "assets:precompile"
 

@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, "master"
+set :branch, "download-modal"
 
 server "sapi-staging.linode.unep-wcmc.org", user: "wcmc", roles: %w{app web db}
 

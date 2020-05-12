@@ -1,0 +1,64 @@
+.id-manual-download {
+  margin-top: 12px;
+
+  &__drop-wrapper {
+    width: 100%;
+  }
+
+    &__drop-link-wrapper {
+      display: inline-flex;
+      align-items: center;
+    }
+
+      &__drop-link-icon {
+        @include icon-download;
+        margin-right: 4px;
+      }
+
+      &__drop-title {
+        font-weight: 500;
+        margin-bottom: 4px;
+
+        display: block;
+      }
+
+      &__help-text {
+        font-weight: 300;
+        font-style: italic;
+        margin-bottom: 8px;
+      }
+
+      &__volumes {
+        background: white;
+        border: solid 1px #727272;
+        border-radius: 5px;
+        margin: 20px auto 20px;
+        overflow-y: scroll;
+        padding: 8px 4px 2px;
+        text-align: left;
+        width: 60%;
+      }
+    
+      &__divider {
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      &__text-button {
+        background: none;
+        border: none;
+        border-bottom: 1px dotted #727272;
+        color: #727272;
+        padding: 0;
+
+        &:hover {
+          cursor: pointer;
+          border-bottom: 1px solid #727272;
+        }
+      }
+}
+
+.downloads .id-manual-download__download-btn {
+  background-color: #f66;
+  width: auto;
+}

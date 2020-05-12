@@ -1,0 +1,49 @@
+<div {{bindAttr class="view.hasIdMaterials:id-materials"}}>
+  {{#if view.hasIdManualEntries}}
+    <h3 class="id-materials__title">
+      {{t id_materials.title}}
+    </h3>
+    <a
+      class="id-materials__download-button"
+      href="#generating-download"
+      data-format="zip" 
+      data-doc-type="CITESIdManual"
+      {{ bindAttr id="view.downloadIdManualButtonId"}}
+      {{action downloadIdManualEntries target="view"}}
+    >
+      {{t id_materials.download_button_text}}
+      <em class="italic bold">{{view.taxonConceptName}}</em>
+    </a>
+  {{/if}}
+
+  {{#if view.idMaterials.length}}
+    <div class="id-materials__additional-materials">
+      <h3 class="id-materials__title">
+        {{t id_materials.additional_materials_title}}
+      </h3>
+      <ul class="id-materials__links-container">
+        {{#each view.idMaterials}}
+          <li class="id-materials__link-row">
+            <span class="id-materials__link-title">{{this.title}}</span>
+            <select 
+              class="id-materials__link-select"
+              {{bindAttr data-link-id="this.linkId"}}
+              {{action updateLinkHref on="change" target="view"}}
+            >
+              <option selected hidden value disabled>{{t id_materials.select_language}}</option>
+              {{#each version in this.versions}}
+                <option {{ bindAttr value="version.id"}}>
+                  {{version.language}}
+                </option>
+              {{/each}}
+            </select>
+            <a 
+              class="id-materials__link-icon disabled" 
+              {{bindAttr id="this.linkId" title="this.title"}} 
+              target="_blank"></a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</div>
