@@ -49,7 +49,6 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   checkForIdManualEntries: function () {
-    var that = this
     var params = Checklist.get('router').get('filtersController').toParams();
 
     $.ajaxCors(
@@ -65,9 +64,9 @@ Checklist.DownloadView = Em.View.extend({
       'json',
       this,
       function (data){
-        if (that.isDestroyed) { return; }
+        if (this.isDestroyed) { return; }
 
-        that.set('hasIdManualEntries', data)
+        this.set('hasIdManualEntries', data)
         if (data) {
           const interval = setInterval(
             function () {
