@@ -49,43 +49,39 @@ Checklist.DownloadView = Em.View.extend({
   },
 
   checkForIdManualEntries: function () {
-    var promise = new RSVP.Promise()
     var that = this
     var params = Checklist.get('router').get('filtersController').toParams();
 
-    $.ajax({
-      url: DOCS_ENDPOINT + '/check_doc_presence/',
-      dataType: 'json',
-      data: {
+    $.ajaxCors(
+      DOCS_ENDPOINT + '/check_doc_presence/',
+      'get',
+      {
         taxon_name: params.scientific_name,
         country_ids: params.country_ids,
         cites_appendices: params.cites_appendices,
         document_type: 'Document::IdManual',
         locale: Em.I18n.currentLocale
       },
-      success: function(data){
+      'json',
+      this,
+      function (data){
         if (that.isDestroyed) { return; }
 
         that.set('hasIdManualEntries', data)
         if (data) {
           const interval = setInterval(
             function () {
-              const el = that.$('#id-manual-download')
-
-              if (el.length) {
-                el.colorbox(Checklist.CONFIG.colorbox)
+              const idDownloadBtnEl = $('#id-manual-download')
+              
+              if (idDownloadBtnEl.length) {
+                idDownloadBtnEl.colorbox(Checklist.CONFIG.colorbox)
+                $('#downloads').colorbox.resize()
                 clearInterval(interval)
               }
             }, 500)
         }
-        promise.resolve(ACTION);
-      },
-      error: function(xhr, msg){
-        promise.reject(msg);
       }
-    })
-
-    return promise
+    )
   },
 
   downloadIdMaterials: function(event) {
