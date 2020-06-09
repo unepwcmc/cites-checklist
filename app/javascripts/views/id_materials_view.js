@@ -35,29 +35,22 @@ Checklist.IdMaterialsView = Ember.View.extend({
   }.property('idMaterials', 'hasIdManualEntries'),
 
   loadIdMaterials: function () {
-    var promise = new RSVP.Promise()
-    var that = this
-
-    $.ajax({
-      url: DOCS_ENDPOINT,
-      dataType: 'json',
-      data: {
-        taxon_concepts_ids: [that.get('taxonConceptId')],
+    $.ajaxCors(
+      DOCS_ENDPOINT,
+      'get',
+      {
+        taxon_concepts_ids: [this.get('taxonConceptId')],
         document_type: 'Document::VirtualCollege',
         locale: Em.I18n.currentLocale
       },
-      success: function(data){
-        if (that.isDestroyed) { return; }
+      'json',
+      this,
+      function(data){
+        if (this.isDestroyed) { return; }
 
-        that.set('idMaterials', that.getIdMaterialsForView(data.documents))
-        promise.resolve(ACTION);
-      },
-      error: function(xhr, msg){
-        promise.reject(msg);
+        this.set('idMaterials', this.getIdMaterialsForView(data.documents))
       }
-    })
-
-    return promise
+    )
   },
 
   getIdMaterialsForView: function (idMaterials) {
@@ -111,28 +104,22 @@ Checklist.IdMaterialsView = Ember.View.extend({
   },
 
   checkForIdManualEntries: function () {
-    var promise = new RSVP.Promise()
-    var that = this
-    $.ajax({
-      url: DOCS_ENDPOINT + '/check_doc_presence/',
-      dataType: 'json',
-      data: {
-        taxon_concept_id: that.get('taxonConceptId'),
+    $.ajaxCors(
+      DOCS_ENDPOINT + '/check_doc_presence/',
+      'get',
+      {
+        taxon_concept_id: this.get('taxonConceptId'),
         document_type: 'Document::IdManual',
         locale: Em.I18n.currentLocale
       },
-      success: function(data){
-        if (that.isDestroyed) { return; }
+      'json',
+      this,
+      function(data){
+        if (this.isDestroyed) { return; }
 
-        that.set('hasIdManualEntries', data)
-        promise.resolve(ACTION);
-      },
-      error: function(xhr, msg){
-        promise.reject(msg);
+        this.set('hasIdManualEntries', data)
       }
-    })
-
-    return promise
+    )
   },
 
   downloadIdManualEntries: function () {
