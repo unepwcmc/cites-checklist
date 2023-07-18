@@ -147,12 +147,15 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
   keyUp: function(event) {
     var controller = Checklist.get('router').get('filtersController');
     var geoEntitiesController = Checklist.get('router').get('geoEntitiesController');
-    var pattern = new RegExp("(^|\\(| )"+event.currentTarget.value,"i");
+    var processStringFunction = this.removeCasingAndDiacritics
+    var searchString = processStringFunction(event.currentTarget.value)
+    var pattern = new RegExp("(^|\\(| )"+searchString,"i");
+
     controller.set(
       'autoCompleteCountriesContent',
       geoEntitiesController.get('countries').filter(
         function(item, index, enumerable){
-          return (pattern.test(item.get('name')));
+          return (pattern.test(processStringFunction(item.get('name'))));
         }
       ).filterProperty('is_current')
     );
@@ -172,6 +175,12 @@ Checklist.GeoEntityTextField = Em.TextField.extend({
     if ($.browser.msie) {
       this.$().val(this.$().attr('placeholder'));
     }
+  },
+
+  removeCasingAndDiacritics: function(string) {
+    return string.normalize('NFD')
+      .replace(/[\u0300-\u036F]/g, '')
+      .toLowerCase();
   }
 });
 
