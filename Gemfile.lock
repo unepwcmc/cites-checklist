@@ -18,6 +18,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt_pbkdf (1.1.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -45,6 +46,7 @@ GEM
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     concurrent-ruby (1.1.6)
+    ed25519 (1.2.4)
     execjs (2.7.0)
     ffi (1.12.1)
     i18n (1.5.1)
@@ -61,6 +63,10 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rbnacl (4.0.2)
+      ffi
+    rbnacl-libsodium (1.0.16)
+      rbnacl (>= 3.0.1)
     ref (2.0.0)
     sass (3.4.25)
     sshkit (1.20.0)
@@ -77,18 +83,22 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf (= 1.1.0)
   capistrano (= 3.4.0)
   capistrano-bundler (~> 1.1)
   capistrano-maintenance (~> 1.0)
   capistrano-passenger (~> 0.1.1)
   capistrano-rvm (~> 0.1)
   compass
+  ed25519 (= 1.2.4)
   jslint_on_rails
   json
   libv8 (= 3.16.14.13)
   rack
   rake-pipeline!
   rake-pipeline-web-filters!
+  rbnacl (= 4.0.2)
+  rbnacl-libsodium (= 1.0.16)
   therubyracer
   uglifier
 

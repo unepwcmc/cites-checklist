@@ -1,6 +1,6 @@
 
 set :stage, :production
-set :branch, "master"
+set :branch, ENV['CAP_BRANCH'] || 'master'
 
 server "sapi-production.linode.unep-wcmc.org", user: "wcmc", roles: %w{app web db}
 
