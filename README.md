@@ -25,7 +25,7 @@ the library, however should it be necessary then a good read through
 
 ## Setup
 
-In order to install libv8 and therubyracer:
+In order to install libv8 and therubyracer on MacOS:
 
 ```
 $ brew install v8@3.15
@@ -33,6 +33,8 @@ $ bundle config build.libv8 --with-system-v8
 $ bundle config build.therubyracer --with-v8-dir=$(brew --prefix v8@3.15)
 $ bundle install
 ```
+
+On Ubuntu, `bundle install` is sufficient.
 
 Assets are pre-compiled with [rake
 pipeline](https://github.com/livingsocial/rake-pipeline) and served
