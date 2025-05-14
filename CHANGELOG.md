@@ -2,6 +2,7 @@
 
 * Remove the fix specific to Turbinicarpus spp. where 'taxon is split-listed'
   message appears incorrectly, as the issue has now been solved in Species+.
+* Fix an issue where downloads were not working.
 
 ### 1.1.1
 
