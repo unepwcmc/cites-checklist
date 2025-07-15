@@ -3,6 +3,9 @@ Checklist.Router = Ember.Router.extend({
   //enableLogging: true,
 
   root: Ember.Route.extend({
+    up: Ember.Route.extend({
+      route: '/up', // http://localhost:9292/#/up
+    }),
 
     index: Ember.Route.extend({
       route: '/',
