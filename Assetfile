@@ -1,7 +1,11 @@
 # All of rake-pipeline's web goodness lives here.
 require "rake-pipeline-web-filters"
+require "rake-pipeline-web-filters/tilt_filter"
 require "json"
 require "uglifier"
+
+# Please do not omit the trailing slash
+BACKEND_URL = ENV.fetch('BACKEND_URL', 'http://localhost:3000/checklist/')
 
 # All of our outputs will be relative to the `public/`
 # directory.
@@ -16,6 +20,23 @@ output "public"
 # would limit the input to just scss files. All of our paths
 # inside this Assetfile will be relative to this directory.
 input "app" do
+
+  match "javascripts/config.js.erb" do
+    # ERB → JS
+    filter Rake::Pipeline::Web::Filters::TiltFilter,
+           {}, Struct.new(:backend_url).new(BACKEND_URL)
+
+    # Wrap as a module so it can be required
+    minispade  :rewrite_requires => true,
+               :module_id_generator => proc { |input|
+                 input.path.sub(%r{\Ajavascripts/}, 'checklist/').sub(/\.js\.erb$/, '')
+               }
+
+    # Output to a standalone file
+    concat "js/app.js" do |input|
+      input.sub(/\.js\.erb$/, '.js')
+    end
+  end
 
   # Here we specify a match block so we can apply a filter to
   # a subset of the files in our input directory. We're turning

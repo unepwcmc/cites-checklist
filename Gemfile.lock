@@ -76,6 +76,7 @@ GEM
       libv8 (~> 3.16.14.15)
       ref
     thor (1.0.1)
+    tilt (2.6.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
 
@@ -100,6 +101,7 @@ DEPENDENCIES
   rbnacl (= 4.0.2)
   rbnacl-libsodium (= 1.0.16)
   therubyracer (= 0.12.3)
+  tilt (~> 2.6)
   uglifier
 
 BUNDLED WITH

@@ -10,8 +10,8 @@ services:
       - '${CONTAINER_WEB_PORT:-9292}:9292'
     stdin_open: true
     tty: true
-    # environment:
-    #   SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+    environment:
+      BACKEND_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/
 
 volumes:
   bundler_gems:
