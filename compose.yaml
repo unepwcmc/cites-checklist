@@ -1,0 +1,17 @@
+services:
+  web:
+    container_name: cites-checklist-web
+    build: .
+    command: /bin/bash -l -c "bundle install && bundle exec rackup --host 0.0.0.0"
+    volumes:
+      - '.:/app'
+      - bundler_gems:/usr/local/bundle
+    ports:
+      - '${CONTAINER_WEB_PORT:-9292}:9292'
+    stdin_open: true
+    tty: true
+    # environment:
+    #   SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+
+volumes:
+  bundler_gems:
