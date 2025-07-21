@@ -23,6 +23,7 @@ RUN CHECKLIST_API_URL=${CHECKLIST_API_URL} bundle exec rakep build
 FROM nginx:1-alpine-slim
 
 COPY --from=build /app/public /usr/share/nginx/html
+COPY user_guide /usr/share/nginx/html/user_guide
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
