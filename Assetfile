@@ -5,7 +5,7 @@ require "json"
 require "uglifier"
 
 # Please do not omit the trailing slash
-BACKEND_URL = ENV.fetch('BACKEND_URL', 'http://localhost:3000/checklist/')
+CHECKLIST_API_URL = ENV.fetch('CHECKLIST_API_URL', 'http://localhost:3000/checklist/')
 
 # All of our outputs will be relative to the `public/`
 # directory.
@@ -24,7 +24,7 @@ input "app" do
   match "javascripts/config.js.erb" do
     # ERB → JS
     filter Rake::Pipeline::Web::Filters::TiltFilter,
-           {}, Struct.new(:backend_url).new(BACKEND_URL)
+           {}, Struct.new(:checklist_api_url).new(CHECKLIST_API_URL)
 
     # Wrap as a module so it can be required
     minispade  :rewrite_requires => true,

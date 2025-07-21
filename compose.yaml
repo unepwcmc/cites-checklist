@@ -3,7 +3,17 @@ services:
     container_name: cites-checklist-web
     build: .
     command: /bin/bash -l -c "bundle install && bundle exec rackup --host 0.0.0.0"
+    healthcheck:
+      test: ["CMD", "curl", "-fI", "-XGET", "http://localhost:9292/"]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+      start_period: 1m30s
+      start_interval: 10s
     volumes:
+      - /app/public/
+      - /app/.sass-cache/
+      - /app/tmp/
       - '.:/app'
       - bundler_gems:/usr/local/bundle
     ports:
@@ -11,7 +21,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-      BACKEND_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/
+      CHECKLIST_API_URL: "${CHECKLIST_API_URL:-https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/}"
 
 volumes:
   bundler_gems:

@@ -1,5 +1,5 @@
 ACTION = 'documents'
-DOCS_ENDPOINT = Checklist.CONFIG.backend_url + ACTION
+DOCS_ENDPOINT = Checklist.CONFIG.checklist_api_url + ACTION
 
 Checklist.IdMaterialsView = Ember.View.extend({
   templateName: 'id_materials_view',
