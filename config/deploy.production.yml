@@ -12,7 +12,7 @@ servers:
       ssl: true # Proxy terminates SSL
       forward_headers: true # Forward headers like X-Forwarded-Proto
       healthcheck:
-        path: /up
+        path: /
       logging:
         request_headers:
           - Cache-Control
