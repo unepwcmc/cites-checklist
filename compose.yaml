@@ -11,7 +11,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-      BACKEND_URL: "${CHECKLIST_API_URL:-https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/}"
+      CHECKLIST_API_URL: "${CHECKLIST_API_URL:-https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/}"
 
 volumes:
   bundler_gems:
