@@ -25,6 +25,26 @@ the library, however should it be necessary then a good read through
 
 ## Setup
 
+## With Docker
+
+To start the CITES Checklist on `http://localhost:9292/`, run:
+
+```bash
+  docker compose up -d --build
+```
+
+The following env vars can be set prior to the `docker compose` command being
+run, which will change the behaviour:
+
+- `CONTAINER_WEB_PORT` - the port on which the Checklist is served.
+- `CHECKLIST_API_URL` - the URL from which results will be fetched. Set to e.g.
+  `http://localhost:3010` if you have SAPI running locally. Note that results
+  are fetched client-side, not server-side so machine names inside a docker
+  network are not available. If not supplied, it will connect to SAPI staging.
+
+
+## Without Docker
+
 In order to install libv8 and therubyracer on MacOS:
 
 ```
