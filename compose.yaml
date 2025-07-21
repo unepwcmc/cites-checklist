@@ -4,6 +4,9 @@ services:
     build: .
     command: /bin/bash -l -c "bundle install && bundle exec rackup --host 0.0.0.0"
     volumes:
+      - /app/public/
+      - /app/.sass-cache/
+      - /app/tmp/
       - '.:/app'
       - bundler_gems:/usr/local/bundle
     ports:

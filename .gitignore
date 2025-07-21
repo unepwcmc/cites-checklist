@@ -12,10 +12,13 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
-/public
+tmp/*
+!tmp/.keep
+public/*
+!public/.keep
 /*.swp
 *.DS_Store
 /nbproject/*
 /*.swo
 .sass-cache/
+!.sass-cache/.keep
