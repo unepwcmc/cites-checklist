@@ -1,0 +1,26 @@
+# Name of the container image
+image: ghcr.io/unepwcmc/cites-checklist/web-staging
+
+# Define services (servers for Kamal 2.5.2 compatibility)
+servers:
+  web:
+    hosts:
+      - example.com # TODO: Ruan
+    proxy:
+      hosts:
+        - checklist.sapi-staging.linode.unep-wcmc.org # Public-facing domain
+      ssl: true # Proxy terminates SSL
+      forward_headers: true # Forward headers like X-Forwarded-Proto
+      healthcheck:
+        path: /up
+      logging:
+        request_headers:
+          - Cache-Control
+          - User-Agent
+          - X-Forwarded-Proto # Critical for Rails to detect HTTPS
+        response_headers:
+          - X-Request-ID
+
+builder:
+  args:
+    CHECKLIST_API_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/
