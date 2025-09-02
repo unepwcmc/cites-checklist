@@ -2,6 +2,7 @@ Checklist.TaxonConcept = DS.Model.extend({
   id: DS.attr('number'),
   parent: DS.belongsTo('Checklist.TaxonConcept', { key: 'parent_id' }),
   countries: DS.hasMany('Checklist.GeoEntity', { key: 'countries_ids' }),
+  distributions: DS.attr('array', { defaultValue: [] }),
   timelines_for_taxon_concept: DS.belongsTo('Checklist.TimelinesForTaxonConcept', { key: 'id' }),
   current_additions: DS.hasMany('Checklist.ListingChange', { embedded : true }),
   rank_name: DS.attr('string'),
@@ -37,10 +38,26 @@ Checklist.TaxonConcept = DS.Model.extend({
     Ember.run.once(this, 'createCitesPopulations');
   }.observes('current_additions.@each.countries.@each.didLoad'),
   createCitesPopulations: function(){
-    //this should run only once per taxon concept
+    // createCitesPopulations should run only once per taxon concept
+    var distributionsByGeoEntityId = (this.get('distributions') || []).reduce(
+      function(acc, dist){
+        acc[dist.geo_entity_id] = {
+          tag_names: dist.tag_names
+        };
+
+        return acc
+      }, {}
+    );
+
     var populations = this.get('countries').map(function(cnt){
+      var geoEntityId = cnt.get('id');
+
       return Checklist.CitesPopulation.create({
-        name: cnt.get('name')
+        name: cnt.get('name'),
+        geo_entity_id: geoEntityId,
+        tag_names: (
+          distributionsByGeoEntityId[geoEntityId] && distributionsByGeoEntityId[geoEntityId].tag_names
+        ) || []
       });
     });
     var defaultAppendix = null;

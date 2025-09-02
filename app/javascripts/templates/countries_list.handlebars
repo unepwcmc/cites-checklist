@@ -1,6 +1,6 @@
 <div class="country-holder">
   {{#each view.shortList}}
-    <span class="appendix_{{unbound this.species_listing_name}}_population">{{unbound this.name}}</span>
+    <span class="appendix_{{unbound this.species_listing_name}}_population">{{unbound this.name}}{{unbound this.maybe_tag_names}}</span>
   {{/each}}
   {{#if view.showMore}}
     {{t distribution.more countBinding="view.count"}}
@@ -12,7 +12,7 @@
             {{#each view.content}}
               <li>
                 <span class="appendix_{{unbound this.species_listing_name}}_population">
-                  {{unbound this.name}}
+                  {{unbound this.name}}{{unbound this.maybe_tag_names}}
                 </span>
               </li>
             {{/each}}
