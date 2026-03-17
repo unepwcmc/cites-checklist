@@ -3,11 +3,7 @@ service: cites-checklist
 
 # Credentials for your image host.
 registry:
-  server: ghcr.io
-  username:
-    - KAMAL_REGISTRY_USERNAME
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  server: localhost:5555
 
 # Use a different ssh user than root
 ssh:
