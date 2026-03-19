@@ -64,12 +64,10 @@ GEM
 PLATFORMS
   arm64-darwin-24
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   kamal (~> 2.10)
-
-RUBY VERSION
-   ruby 3.4.9p82
 
 BUNDLED WITH
    2.6.9

@@ -1,25 +1,30 @@
-# Name of the container image
-image: ghcr.io/unepwcmc/cites-checklist/web-staging
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-checklist/web-staging
 
 servers:
   web:
     hosts:
-      - example.com # TODO: Ruan
+      - 172.20.0.146
+    options:
+      add-host: host.docker.internal:host-gateway
     proxy:
       hosts:
-        - checklist.sapi-staging.linode.unep-wcmc.org # Public-facing domain
-      ssl: true # Proxy terminates SSL
-      forward_headers: true # Forward headers like X-Forwarded-Proto
+        - cites-checklist-sapi-web-staging-01.internal.unep-wcmc.org
+      ssl:
+        certificate_pem: CERTIFICATE_PEM
+        private_key_pem: PRIVATE_KEY_PEM
+      forward_headers: true
       healthcheck:
         path: /
       logging:
         request_headers:
           - Cache-Control
           - User-Agent
-          - X-Forwarded-Proto # Critical for Rails to detect HTTPS
+          - X-Forwarded-Proto
         response_headers:
           - X-Request-ID
 
 builder:
+  dockerfile: Dockerfile.staging
   args:
-    CHECKLIST_API_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/
+    CHECKLIST_API_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/   # ← confirm/update if SAPI staging moved

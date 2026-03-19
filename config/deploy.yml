@@ -13,5 +13,6 @@ ssh:
 builder:
   arch: amd64
   dockerfile: Dockerfile.deploy
+  remote: ssh://wcmc@172.20.0.146
   args:
     RUBY_VERSION: 2.6.10
