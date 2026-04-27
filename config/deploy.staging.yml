@@ -27,4 +27,4 @@ servers:
 builder:
   dockerfile: Dockerfile.staging
   args:
-    CHECKLIST_API_URL: https://sapi.sapi-staging.linode.unep-wcmc.org/checklist/   # ← confirm/update if SAPI staging moved
+    CHECKLIST_API_URL: https://staging.speciesplus.net/checklist/   # ← confirm/update if SAPI staging moved
