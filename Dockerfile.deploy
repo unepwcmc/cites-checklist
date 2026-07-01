@@ -10,6 +10,12 @@ RUN apt-get update -qq && \
 # Install Ruby bundler
 RUN gem install bundler -v '1.17.3' --no-document
 
+# Force baseline x86-64 so native extensions (ffi, libv8/therubyracer) don't use
+# AVX2/AVX512 instructions that may be unavailable on the target Proxmox VM CPU
+# (seen as a SIGILL crash on other apps in this fleet without this fix).
+ENV CFLAGS="-march=x86-64" \
+    CXXFLAGS="-march=x86-64"
+
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./

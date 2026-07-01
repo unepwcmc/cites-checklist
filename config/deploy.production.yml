@@ -1,14 +1,18 @@
-# Name of the container image
-image: ghcr.io/unepwcmc/cites-checklist/web-production
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-checklist/web-production
 
 servers:
   web:
     hosts:
-      - example.com # TODO: Ruan
+      - 172.20.0.158 # sapi-web-prod-01.internal.unep-wcmc.org
+    options:
+      add-host: host.docker.internal:host-gateway
     proxy:
       hosts:
-        - checklist.cites.org # Public-facing domain
-      ssl: true # Proxy terminates SSL
+        - cites-checklist-sapi-web-prod-01.internal.unep-wcmc.org
+      ssl:
+        certificate_pem: CERTIFICATE_PEM
+        private_key_pem: PRIVATE_KEY_PEM
       forward_headers: true # Forward headers like X-Forwarded-Proto
       healthcheck:
         path: /
@@ -20,6 +24,9 @@ servers:
         response_headers:
           - X-Request-ID
 
+# Build remotely on the production web server, same host the app deploys to.
 builder:
+  dockerfile: Dockerfile.deploy
+  remote: ssh://wcmc@172.20.0.158
   args:
     CHECKLIST_API_URL: https://www.speciesplus.net/checklist/
