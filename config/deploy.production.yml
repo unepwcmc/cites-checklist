@@ -29,4 +29,8 @@ builder:
   dockerfile: Dockerfile.deploy
   remote: ssh://wcmc@172.20.0.158
   args:
-    CHECKLIST_API_URL: https://www.speciesplus.net/checklist/
+    # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
+    # than the old public www.speciesplus.net. This is baked into the client-side JS
+    # bundle at build time, so it must be a publicly-resolvable domain (browsers can't
+    # resolve internal-only *.internal.unep-wcmc.org hostnames).
+    CHECKLIST_API_URL: https://preflight.speciesplus.net/checklist/
