@@ -25,6 +25,5 @@ servers:
           - X-Request-ID
 
 builder:
-  dockerfile: Dockerfile.staging
   args:
-    CHECKLIST_API_URL: https://staging.speciesplus.net/checklist/   # ← confirm/update if SAPI staging moved
+    CHECKLIST_API_URL: https://staging.speciesplus.net/checklist/ # ← confirm/update if SAPI staging moved

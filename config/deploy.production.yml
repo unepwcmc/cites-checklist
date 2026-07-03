@@ -26,7 +26,6 @@ servers:
 
 # Build remotely on the production web server, same host the app deploys to.
 builder:
-  dockerfile: Dockerfile.deploy
   remote: ssh://wcmc@172.20.0.158
   args:
     # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
