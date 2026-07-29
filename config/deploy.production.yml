@@ -4,15 +4,13 @@ image: unepwcmc/cites-checklist/web-production
 servers:
   web:
     hosts:
-      - 172.20.0.158 # sapi-web-prod-01.internal.unep-wcmc.org
+      - sapi-web-prod-01.linode.unep-wcmc.org
     options:
       add-host: host.docker.internal:host-gateway
     proxy:
       hosts:
-        - cites-checklist-sapi-web-prod-01.internal.unep-wcmc.org
-      ssl:
-        certificate_pem: CERTIFICATE_PEM
-        private_key_pem: PRIVATE_KEY_PEM
+        - cites-checklist-sapi-web-prod-01.linode.unep-wcmc.org
+      ssl: true
       forward_headers: true # Forward headers like X-Forwarded-Proto
       healthcheck:
         path: /
@@ -26,10 +24,10 @@ servers:
 
 # Build remotely on the production web server, same host the app deploys to.
 builder:
-  remote: ssh://wcmc@172.20.0.158
+  remote: ssh://wcmc@sapi-web-prod-01.linode.unep-wcmc.org
   args:
     # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
     # than the old public www.speciesplus.net. This is baked into the client-side JS
     # bundle at build time, so it must be a publicly-resolvable domain (browsers can't
     # resolve internal-only *.internal.unep-wcmc.org hostnames).
-    CHECKLIST_API_URL: https://preflight.speciesplus.net/checklist/
+    CHECKLIST_API_URL: https://sapi-web-prod-01.linode.unep-wcmc.org/checklist/
