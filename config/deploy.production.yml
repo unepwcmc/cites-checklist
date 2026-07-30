@@ -10,6 +10,7 @@ servers:
     proxy:
       hosts:
         - cites-checklist-sapi-web-prod-01.linode.unep-wcmc.org
+        - checklist.cites.org
       ssl: true
       healthcheck:
         path: /
@@ -29,7 +30,7 @@ builder:
     # than the old public www.speciesplus.net. This is baked into the client-side JS
     # bundle at build time, so it must be a publicly-resolvable domain (browsers can't
     # resolve internal-only *.internal.unep-wcmc.org hostnames).
-    CHECKLIST_API_URL: https://sapi-web-prod-01.linode.unep-wcmc.org/checklist/
+    CHECKLIST_API_URL: https://www.speciesplus.net/checklist/
 
 # kamal-proxy daemon settings (top level = the shared proxy container itself,
 # distinct from the per-role `proxy:` blocks above which configure routing).
