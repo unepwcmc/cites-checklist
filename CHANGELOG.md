@@ -1,3 +1,7 @@
+### 1.2.0
+
+* Deploy with Kamal rather than Capistrano
+
 ### 1.1.1
 
 * Implement a fix specific to Turbinicarpus spp. where 'taxon is split-listed'
