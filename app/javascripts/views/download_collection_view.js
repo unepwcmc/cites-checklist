@@ -21,13 +21,22 @@ Checklist.DownloadCollectionView = Ember.CollectionView.extend({
     }.property(),
 
     download: function(event) {
-      var id = $(event.target).parent().attr('data-download-id');
+      var eventTarget = $(event.target);
+
+      var id = (
+        // Might be the <a> or a <span> within it
+        eventTarget.attr('data-download-id') ||
+        eventTarget.parent().attr('data-download-id')
+      );
+
       ga('send', {
         hitType: 'event',
         eventCategory: 'Downloads: ' + this.get('content.doc_type') + ' (custom) ',
         eventAction: 'Format: ' + this.get('content.format')
       });
+
       window.location = Checklist.Download.downloadUrl(id);
+
       $.colorbox.close();
     },
 
