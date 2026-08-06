@@ -1,0 +1,35 @@
+ARG RUBY_VERSION
+FROM --platform=linux/amd64 ruby:${RUBY_VERSION}-slim AS build
+
+ENV BUNDLE_PATH="/usr/local/bundle"
+
+RUN apt-get update -qq && \
+  apt-get install --no-install-recommends -y \
+  curl build-essential git
+
+# Install Ruby bundler
+RUN gem install bundler -v '1.17.3' --no-document
+
+# Force baseline x86-64 so native extensions (ffi, libv8/therubyracer) don't use
+# AVX2/AVX512 instructions that may be unavailable on the target Proxmox VM CPU
+# (seen as a SIGILL crash on other apps in this fleet without this fix).
+ENV CFLAGS="-march=x86-64" \
+    CXXFLAGS="-march=x86-64"
+
+WORKDIR /app
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+COPY . .
+
+ARG CHECKLIST_API_URL
+RUN CHECKLIST_API_URL=${CHECKLIST_API_URL} bundle exec rakep build
+
+FROM nginx:1-alpine-slim
+
+COPY --from=build /app/public /usr/share/nginx/html
+COPY user_guide /usr/share/nginx/html/user_guide
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

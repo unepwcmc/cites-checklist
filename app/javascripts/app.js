@@ -54,7 +54,7 @@ Checklist.store = DS.Store.create({
   revision: 4,
   adapter: Checklist.SAPIAdapter.create({
     bulkCommit: false,
-    url: Checklist.CONFIG.backend_url
+    url: Checklist.CONFIG.checklist_api_url
   })
 });
 

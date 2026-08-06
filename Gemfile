@@ -8,8 +8,8 @@ gem "rake-pipeline-web-filters", :git => "https://github.com/wycats/rake-pipelin
 gem "compass"
 gem "uglifier"
 
-gem "libv8", '3.16.14.13'
-gem "therubyracer"
+gem "libv8", '3.16.14.15'
+gem "therubyracer", '0.12.3'
 
 group :development do
   gem 'capistrano', '3.4.0', require: false
@@ -25,3 +25,5 @@ group :development do
   gem 'bcrypt_pbkdf', '1.1.0'
   gem 'ed25519', '1.2.4'
 end
+
+gem "tilt", "~> 2.6"

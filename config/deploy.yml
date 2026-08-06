@@ -1,0 +1,18 @@
+# Name of your application. Used to uniquely configure containers.
+service: cites-checklist
+
+# Credentials for your image host.
+registry:
+  server: localhost:5555
+
+# Use a different ssh user than root
+ssh:
+  user: wcmc
+
+# Configure builder setup
+builder:
+  arch: amd64
+  dockerfile: Dockerfile.deploy
+  remote: ssh://wcmc@172.20.0.146
+  args:
+    RUBY_VERSION: 2.6.10

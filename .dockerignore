@@ -1,0 +1,20 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files (except templates).
+/.env*
+!/.env*.erb
+
+# Ignore all logfiles and tempfiles.
+tmp/*
+!tmp/.keep
+public/*
+!public/.keep
+.sass-cache/
+!.sass-cache/.keep

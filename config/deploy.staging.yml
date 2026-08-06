@@ -1,0 +1,29 @@
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-checklist/web-staging
+
+servers:
+  web:
+    hosts:
+      - 172.20.0.146
+    options:
+      add-host: host.docker.internal:host-gateway
+    proxy:
+      hosts:
+        - cites-checklist-sapi-web-staging-01.internal.unep-wcmc.org
+      ssl:
+        certificate_pem: CERTIFICATE_PEM
+        private_key_pem: PRIVATE_KEY_PEM
+      forward_headers: true
+      healthcheck:
+        path: /
+      logging:
+        request_headers:
+          - Cache-Control
+          - User-Agent
+          - X-Forwarded-Proto
+        response_headers:
+          - X-Request-ID
+
+builder:
+  args:
+    CHECKLIST_API_URL: https://staging.speciesplus.net/checklist/ # ← confirm/update if SAPI staging moved

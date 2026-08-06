@@ -1,0 +1,48 @@
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-checklist/web-production
+
+servers:
+  web:
+    hosts:
+      - sapi-web-prod-01.linode.unep-wcmc.org
+    options:
+      add-host: host.docker.internal:host-gateway
+    proxy:
+      hosts:
+        - cites-checklist-sapi-web-prod-01.linode.unep-wcmc.org
+        - checklist.cites.org
+      ssl: true
+      healthcheck:
+        path: /
+      logging:
+        request_headers:
+          - Cache-Control
+          - User-Agent
+          - X-Forwarded-Proto # Critical for Rails to detect HTTPS
+        response_headers:
+          - X-Request-ID
+
+# Build remotely on the production web server, same host the app deploys to.
+builder:
+  remote: ssh://wcmc@sapi-web-prod-01.linode.unep-wcmc.org
+  args:
+    # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
+    # than the old public www.speciesplus.net. This is baked into the client-side JS
+    # bundle at build time, so it must be a publicly-resolvable domain (browsers can't
+    # resolve internal-only *.internal.unep-wcmc.org hostnames).
+    CHECKLIST_API_URL: https://www.speciesplus.net/checklist/
+
+# kamal-proxy daemon settings (top level = the shared proxy container itself,
+# distinct from the per-role `proxy:` blocks above which configure routing).
+#
+# metrics_port makes kamal-proxy publish Prometheus metrics — per-host request
+# counts, status classes and request durations — which Zabbix scrapes to graph
+# real per-site traffic. Without it the daemon runs with metrics disabled
+# (kamal-proxy's default is 0 = off) and there is nothing to pull.
+#
+# This is set in EVERY app because whichever app boots or reboots the shared
+# proxy determines the daemon's flags; if one repo lacked it, a reboot triggered
+# from that repo would silently drop metrics.
+proxy:
+  run:
+    metrics_port: 9091
