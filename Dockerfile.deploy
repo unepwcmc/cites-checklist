@@ -3,6 +3,22 @@ FROM --platform=linux/amd64 ruby:${RUBY_VERSION}-slim AS build
 
 ENV BUNDLE_PATH="/usr/local/bundle"
 
+# Debian bullseye reached EOL on 2026-09-08: security.debian.org dropped the
+# bullseye-security pool, so its .debs now 404 and its Release file has expired.
+# `apt-get update` therefore fails, and because the next layer chains
+# `update && install`, the whole build exits 100.
+#
+# Drop the dead suite rather than repointing it: archive.debian.org carries no
+# bullseye-security either ("does not have a Release file"), which fails
+# `apt-get update` just the same. bullseye main and bullseye-updates still
+# resolve and supply every package installed below.
+#
+# This pins the build to the last published bullseye packages and takes NO
+# further security updates. A stopgap to keep staging deployable until this app
+# moves off Ruby 2.6.10 / bullseye.
+RUN sed -i '/security\.debian\.org/d' /etc/apt/sources.list \
+ && printf 'Acquire::Check-Valid-Until "false";\n' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 RUN apt-get update -qq && \
   apt-get install --no-install-recommends -y \
   curl build-essential git
